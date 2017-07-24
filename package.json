@@ -1,0 +1,20 @@
+{
+  "name": "unims",
+  "version": "1.0.0",
+  "description": "PROGETTO PROGRAMMAZIONE WEB\r 1.\tcome utente voglio poter accedere ad un’area privata tramite username e password\r 2.\tcome admin voglio poter modificare il piano di studio\r 3.\tcome studente voglio potermi iscrivere ad un esame\r 4.\tcome professore voglio poter caricare ed inviare i risultati degli esami agli studenti\r 5.\tcome studente voglio visualizzare la mia carriera universitaria anche con l’ausilio di grafici",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SaraPettinari/UniMS.git"
+  },
+  "author": "sara e mara",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SaraPettinari/UniMS/issues"
+  },
+  "homepage": "https://github.com/SaraPettinari/UniMS#readme"
+}

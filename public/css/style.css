@@ -11,7 +11,7 @@ body {
   color: #777777;
 }
 .text-primary {
-  color:  #00ffff;
+  color:  white;
 }
 p {
   font-size: 14px;
@@ -28,13 +28,13 @@ a.active {
   outline: none;
 }
 a {
-  color:  #00ffff;
+  color:  white;
 }
 a:hover,
 a:focus,
 a:active,
 a.active {
-  color: #00ffff;
+  color: white;
 }
 h1,
 h2,
@@ -116,8 +116,8 @@ fieldset[disabled] .btn-primary.active {
 .btn-xl.active,
 .open .dropdown-toggle.btn-xl {
   color: white;
-  background-color: #00ffff;
-  border-color: #00ffff;
+  background-color: #01aaff;
+  border-color: #01aaff;
 }
 .btn-xl:active,
 .btn-xl.active,
