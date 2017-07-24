@@ -1,8 +1,5 @@
 var express = require('express');
 var app = express();
-//var mongoose = require('mongoose');
-var mongo = require('mongodb');
-
 
 // set the port of our application
 // process.env.PORT lets the port be set by Heroku
@@ -23,22 +20,4 @@ app.get('/', function (req, res) {
 
 app.listen(port, function () {
 	console.log('Our app is running on http://localhost:' + port);
-});
-
-//DATABASE
-
-//mongoose.connect()
-
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://unims.herokuapp.com/dbUnims";
-
-MongoClient.connect(url, function (err, db) {
-	if (err) throw err;
-	console.log("Database created!");
-
-	db.createCollection("studenti", function (err, res) {
-		if (err) throw err;
-		console.log("Table created");
-		db.close();
-	});
 });
