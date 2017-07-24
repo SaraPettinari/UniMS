@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="it">
+
+<head>
+    <title>Home</title>
+    <meta charset="UTF-8">
+    <!-- to be responsive to mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-png" href="../img/unicam-scudo.png" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Icons -->
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- CSS personalizzato -->    
+    <link rel="stylesheet" href="../css/Style.css">
+    <!-- bootstap scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body id="page-top" class="index">
+    <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <a class="navbar-brand page-scroll" href="#page-top">Unicam</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#services">Servizi</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#portfolio">Area Riservata</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about">Informazioni Ateneo</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contattaci</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-lead-in">#ilfuturononcrolla</div>
+                <div class="intro-heading">Benvenuto in UNICAM</div>
+                <a href="#services" class="page-scroll btn btn-xl">Più info</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Servizi</h2>
+                    <h3 class="section-subheading text-muted">Per gli studenti...</h3>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading">Posta Elettronica</h4>
+                    <p class="text-muted">Posta elettronica dell'ateneo con spazio di archiviazione 'Google Drive' illimitato.</p>
+                </div>
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-home fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading">Alloggi e Trasporti</h4>
+                    <p class="text-muted">Scopri le innumerevoli agevolazioni riservate agli studenti UNICAM.</p>
+                </div>
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-newspaper-o fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading">Bandi ed Avvisi</h4>
+                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore
+                        harum ex magni, dicta impedit.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Grid Section -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Area Riservata</h2>
+                    <h3 class="section-subheading text-muted">Accedi alla tua area riservata</h3>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-user-plus fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <a href="Registrazione.html">
+                    <h4 class="service-heading">Registrazione</h4></a>
+                </div>
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-sign-in fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <a data-toggle="modal" data-target="#accedi">
+                        <h4 class="service-heading">Login</h4>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-unlock-alt fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading">Recupero password</h4>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div id="accedi" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Autenticazione</h4>
+                        </div>
+                        <form>
+                            <div class="modal-body">
+                                <label>Username</label>
+                                <input type="text" placeholder="username" name="username" required>
+                                <br>
+                                <label> Password </label>
+                                <input type="password" placeholder="password" name="password" required>
+                                <br>
+                                <input type="checkbox" checked>Ricordami
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-default">Accedi</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">About</h2>
+                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="timeline">
+                        <li>
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="img/about/1.jpg" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>2009-2011</h4>
+                                    <h4 class="subheading">Our Humble Beginnings</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente,
+                                        totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt
+                                        et ea quo dolore laudantium consectetur!</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="img/about/2.jpg" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>March 2011</h4>
+                                    <h4 class="subheading">An Agency is Born</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente,
+                                        totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt
+                                        et ea quo dolore laudantium consectetur!</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="img/about/3.jpg" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>December 2012</h4>
+                                    <h4 class="subheading">Transition to Full Service</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente,
+                                        totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt
+                                        et ea quo dolore laudantium consectetur!</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="img/about/4.jpg" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>July 2014</h4>
+                                    <h4 class="subheading">Phase Two Expansion</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente,
+                                        totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt
+                                        et ea quo dolore laudantium consectetur!</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-image">
+                                <h4>Be Part
+                                    <br>Of Our
+                                    <br>Story!</h4>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <!-- Contact/Area Container -->
+        <div class="container">
+            <div class="row row-centered">
+                <!-- LE NOSTRE SEDI ?-->
+                <h3 class="text-center">DOVE TROVARCI</h3>
+                <div class="col-xs-6 col-centered">
+                    <p>Sede - Camerino</p>
+                    <div id="googleMap">
+                        <iframe class="page-maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2910.971846620373!2d13.065896715054786!3d43.14712047914191!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132ddb9afaadf5d9%3A0xce53226a4659b73a!2sUnicam+campus!5e0!3m2!1sit!2sus!4v1493314326584"></iframe>
+                        <h6>Segreteria: <br> Via A. D'Accorso, 16 <br> 62032 Camerino MC, Italia</h6>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-centered">
+                    <p>Sede - Matelica</p>
+                    <div id="googleMap" class="col-xs-6 col-centered">
+                        <iframe class="page-maps" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11622.674947355164!2d13.01298!3d43.258364!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132dc5ea8b961001%3A0xc517ae0480fc27b1!2sVia+Circonvallazione%2C+93%2C+62024+Matelica+MC%2C+Italia!5e0!3m2!1sit!2sus!4v1493316326868"></iframe>
+                        <h6> Segreteria: <br> Via Circonvallazione, 93 <br> 62024 Matelica MC, Italia</h6>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-centered">
+                    <p>Sede - Ascoli Piceno</p>
+                    <div id="googleMap" class="col-xs-6 col-centered">
+                        <iframe class="page-maps" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5850.106763214386!2d13.573238!3d42.850606!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa94bcc05bb84b052!2sUniversit%C3%A0+di+Camerino+-+Polo+didattico+di+Scienze+e+Tecnologie!5e0!3m2!1sit!2sus!4v1493316460992"></iframe>
+                        <h6>Segreteria: <br> Via Emidio Pacifici Mazzoni, 2 <br> 63100 Ascoli Piceno AP, Italia</h6>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-centered">
+                    <p>Sede - San Benedetto del Tronto </p>
+                    <div id="googleMap" class="col-xs-6 col-centered">
+                        <iframe class="page-maps" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5842.145609120268!2d13.892864!3d42.934592!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1331f55da0892969%3A0x67e996d9cef9d504!2sViale+Alfredo+Scipioni%2C+6%2C+63074+San+Benedetto+del+Tronto+AP%2C+Italia!5e0!3m2!1sit!2sus!4v1493316553387"></iframe>
+                        <h6>Viale Alfredo Scipioni, 6 <br> 63074 San Benedetto del Tronto AP, Italia</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <span>Unicam - Università degli Studi di Camerino - 62032, Camerino (MC) - IT</span>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
