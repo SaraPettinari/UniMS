@@ -8,3 +8,14 @@ PROGETTO PROGRAMMAZIONE WEB
 
 
 L'app viene deployata automaticamente al link:  https://unims.herokuapp.com/
+
+
+ESAME			(matricolaP, matricolaS, idCorso, data, esito)
+PROFESSORI		(matricolaP, codScuola, codCorso, Nome, Cognome, mail, mailUniversitaria, telefono, )
+STUDENTI		(matricolaS, codCorso, idFacolta, Nome, Cognome, mail, mailUniversitaria, telefono, )
+AMMINISTRATORI	(matrcicolaA, codScuola, nome, cognome, mail, mailUniversitaria, telefono)
+FACOLTA		    (idFacolta, codScuola, codCorsi,nome)
+SCUOLE			(idScuola, nome)
+CORSI			(idCorso, codMatricolaS, codFacolta, codScuola)
+
+
