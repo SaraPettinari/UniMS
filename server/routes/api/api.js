@@ -12,7 +12,7 @@ module.exports = function (app, passport) {
     // HOME PAGE (with login links) ========
     // =====================================
     app.get('/', function (req, res) {
-        res.render('views/home.ejs'); // load the home.ejs file
+        res.render('home.ejs'); // load the home.ejs file
     });
 
     // =====================================
@@ -34,7 +34,7 @@ module.exports = function (app, passport) {
     // show the signup form
     app.get('/registrazione', function (req, res) {
         // render the page and pass in any flash data if it exists
-        res.render("../../views/registrazione.ejs");
+        res.render("registrazione.ejs");
     });
 
      // ====================================
