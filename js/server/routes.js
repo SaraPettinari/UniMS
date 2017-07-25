@@ -34,7 +34,7 @@ module.exports = function (app, passport) {
     // show the signup form
     app.get('/registrazione', function (req, res) {
         // render the page and pass in any flash data if it exists
-        res.render('views/registrazione.ejs', { message: req.flash('signupMessage') });
+        res.render("../../views/registrazione.ejs");
     });
 
      // ====================================
