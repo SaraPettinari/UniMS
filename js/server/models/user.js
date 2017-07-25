@@ -6,11 +6,14 @@ var userSchema = new Schema({
     nome: { type: String, required: true },
     cognome: { type: String, required: true },
     matricola: { type: Number, unique: true, required: true },
-    email: String,
+    email: String, 
+    emailUniversitaria: String, 
+    telefono:  Number, 
     username: { type: String, unique: true },
     password: String,
     admin: { type: Boolean, default: false }
 });
+
 
 // custom method to add string to end of name
 // you can create more important methods like name validations or formatting
@@ -19,7 +22,6 @@ userSchema.methods.emailify = function () {
     // add some stuff to the users name
     //TODO controllo se è uno studente (@studenti...) o admin/professore
     this.email = this.username + '@unims.it';
-
     return this.email;
 };
 
