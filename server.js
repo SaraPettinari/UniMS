@@ -13,18 +13,19 @@ var port = process.env.PORT || 8080;
 mongoose.connect("mongodb://localhost:27017/dbUnims");
 var con = mongoose.connection;
 con.on('error', function (err) {
-	console.log('errore connessione', err);
+	console.log('Errore connessione');
 });
 con.once('open', function () {
-	console.log('connessione riuscita!');
+	console.log('Connessione riuscita!');
 });
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 
-// make express look in the public directory for assets (css/js/img)
+// make express look in the views/server/public directory for assets (css/js/img)
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/views'));
+app.use(express.static(__dirname + '/server'));
 
 // set the home page route
 app.get('/', function (req, res) {
