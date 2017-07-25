@@ -227,8 +227,8 @@ fieldset[disabled] .btn-xl.active {
   }
 }
 header {
- /*  background-image: url("/img/sfondo.png"); */
-  background-color: #222222;
+   background-image: url("/img/rocca.jpg"); 
+ /* background-color: #222222;*/
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
