@@ -2,11 +2,8 @@ var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
 routes = require("./server/routes/api/api.js");
-<<<<<<< HEAD
-=======
 
 var config = require('./config');        // get our config file
->>>>>>> 8e97acddad3fc6bf2ef9e3d8bd038b2dc4227bb6
 
 // set the port of our application
 // process.env.PORT lets the port be set by Heroku
