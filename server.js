@@ -1,9 +1,20 @@
 var express = require('express');
 var app = express();
+var mongoose = require('mongoose');
 
 // set the port of our application
 // process.env.PORT lets the port be set by Heroku
 var port = process.env.PORT || 8080;
+
+// connect to database
+mongoose.connect("mongodb://localhost:27017/dbUnims");
+var con = mongoose.connection;
+con.on('error', function (err) {
+	console.log('errore connessione', err);
+});
+con.once('open', function () {
+	console.log('connessione riuscita!');
+});
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
