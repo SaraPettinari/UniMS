@@ -11,7 +11,7 @@ body {
   color: #777777;
 }
 .text-primary {
-  color:  white;
+  color:  #01aaff;
 }
 p {
   font-size: 14px;
@@ -57,8 +57,8 @@ h6 {
 }
 .btn-primary {
   color: white;
-  background-color: #00ffff;
-  border-color: #00ffff;
+  background-color: #01aaff;
+  border-color: #01aaff;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-weight: 700;
@@ -69,8 +69,8 @@ h6 {
 .btn-primary.active,
 .open .dropdown-toggle.btn-primary {
   color: white;
-  background-color: #00ffff;
-  border-color: #f6bf01;
+  background-color: #01aaff;
+  border-color: #01aaff;
 }
 .btn-primary:active,
 .btn-primary.active,
@@ -92,17 +92,17 @@ fieldset[disabled] .btn-primary:active,
 .btn-primary.disabled.active,
 .btn-primary[disabled].active,
 fieldset[disabled] .btn-primary.active {
-  background-color: #00ffff;
-  border-color: #00ffff;
+  background-color: #01aaff;
+  border-color: #01aaff;
 }
 .btn-primary .badge {
-  color:  #00ffff;
+  color:  #01aaff;
   background-color: white;
 }
 .btn-xl {
   color: white;
-  background-color: #00ffff;
-  border-color: #00ffff;
+  background-color: #01aaff;
+  border-color: #01aaff;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-weight: 700;
@@ -116,8 +116,8 @@ fieldset[disabled] .btn-primary.active {
 .btn-xl.active,
 .open .dropdown-toggle.btn-xl {
   color: white;
-  background-color: #01aaff;
-  border-color: #01aaff;
+  background-color: #008080;
+  border-color: #008080;
 }
 .btn-xl:active,
 .btn-xl.active,
@@ -139,11 +139,11 @@ fieldset[disabled] .btn-xl:active,
 .btn-xl.disabled.active,
 .btn-xl[disabled].active,
 fieldset[disabled] .btn-xl.active {
-  background-color: #00ffff;
-  border-color: #00ffff;
+  background-color: #01aaff;
+  border-color: #01aaff;
 }
 .btn-xl .badge {
-  color:  #00ffff;
+  color:  #01aaff;
   background-color: white;
 }
 .navbar-custom {
@@ -151,7 +151,7 @@ fieldset[disabled] .btn-xl.active {
   border-color: transparent;
 }
 .navbar-custom .navbar-brand {
-  color: #222222;
+  color: white;
   font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
   text-transform: uppercase;
 }
@@ -159,14 +159,14 @@ fieldset[disabled] .btn-xl.active {
 .navbar-custom .navbar-brand:focus,
 .navbar-custom .navbar-brand:active,
 .navbar-custom .navbar-brand.active {
-  color: #00ffff;
+  color: gainsboro;
 }
 .navbar-custom .navbar-collapse {
   border-color: rgba(255, 255, 255, 0.02);
 }
 .navbar-custom .navbar-toggle {
-  background-color: #00ffff;
-  border-color: #00ffff;
+  background-color: #01aaff;
+  border-color: #01aaff;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   color: white;
@@ -174,24 +174,24 @@ fieldset[disabled] .btn-xl.active {
 }
 .navbar-custom .navbar-toggle:hover,
 .navbar-custom .navbar-toggle:focus {
-  background-color: #00ffff;
+  background-color: #01aaff;
 }
 .navbar-custom .nav li a {
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-weight: 400;
   letter-spacing: 1px;
-  color: #222222;
+  color: white;
 }
 .navbar-custom .nav li a:hover,
 .navbar-custom .nav li a:focus {
-  color: #f1f1f1;
+  color: gainsboro;
   outline: none;
 }
 .navbar-custom .navbar-nav > .active > a {
   border-radius: 0;
   color: white;
-  background-color: #00ffff;
+  background-color: #01aaff;
 }
 .navbar-custom .navbar-nav > .active > a:hover,
 .navbar-custom .navbar-nav > .active > a:focus {
@@ -200,7 +200,7 @@ fieldset[disabled] .btn-xl.active {
 }
 @media (min-width: 768px) {
   .navbar-custom {
-    background-color: #00ffff;
+    background-color: #01aaff;
     padding: inherit;
     -webkit-transition: padding 0.3s;
     -moz-transition: padding 0.3s;
@@ -227,7 +227,7 @@ fieldset[disabled] .btn-xl.active {
   }
 }
 header {
- /*  background-image: url("../img/camerino.jpg"); */
+ /*  background-image: url("/img/sfondo.png"); */
   background-color: #222222;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -358,7 +358,7 @@ section h3.section-subheading {
   height: 80px;
   position: absolute;
   z-index: 100;
-  background-color: #00ffff;
+  background-color: #01aaff;
   color: white;
   border-radius: 100%;
   border: 7px solid #f1f1f1;
@@ -502,7 +502,8 @@ footer {
   padding: 10px 0;
   text-align: center;
   font-weight: bold;
-  background-color: #00ffff;
+  background-color: #01aaff;
+  color: white;
 }
 .btn:focus,
 .btn:active,
@@ -586,11 +587,11 @@ footer {
 }
 ::-moz-selection {
   text-shadow: none;
-  background: #00ffff;
+  background: #01aaff;
 }
 ::selection {
   text-shadow: none;
-  background: #00ffff;
+  background: #01aaff;
 }
 img::selection {
   background: transparent;
@@ -599,5 +600,5 @@ img::-moz-selection {
   background: transparent;
 }
 body {
-  -webkit-tap-highlight-color:  #00ffff;
+  -webkit-tap-highlight-color:  #01aaff;
 }
