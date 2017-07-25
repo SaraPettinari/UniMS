@@ -1,4 +1,4 @@
-//Cartella Route: funzioni condivise tra tutti, per interagire con il db
+//funzioni condivise tra tutti, per interagire con il db
 
 var User = require('../models/user');   // get our mongoose User model
 var Q = require('q');  // Q promise

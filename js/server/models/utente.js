@@ -6,7 +6,7 @@ var Schema = mongoose.Schema;
 var User = mongoose.model('User', new Schema({
     nome: { type: String, required: true },
     cognome: { type: String, required: true },
-    matricola: { type: number, unique: true, required: true },
+    matricola: { type: Number, unique: true, required: true },
     email: String,
     username: { type: String, unique: true },
     password: String,
