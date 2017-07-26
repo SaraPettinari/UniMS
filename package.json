@@ -1,7 +1,7 @@
 {
   "name": "unims",
   "version": "1.0.0",
-  "description": "PROGETTO PROGRAMMAZIONE WEB\r 1.\tcome utente voglio poter accedere ad un’area privata tramite username e password\r 2.\tcome admin voglio poter modificare il piano di studio\r 3.\tcome studente voglio potermi iscrivere ad un esame\r 4.\tcome professore voglio poter caricare ed inviare i risultati degli esami agli studenti\r 5.\tcome studente voglio visualizzare la mia carriera universitaria anche con l’ausilio di grafici",
+  "description": "PROGETTO PROGRAMMAZIONE WEB",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,7 +11,9 @@
     "body-parser": "^1.17.2",
     "ejs": "~2.5.6",
     "express": "~4.15.3",
+    "jsonwebtoken": "^7.4.1",
     "mongoose": "^4.11.4",
+    "q": "^1.5.0",
     "request": "^2.81.0"
   },
   "repository": {
