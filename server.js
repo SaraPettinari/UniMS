@@ -48,74 +48,34 @@ app.listen(port, function () {
 
 var User = require('./server/models/user.js');
 
-var studenti = new User({
-	nome:  $('#addUser fieldset input#inputUserName').val(),
-    cognome: $('#addUser fieldset input#inputUserName').val(),
-    matricola: $('#addUser fieldset input#inputUserName').val(),
-    email:  $('#addUser fieldset input#inputUserName').val(), 
-    emailUniversitaria:  $('#addUser fieldset input#inputUserName').val(),
-    telefono:   $('#addUser fieldset input#inputUserName').val(),
-    username:  $('#addUser fieldset input#inputUserName').val(),
-    password:  $('#addUser fieldset input#inputUserName').val(),
-    admin:  $('#addUser fieldset input#inputUserName').val(),
+var user1 = new User({
+    nome: 'Sara',
+    cognome: 'Sara',
+    stato: 'Sara',
+    cap: '62032',
+    dataDiNascita: '06/10/96',
+    matricola: '000202',
+    username: 'fara.scara',
 });
 
+user1.save(function (err) {
+    if (err) throw err;
 
+    console.log('Salvataggio completato');
+});
 
+var user2 = new User({
+    nome: 'Mara',
+    cognome: 'Mara',
+    stato: 'Mara',
+    cap: '62032',
+    dataDiNascita: '06/10/96',
+    matricola: '000104',
+    username: 'cara.cara',
+});
 
-// Add User
-function aggiungiStudente(event) {
-    event.preventDefault();
+user2.save(function (err) {
+    if (err) throw err;
 
-    // Super basic validation - increase errorCount variable if any fields are blank
-    var errorCount = 0;
-    $('#addUser input').each(function(index, val) {
-        if($(this).val() === '') { errorCount++; }
-    });
-
-    // Check and make sure errorCount's still at zero
-    if(errorCount === 0) {
-
-        // If it is, compile all user info into one object
-        var newUser = {
-            'username': $('#addUser fieldset input#inputUserName').val(),
-            'email': $('#addUser fieldset input#inputUserEmail').val(),
-            'fullname': $('#addUser fieldset input#inputUserFullname').val(),
-            'age': $('#addUser fieldset input#inputUserAge').val(),
-            'location': $('#addUser fieldset input#inputUserLocation').val(),
-            'gender': $('#addUser fieldset input#inputUserGender').val()
-        }
-
-        // Use AJAX to post the object to our adduser service
-        $.ajax({
-            type: 'POST',
-            data: newUser,
-            url: '/users/adduser',
-            dataType: 'JSON'
-        }).done(function( response ) {
-
-            // Check for successful (blank) response
-            if (response.msg === '') {
-
-                // Clear the form inputs
-                $('#addUser fieldset input').val('');
-
-                // Update the table
-                populateTable();
-
-            }
-            else {
-
-                // If something goes wrong, alert the error message that our service returned
-                alert('Error: ' + response.msg);
-
-            }
-        });
-    }
-    else {
-        // If errorCount is more than 0, error out
-        alert('Please fill in all fields');
-        return false;
-    }
-};
-
+    console.log('Salvataggio completato');
+});
