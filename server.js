@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
-
+var bodyParser = require('body-parser');
 var config = require('./config');        // get our config file
 
 // set the port of our application
@@ -12,10 +12,10 @@ var port = process.env.PORT || 8080;
 mongoose.connect("mongodb://localhost:27017/dbUnims");
 var con = mongoose.connection;
 con.on('error', function (err) {
-	console.log('Errore connessione');
+    console.log('Errore connessione');
 });
 con.once('open', function () {
-	console.log('Connessione riuscita!');
+    console.log('Connessione riuscita!');
 });
 
 // set the view engine to ejs
@@ -28,8 +28,8 @@ app.use(express.static(__dirname + '/views'));
 
 //IMPOSTO LE ROUTE
 app.get('/', function (req, res) {
-	// ejs render automatically looks in the views folder
-	res.render('home');
+    // ejs render automatically looks in the views folder
+    res.render('home');
 });
 
 app.get('/registrazione', function (req, res) {
@@ -43,39 +43,20 @@ app.get('/passwordDimenticata', function (req, res) {
 });
 
 app.listen(port, function () {
-	console.log('Our app is running on http://localhost:' + port);
+    console.log('Our app is running on http://localhost:' + port);
 });
 
 var User = require('./server/models/user.js');
 
-var user1 = new User({
-    nome: 'Sara',
-    cognome: 'Sara',
-    stato: 'Sara',
-    cap: '62032',
-    dataDiNascita: '06/10/96',
-    matricola: '000202',
-    username: 'fara.scara',
-});
-
-user1.save(function (err) {
-    if (err) throw err;
-
-    console.log('Salvataggio completato');
-});
-
-var user2 = new User({
-    nome: 'Mara',
-    cognome: 'Mara',
-    stato: 'Mara',
-    cap: '62032',
-    dataDiNascita: '06/10/96',
-    matricola: '000104',
-    username: 'cara.cara',
-});
-
-user2.save(function (err) {
-    if (err) throw err;
-
-    console.log('Salvataggio completato');
+app.use(bodyParser.urlencoded({ extended: false }));
+var path = require('path');
+var mongodb = require('mongodb');
+var dbConn = mongodb.MongoClient.connect('mongodb://localhost:27017/dbUnims');
+app.use(express.static(path.resolve(__dirname, 'views')));
+app.post('/registrazione/user', function(req,res){
+    dbConn.then(function(db){
+        delete req.body._id;
+        db.collection('Users').insertOne(req.body);
+    });
+    res.send('Dati' + JSON.stringify(req.body));
 });
