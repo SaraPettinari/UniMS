@@ -2,6 +2,8 @@ var mongo = require('mongodb');
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/dbUnims";
 var MongoClient = require('mongodb').MongoClient;
+//var User = require('server');
+
 
 MongoClient.connect(url, function (err, db) {
     if (err) throw err;
@@ -17,6 +19,7 @@ MongoClient.connect(url, function (err, db) {
     db.createCollection("Professori", function (err, res) {
         if (err) throw err;
         console.log("Table created!");
+        User.s
         db.close();
     });
 

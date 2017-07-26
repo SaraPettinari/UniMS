@@ -5,6 +5,9 @@ var Schema = mongoose.Schema;
 var userSchema = new Schema({
     nome: { type: String, required: true },
     cognome: { type: String, required: true },
+    stato:{String,required: true },
+    cap:{Number,required: true },
+    dataDiNascita: {Date, required: true },
     matricola: { type: Number, unique: true, required: true },
     email: String, 
     emailUniversitaria: String, 
@@ -13,6 +16,10 @@ var userSchema = new Schema({
     password: String,
     admin: { type: Boolean, default: false }
 });
+
+// set up a mongoose model and pass it using module.exports
+var User = mongoose.model('User', userSchema);
+module.exports = User;
 
 
 // custom method to add string to end of name
@@ -25,6 +32,3 @@ userSchema.methods.emailify = function () {
     return this.email;
 };
 
-// set up a mongoose model and pass it using module.exports
-var User = mongoose.model('User', userSchema);
-module.exports = User;
