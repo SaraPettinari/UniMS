@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
-routes = require("./server/routes/api/api.js");
 
 var config = require('./config');        // get our config file
 
@@ -27,11 +26,21 @@ app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/views'));
 app.use(express.static(__dirname + '/server'));
 
-// set the home page route
-app.get('/', function (req, res) {
 
+//IMPOSTO LE ROUTE
+app.get('/', function (req, res) {
 	// ejs render automatically looks in the views folder
 	res.render('home');
+});
+
+app.get('/registrazione', function (req, res) {
+    // ejs render automatically looks in the views folder
+    res.render('registrazione');
+});
+
+app.get('/passwordDimenticata', function (req, res) {
+    // ejs render automatically looks in the views folder
+    res.render('passwordDimenticata');
 });
 
 app.listen(port, function () {
