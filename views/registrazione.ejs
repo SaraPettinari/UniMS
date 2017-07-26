@@ -12,7 +12,7 @@
     <!-- Icons -->
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-     <!-- CSS personalizzato -->
+    <!-- CSS personalizzato -->
     <link rel="stylesheet" href="css/style.css">
     <!-- bootstap scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -23,10 +23,14 @@
     <div class="container">
         <div class="col-xs-2">
             <a href="/"><img src="img/logo.png"></a>
-            <a style="color: black" href="/#area_personale"><p>Hai già un account?</p></a>
-           <a style="color: black" href="/passwordDimenticata"> <p>Hai dimenticato la password?</p></a>
+            <a style="color: black" href="/#area_personale">
+                <p>Hai già un account?</p>
+            </a>
+            <a style="color: black" href="/passwordDimenticata">
+                <p>Hai dimenticato la password?</p>
+            </a>
         </div>
-        <div class="col-xs-10">
+        <div class="col-xs-10" ng-app="registrazione">
             <h2 class="well-personal">Registrazione</h2>
             <div class="col-lg-12 well-personal">
                 <div class="row">
@@ -35,54 +39,46 @@
                             <div class="row">
                                 <div class="col-sm-6 form-group">
                                     <label>Nome</label>
-                                    <input type="text" placeholder="Enter First Name Here.." class="form-control">
+                                    <input type="text" placeholder="Enter First Name Here.." class="form-control" ng-model="nome">
                                 </div>
                                 <div class="col-sm-6 form-group">
                                     <label>Cognome</label>
-                                    <input type="text" placeholder="Enter Last Name Here.." class="form-control">
+                                    <input type="text" placeholder="Enter Last Name Here.." class="form-control" ng-model="cognome">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label>Indirizzo</label>
-                                <textarea placeholder="Enter Address Here.." class="form-control"></textarea>
+                                <textarea placeholder="Enter Address Here.." class="form-control" ng-model="indirizzo"></textarea>
                             </div>
                             <div class="row">
                                 <div class="col-sm-4 form-group">
                                     <label>Città</label>
-                                    <input type="text" placeholder="Enter City Name Here.." class="form-control">
+                                    <input type="text" placeholder="Enter City Name Here.." class="form-control" ng-model="città">
                                 </div>
                                 <div class="col-sm-4 form-group">
                                     <label>Stato</label>
-                                    <input type="text" placeholder="Enter State Name Here.." class="form-control">
+                                    <input type="text" placeholder="Enter State Name Here.." class="form-control" ng-model="stato">
                                 </div>
                                 <div class="col-sm-4 form-group">
                                     <label>CAP</label>
-                                    <input type="text" placeholder="Enter Zip Code Here.." class="form-control">
+                                    <input type="text" placeholder="Enter Zip Code Here.." class="form-control" ng-model="cap">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-6 form-group">
                                     <label>Data Nascita</label>
-                                    <input type="date" placeholder="Enter Designation Here.." class="form-control">
+                                    <input type="date" placeholder="Enter Designation Here.." class="form-control" ng-model="dataDiNascita">
                                 </div>
                                 <div class="col-sm-6 form-group">
-                                    <label>Company</label>
-                                    <input type="text" placeholder="Enter Company Name Here.." class="form-control">
+                                    <label>Cellulare</label>
+                                    <input type="text" placeholder="Enter Phone Number Here.." class="form-control" ng-model="telefono">
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Cellulare</label>
-                                <input type="text" placeholder="Enter Phone Number Here.." class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Email Personale</label>
-                                <input type="text" placeholder="Enter Email Address Here.." class="form-control">
+                                <input type="text" placeholder="Enter Email Address Here.." class="form-control" ng-model="email">
                             </div>
-                            <div class="form-group">
-                                <label>Website</label>
-                                <input type="text" placeholder="Enter Website Name Here.." class="form-control">
-                            </div>
-                            <button type="button" class="btn btn-lg btn-info">Invia</button>
+                            <button type="submit" class="btn btn-lg btn-info">Invia</button>
                         </div>
                     </form>
                 </div>
