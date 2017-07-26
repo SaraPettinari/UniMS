@@ -1,6 +1,7 @@
 // get an instance of mongoose and mongoose.Schema
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+mongoose.connect("mongodb://localhost:27017/dbUnims");
 
 var userSchema = new Schema({
     nome: { type: String, required: true },
@@ -18,7 +19,7 @@ var userSchema = new Schema({
 });
 
 // set up a mongoose model and pass it using module.exports
-var User = mongoose.model('User', userSchema);
+var User = mongoose.model('Users', userSchema);
 module.exports = User;
 
 
