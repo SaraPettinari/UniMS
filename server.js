@@ -21,10 +21,9 @@ con.once('open', function () {
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 
-// make express look in the views/server/public directory for assets (css/js/img)
+// make express look in the views/public directory for assets (css/js/img)
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/views'));
-app.use(express.static(__dirname + '/server'));
 
 
 //IMPOSTO LE ROUTE
@@ -47,7 +46,7 @@ app.listen(port, function () {
 	console.log('Our app is running on http://localhost:' + port);
 });
 
-var User = require('server/models/user');
+var User = require('./server/models/user.js');
 
 var studenti = new User({
 	nome:  $('#addUser fieldset input#inputUserName').val(),
@@ -119,3 +118,4 @@ function aggiungiStudente(event) {
         return false;
     }
 };
+
