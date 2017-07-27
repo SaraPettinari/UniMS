@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="it">
+
+<head>
+    <title>Attivazione Account</title>
+    <meta charset="UTF-8">
+    <!-- to be responsive to mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-png" href="img/logo.png" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Icons and Fonts -->
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Satisfy'>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- bootstap scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js">
+
+    </script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+</head>
+
+<body>
+    <div class="container">
+    <div class="row">
+        <div class="col-lg-10 col-offset-1">
+            <img src="http://www.darkroomlocator.com/css/img/drl_white_bkg_300x80.png" class="img-responsive">
+            <p>Ciao <span class="text-danger">{{nome}}</span>,</p>
+            <p>benvenuto su darkroom locator.</p>
+            <p>Per iniziare a condividere le tue segnalazioni devi attivare il tuo account accedendo al seguente <a href='http://www.darkroomlocator.com/#!<%= lang %>/activate/<%= _id %>/<%= auth.authkey %>' target='_blank'>link</a></p>
+            <p>Oppure copia ed incolla questa stringa nella url del tuo browser :</p>
+            <!-- DA CAMBIARE -->
+            <p>http://www.darkroomlocator.com/#!<%= lang %>/activate/<%= _id %>/<%= auth.authkey %></p>
+            <p></p>
+            <p>Grazie</p>
+            <p class='text-muted'>darkroom locator team | www.darkroomlocator.com | darkroomlocator@analogica.it</p>
+        </div>            
+    </div>
+</div>
+</body>
+
+</html>
