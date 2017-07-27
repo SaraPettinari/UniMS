@@ -46,10 +46,10 @@ app.get('/registrazione', function (req, res) {
     res.render('registrazione');
 });
 
-app.get('/passwordDimenticata', function (req, res) {
+//app.get('/passwordDimenticata', function (req, res) {
     // ejs render automatically looks in the views folder
-    res.render('passwordDimenticata');
-});
+    //res.render('passwordDimenticata');
+//});
 
 app.listen(port, function () {
     console.log('Our app is running on http://localhost:' + port);
@@ -62,15 +62,17 @@ var path = require('path');
 var mongodb = require('mongodb');
 var dbConn = mongodb.MongoClient.connect('mongodb://localhost:27017/dbUnims');
 app.use(express.static(path.resolve(__dirname, 'views')));
-app.post('/registrazione/user', function(req,res){
-    dbConn.then(function(db){
+app.post('/registrazione/user', function (req, res) {
+    dbConn.then(function (db) {
         delete req.body._id;
         db.collection('Users').insertOne(req.body);
     });
     res.send('Dati' + JSON.stringify(req.body));
 });
 
-
-//-----STUDENTI-----
-
-
+var Mail = require('./server/providers/mail').Mail;
+var mail = new Mail();
+mail.resend(User, authObj.lang, pwd, function (err, res) {
+    console.log(err);
+    console.log(res);
+});
