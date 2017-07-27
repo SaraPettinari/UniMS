@@ -37,10 +37,10 @@ app.get('/registrazione', function (req, res) {
     res.render('registrazione');
 });
 
-app.get('/passwordDimenticata', function (req, res) {
+//app.get('/passwordDimenticata', function (req, res) {
     // ejs render automatically looks in the views folder
-    res.render('passwordDimenticata');
-});
+    //res.render('passwordDimenticata');
+//});
 
 app.listen(port, function () {
     console.log('Our app is running on http://localhost:' + port);

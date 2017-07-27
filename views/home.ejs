@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-png" href="img/logo.png" />
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet"type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- Icons and Fonts -->
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Satisfy'>
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
@@ -18,10 +18,12 @@
     <!-- bootstap scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-     <script type="text/javascript" src= "angular.min.js"></script>
+      <script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js">
+      </script>
+      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
 </head>
 
-<body id="page-top" class="index">
+<body  id="page-top" class="index">
     <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container">
             <div class="navbar-header page-scroll">
@@ -133,7 +135,7 @@
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
                         <i class="fa fa-unlock-alt fa-stack-1x fa-inverse"></i>
                     </span>
-                    <a href="/passwordDimenticata">
+                    <a data-toggle="modal" data-target="#passwordDimenticata">
                         <h4 class="service-heading">Recupero password</h4>
                     </a>
                 </div>
@@ -151,10 +153,10 @@
                         <form>
                             <div class="modal-body">
                                 <label>Username</label>
-                                <input type="text" placeholder="username" name="username" required>
+                                <input type="text" name="username" required>
                                 <br>
                                 <label> Password </label>
-                                <input type="password" placeholder="password" name="password" required>
+                                <input type="password" name="password" required>
                                 <br>
                                 <input type="checkbox" checked>Ricordami
                             </div>
@@ -162,6 +164,30 @@
                                 <p>Vuoi un account? <a href="/registrazione" style="color: black">Registrati</a></p>
                                 <p>Password dimenticata? <a href="/passwordDimenticata" style="color: black">Recuperala</a></p>
                                 <button type="submit" class="btn btn-default">Accedi</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+              <div id="passwordDimenticata" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Recupero password dimenticata</h4>
+                        </div>
+                        <form>
+                            <div class="modal-body">
+                                <p>Hai dimenticato la tua password? Non preoccuparti, inseirisci qui la tua e-mail!</p>
+                                <br>
+                                <label>Mail privata</label>
+                                <input type="mail"  name="indirizzo" required>
+                                
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-default">Invio</button>
                             </div>
                         </form>
                     </div>
