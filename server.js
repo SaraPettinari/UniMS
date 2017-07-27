@@ -53,10 +53,17 @@ var path = require('path');
 var mongodb = require('mongodb');
 var dbConn = mongodb.MongoClient.connect('mongodb://localhost:27017/dbUnims');
 app.use(express.static(path.resolve(__dirname, 'views')));
-app.post('/registrazione/user', function(req,res){
-    dbConn.then(function(db){
+app.post('/registrazione/user', function (req, res) {
+    dbConn.then(function (db) {
         delete req.body._id;
         db.collection('Users').insertOne(req.body);
     });
     res.send('Dati' + JSON.stringify(req.body));
+});
+
+var Mail = require('./server/providers/mail').Mail;
+var mail = new Mail();
+mail.resend(User, authObj.lang, pwd, function (err, res) {
+    console.log(err);
+    console.log(res);
 });
