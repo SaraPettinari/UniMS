@@ -13,6 +13,7 @@
     "express": "~4.15.3",
     "jsonwebtoken": "^7.4.1",
     "mongoose": "^4.11.4",
+    "postmark": "^1.4.1",
     "q": "^1.5.0",
     "request": "^2.81.0"
   },
@@ -20,7 +21,7 @@
     "type": "git",
     "url": "git+https://github.com/SaraPettinari/UniMS.git"
   },
-  "author": "sara e mara",
+  "author": "UniMs",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/SaraPettinari/UniMS/issues"
