@@ -1,19 +1,28 @@
 var express = require('express');
 var app = express();
+var path = require ('path');
+var baucis = require ('baucis');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var config = require('./config');        // get our config file
+User = require('./server/models/user.js'); //(mongoose, baucis);
+
 
 // set the port of our application
 // process.env.PORT lets the port be set by Heroku
 var port = process.env.PORT || 8080;
+app.set('port', process.env.PORT || 8080)
+/*app.use('/api', baucis());
+/* app.use(express.favicon());
+app.use(express.logger('dev'));
+app.use(express.bodyParser());
+app.use(express.methodOverride());*/
+//app.use(app.router);
 
 // connect to database
 mongoose.connect("mongodb://localhost:27017/dbUnims");
 var con = mongoose.connection;
-con.on('error', function (err) {
-    console.log('Errore connessione');
-});
+con.on('error', console.error.bind(console, 'connection error: '));
 con.once('open', function () {
     console.log('Connessione riuscita!');
 });
@@ -46,7 +55,7 @@ app.listen(port, function () {
     console.log('Our app is running on http://localhost:' + port);
 });
 
-var User = require('./server/models/user.js');
+User = require('./server/models/user.js');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 var path = require('path');
@@ -60,3 +69,8 @@ app.post('/registrazione/user', function(req,res){
     });
     res.send('Dati' + JSON.stringify(req.body));
 });
+
+
+//-----STUDENTI-----
+
+

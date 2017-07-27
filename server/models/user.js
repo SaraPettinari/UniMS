@@ -3,13 +3,17 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 mongoose.connect("mongodb://localhost:27017/dbUnims");
 
-var userSchema = new Schema({
+//-----STUDENTI-----
+
+var userStudenti = new Schema({
     nome: { type: String, required: true },
     cognome: { type: String, required: true },
     stato: { type: String, /* required: true */},
     cap: { type: Number, /* required: true */ },
     dataDiNascita: { type: Date, /* required: true */ },
-    matricola: { type: Number, unique: true,/* required: true */},
+    matricolaS: { type: Number, unique: true,/* required: true */},
+   // codCorso: {type: String, ref:Corso}
+    // codFacolta: {type:String, ref:Facolta } 
     email: String,
     emailUniversitaria: String,
     telefono: Number,
@@ -18,9 +22,28 @@ var userSchema = new Schema({
     admin: { type: Boolean, default: false }
 });
 
+var inserimentoStudente = function() {      
+
+var stud = new Studenti ({ 
+    nome: 'bho',
+    cognome: 'bho',
+    stato: 'bho',
+    cap: 90000,
+    dataDiNascita: 02/02/1234,
+    email: 'bho@gmail.com',
+    telefono: 1234567890,
+ });
+stud.save();
+};
+
+return {
+    inserimentoStudente: inserimentoStudente
+};
+
 // set up a mongoose model and pass it using module.exports
-var User = mongoose.model('Users', userSchema);
-module.exports = User;
+var User = mongoose.model('Studenti', userStudenti);
+module.exports = Studenti;
+
 
 
 // custom method to add string to end of name
@@ -32,4 +55,5 @@ userSchema.methods.emailify = function () {
     this.email = this.username + '@unims.it';
     return this.email;
 };
+
 
