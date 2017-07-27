@@ -19,3 +19,5 @@ SCUOLE			(idScuola, nome)
 CORSI			(idCorso, codMatricolaS, codFacolta, codScuola)
 
 
+--------- LINK UTILI ---------
+https://www.pensando.it/wp/tutorial/anatomia-di-una-node-js-webapp-realizzata-con-mongodb-node-js-e-backbone-js
