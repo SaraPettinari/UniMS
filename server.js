@@ -5,8 +5,8 @@ var baucis = require ('baucis');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var config = require('./config');        // get our config file
-User = require('./server/models/user.js'); //(mongoose, baucis);
-
+var User = require('./server/models/user'); //(mongoose, baucis);
+var routes = require('./server/routes/index');
 
 // set the port of our application
 // process.env.PORT lets the port be set by Heroku
@@ -20,7 +20,7 @@ app.use(express.methodOverride());*/
 //app.use(app.router);
 
 // connect to database
-mongoose.connect("mongodb://localhost:27017/dbUnims");
+mongoose.createConnection("mongodb://localhost:27017/dbUnims");
 var con = mongoose.connection;
 con.on('error', console.error.bind(console, 'connection error: '));
 con.once('open', function () {
@@ -34,45 +34,26 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/views'));
 
-
-//IMPOSTO LE ROUTE
-app.get('/', function (req, res) {
-    // ejs render automatically looks in the views folder
-    res.render('home');
-});
-
-app.get('/registrazione', function (req, res) {
-    // ejs render automatically looks in the views folder
-    res.render('registrazione');
-});
-
-//app.get('/passwordDimenticata', function (req, res) {
-    // ejs render automatically looks in the views folder
-    //res.render('passwordDimenticata');
-//});
-
 app.listen(port, function () {
     console.log('Our app is running on http://localhost:' + port);
 });
 
-User = require('./server/models/user.js');
+app.use('/', routes);
 
-app.use(bodyParser.urlencoded({ extended: false }));
-var path = require('path');
-var mongodb = require('mongodb');
-var dbConn = mongodb.MongoClient.connect('mongodb://localhost:27017/dbUnims');
-app.use(express.static(path.resolve(__dirname, 'views')));
-app.post('/registrazione/user', function (req, res) {
-    dbConn.then(function (db) {
-        delete req.body._id;
-        db.collection('Users').insertOne(req.body);
-    });
-    res.send('Dati' + JSON.stringify(req.body));
-});
+// Import of passport for user authentication and express-session for user sessions.
+var passport = require('passport');
+var expressSession = require('express-session');
+app.use(expressSession({secret: 'secretKey',
+                        resave: true,
+                        saveUninitialized: true}));
+app.use(passport.initialize());
+app.use(passport.session());
 
-var Mail = require('./server/providers/mail').Mail;
-var mail = new Mail();
-mail.resend(User, authObj.lang, pwd, function (err, res) {
-    console.log(err);
-    console.log(res);
-});
+
+// Initialize passport through init.js inside passport folder.
+var initPassport = require('./server/passport/init');
+
+/**
+ * We use connect-flash middleware for sending messages
+ *    for error debugging between requests.
+ */

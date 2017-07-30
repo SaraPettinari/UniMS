@@ -23,3 +23,5 @@ CORSI			(idCorso, codMatricolaS, codFacolta, codScuola)
 https://www.pensando.it/wp/tutorial/anatomia-di-una-node-js-webapp-realizzata-con-mongodb-node-js-e-backbone-js
 
 http://www.massimobiagioli.it/blog/servizi-rest-con-nodejs-express-mongoose-mongodb/
+
+http://jorgeramon.me/2014/using-mongodb-and-mongoose-for-user-registration-login-and-logout-in-a-mobile-application/
