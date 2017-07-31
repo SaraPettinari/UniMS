@@ -3,15 +3,14 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 mongoose.connect("mongodb://localhost:27017/dbUnims");
 
-//-----STUDENTI-----
-
 var userSchema = new Schema({
     nome: { type: String, required: true },
     cognome: { type: String, required: true },
-    stato: { type: String, /* required: true */},
-    cap: { type: Number, /* required: true */ },
-    dataDiNascita: { type: Date, /* required: true */ },
- //   matricolaS: { type: Number, /* required: true */},
+    stato: String,
+    città: String,
+    cap: Number,
+    dataDiNascita: { type: Date, required: true },
+    matricola: Number, /* required: true */
    // codCorso: {type: String, ref:Corso}
     // codFacolta: {type:String, ref:Facolta } 
     email: String,
@@ -19,12 +18,17 @@ var userSchema = new Schema({
     telefono: Number,
     username: String,
     password: String,
-    admin: { type: Boolean, default: false }
+    indirizzo: String
+   // admin: { type: Boolean, default: false }
 });
 
 // set up a mongoose model and pass it using module.exports
-var User = mongoose.model('User', userSchema);
-module.exports = User;
+//var User = mongoose.model('User', userSchema);
+//module.exports = User;
+
+//-----STUDENTI-----
+var Student = mongoose.model('Student', userSchema);
+module.exports = Student;
 
 
 userSchema.methods.emailify = function () {

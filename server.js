@@ -1,25 +1,11 @@
 var express = require('express');
-var app = express();
-var path = require ('path');
-var baucis = require ('baucis');
-var mongoose = require('mongoose');
+var path = require('path');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var config = require('./config');        // get our config file
-var User = require('./server/models/user'); //(mongoose, baucis);
-var routes = require('./server/routes/index');
+var routes = require('./routes/index');
 
-// set the port of our application
-// process.env.PORT lets the port be set by Heroku
-var port = process.env.PORT || 8080;
-app.set('port', process.env.PORT || 8080)
-/*app.use('/api', baucis());
-/* app.use(express.favicon());
-app.use(express.logger('dev'));
-app.use(express.bodyParser());
-app.use(express.methodOverride());*/
-//app.use(app.router);
-
-// connect to database
+var mongoose = require('mongoose');
 mongoose.createConnection("mongodb://localhost:27017/dbUnims");
 var con = mongoose.connection;
 con.on('error', console.error.bind(console, 'connection error: '));
@@ -27,18 +13,7 @@ con.once('open', function () {
     console.log('Connessione riuscita!');
 });
 
-// set the view engine to ejs
-app.set('view engine', 'ejs');
-
-// make express look in the views/public directory for assets (css/js/img)
-app.use(express.static(__dirname + '/public'));
-app.use(express.static(__dirname + '/views'));
-
-app.listen(port, function () {
-    console.log('Our app is running on http://localhost:' + port);
-});
-
-app.use('/', routes);
+var app = express();
 
 // Import of passport for user authentication and express-session for user sessions.
 var passport = require('passport');
@@ -49,11 +24,69 @@ app.use(expressSession({secret: 'secretKey',
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-// Initialize passport through init.js inside passport folder.
-var initPassport = require('./server/passport/init');
-
 /**
  * We use connect-flash middleware for sending messages
  *    for error debugging between requests.
  */
+var flash = require('connect-flash');
+app.use(flash());
+
+// Initialize passport through init.js inside passport folder.
+var initPassport = require('./passport/init');
+
+// make express look in the views/public directory for assets (css/js/img)
+app.use(express.static(__dirname + '/public'));
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+// uncomment after placing your favicon in /public
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/', routes);
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
+// error handlers
+
+// development error handler
+// will print stacktrace
+if (app.get('env') === 'development') {
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: err
+    });
+  });
+}
+
+// production error handler
+// no stacktraces leaked to user
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: {}
+  });
+});
+
+var port = process.env.PORT || 8080;
+app.set('port', process.env.PORT || 8080);
+app.listen(port, function () {
+    console.log('Our app is running on http://localhost:' + port);
+});
+
+
+module.exports = app;

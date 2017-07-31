@@ -20,10 +20,14 @@ router.get('/', function(req, res) {
 
 /** POST handles login. */
 router.post('/login', passport.authenticate('login', {
-	successRedirect: '/home', //reindirizzerà alla pagina dello studente
+	successRedirect: '/paginaStudente', //reindirizzerà alla pagina dello studente
 	failureRedirect: '/',
 //	failureFlash : true  
 }));
+
+router.get('/paginaStudente', function(req, res){
+	res.render('paginaStudente');
+});
 
 /** GET pagina registrazione. */
 router.get('/registrazione', function(req, res){

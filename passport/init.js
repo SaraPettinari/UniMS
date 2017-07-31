@@ -1,5 +1,5 @@
 var passport = require('passport');
-//var login = require('./login');
+var login = require('./login');
 var registrazione = require('./registrazione');
 var User = require('../models/user');
 
@@ -22,7 +22,7 @@ passport.deserializeUser(function(id, done) {
 /**
  * These two functions trigger /passport/login.js and /passport/signup.js.
  */
-//login(passport);
+login(passport);
 registrazione(passport);
 
 module.exports = passport;
