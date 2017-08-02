@@ -22,12 +22,8 @@ router.get('/', function(req, res) {
 router.post('/login', passport.authenticate('login', {
 	successRedirect: '/paginaStudente', //reindirizzerà alla pagina dello studente
 	failureRedirect: '/',
-//	failureFlash : true  
+	failureFlash : true  
 }));
-
-router.get('/paginaStudente', function(req, res){
-	res.render('paginaStudente');
-});
 
 /** GET pagina registrazione. */
 router.get('/registrazione', function(req, res){
@@ -38,14 +34,14 @@ router.get('/registrazione', function(req, res){
 router.post('/registrazione', passport.authenticate('registrazione', {
 	successRedirect: '/',
 	failureRedirect: '/registrazione',
-//	failureFlash : true  
+	failureFlash : true  
 }));
 
-/* GET home page. 
-router.get('/home', isAuthenticated, function(req, res){
-	res.render('home', {title: 'Home',
+/** GET student page. */
+router.get('/paginaStudente', isAuthenticated, function(req, res){
+	res.render('paginaStudente', {title: 'PaginaStudente',
 						user: req.user});
-});*/
+});
 
 /* GET handles log out. */
 router.get('/logout', function(req, res) {

@@ -1,7 +1,6 @@
 // get an instance of mongoose and mongoose.Schema
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-mongoose.connect("mongodb://localhost:27017/dbUnims");
 
 var userSchema = new Schema({
     nome: { type: String, required: true },
@@ -33,8 +32,8 @@ module.exports = Student;
 
 userSchema.methods.emailify = function () {
     //TODO controllo se è uno studente (@studenti...) o admin/professore
-    this.email = this.username + '@unims.it';
-    return this.email;
+    this.emailUniversitaria = this.username + '@unims.it';
+    return this.emailUniversitaria;
 };
 
 

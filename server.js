@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 
 var mongoose = require('mongoose');
-mongoose.createConnection("mongodb://localhost:27017/dbUnims");
+mongoose.connect("mongodb://localhost:27017/dbUnims");
 var con = mongoose.connection;
 con.on('error', console.error.bind(console, 'connection error: '));
 con.once('open', function () {

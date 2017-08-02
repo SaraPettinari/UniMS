@@ -18,9 +18,8 @@
     <!-- bootstap scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-      <script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js">
-      </script>
-      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
 </head>
 
 <body id="page-top" class="index">
@@ -162,14 +161,14 @@
                             </div>
                             <div class="modal-footer">
                                 <p>Vuoi un account? <a href="/registrazione" style="color: black">Registrati</a></p>
-                                <p>Password dimenticata? <a href="/passwordDimenticata" style="color: black">Recuperala</a></p>
+                                <p>Password dimenticata? <a data-toggle="modal" data-target="#passwordDimenticata" style="color: black">Recuperala</a></p>
                                 <button type="submit" class="btn btn-default">Accedi</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-              <div id="passwordDimenticata" class="modal fade" role="dialog">
+            <div id="passwordDimenticata" class="modal fade" role="dialog">
                 <div class="modal-dialog">
 
                     <!-- Modal content-->
@@ -183,8 +182,8 @@
                                 <p>Hai dimenticato la tua password? Non preoccuparti, inseirisci qui la tua e-mail!</p>
                                 <br>
                                 <label>Mail privata</label>
-                                <input type="email"  name="indirizzo" required>
-                                
+                                <input type="email" name="indirizzo" required>
+
                             </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-default">Invio</button>
