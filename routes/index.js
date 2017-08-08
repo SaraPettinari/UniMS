@@ -15,19 +15,19 @@ var isAuthenticated = function(req, res, next) {
 
 /** GET home page. */
 router.get('/', function(req, res) {
-	res.render('home');
+	res.render('home', {message: req.flash('message')});
 });
 
 /** POST handles login. */
 router.post('/login', passport.authenticate('login', {
 	successRedirect: '/paginaStudente', //reindirizzerà alla pagina dello studente
-	failureRedirect: '/',
+	failureRedirect: '/#area_personale',
 	failureFlash : true  
 }));
 
 /** GET pagina registrazione. */
 router.get('/registrazione', function(req, res){
-	res.render('registrazione');
+	res.render('registrazione', {message: req.flash('message')});
 });
 
 /** POST handles registration. */

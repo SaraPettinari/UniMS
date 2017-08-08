@@ -30,6 +30,11 @@
             </a>
         </div>
         <div class="col-xs-10">
+            <% if (message) { %>
+	        	<div>
+	        		<h5 class="text-center text-danger"><%= message %></h5>
+	        	</div>
+	        <% } %>
             <h2 class="well-personal">Registrazione</h2>
             <div class="col-lg-12 well-personal">
                 <div class="row">

@@ -4,7 +4,6 @@ var bCrypt = require('bcrypt-nodejs');
 
 module.exports = function (passport) {
     passport.use('registrazione', new LocalStrategy({
-        // Allows us to pass back the entire request to the callback.
         passReqToCallback: true
     },
         function (req, username, password, done) {
@@ -12,53 +11,45 @@ module.exports = function (passport) {
                 // controllo che non esista già un utente con la stessa mail
                 Student.findOne({ 'email': req.param('email') }, function (err, user) {
                     if (err) {
-                        console.log('Error in sign up: ' + err);
+                        console.log('Errore nella registrazione: ' + err);
                         return done(err);
                     }
                     if (user) {
-                        console.log('User already exists with email: ' + req.param('email'));
-                        return done(null, false, req.flash('message', 'User already exists with this email.'));
+                        console.log('Esiste già un utente registrato con la mail: ' + req.param('email'));
+                        return done(null, false, req.flash('message', 'Esiste già un utente registrato con la mail: ' + req.param('email')));
                     }
                     // in caso di omonimia allo username verrà aggiunto progressivamente un numero
-                    Student.findOne({ 'username': username }, function (err, user) {
-                        // In case of any error, return using the done method.
-                        if (err) {
-                            console.log('Error in sign up: ' + err);
-                            return done(err);
-                        }
-                        else {
-                            var num = 0;
-                            // If the user already exists, log the error.
-                            //funziona solo per i primi due utenti con stesso username
-                            if (user) {
-                                num++;
-                                username = username.concat(num);
-                            }
-                            // If there is no existing user with the chosen username, create the new user.
-                            var newStudent = new Student();
+                    var reg = new RegExp('^' + username); //cerco gli elementi che hanno lo stesso prefisso
+                    Student.find({ 'username': reg }).count(function (err, count) {
+                        if (count > 0)
+                            username = username.concat(count);
 
-                            // Set the new user's local credentials.
-                            newStudent.username = username;
-                            newStudent.password = createHash(password);
-                            newStudent.email = req.param('email');
-                            newStudent.nome = req.param('nome');
-                            newStudent.cognome = req.param('cognome');
-                            newStudent.dataDiNascita = req.param('dataDiNascita');
-                            newStudent.telefono = req.param('telefono');
-                            newStudent.città = req.param('città');
-                            newStudent.indirizzo = req.param('indirizzo');
-                            newStudent.cap = req.param('cap');
-        
-                            // Save the new user.
-                            newStudent.save(function (err) {
-                                if (err) {
-                                    console.log('Error in saving user: ' + err);
-                                    throw err;
-                                }
-                                console.log('User registration was successful.');
-                                return done(null, newStudent);
-                            });
-                        }
+                        //creo un nuovo studente
+                        var newStudent = new Student();
+
+                        // le credenziali verranno settate in base a ciò che verrà inserito nel form di registrazione
+                        newStudent.username = username;
+                        newStudent.password = createHash(password);
+                        newStudent.email = req.param('email');
+                        newStudent.nome = req.param('nome');
+                        newStudent.cognome = req.param('cognome');
+                        newStudent.dataDiNascita = req.param('dataDiNascita');
+                        newStudent.telefono = req.param('telefono');
+                        newStudent.città = req.param('città');
+                        newStudent.indirizzo = req.param('indirizzo');
+                        newStudent.cap = req.param('cap');
+                        newStudent.emailUniversitaria = username.concat('@studenti.unims.it');
+                        newStudent.matricola = new String('S' + newStudent._id);
+
+                        // salvo l'utente
+                        newStudent.save(function (err) {
+                            if (err) {
+                                console.log('Errore nel salvataggio: ' + err);
+                                throw err;
+                            }
+                            console.log('Registrazione avvenuta con successo.');
+                            return done(null, newStudent);
+                        });
                     });
                 });
             };
