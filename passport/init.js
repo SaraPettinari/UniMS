@@ -7,14 +7,14 @@ var User = require('../models/user');
  * Passport serializes and deserializes users to support persistent log-in sessions.
  */
 passport.serializeUser(function(user, done) {
-    console.log('Serializing user: ');
-    console.log(user);
+   // console.log('Serializing user: ');
+   // console.log(user);
     done(null, user._id);
 });
 
 passport.deserializeUser(function(id, done) {
     User.findById(id, function(err, user) {
-        console.log('Deserializing user: ', user);
+    //    console.log('Deserializing user: ', user);
         done(err, user);
     });
 });
