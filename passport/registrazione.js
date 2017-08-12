@@ -1,6 +1,8 @@
 var LocalStrategy = require('passport-local').Strategy;
 var Student = require('../models/user');
 var bCrypt = require('bcrypt-nodejs');
+var Admin = require('../models/personale').model('Admin');
+var Prof = require('../models/personale').model('Prof');
 
 module.exports = function (passport) {
     passport.use('registrazione', new LocalStrategy({
@@ -62,17 +64,34 @@ module.exports = function (passport) {
             };
 
             /**
+             * Generates hash using bCrypt.
+             */
+            var createHash = function (password) {
+                return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
+            }
+            /**
              * Delay the execution of findOrCreateUser and execute the method
              *      in the next tick of the event loop.
              */
             process.nextTick(findOrCreateUser);
         })
-    );
-
-    /**
-     * Generates hash using bCrypt.
-     */
-    var createHash = function (password) {
-        return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
-    }
+    ),
+        passport.use(new LocalStrategy({
+            passReqToCallback: true
+        },
+            function (req, username, password, done) {
+                Admin.find({}, function (err, admins) {
+                    if (err) throw err;
+                    admins.forEach(function (addAdmin) {
+                        return done(null, addAdmin);
+                    })
+                })
+                Prof.find({}, function (err, prof) {
+                    if (err) throw err;
+                    prof.forEach(function (addProf) {
+                        return done(null, addProf);
+                    })
+                })
+            })
+        )
 }

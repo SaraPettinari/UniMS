@@ -10,6 +10,7 @@ var isAuthenticated = function (req, res, next) {
 	if (req.isAuthenticated()) {
 		return next();
 	}
+	console.log('User non autenticato');
 	res.redirect('/');
 }
 
@@ -19,8 +20,20 @@ router.get('/', function (req, res) {
 });
 
 /** POST handles login. */
-router.post('/login', passport.authenticate('login', {
+router.post('/loginStudente', passport.authenticate('loginStudente', {
 	successRedirect: '/paginaStudente', //reindirizzerà alla pagina dello studente se si logga uno studente
+	failureRedirect: '/#area_personale',
+	failureFlash: true
+}));
+
+router.post('/loginAmministratore', passport.authenticate('loginAmministratore', {
+	successRedirect: '/paginaAmministratore', //reindirizzerà alla pagina dell'admin
+	failureRedirect: '/#area_personale',
+	failureFlash: true
+}));
+
+router.post('/loginDocente', passport.authenticate('loginDocente', {
+	successRedirect: '/paginaDocente', //reindirizzerà alla pagina del docente
 	failureRedirect: '/#area_personale',
 	failureFlash: true
 }));
@@ -59,7 +72,7 @@ router.get('/paginaAmministratore', isAuthenticated, function (req, res) {
 	});
 });
 
-/** GET student page. */
+/** GET prof page. */
 router.get('/paginaDocente', isAuthenticated, function (req, res) {
 	res.render('paginaDocente', {
 		title: 'PaginaDocente',

@@ -18,8 +18,8 @@
     <!-- bootstap scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script src="js/angular.js"></script>
 </head>
 
 <body id="page-top" class="index">
@@ -102,7 +102,7 @@
     </section>
 
     <!-- area_personale Grid Section -->
-    <section id="area_personale">
+    <section id="area_personale" ng-app="appHome" ng-controller="controllerHome">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -156,7 +156,30 @@
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title">Autenticazione</h4>
                         </div>
-                        <form method="POST" action="/login">
+                        <div class="modal-body">
+                            <label> Accedi come: </label>
+                            <select ng-model="ruolo" ng-options="item for item in roles">
+                                </select>
+                        </div>
+                        <div class="modal-footer">
+                            <p>Vuoi un account? <a href="/registrazione" style="color: black">Registrati</a></p>
+                            <p>Password dimenticata? <a data-toggle="modal" data-target="#passwordDimenticata" style="color: black">Recuperala</a></p>
+                            <button type="submit" data-toggle="modal" data-target="#accediCome" data-dismiss="modal" class="btn btn-default">Prosegui</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div id="accediCome" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Autenticazione</h4>
+                        </div>
+                        <form method="POST" action="{{'/login' + ruolo}}">
                             <div class="modal-body">
                                 <label>Username</label>
                                 <input type="text" name="username" required>
