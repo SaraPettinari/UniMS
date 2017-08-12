@@ -40,6 +40,7 @@ var bCrypt = require('bcrypt-nodejs');
 var createHash = function (password) {
         return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
     }
+
 //AGGIUNTI AMMINISTRATORI
 var admin1 = new admin({
     nome: 'Sara',
@@ -138,7 +139,8 @@ var programmazione = new corsi({
     nome: 'Programmazione',
     codice: 'P-10',
     codFacoltà: prof1.codFacoltà,
-    matricolaP: prof1.matricola
+    matricolaP: prof1.matricola,
+    cfu: 12
 });
 programmazione.save(function (err) {
     if (err) throw err;
@@ -148,7 +150,8 @@ var analisi = new corsi({
     nome: 'Analisi I',
     codice: 'A-47',
     codFacoltà: prof1.codFacoltà,
-    matricolaP: prof1.matricola
+    matricolaP: prof1.matricola,
+    cfu: 6
 });
 analisi.save(function (err) {
     if (err) throw err;
@@ -158,7 +161,8 @@ var chimicaOrganica = new corsi({
     nome: 'Chimica Organica',
     codice: 'C-47',
     codFacoltà: prof3.codFacoltà,
-    matricolaP: prof3.matricola
+    matricolaP: prof3.matricola,
+    cfu: 6
 });
 chimicaOrganica.save(function (err) {
     if (err) throw err;
@@ -168,7 +172,8 @@ var chimicaInorganica = new corsi({
     nome: 'Chimica Inorganica',
     codice: 'C-37',
     codFacoltà: prof3.codFacoltà,
-    matricolaP: prof3.matricola
+    matricolaP: prof3.matricola,
+    cfu: 6
 });
 chimicaInorganica.save(function (err) {
     if (err) throw err;
@@ -178,7 +183,8 @@ var geometria = new corsi({
     nome: 'Geometria I',
     codice: 'G-11',
     codFacoltà: prof2.codFacoltà,
-    matricolaP: prof2.matricola
+    matricolaP: prof2.matricola,
+    cfu : 12
 });
 geometria.save(function (err) {
     if (err) throw err;
