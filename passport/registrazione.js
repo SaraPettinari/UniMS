@@ -1,80 +1,97 @@
 var LocalStrategy = require('passport-local').Strategy;
 var Student = require('../models/user');
 var bCrypt = require('bcrypt-nodejs');
+var Admin = require('../models/personale').model('Admin');
+var Prof = require('../models/personale').model('Prof');
 
 module.exports = function (passport) {
     passport.use('registrazione', new LocalStrategy({
-        // Allows us to pass back the entire request to the callback.
         passReqToCallback: true
     },
         function (req, username, password, done) {
             findOrCreateUser = function () {
                 // controllo che non esista già un utente con la stessa mail
-                Student.findOne({ 'email': req.param('email') }, function (err, user) {
+                Student.findOne({ 'email': req.body.email }, function (err, user) {
                     if (err) {
-                        console.log('Error in sign up: ' + err);
+                        console.log('Errore nella registrazione: ' + err);
                         return done(err);
                     }
                     if (user) {
-                        console.log('User already exists with email: ' + req.param('email'));
-                        return done(null, false, req.flash('message', 'User already exists with this email.'));
+                        console.log('Esiste già un utente registrato con la mail: ' + req.body.email);
+                        return done(null, false, req.flash('message', 'Esiste già un utente registrato con la mail: ' + req.body.email));
                     }
                     // in caso di omonimia allo username verrà aggiunto progressivamente un numero
-                    Student.findOne({ 'username': username }, function (err, user) {
-                        // In case of any error, return using the done method.
-                        if (err) {
-                            console.log('Error in sign up: ' + err);
-                            return done(err);
-                        }
-                        else {
-                            var num = 0;
-                            // If the user already exists, log the error.
-                            //funziona solo per i primi due utenti con stesso username
-                            if (user) {
-                                num++;
-                                username = username.concat(num);
-                            }
-                            // If there is no existing user with the chosen username, create the new user.
-                            var newStudent = new Student();
+                    var reg = new RegExp('^' + username); //cerco gli elementi che hanno lo stesso prefisso
+                    Student.find({ 'username': reg }).count(function (err, count) {
+                        if (count > 0)
+                            username = username.concat(count);
 
-                            // Set the new user's local credentials.
-                            newStudent.username = username;
-                            newStudent.password = createHash(password);
-                            newStudent.email = req.param('email');
-                            newStudent.nome = req.param('nome');
-                            newStudent.cognome = req.param('cognome');
-                            newStudent.dataDiNascita = req.param('dataDiNascita');
-                            newStudent.telefono = req.param('telefono');
-                            newStudent.città = req.param('città');
-                            newStudent.indirizzo = req.param('indirizzo');
-                            newStudent.cap = req.param('cap');
-        
-                            // Save the new user.
+                        //creo un nuovo studente
+                        var newStudent = new Student();
+
+                        // le credenziali verranno settate in base a ciò che verrà inserito nel form di registrazione
+                        newStudent.username = username;
+                        if (password.length < 4)
+                            return done(null, false, req.flash('message', 'La password deve contenere almeno 4 caratteri'));
+                        newStudent.password = createHash(password);
+                        newStudent.email = req.body.email;
+                        newStudent.nome = req.body.nome;
+                        newStudent.cognome = req.body.cognome;
+                        newStudent.dataDiNascita = req.body.dataDiNascita;
+                        newStudent.telefono = req.body.telefono;
+                        newStudent.città = req.body.città;
+                        newStudent.indirizzo = req.body.indirizzo;
+                        newStudent.cap = req.body.cap;
+                        newStudent.emailUniversitaria = username.concat('@studenti.unims.it');
+                        newStudent.codFacoltà = req.body.facoltà;
+                        Student.count({}, function (err, count) {
+                            if (err) throw err;
+                            var n_studenti = count + 1;
+                            newStudent.matricola = new String('S00' + n_studenti);
+
+                            // salvo l'utente
                             newStudent.save(function (err) {
                                 if (err) {
-                                    console.log('Error in saving user: ' + err);
+                                    console.log('Errore nel salvataggio: ' + err);
                                     throw err;
                                 }
-                                console.log('User registration was successful.');
+                                console.log('Registrazione avvenuta con successo.');
                                 return done(null, newStudent);
                             });
-                        }
+                        });
                     });
                 });
             };
 
+            /**
+             * Generates hash using bCrypt.
+             */
+            var createHash = function (password) {
+                return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
+            }
             /**
              * Delay the execution of findOrCreateUser and execute the method
              *      in the next tick of the event loop.
              */
             process.nextTick(findOrCreateUser);
         })
-    );
-
-    /**
-     * Generates hash using bCrypt.
-     */
-    var createHash = function (password) {
-        return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
-    }
+    ),
+        passport.use(new LocalStrategy({
+            passReqToCallback: true
+        },
+            function (req, username, password, done) {
+                Admin.find({}, function (err, admins) {
+                    if (err) throw err;
+                    admins.forEach(function (addAdmin) {
+                        return done(null, addAdmin);
+                    })
+                })
+                Prof.find({}, function (err, prof) {
+                    if (err) throw err;
+                    prof.forEach(function (addProf) {
+                        return done(null, addProf);
+                    })
+                })
+            })
+        )
 }

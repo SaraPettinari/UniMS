@@ -18,8 +18,8 @@
     <!-- bootstap scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script src="js/angular.js"></script>
 </head>
 
 <body id="page-top" class="index">
@@ -85,7 +85,7 @@
                         <i class="fa fa-home fa-stack-1x fa-inverse"></i>
                     </span>
                     <h4 class="service-heading">Alloggi e Trasporti</h4>
-                    <p class="text-muted">Scopri le innumerevoli agevolazioni riservate agli studenti UNICAM.</p>
+                    <p class="text-muted">Scopri le innumerevoli agevolazioni riservate agli studenti.</p>
                 </div>
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
@@ -102,7 +102,7 @@
     </section>
 
     <!-- area_personale Grid Section -->
-    <section id="area_personale">
+    <section id="area_personale" ng-app="appHome" ng-controller="controllerHome">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -111,33 +111,40 @@
                 </div>
             </div>
             <div class="row text-center">
-                <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
+                <% if (message) { %>
+                    <div>
+                        <h5 class="text-center text-danger">
+                            <%= message %>
+                        </h5>
+                    </div>
+                    <% } %>
+                        <div class="col-md-4">
+                            <span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
                         <i class="fa fa-user-plus fa-stack-1x fa-inverse"></i>
                     </span>
-                    <a href="/registrazione">
-                        <h4 class="service-heading">Registrazione</h4>
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
+                            <a href="/registrazione">
+                                <h4 class="service-heading">Registrazione</h4>
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
                         <i class="fa fa-sign-in fa-stack-1x fa-inverse"></i>
                     </span>
-                    <a data-toggle="modal" data-target="#accedi">
-                        <h4 class="service-heading">Login</h4>
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
+                            <a data-toggle="modal" data-target="#accedi">
+                                <h4 class="service-heading">Login</h4>
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
                         <i class="fa fa-unlock-alt fa-stack-1x fa-inverse"></i>
                     </span>
-                    <a data-toggle="modal" data-target="#passwordDimenticata">
-                        <h4 class="service-heading">Recupero password</h4>
-                    </a>
-                </div>
+                            <a data-toggle="modal" data-target="#passwordDimenticata">
+                                <h4 class="service-heading">Recupero password</h4>
+                            </a>
+                        </div>
             </div>
             <!-- Modal -->
             <div id="accedi" class="modal fade" role="dialog">
@@ -149,7 +156,30 @@
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title">Autenticazione</h4>
                         </div>
-                        <form method="POST" action="/login">
+                        <div class="modal-body">
+                            <label> Accedi come: </label>
+                            <select ng-model="ruolo" ng-options="item for item in roles">
+                                </select>
+                        </div>
+                        <div class="modal-footer">
+                            <p>Vuoi un account? <a href="/registrazione" style="color: black">Registrati</a></p>
+                            <p>Password dimenticata? <a data-toggle="modal" data-target="#passwordDimenticata" style="color: black">Recuperala</a></p>
+                            <button type="submit" data-toggle="modal" data-target="#accediCome" data-dismiss="modal" class="btn btn-default">Prosegui</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div id="accediCome" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Autenticazione</h4>
+                        </div>
+                        <form method="POST" action="{{'/login' + ruolo}}">
                             <div class="modal-body">
                                 <label>Username</label>
                                 <input type="text" name="username" required>
@@ -277,7 +307,7 @@
     <footer>
         <div class="container">
             <div class="row">
-                <span><i class="fa fa-university"></i> Unicam - Università degli Studi di Camerino - 62032, Camerino (MC) - IT</span>
+                <span><i class="fa fa-university"></i> UniMS - 62032, Camerino (MC) - IT</span>
             </div>
         </div>
     </footer>
