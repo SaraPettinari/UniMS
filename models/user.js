@@ -19,7 +19,17 @@ var userSchema = new Schema({
     password: String,
     indirizzo: String
    // admin: { type: Boolean, default: false }
+}, 
+{
+    collection: 'studenti'
 });
+var Studenti = mongoose.model(Studenti, userSchema);
+
+baucis.rest({
+    singular: 'Studenti',
+    plural: 'Studente'
+});
+};
 
 // set up a mongoose model and pass it using module.exports
 //var User = mongoose.model('User', userSchema);
