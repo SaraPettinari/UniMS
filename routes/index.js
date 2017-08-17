@@ -64,14 +64,6 @@ router.get('/paginaStudente', isAuthenticated, function (req, res) {
 	});
 });
 
-/** GET admin page. */
-router.get('/paginaAmministratore', isAuthenticated, function (req, res) {
-	res.render('paginaAmministratore', {
-		title: 'PaginaAmministratore',
-		user: req.user
-	});
-});
-
 /** GET prof page. */
 router.get('/paginaDocente', isAuthenticated, function (req, res) {
 	res.render('paginaDocente', {

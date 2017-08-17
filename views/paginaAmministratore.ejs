@@ -23,7 +23,7 @@
     <script src="js/angular.js"></script>
 </head>
 
-<body>
+<body ng-app="appAdmin" ng-controller="controllerAdmin">
     <div class="container">
         <div class="row">
             <div class="col-sm-6 col-md-4 col-md-offset-4">
@@ -50,7 +50,85 @@
                         </ul>
                     </div>
                     <a href="/logout" class="btn btn-lg btn-danger btn-block">Log Out</a>
-                    </h1>
+                    <button type="button" ng-click="ShowHide()" class="btn btn-lg btn-info btn-block"> MOSTRA CORSI </button>
+                </div>
+            </div>
+        </div>
+        <div class="row" ng-show="IsVisible">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1 class="text-center">Corsi</h1>
+                    <% if (corsi.length > 0) { %>
+                        <% for(var i=0; i < corsi.length; i++) { %>
+                            <div class="col-md-6">
+                                <p>
+                                    <%= corsi[i].nome %>
+                                </p>
+                            </div>
+                            <div class="col-md-3">
+                                <p>
+                                    <%= corsi[i].codice %>
+                                </p>
+                            </div>
+                            <div class="col-md-3">
+                                <p>
+                                    <%= corsi[i].codFacoltà %>
+                                </p>
+                            </div>
+                            <% } %>
+                                <% } else { %>
+                                    <p>No corsi.</p>
+                                    <% } %>
+                </div>
+                <div class="col-md-6">
+                    <% if (tuoiCorsi.length > 0) { %>
+                        <h1 class="text-center">Tuoi corsi</h1>
+                        <% for(var i=0; i < tuoiCorsi.length; i++) { %>
+                            <div class="col-md-6">
+                                <p>
+                                    <%= tuoiCorsi[i].nome %>
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <p>
+                                    <%= tuoiCorsi[i].codice %>
+                                </p>
+                            </div>
+                            <% } %>
+                                <% } %>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <h1 class="text-center">Crea corso
+                        <h1>
+                            <div>
+                                <form action="/paginaAmministratore" method="POST">
+                                    <input type="text" name="nome" placeholder="nome" required="required" class="form-control" />
+                                    <input type="text" name="codice" placeholder="codice corso" required="required" class="form-control" />
+                                    <input type="text" name="matricolaP" placeholder="matricola professore" required="required" class="form-control" />
+                                    <input type="number" name="cfu" placeholder="cfu" required="required" class="form-control" min="3" max="12" />
+                                    <button type="submit" class="btn btn-lg btn-success btn-block" ng-show="IsVisible">OK</button>
+                                </form>
+                            </div>
+                </div>
+                <div class="col-md-4">
+                    <h1 class="text-center">Modifica corso
+                        <h1>
+                            <div>
+                                <form action="/paginaAmministratore" method="POST">
+
+                                </form>
+                            </div>
+                </div>
+                <div class="col-md-4">
+                    <h1 class="text-center">Rimuovi corso
+                        <h1>
+                            <div>
+                                <form action="/paginaAmministratore" method="POST">
+
+                                </form>
+                            </div>
                 </div>
             </div>
         </div>
