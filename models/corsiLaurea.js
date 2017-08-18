@@ -5,7 +5,7 @@ var Corsi = require('./corsi');
 var corsiLaureaSchema = new Schema({
     nome: { type: String, required: true },
     codice: { type: String, required: true, unique: true },
-    corsi: { type: Array, ref: 'Corsi' /*, required : true */ }
+    corsi: [{ type: String, ref: 'Corsi' }]
 },
     {
         versionKey: false

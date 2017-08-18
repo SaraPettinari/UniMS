@@ -20,7 +20,7 @@ router.get('/', isAuthenticated, function (req, res) {
                     title: 'Corsi',
                     corsi: corsi,
                     tuoiCorsi: tuoiCorsi,
-                    user: req.user
+                    user: req.user,
                 });
             }
         });
@@ -28,7 +28,7 @@ router.get('/', isAuthenticated, function (req, res) {
 });
 
 /**
- * POST handles creating a new blog post.
+ * POST crea nuovo corso.
  */
 router.post('/', isAuthenticated, function (req, res) {
     var data = {
@@ -36,13 +36,39 @@ router.post('/', isAuthenticated, function (req, res) {
         nome: req.body.nome,
         codice: req.body.codice,
         matricolaP: req.body.matricolaP,
-        cfu: req.body.cfu
+        cfu: req.body.cfu,
+        anno: req.body.anno
     };
-    // After adding a new post, redirect to /blogpost and see the update.
     CorsiController.addCorso(data, function (err) {
         if (err) throw err;
     });
     res.redirect('/paginaAmministratore');
 });
+
+/**
+ * POST aggiorna il numero di cfu e/o il professore e/o l'anno di un determinato corso.
+ */
+router.post('/update', isAuthenticated, function (req, res) {
+    var data = {
+        matricolaP: req.body.matricolaP,
+        cfu: req.body.cfu,
+        anno: req.body.anno
+    };
+    CorsiController.updateCorso(req.body.codice, data, function (err) {
+        if (err) throw err;
+    });
+    res.redirect('/paginaAmministratore');
+});
+
+/**
+ * POST rimuove un determinato corso.
+ */
+router.post('/remove', isAuthenticated, function (req, res) {
+    CorsiController.removeCorso(req.body.codice, function (err) {
+        if (err) throw err;
+    });
+    res.redirect('/paginaAmministratore');
+});
+
 
 module.exports = router;

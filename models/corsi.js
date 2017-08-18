@@ -7,7 +7,8 @@ var corsiSchema = new Schema({
     codice: { type: String, required: true, unique: true },
     codFacoltà: { type: String, required: true, ref: 'Prof' },
     matricolaP: { type: String, required: true, ref: 'Prof' },
-    cfu: { type: Number, required: true }
+    cfu: { type: Number, required: true },
+    anno:  { type: Number, required: true }
 },
     {
         versionKey: false

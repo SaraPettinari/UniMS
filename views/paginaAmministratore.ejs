@@ -56,79 +56,96 @@
         </div>
         <div class="row" ng-show="IsVisible">
             <div class="row">
-                <div class="col-md-6">
-                    <h1 class="text-center">Corsi</h1>
-                    <% if (corsi.length > 0) { %>
-                        <% for(var i=0; i < corsi.length; i++) { %>
-                            <div class="col-md-6">
-                                <p>
-                                    <%= corsi[i].nome %>
-                                </p>
-                            </div>
-                            <div class="col-md-3">
-                                <p>
-                                    <%= corsi[i].codice %>
-                                </p>
-                            </div>
-                            <div class="col-md-3">
-                                <p>
-                                    <%= corsi[i].codFacoltà %>
-                                </p>
-                            </div>
+                <% if (tuoiCorsi.length > 0) { %>
+                    <h4 class="text-center">Piano studi
+                        <%= user.codFacoltà %>
+                    </h4>
+                    <div class="row">
+                        <h5 class="col-md-3">Nome:</h5>
+                        <h5 class="col-md-3">Codice:</h5>
+                        <h5 class="col-md-3">Matricola Docente:</h5>
+                        <h5 class="col-md-2">CFU:</h5>
+                        <h5 class="col-md-1">Anno:</h5>
+                    </div>
+                    <% for(var i=0; i < tuoiCorsi.length; i++) { %>
+                        <div class="col-md-3">
+                            <p>
+                                <%= tuoiCorsi[i].nome %>
+                            </p>
+                        </div>
+                        <div class="col-md-3">
+                            <p>
+                                <%= tuoiCorsi[i].codice %>
+                            </p>
+                        </div>
+                        <div class="col-md-3">
+                            <p>
+                                <%= tuoiCorsi[i].matricolaP %>
+                            </p>
+                        </div>
+                        <div class="col-md-2">
+                            <p>
+                                <%= tuoiCorsi[i].cfu %>
+                            </p>
+                        </div>
+                        <div class="col-md-1 text-center">
+                            <p>
+                                <%= tuoiCorsi[i].anno %>
+                            </p>
+                        </div>
+                        <% } %>
                             <% } %>
-                                <% } else { %>
-                                    <p>No corsi.</p>
-                                    <% } %>
-                </div>
-                <div class="col-md-6">
-                    <% if (tuoiCorsi.length > 0) { %>
-                        <h1 class="text-center">Tuoi corsi</h1>
-                        <% for(var i=0; i < tuoiCorsi.length; i++) { %>
-                            <div class="col-md-6">
-                                <p>
-                                    <%= tuoiCorsi[i].nome %>
-                                </p>
-                            </div>
-                            <div class="col-md-6">
-                                <p>
-                                    <%= tuoiCorsi[i].codice %>
-                                </p>
-                            </div>
-                            <% } %>
-                                <% } %>
-                </div>
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <h1 class="text-center">Crea corso
-                        <h1>
-                            <div>
-                                <form action="/paginaAmministratore" method="POST">
-                                    <input type="text" name="nome" placeholder="nome" required="required" class="form-control" />
-                                    <input type="text" name="codice" placeholder="codice corso" required="required" class="form-control" />
-                                    <input type="text" name="matricolaP" placeholder="matricola professore" required="required" class="form-control" />
-                                    <input type="number" name="cfu" placeholder="cfu" required="required" class="form-control" min="3" max="12" />
-                                    <button type="submit" class="btn btn-lg btn-success btn-block" ng-show="IsVisible">OK</button>
-                                </form>
-                            </div>
+                    <h4 class="text-center">Crea corso</h4>
+                    <div>
+                        <form action="/paginaAmministratore" method="POST">
+                            <input type="text" name="nome" placeholder="nome" required="required" class="form-control" />
+                            <input type="text" name="codice" placeholder="codice corso" required="required" class="form-control" />
+                            <input type="text" name="matricolaP" placeholder="matricola professore" required="required" class="form-control" />
+                            <input type="number" name="cfu" placeholder="cfu" required="required" class="form-control" min="3" max="12" />
+                            <input type="number" name="anno" placeholder="anno" required="required" class="form-control" min="1" max="3" />
+                            <button type="submit" class="btn btn-lg btn-success btn-block" ng-show="IsVisible">OK</button>
+                        </form>
+                    </div>
                 </div>
                 <div class="col-md-4">
-                    <h1 class="text-center">Modifica corso
-                        <h1>
-                            <div>
-                                <form action="/paginaAmministratore" method="POST">
-
-                                </form>
-                            </div>
+                    <h4 class="text-center">Modifica corso
+                    </h4>
+                    <div>
+                        <div>
+                            <label>Corso da modificare:</label>
+                            <select ng-model="corso">
+                                <% tuoiCorsi.forEach(function(tuoiCorsi){%>
+                                    <option value=<%=tuoiCorsi.codice%>> <%= tuoiCorsi.nome %></option>
+                                <% })%>
+                                    </select>
+                            <form action="/paginaAmministratore/update" method="POST">
+                                <input readonly type="text" name="codice" placeholder="codice" required="required" class="form-control" value="{{corso}}"
+                                />
+                                <input type="text" name="matricolaP" placeholder="matricola professore" required="required" class="form-control" />
+                                <input type="number" name="cfu" placeholder="cfu" required="required" class="form-control" min="3" max="12" />
+                                <input type="number" name="anno" placeholder="anno" required="required" class="form-control" min="1" max="3" />
+                                <button type="submit" class="btn btn-lg btn-success btn-block" name="updateB" ng-show="IsVisible">OK</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-4">
-                    <h1 class="text-center">Rimuovi corso
-                        <h1>
-                            <div>
-                                <form action="/paginaAmministratore" method="POST">
-
-                                </form>
-                            </div>
+                    <h4 class="text-center">Rimuovi corso </h4>
+                    <div>
+                        <label>Corso da rimuovere:</label>
+                        <form action="/paginaAmministratore/remove" method="POST">
+                            <select ng-model="corsoR">
+                                    <% tuoiCorsi.forEach(function(tuoiCorsi){%>
+                                        <option value=<%=tuoiCorsi.codice%>> <%= tuoiCorsi.nome %></option>
+                                    <% })%>
+                            </select>
+                            <input type="hidden" name="codice" placeholder="codice" value="{{corsoR}}" />
+                            <button type="submit" class="btn btn-lg btn-success btn-block" name="removeB">OK</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
