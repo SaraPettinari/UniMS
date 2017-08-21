@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
+var passport = require('passport');
 var CorsiController = require('../controllers/corsiController');
+var DocentiController = require('../controllers/docentiController');
 
 var isAuthenticated = function (req, res, next) {
     if (req.isAuthenticated()) {
@@ -10,21 +12,24 @@ var isAuthenticated = function (req, res, next) {
     res.redirect('/');
 }
 
-var Corsi = require('../models/corsi');
-
 router.get('/', isAuthenticated, function (req, res) {
+    CorsiController.populateFacoltà(req.user.codFacoltà);
     CorsiController.listaCorsi(function (err, corsi) {
         CorsiController.listaTuoiCorsi(req.user.codFacoltà, function (err2, tuoiCorsi) {
-            if (!err && !err2) {
-                res.render('paginaAmministratore', {
-                    title: 'Corsi',
-                    corsi: corsi,
-                    tuoiCorsi: tuoiCorsi,
-                    user: req.user,
-                });
-            }
+            DocentiController.listaDocentiFacoltà(req.user.codFacoltà, function (err3, docentiFacoltà) {
+                if (!err && !err2 && !err3) {
+                    res.render('paginaAmministratore', {
+                        title: 'Corsi',
+                        corsi: corsi,
+                        tuoiCorsi: tuoiCorsi,
+                        user: req.user,
+                        docentiFacoltà: docentiFacoltà,
+                        message: req.flash('message')
+                    });
+                }
+            });
         });
-    });
+    })
 });
 
 /**
@@ -69,6 +74,15 @@ router.post('/remove', isAuthenticated, function (req, res) {
     });
     res.redirect('/paginaAmministratore');
 });
+
+/**
+ * POST aggiunta di un nuovo docente.
+ */
+router.post('/registrazioneDocente', passport.authenticate('registrazioneDocente', {
+	successRedirect: '/paginaAmministratore',
+	failureRedirect: '/paginaAmministratore',
+	failureFlash: true
+}));
 
 
 module.exports = router;

@@ -60,21 +60,25 @@ CorsiController.listaTuoiCorsi = function (userCodCorso, callback) {
     }).sort('anno');
 }
 
-/*var Facoltà = require('../models/corsiLaurea');
+var Facoltà = require('../models/corsiLaurea');
 
-CorsiController.createPianoStudi = function (codFacoltà) {
-    Facoltà.findOne({ 'codice': codFacoltà }, function (err, res) {
-        var ProvaF = res;
+/**
+ * Inseriti i corsi nella tabella della rispettiva facoltà
+ */
+CorsiController.populateFacoltà = function (codFacoltà) {
+    Facoltà.findOne({ 'codice': codFacoltà }, function (err, facoltà) {
+        if (err) throw err;
         Corsi.find({ 'codFacoltà': codFacoltà }, function (err, corsi) {
+            if (err) throw err;
             corsi.forEach(function (corso) {
-                ProvaF.corsi.push(corso.nome);
+                //controllo che non siano già presenti
+                var confronto = facoltà.corsi.find(o => o === corso.codice);
+                if (typeof confronto === 'undefined')
+                    facoltà.corsi.push(corso.codice);
             });
-            ProvaF.save(function (err) {
-                if (err) throw err;
-                console.log('Salvato con successo!');
-            });
+            facoltà.save();
         });
     });
-}*/
+}
 
 module.exports = CorsiController;

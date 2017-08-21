@@ -13,9 +13,24 @@ appH.controller('controllerHome', function ($scope) {
 
 var appA = angular.module("appAdmin", []);
 appA.controller('controllerAdmin', function ($scope) {
-    $scope.IsVisible = false;
-    $scope.ShowHide = function () {
+    $scope.IsVisible1 = false;
+    $scope.activityC = 'Gestisci';
+    $scope.ShowHide1 = function () {
         //If DIV is visible it will be hidden and vice versa.
-        $scope.IsVisible = $scope.IsVisible ? false : true;
+        $scope.IsVisible1 = $scope.IsVisible1 ? false : true;
+        if ($scope.IsVisible1 == false)
+            $scope.activityC = 'Gestisci';
+        else
+            $scope.activityC = 'Nascondi';
+    }
+    $scope.IsVisible2 = false;
+    $scope.activityD = 'Gestisci';
+    $scope.ShowHide2 = function () {
+        //If DIV is visible it will be hidden and vice versa.
+        $scope.IsVisible2 = $scope.IsVisible2 ? false : true;
+        if ($scope.IsVisible2 == false)
+            $scope.activityD = 'Gestisci';
+        else
+            $scope.activityD = 'Nascondi';
     }
 });
