@@ -1,5 +1,5 @@
 //script per popolare il database
-
+/*
 var corsiLaurea = require('./models/corsiLaurea');
 var admin = require('./models/personale').model('Admin');
 var prof = require('./models/personale').model('Prof');
@@ -201,7 +201,10 @@ geometria.save(function (err) {
     
 });
 NON VA QUA
-*/
+
 
 //All done, disconnect from database
 mongoose.connection.close();
+
+*/
+
