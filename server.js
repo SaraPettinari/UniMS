@@ -6,14 +6,9 @@ var baucis = require('baucis'),
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
-<<<<<<< HEAD
-=======
-//var myDB = require('./dbUnims');
-
->>>>>>> 0f91b9874e943118a8bd3f5ca4f872d58a4a1c25
 var mongoose = require('mongoose');
 
-mongoose.connect("mongodb://localhost:27017/dbUnims");
+mongoose.connect("mongodb://unims:unims@ds153853.mlab.com:53853/dbunims");
 var con = mongoose.connection;
 con.on('error', console.error.bind(console, 'connection error: '));
 con.once('open', function () {
