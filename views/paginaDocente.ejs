@@ -23,7 +23,7 @@
     <script src="js/angular.js"></script>
 </head>
 
-<body>
+<body ng-app="appDocente" ng-controller="controllerDocente">
     <div class="container">
         <div class="row">
             <div class="col-sm-6 col-md-4 col-md-offset-4">
@@ -59,15 +59,14 @@
             
                     <select ng-model="idCorso" class="form-control">  
                                 <option value="" disabled selected hidden>Corso</option>
-                                <% docentiFacoltà.forEach(function(prof){%>
-                                    <option value=<%=prof.matricola%>> <%= prof.nome %>  <%= prof.cognome %></option>
+                                <% corsi.forEach(function(corso){%>
+                                    <option value=<%=corso.codice%>> <%= corso.nome %> </option>
                                 <% })%>
                         </select>
                     <input readonly value="{{idCorso}}" type="text" name="idCorso" placeholder="Corso" required="required" class="form-control"
                     />
-                    <input type="number" name="cfu" placeholder="cfu" required="required" class="form-control" min="3" max="12" />
-                    <input type="number" name="anno" placeholder="anno" required="required" class="form-control" min="1" max="3" />
-                    <button type="submit" class="btn btn-lg btn-success btn-block" ng-show="IsVisible">OK</button>
+                    <input type="datetime-local" name="data" placeholder="data e ora" required="required" class="form-control" />
+                    <button type="submit" class="btn btn-lg btn-success btn-block">OK</button>
                 </form>
         </div>
 

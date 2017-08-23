@@ -34,3 +34,8 @@ appA.controller('controllerAdmin', function ($scope) {
             $scope.activityD = 'Nascondi';
     }
 });
+
+var appD = angular.module("appAdmin", []);
+appA.controller('controllerAdmin', function ($scope) {
+
+});
