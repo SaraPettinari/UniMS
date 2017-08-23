@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var admin = require('./routes/admin');
+var prof = require('./routes/prof');
 var urlDb = require('./config');
 var mongoose = require('mongoose');
 
@@ -51,8 +52,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//ROUTES
 app.use('/', routes);
 app.use('/paginaAmministratore', admin);
+app.use('/paginaDocente', prof);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

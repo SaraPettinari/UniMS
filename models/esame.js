@@ -3,10 +3,10 @@ var Schema = mongoose.Schema;
 
 var esameSchema = new Schema({
     matricolaP: { type: String, required: true },
-    matricolaS: { type: String, required: true },
+    matricolaS: { type: String },
     idCorso: { type: String, required: true },
     data: { type: Date, required: true },
-    esito: { type: Number, required: true }
+    esito: { type: Number }
 });
 
 //-----ESAMI-----
