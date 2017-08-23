@@ -8,7 +8,6 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "baucis": "^1.6.6",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.2",
     "connect-flash": "^0.1.1",
