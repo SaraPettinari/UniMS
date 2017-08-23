@@ -140,7 +140,8 @@ var programmazione = new corsi({
     codice: 'P-10',
     codFacoltà: prof1.codFacoltà,
     matricolaP: prof1.matricola,
-    cfu: 12
+    cfu: 12,
+    anno : 1
 });
 programmazione.save(function (err) {
     if (err) throw err;
@@ -151,7 +152,8 @@ var analisi = new corsi({
     codice: 'A-47',
     codFacoltà: prof1.codFacoltà,
     matricolaP: prof1.matricola,
-    cfu: 6
+    cfu: 6,
+    anno : 1
 });
 analisi.save(function (err) {
     if (err) throw err;
@@ -162,7 +164,8 @@ var chimicaOrganica = new corsi({
     codice: 'C-47',
     codFacoltà: prof3.codFacoltà,
     matricolaP: prof3.matricola,
-    cfu: 6
+    cfu: 6,
+    anno : 1
 });
 chimicaOrganica.save(function (err) {
     if (err) throw err;
@@ -173,7 +176,8 @@ var chimicaInorganica = new corsi({
     codice: 'C-37',
     codFacoltà: prof3.codFacoltà,
     matricolaP: prof3.matricola,
-    cfu: 6
+    cfu: 6,
+    anno : 1
 });
 chimicaInorganica.save(function (err) {
     if (err) throw err;
@@ -184,12 +188,14 @@ var geometria = new corsi({
     codice: 'G-11',
     codFacoltà: prof2.codFacoltà,
     matricolaP: prof2.matricola,
-    cfu : 12
+    cfu : 12,
+    anno : 1
 });
 geometria.save(function (err) {
     if (err) throw err;
 });
 
+<<<<<<< HEAD
 /*corsi.find({ 'codFacoltà': informatica.codice }, function (err, array) {
     if (err) throw err;
     array.forEach(function (element) {
@@ -203,6 +209,8 @@ geometria.save(function (err) {
 NON VA QUA
 
 
+=======
+>>>>>>> 1b838ba06b2a4a8438ac640353fbf805aeeed063
 //All done, disconnect from database
 mongoose.connection.close();
 

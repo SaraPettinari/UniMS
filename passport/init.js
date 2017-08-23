@@ -9,24 +9,28 @@ var Prof = require('../models/personale').model('Prof');
  * Passport serializes and deserializes users to support persistent log-in sessions.
  */
 passport.serializeUser(function (user, done) {
-    // console.log('Serializing user: ');
-    // console.log(user);
     done(null, user._id);
 });
 
 passport.deserializeUser(function (id, done) {
-    //3 done nella stessa funzione lanciano un errore (non bloccano il programma)
-    User.findById(id, function (err, user) {
-        //     console.log('Deserializing user: ', user);
-        done(err, user);
+    //cerca a quale collection appartiene
+    User.findById(id).count(function (err, count) {
+        if (count > 0)
+            User.findById(id, function (err, user) {
+                done(err, user);
+            });
     });
-    Admin.findById(id, function (err, user) {
-        //     console.log('Deserializing user: ', user);
-        done(err, user);
+    Admin.findById(id).count(function (err, count) {
+        if (count > 0)
+            Admin.findById(id, function (err, user) {
+                done(err, user);
+            });
     });
-    Prof.findById(id, function (err, user) {
-        //      console.log('Deserializing user: ', user);
-        done(err, user);
+    Prof.findById(id).count(function (err, count) {
+        if (count > 0)
+            Prof.findById(id, function (err, user) {
+                done(err, user);
+            });
     });
 });
 
