@@ -5,10 +5,10 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var admin = require('./routes/admin');
-//var myDB = require('./dbUnims');
-
+var urlDb = require('./config');
 var mongoose = require('mongoose');
-mongoose.connect("mongodb://localhost:27017/dbUnims");
+
+mongoose.connect(urlDb.databaseLocale);
 var con = mongoose.connection;
 con.on('error', console.error.bind(console, 'connection error: '));
 con.once('open', function () {
