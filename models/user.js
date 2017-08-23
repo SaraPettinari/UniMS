@@ -2,6 +2,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var Facoltà = require('./corsiLaurea');
+var AppelliVerbalizzati = require('./appelliVerbalizzati');
 
 var studentSchema = new Schema({
     nome: { type: String, required: true },
@@ -18,7 +19,7 @@ var studentSchema = new Schema({
     username: String,
     password: String,
     indirizzo: String,
-    /*  amministratore: { type: Number, ref: 'Facoltà' }*/
+    carriera: [AppelliVerbalizzati] //'array of subdocument' contenente la carriera degli studenti
 },
     //toglie il campo __v dal db
     {

@@ -6,7 +6,7 @@ var esameSchema = new Schema({
     matricolaS: { type: String, required: true },
     idCorso: { type: String, required: true },
     data: { type: Date, required: true },
-    esito: { type: Number, required: true, min: 18 }
+    esito: { type: Number, required: true }
 });
 
 //-----ESAMI-----
