@@ -35,7 +35,7 @@ appA.controller('controllerAdmin', function ($scope) {
     }
 });
 
-var appD = angular.module("appAdmin", []);
-appA.controller('controllerAdmin', function ($scope) {
+var appD = angular.module("appDocente", []);
+appD.controller('controllerDocente', function ($scope) {
 
 });

@@ -16,13 +16,28 @@ var isAuthenticated = function (req, res, next) {
 /** GET prof page. funzione impl nel controller*/
 router.get('/', isAuthenticated, function (req, res) {
     CorsiController.cercaCorsiDocente(req.user.matricola, function(err, corsi){
-        if (err) throw err;
-        res.render('paginaDocente', {
-            title: 'PaginaDocente',
-            user: req.user,
-            corsi: corsi
-        });
+        AppelliController.listaAppelli(req.user.matricola, function(err, listaAppelli){
+            if (err) throw err;
+            res.render('paginaDocente', {
+                title: 'PaginaDocente',
+                user: req.user,
+                corsi: corsi,
+                listaAppelli: listaAppelli
+            });
+        })
     })
 });
 
+router.post('/nuovoAppello', isAuthenticated, function(req,res){
+    var infoAppello = {
+        matricolaP : req.user.matricola,
+        idCorso : req.body.idCorso, 
+        data : req.body.data,
+        aula : req.body.aula
+    };
+    AppelliController.addAppello(infoAppello, function(err){
+        if (err) throw err;
+    });
+    res.redirect('/paginaDocente');
+})
 module.exports=router;
