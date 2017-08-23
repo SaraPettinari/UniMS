@@ -53,52 +53,65 @@
                 </div>
             </div>
         </div>
-        <div>
-            <div class="row">
-                <% if (listaAppelli.length > 0) { %>
-                    <h4 class="text-center">Appelli inseriti
-                    </h4>
-                    <div class="row">
-                        <h5 class="col-md-3">Corso:</h5>
-                        <h5 class="col-md-3">Aula:</h5>
-                        <h5 class="col-md-6">Data e ora:</h5>
+        <div class="row">
+            <% if (listaAppelli.length > 0) { %>
+                <h4 class="text-center">Appelli inseriti
+                </h4>
+                <div class="row">
+                    <h5 class="col-md-3">Corso:</h5>
+                    <h5 class="col-md-3">Aula:</h5>
+                    <h5 class="col-md-6">Data e ora:</h5>
+                </div>
+                <% for(var i=0; i < listaAppelli.length; i++) { %>
+                    <div class="col-md-3">
+                        <p>
+                            <%= listaAppelli[i].idCorso %>
+                        </p>
                     </div>
-                    <% for(var i=0; i < listaAppelli.length; i++) { %>
-                        <div class="col-md-3">
-                            <p>
-                                <%= listaAppelli[i].idCorso %>
-                            </p>
-                        </div>
-                        <div class=" col-md-3 ">
-                            <p>
-                                <%= listaAppelli[i].aula %>
-                            </p>
-                        </div>
-                        <div class="col-md-6 ">
-                            <p>
-                                <%= listaAppelli[i].data %>
-                            </p>
-                        </div>
+                    <div class=" col-md-3">
+                        <p>
+                            <%= listaAppelli[i].aula %>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <%= listaAppelli[i].data %>
+                        </p>
+                    </div>
+                    <% } %>
                         <% } %>
-                            <% } %>
-            </div>
         </div>
-        <form action="/paginaDocente/nuovoAppello " method="POST ">
-
-            <select ng-model="idCorso " class="form-control ">  
+        <div class="row">
+            <div class="col-md-4">
+                <h4 class="text-center">Aggiungi appello</h4>
+                <form action="/paginaDocente/nuovoAppello" method="POST">
+                    <select ng-model="idCorso" class="form-control ">  
                                 <option value=" " disabled selected hidden>Corso</option>
                                 <% corsi.forEach(function(corso){%>
                                     <option value=<%=corso.codice%>> <%= corso.nome %> </option>
                                 <% })%>
                         </select>
-            <input readonly value="{{idCorso}} " type="text " name="idCorso " placeholder="Corso " required="required
-                            " class="form-control " />
-            <input type="datetime" name="data " placeholder="data e ora " required="required " class="form-control " />
-            <input type="text " name="aula " placeholder="aula esame " required="required " class="form-control " />
-            <button type="submit " class="btn btn-lg btn-success btn-block ">OK</button>
-        </form>
-    </div>
-
+                    <input readonly value="{{idCorso}}" type="text " name="idCorso" placeholder="Corso" required="required" class="form-control"
+                    />
+                    <input type="datetime-local" name="data" placeholder="data e ora" required="required" class="form-control" />
+                    <input type="text" name="aula" placeholder="aula esame" required="required" class="form-control" />
+                    <button type="submit" class="btn btn-lg btn-success btn-block ">OK</button>
+                </form>
+            </div>
+            <div class="col-md-4">
+                <h4 class="text-center">Modifica appello</h4>
+                <form action="/paginaDocente/modificaAppello" method="POST">
+                    <input readonly value="<%=listaAppelli[0].idCorso%>" type="text " name="idCorso" required="required" class="form-control"
+                    />
+                    <input type="datetime-local" name="data" placeholder="data e ora" required="required" class="form-control" />
+                    <input type="text" name="aula" placeholder="aula esame" required="required" class="form-control" />
+                    <button type="submit" class="btn btn-lg btn-success btn-block ">OK</button>
+                </form>
+            </div>
+            <div class="col-md-4">
+                <h4 class="text-center">Elimina appello </h4>
+            </div>
+        </div>
     </div>
 </body>
 
