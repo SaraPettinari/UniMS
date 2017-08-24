@@ -76,6 +76,22 @@
                     </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-4">
+                <h4 class="text-center">Aggiungi prenotazione ad appello</h4>
+                <form action="/paginaStudente/prenotazioneAppello" method="POST">
+                    <input type="text" name="username" placeholder="Username" required="required" class="form-control" />
+                    <select ng-model="student" class="form-control">  
+                        <option value="" disabled selected hidden>Studente</option>
+                        <% docentiFacoltà.forEach(function(prof){%>
+                            <option value=<%=student.matricola%>> <%= student.u %>  <%= prof.cognome %></option>
+                        <% })%>
+                </select>
+                    <input readonly value="{{student}}" type="text" name="matricola" placeholder="matricola studente" required="required" class="form-control">
+                   
+                    <button type="submit" class="btn btn-lg btn-success btn-block ">OK</button>
+                </form>
+            </div>
 </body>
 
 </html>
