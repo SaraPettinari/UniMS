@@ -17,8 +17,8 @@ AppelliController.addAppello = function (data, callback) {
     });
 }
 
-AppelliController.updateAppelli = function (cod, data, callback) {
-    Appelli.findOneAndUpdate({ 'idCorso': cod },
+AppelliController.updateAppelli = function (id, data, callback) {
+    Appelli.findOneAndUpdate({ '_id': id },
         {
             'data': data.data,
             'aula': data.aula

@@ -47,7 +47,7 @@ router.post('/aggiornaAppello', isAuthenticated, function(req,res){
         data : req.body.data,
         aula : req.body.aula
     };
-    AppelliController.updateAppelli(modificaAppello, function(err){
+    AppelliController.updateAppelli(req.body._id, modificaAppello, function(err){
         if (err) throw err;
     });
     res.redirect('/paginaDocente');
