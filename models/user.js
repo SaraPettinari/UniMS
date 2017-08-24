@@ -19,7 +19,8 @@ var studentSchema = new Schema({
     username: String,
     password: String,
     indirizzo: String,
-    carriera: [AppelliVerbalizzati] //'array of subdocument' contenente la carriera degli studenti
+    carriera: [AppelliVerbalizzati], //'array of subdocument' contenente la carriera degli studenti
+    annoCorso: {type: Number, default:1}
 },
     //toglie il campo __v dal db
     {

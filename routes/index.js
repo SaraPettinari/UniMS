@@ -56,16 +56,6 @@ router.post('/registrazione', passport.authenticate('registrazione', {
 	failureFlash: true
 }));
 
-/** GET student page. */
-router.get('/paginaStudente', isAuthenticated, function (req, res) {
-	res.render('paginaStudente', {
-		title: 'PaginaStudente',
-		user: req.user
-	});
-});
-
-
-
 /* GET handles log out. */
 router.get('/logout', function (req, res) {
 	req.logout();

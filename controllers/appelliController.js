@@ -30,8 +30,8 @@ AppelliController.updateAppelli = function (id, data, callback) {
         });
 }
 
-AppelliController.removeAppelli = function (cod, callback) {
-    Appelli.findOneAndRemove({ 'idCorso': cod }, function (err) {
+AppelliController.removeAppelli = function (id, callback) {
+    Appelli.findOneAndRemove({ '_id': id }, function (err) {
         if (err) throw err;
         console.log('Appello rimosso con successo!');
     });
@@ -57,4 +57,13 @@ AppelliController.listaAppelli=function(docente, callback){
             return callback (null, listaAppelli);
     }).sort('data');
 }
+
+AppelliController.listaAppelliPerCorso = function (idCorso, callback){
+    Appelli.find({'idCorso': idCorso}, function(err, listaAppelliPerCorso){
+         if (err) return callback(err, null);
+        else
+            return callback (null, listaAppelliPerCorso);
+    }).sort('data');
+}
+
 module.exports = AppelliController;

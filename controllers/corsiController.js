@@ -89,4 +89,13 @@ CorsiController.cercaCorsiDocente=function(matricolaP, callback){
             return callback (null, corsi);
     });
 }
+
+CorsiController.corsiAnnuali = function(anno, codFacoltà, callback){
+    Corsi.find({'anno': anno, 'codFacoltà': codFacoltà}, function(err, corsiAnnuali){
+        if (err) 
+            return callback(err, null);
+            else
+                return callback (null, corsiAnnuali);
+    });
+}
 module.exports = CorsiController;

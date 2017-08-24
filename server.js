@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var admin = require('./routes/admin');
 var prof = require('./routes/prof');
+var student = require('./routes/student');
 var urlDb = require('./config');
 var mongoose = require('mongoose');
 
@@ -56,6 +57,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/paginaAmministratore', admin);
 app.use('/paginaDocente', prof);
+app.use('/paginaStudente', student);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -55,5 +55,12 @@ router.post('/aggiornaAppello', isAuthenticated, function (req, res) {
     res.redirect('/paginaDocente');
 })
 
+router.post('/eliminaAppello', isAuthenticated, function (req, res) {
+    AppelliController.removeAppelli(req.body._id, function (err) {
+        if (err) throw err;
+    });
+    res.redirect('/paginaDocente');
+})
+
 
 module.exports = router;

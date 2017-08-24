@@ -41,4 +41,16 @@ appD.controller('controllerDocente', function ($scope) {
     $scope.cliccami = function (id) {
         $scope.idAppello = id;
     }
+    $scope.idAppelloE = ''; 
+    $scope.cliccamiE = function (id) {
+    $scope.idAppelloE = id;
+    }
+});
+
+var appS = angular.module("appStudente", []);
+appS.controller('controllerStudente', function ($scope) {
+    $scope.codCorso = '';    
+    $scope.Cliccami = function (id) {
+        $scope.codCorso = id;
+    }
 });

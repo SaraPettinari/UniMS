@@ -73,7 +73,7 @@
                             <%= listaAppelli[i].aula %>
                         </p>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <p>
                             <%= listaAppelli[i].data %>
                         </p>
@@ -83,8 +83,9 @@
                             <%= listaAppelli[i].ora %>
                         </p>
                     </div>
-                    <div class="col-md-1">
+                    <div class="col-md-2">
                         <button ng-model="idAppello" ng-click="cliccami('<%= listaAppelli[i]._id %>')">Modifica</button>
+                        <button ng-model="idAppelloE" ng-click="cliccamiE('<%= listaAppelli[i]._id %>')">Elimina</button>
                     </div>
                     <% } %>
                         <% } %>
@@ -119,6 +120,10 @@
             </div>
             <div class="col-md-4">
                 <h4 class="text-center">Elimina appello </h4>
+                <form action="/paginaDocente/eliminaAppello" method="POST">
+                <input readonly value="{{idAppelloE}}" type="text " name="_id" required="required" class="form-control" />
+                <button type="submit" class="btn btn-lg btn-success btn-block ">OK</button>
+                </form>
             </div>
         </div>
     </div>
