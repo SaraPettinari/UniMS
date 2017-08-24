@@ -5,8 +5,10 @@ var admin = require('./models/personale').model('Admin');
 var prof = require('./models/personale').model('Prof');
 var corsi = require('./models/corsi');
 
+var urlDb = require('./config');
+
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/dbUnims');
+mongoose.connect(urlDb.databaseLocale);
 var db = mongoose.connection;
 mongoose.connection.on('error', console.error.bind(console, 'errore nella connessione al db'));
 
@@ -38,8 +40,8 @@ chimica.save(function (err) {
 /**Metodo per criptare la password nel db */
 var bCrypt = require('bcrypt-nodejs');
 var createHash = function (password) {
-        return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
-    }
+    return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
+}
 
 //AGGIUNTI AMMINISTRATORI
 var admin1 = new admin({
@@ -49,7 +51,7 @@ var admin1 = new admin({
     codFacoltà: informatica.codice,
     email: 'sara.pettinari@admin.it',
     username: 'sara.pettinari/admin',
-    password:  createHash('sara')
+    password: createHash('sara')
 });
 admin1.save(function (err) {
     if (err) throw err;
@@ -62,7 +64,7 @@ var admin2 = new admin({
     codFacoltà: chimica.codice,
     email: 'mara.albanesi@admin.it',
     username: 'mara.albanesi/admin',
-    password:  createHash('mara')
+    password: createHash('mara')
 });
 admin2.save(function (err) {
     if (err) throw err;
@@ -75,7 +77,7 @@ var admin3 = new admin({
     codFacoltà: matematica.codice,
     email: 'margherita.renieri@admin.it',
     username: 'margherita.renieri/admin',
-    password:  createHash('margherita')
+    password: createHash('margherita')
 });
 admin3.save(function (err) {
     if (err) throw err;
@@ -89,7 +91,7 @@ var prof1 = new prof({
     codFacoltà: informatica.codice,
     email: 'nome.cognome@unims.it',
     username: 'nome.cognome/prof',
-    password:  createHash('prof1')
+    password: createHash('prof1')
 });
 prof1.save(function (err) {
     if (err) throw err;
@@ -102,7 +104,7 @@ var prof2 = new prof({
     codFacoltà: matematica.codice,
     email: 'nome2.cognome@unims.it',
     username: 'nome2.cognome2/prof',
-    password:  createHash('prof2')
+    password: createHash('prof2')
 });
 prof2.save(function (err) {
     if (err) throw err;
@@ -115,7 +117,7 @@ var prof3 = new prof({
     codFacoltà: chimica.codice,
     email: 'nome3.cognome@unims.it',
     username: 'nome3.cognome3/prof',
-    password:  createHash('prof3')
+    password: createHash('prof3')
 });
 prof3.save(function (err) {
     if (err) throw err;
@@ -128,7 +130,7 @@ var prof4 = new prof({
     codFacoltà: informatica.codice,
     email: 'nome4.cognome@unims.it',
     username: 'nome4.cognome4/prof',
-    password:  createHash('prof4')
+    password: createHash('prof4')
 });
 prof4.save(function (err) {
     if (err) throw err;
@@ -141,7 +143,7 @@ var programmazione = new corsi({
     codFacoltà: prof1.codFacoltà,
     matricolaP: prof1.matricola,
     cfu: 12,
-    anno : 1
+    anno: 1
 });
 programmazione.save(function (err) {
     if (err) throw err;
@@ -153,7 +155,7 @@ var analisi = new corsi({
     codFacoltà: prof1.codFacoltà,
     matricolaP: prof1.matricola,
     cfu: 6,
-    anno : 1
+    anno: 1
 });
 analisi.save(function (err) {
     if (err) throw err;
@@ -165,7 +167,7 @@ var chimicaOrganica = new corsi({
     codFacoltà: prof3.codFacoltà,
     matricolaP: prof3.matricola,
     cfu: 6,
-    anno : 1
+    anno: 1
 });
 chimicaOrganica.save(function (err) {
     if (err) throw err;
@@ -177,7 +179,7 @@ var chimicaInorganica = new corsi({
     codFacoltà: prof3.codFacoltà,
     matricolaP: prof3.matricola,
     cfu: 6,
-    anno : 1
+    anno: 1
 });
 chimicaInorganica.save(function (err) {
     if (err) throw err;
@@ -188,12 +190,12 @@ var geometria = new corsi({
     codice: 'G-11',
     codFacoltà: prof2.codFacoltà,
     matricolaP: prof2.matricola,
-    cfu : 12,
-    anno : 1
+    cfu: 12,
+    anno: 1
 });
 geometria.save(function (err) {
     if (err) throw err;
 });
 
-//All done, disconnect from database
+//Mi disconnetto dal database
 mongoose.connection.close();

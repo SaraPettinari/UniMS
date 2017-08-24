@@ -1,14 +1,15 @@
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
-var https = require('https'),
-var baucis = require('baucis'),
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
+var admin = require('./routes/admin');
+var prof = require('./routes/prof');
+var urlDb = require('./config');
 var mongoose = require('mongoose');
 
-mongoose.connect("mongodb://unims:unims@ds153853.mlab.com:53853/dbunims");
+mongoose.connect(urlDb.databaseLocale);
 var con = mongoose.connection;
 con.on('error', console.error.bind(console, 'connection error: '));
 con.once('open', function () {
@@ -51,8 +52,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//ROUTES
 app.use('/', routes);
 app.use('/paginaAmministratore', admin);
+app.use('/paginaDocente', prof);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

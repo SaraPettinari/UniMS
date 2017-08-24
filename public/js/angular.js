@@ -34,3 +34,11 @@ appA.controller('controllerAdmin', function ($scope) {
             $scope.activityD = 'Nascondi';
     }
 });
+
+var appD = angular.module("appDocente", []);
+appD.controller('controllerDocente', function ($scope) {
+    $scope.idAppello = '';    
+    $scope.cliccami = function (id) {
+        $scope.idAppello = id;
+    }
+});

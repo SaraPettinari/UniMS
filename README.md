@@ -25,3 +25,5 @@ https://www.pensando.it/wp/tutorial/anatomia-di-una-node-js-webapp-realizzata-co
 http://www.massimobiagioli.it/blog/servizi-rest-con-nodejs-express-mongoose-mongodb/
 
 http://jorgeramon.me/2014/using-mongodb-and-mongoose-for-user-registration-login-and-logout-in-a-mobile-application/
+
+https://github.com/claudiopastorini/Libretto-Delphi.git       5* grafici

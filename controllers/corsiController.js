@@ -81,4 +81,12 @@ CorsiController.populateFacoltà = function (codFacoltà) {
     });
 }
 
+CorsiController.cercaCorsiDocente=function(matricolaP, callback){
+    Corsi.find({'matricolaP':matricolaP }, function(err, corsi){
+        if (err) 
+        return callback(err, null);
+        else
+            return callback (null, corsi);
+    });
+}
 module.exports = CorsiController;
