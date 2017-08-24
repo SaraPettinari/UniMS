@@ -1,7 +1,13 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
+<<<<<<< HEAD
 var StudentController = require('../controllers/studentiController');
+=======
+var CorsiController = require('../controllers/corsiController');
+//var DocentiController = require('../controllers/docentiController');
+var AppelliController = require('../controllers/appelliController');
+>>>>>>> e7633989b81a3ae28c8f3a7b8c2b0eb223773501
 
 var isAuthenticated = function (req, res, next) {
     if (req.isAuthenticated()) {
@@ -11,6 +17,7 @@ var isAuthenticated = function (req, res, next) {
     res.redirect('/');
 }
 
+<<<<<<< HEAD
 router.get('/', isAuthenticated, function (req, res) {
     CorsiController.populateFacoltà(req.user.codFacoltà);
     CorsiController.listaCorsi(function (err, corsi) {
@@ -83,5 +90,24 @@ router.post('/registrazioneDocente', passport.authenticate('registrazioneDocente
 	failureFlash: true
 }));
 
+=======
+/** GET student page. */
+router.get('/', isAuthenticated, function (req, res) {
+    CorsiController.listaTuoiCorsi(req.user.codFacoltà, function (err, tuoiCorsi) {
+        CorsiController.corsiAnnuali(req.user.annoCorso, req.user.codFacoltà, function (err, corsiAnnuali) {
+            AppelliController.listaAppelliPerCorso(req.body.idCorso, function(err, appelliCorso){
+            res.render('paginaStudente', {
+                title: 'PaginaStudente',
+                user: req.user,
+                tuoiCorsi: tuoiCorsi,
+                corsiAnnuali: corsiAnnuali,
+                appelliCorso: appelliCorso
+            });
+        });
+        });
+    });
+});
+
+>>>>>>> e7633989b81a3ae28c8f3a7b8c2b0eb223773501
 
 module.exports = router;

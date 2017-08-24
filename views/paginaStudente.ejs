@@ -23,7 +23,7 @@
     <script src="js/angular.js"></script>
 </head>
 
-<body>
+<body ng-app="appStudente" ng-controller="controllerStudente">
     <div class="container">
         <div class="row">
             <div class="col-sm-6 col-md-4 col-md-offset-4">
@@ -56,6 +56,7 @@
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
         <div class="row" ng-show="IsVisible1">
             <div class="row">
                 <% if()%>
@@ -92,6 +93,137 @@
                     <button type="submit" class="btn btn-lg btn-success btn-block ">OK</button>
                 </form>
             </div>
+=======
+        <div class="row">
+            <% if (tuoiCorsi.length > 0) { %>
+                <h4 class="text-center">Piano studi
+                    <%= user.codFacoltà %>
+                </h4>
+                <div class="row">
+                    <h5 class="col-md-3">Nome:</h5>
+                    <h5 class="col-md-3">Codice:</h5>
+                    <h5 class="col-md-3">Matricola Docente:</h5>
+                    <h5 class="col-md-2">CFU:</h5>
+                    <h5 class="col-md-1">Anno:</h5>
+                </div>
+                <% for(var i=0; i < tuoiCorsi.length; i++) { %>
+                    <div class="col-md-3">
+                        <p>
+                            <%= tuoiCorsi[i].nome %>
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+                        <p>
+                            <%= tuoiCorsi[i].codice %>
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+                        <p>
+                            <%= tuoiCorsi[i].matricolaP %>
+                        </p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>
+                            <%= tuoiCorsi[i].cfu %>
+                        </p>
+                    </div>
+                    <div class="col-md-1 text-center">
+                        <p>
+                            <%= tuoiCorsi[i].anno %>
+                        </p>
+                    </div>
+                    <% } %>
+                        <% } %>
+        </div>
+
+        <div class="row">
+            <% if (corsiAnnuali.length > 0) { %>
+                <h4 class="text-center">Piano studi anno
+                    <%= user.annoCorso %>
+                </h4>
+                <div class="row">
+                    <h5 class="col-md-3">Nome:</h5>
+                    <h5 class="col-md-3">Codice:</h5>
+                    <h5 class="col-md-3">Matricola Docente:</h5>
+                    <h5 class="col-md-2">CFU:</h5>
+                    <h5 class="col-md-1">Anno:</h5>
+                </div>
+                <% for(var i=0; i <corsiAnnuali.length; i++) { %>
+                    <div class="col-md-3">
+                       <button type="button" name="idCorso"  ng-click="Cliccami('<%= corsiAnnuali[i].codice %>')" ng-model="codCorso"> vedi appelli </button>
+                        <input hidden value="{{codCorso}}" name="idCorso">
+                    </div>
+                    <div class="col-md-2">
+                        <p>
+                            <%= corsiAnnuali[i].nome %>
+                        </p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>
+                            <%= corsiAnnuali[i].codice %>
+                        </p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>
+                            <%= corsiAnnuali[i].matricolaP %>
+                        </p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>
+                            <%= corsiAnnuali[i].cfu %>
+                        </p>
+                    </div>
+                    <div class="col-md-1 text-center">
+                        <p>
+                            <%= corsiAnnuali[i].anno %>
+                        </p>
+                    </div>
+                    <% } %>
+                        <% } %>
+        </div>
+        <div class="row">
+            <% if (appelliCorso.length > 0) { %>
+                <h4 class="text-center">Date disponibili
+                    <%= user.annoCorso %>
+                </h4>
+                <div class="row">
+                    <h5 class="col-md-3">Nome:</h5>
+                    <h5 class="col-md-3">Codice:</h5>
+                    <h5 class="col-md-3">Matricola Docente:</h5>
+                    <h5 class="col-md-2">CFU:</h5>
+                    <h5 class="col-md-1">Anno:</h5>
+                </div>
+                <% for(var i=0; i <appelliCorso.length; i++) { %>
+                    <div class="col-md-3">
+                        <p>
+                            <%= appelliCorso[i].idCorso %>
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+                        <p>
+                            <%= appelliCorso[i].data %>
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+                        <p>
+                            <%= appelliCorso[i].matricolaP %>
+                        </p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>
+                            <%= appelliCorso[i].aula %>
+                        </p>
+                    </div>
+                    <div class="col-md-1 text-center">
+                        <p>
+                            <%= appelliCorso[i].ora %>
+                        </p>
+                    </div>
+                    <% } %>
+                        <% } %>
+        </div>
+    </div>
+>>>>>>> e7633989b81a3ae28c8f3a7b8c2b0eb223773501
 </body>
 
 </html>

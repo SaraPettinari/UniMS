@@ -73,7 +73,7 @@
                             <%= listaAppelli[i].aula %>
                         </p>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <p>
                             <%= listaAppelli[i].data %>
                         </p>
@@ -83,8 +83,9 @@
                             <%= listaAppelli[i].ora %>
                         </p>
                     </div>
-                    <div class="col-md-1">
+                    <div class="col-md-2">
                         <button ng-model="idAppello" ng-click="cliccami('<%= listaAppelli[i]._id %>')">Modifica</button>
+                        <button ng-model="idAppelloE" ng-click="cliccamiE('<%= listaAppelli[i]._id %>')">Elimina</button>
                     </div>
                     <% } %>
                         <% } %>
@@ -120,11 +121,17 @@
             <div class="col-md-4">
                 <h4 class="text-center">Elimina appello </h4>
                 <form action="/paginaDocente/eliminaAppello" method="POST">
+<<<<<<< HEAD
                     <input readonly value="{{idAppello}}" type="text " name="_id" required="required" class="form-control" />
                     <input value=" " type="date" name="data" required="required" class="form-control" />
                     <input value=" " type="time" name="ora" required="required" class="form-control" />
                     <input value=" " type="text" name="aula" required="required" class="form-control" />
                     <button type="submit" class="btn btn-lg btn-success btn-block ">OK</button>
+=======
+                <input readonly value="{{idAppelloE}}" type="text " name="_id" required="required" class="form-control" />
+                <button type="submit" class="btn btn-lg btn-success btn-block ">OK</button>
+                </form>
+>>>>>>> e7633989b81a3ae28c8f3a7b8c2b0eb223773501
             </div>
         </div>
     </div>
