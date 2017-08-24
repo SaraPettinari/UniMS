@@ -73,10 +73,18 @@
                             <%= listaAppelli[i].aula %>
                         </p>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <p>
                             <%= listaAppelli[i].data %>
                         </p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>
+                            <%= listaAppelli[i].ora %>
+                        </p>
+                    </div>
+                    <div class="col-md-1">
+                        <button ng-model="idAppello" ng-click="cliccami('<%= listaAppelli[i]._id %>')">Modifica</button>
                     </div>
                     <% } %>
                         <% } %>
@@ -93,18 +101,19 @@
                         </select>
                     <input readonly value="{{idCorso}}" type="text " name="idCorso" placeholder="Corso" required="required" class="form-control"
                     />
-                    <input type="datetime-local" name="data" placeholder="data e ora" required="required" class="form-control" />
+                    <input type="date" name="data" placeholder="data" required="required" class="form-control" />
+                    <input type="time" name="ora" placeholder="ora" required="required" class="form-control" />
                     <input type="text" name="aula" placeholder="aula esame" required="required" class="form-control" />
                     <button type="submit" class="btn btn-lg btn-success btn-block ">OK</button>
                 </form>
             </div>
             <div class="col-md-4">
                 <h4 class="text-center">Modifica appello</h4>
-                <form action="/paginaDocente/modificaAppello" method="POST">
-                    <input readonly value="<%=listaAppelli[0].idCorso%>" type="text " name="idCorso" required="required" class="form-control"
-                    />
-                    <input type="datetime-local" name="data" placeholder="data e ora" required="required" class="form-control" />
-                    <input type="text" name="aula" placeholder="aula esame" required="required" class="form-control" />
+                <form action="/paginaDocente/aggiornaAppello" method="POST">
+                    <input readonly value="{{idAppello}}" type="text " name="_id" required="required" class="form-control" />
+                    <input value=" " type="date" name="data" required="required" class="form-control" />
+                    <input value=" " type="time" name="ora" required="required" class="form-control" />
+                    <input value=" " type="text" name="aula" required="required" class="form-control" />
                     <button type="submit" class="btn btn-lg btn-success btn-block ">OK</button>
                 </form>
             </div>

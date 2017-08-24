@@ -8,6 +8,7 @@ AppelliController.addAppello = function (data, callback) {
 
     newAppello.idCorso = data.idCorso;
     newAppello.data = data.data;
+    newAppello.ora = data.ora;    
     newAppello.aula = data.aula;
     newAppello.matricolaP = data.matricolaP;
     
@@ -21,6 +22,7 @@ AppelliController.updateAppelli = function (cod, data, callback) {
     Appelli.findOneAndUpdate({ 'idCorso': cod },
         {
             'data': data.data,
+            'ora': data.ora,
             'aula': data.aula
         }, function (err) {
             if (err) throw err;
