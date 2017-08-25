@@ -37,19 +37,24 @@ appA.controller('controllerAdmin', function ($scope) {
 
 var appD = angular.module("appDocente", []);
 appD.controller('controllerDocente', function ($scope) {
-    $scope.idAppello = '';    
+    $scope.idAppello = '';
     $scope.cliccami = function (id) {
         $scope.idAppello = id;
     }
-    $scope.idAppelloE = ''; 
+    $scope.idAppelloE = '';
     $scope.cliccamiE = function (id) {
-    $scope.idAppelloE = id;
+        $scope.idAppelloE = id;
     }
+    var arrayVoti = [];
+    for (var i = 0; i < 32; i++) {
+        arrayVoti.push(i);
+    }
+    $scope.voti = arrayVoti;
 });
 
 var appS = angular.module("appStudente", []);
 appS.controller('controllerStudente', function ($scope) {
-    $scope.codCorso = '';    
+    $scope.codCorso = '';
     $scope.Cliccami = function (id) {
         $scope.codCorso = id;
     }

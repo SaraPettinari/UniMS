@@ -13,6 +13,8 @@ var isAuthenticated = function (req, res, next) {
     res.redirect('/');
 }
 
+var studentiIscritti = new Array();
+
 /** GET prof page. funzione impl nel controller*/
 router.get('/', isAuthenticated, function (req, res) {
     CorsiController.cercaCorsiDocente(req.user.matricola, function (err, corsi) {
@@ -27,6 +29,13 @@ router.get('/', isAuthenticated, function (req, res) {
         })
     })
 });
+
+router.get('/appello', isAuthenticated, function (req, res) {
+    res.render('paginaDocenteAppello', {
+        title: 'Gestione Appelli',
+        studentiIscritti: studentiIscritti
+    });
+})
 
 router.post('/nuovoAppello', isAuthenticated, function (req, res) {
     var infoAppello = {
@@ -60,6 +69,16 @@ router.post('/eliminaAppello', isAuthenticated, function (req, res) {
         if (err) throw err;
     });
     res.redirect('/paginaDocente');
+})
+
+router.post('/appello', isAuthenticated, function (req, res) {
+    AppelliController.findAppello(req.body.gestisciAppelli, function(err, appello){
+        appello.matricolaS.forEach(function(studente) {
+            studentiIscritti.push(studente);
+        });
+        appello.save();
+    })
+    res.redirect('/paginaDocente/appello');
 })
 
 

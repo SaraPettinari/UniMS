@@ -85,4 +85,13 @@ AppelliController.checkStudente = function (matricolaStudente, id, callback) {
     });
 }
 
+AppelliController.findAppello = function (idCorso, callback) {
+    Appelli.findOne({'_id': idCorso}, function(err, appello){
+        if(err)
+            return callback(err, null);
+        else
+            return callback(null, appello);
+    })
+}
+
 module.exports = AppelliController;
