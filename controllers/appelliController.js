@@ -8,10 +8,10 @@ AppelliController.addAppello = function (data, callback) {
 
     newAppello.idCorso = data.idCorso;
     newAppello.data = data.data;
-    newAppello.ora = data.ora;    
+    newAppello.ora = data.ora;
     newAppello.aula = data.aula;
     newAppello.matricolaP = data.matricolaP;
-    
+
     newAppello.save(function (err) {
         if (err) throw err;
         console.log('Appello salvato con successo!');
@@ -50,20 +50,39 @@ AppelliController.verbalizzaAppello = function (data, callback) {
     });
 }*/
 
-AppelliController.listaAppelli=function(docente, callback){
-    Appelli.find({'matricolaP': docente},function(err,listaAppelli){
+AppelliController.listaAppelli = function (docente, callback) {
+    Appelli.find({ 'matricolaP': docente }, function (err, listaAppelli) {
         if (err) return callback(err, null);
         else
-            return callback (null, listaAppelli);
+            return callback(null, listaAppelli);
+    }).sort('idCorso').sort('data');
+}
+
+AppelliController.listaAppelliPerCorso = function (idCorso, callback) {
+    Appelli.find({ 'idCorso': idCorso }, function (err, listaAppelliPerCorso) {
+        if (err) return callback(err, null);
+        else
+            return callback(null, listaAppelliPerCorso);
     }).sort('data');
 }
 
-AppelliController.listaAppelliPerCorso = function (idCorso, callback){
-    Appelli.find({'idCorso': idCorso}, function(err, listaAppelliPerCorso){
-         if (err) return callback(err, null);
-        else
-            return callback (null, listaAppelliPerCorso);
-    }).sort('data');
+AppelliController.prenotazione = function (matricolaStudente, id) {
+    Appelli.findOne({ '_id': id }, function (err, appello) {
+        if (err) throw err;
+        appello.matricolaS.push(matricolaStudente);
+        appello.save();
+    });
+    console.log('Prenotazione avvenuta con successo');
+}
+
+AppelliController.checkStudente = function (matricolaStudente, id, callback) {
+    Appelli.findOne({ '_id': id }, function (err, appello) {
+        if (err) return callback(err, null);
+        var bool = appello.matricolaS.find(o => o === matricolaStudente);
+        if (typeof bool === 'undefined')
+            return callback(null, false);
+        else callback(null, true);
+    });
 }
 
 module.exports = AppelliController;

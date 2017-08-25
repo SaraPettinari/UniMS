@@ -21,6 +21,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <script src="js/angular.js"></script>
+    <script src="js/script.js"></script>
 </head>
 
 <body ng-app="appStudente" ng-controller="controllerStudente">
@@ -100,73 +101,85 @@
 
         <div class="row">
             <% if (corsiAnnuali.length > 0) { %>
-                <h4 class="text-center">Piano studi anno
-                    <%= user.annoCorso %>
-                </h4>
+                <h4 class="text-center">Piano studi
+                    <%= user.annoCorso %> anno </h4>
                 <div class="row">
                     <h5 class="col-md-3">Nome:</h5>
                     <h5 class="col-md-3">Codice:</h5>
                     <h5 class="col-md-3">Matricola Docente:</h5>
-                    <h5 class="col-md-2">CFU:</h5>
-                    <h5 class="col-md-1">Anno:</h5>
+                    <h5 class="col-md-3">CFU:</h5>
                 </div>
-                <% for(var i=0; i <corsiAnnuali.length; i++) { %>
+                <% for(var i=0; i < corsiAnnuali.length; i++) { %>
                     <div class="col-md-3">
-                       <button type="button" name="idCorso"  ng-click="Cliccami('<%= corsiAnnuali[i].codice %>')" ng-model="codCorso"> vedi appelli </button>
-                        <input hidden value="{{codCorso}}" name="idCorso">
-                    </div>
-                    <div class="col-md-2">
                         <p>
-                            <%= corsiAnnuali[i].nome %>
+                            <a style="color:black; cursor: pointer" name="idCorso" ng-click="Cliccami('<%= corsiAnnuali[i].codice %>')" ng-model="codCorso">
+                                <%= corsiAnnuali[i].nome %>
+                            </a>
                         </p>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <p>
                             <%= corsiAnnuali[i].codice %>
                         </p>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <p>
                             <%= corsiAnnuali[i].matricolaP %>
                         </p>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <p>
                             <%= corsiAnnuali[i].cfu %>
                         </p>
                     </div>
-                    <div class="col-md-1 text-center">
-                        <p>
-                            <%= corsiAnnuali[i].anno %>
-                        </p>
-                    </div>
                     <% } %>
+                        <form action="/paginaStudente/vediAppelli" method="POST">
+                            <div class="row">
+                                <h6 class="col-md-4">Clicca su un corso per vedere gli appelli disponibili</h6>
+                                <div class="col-md-4">
+                                    <input required="required" readonly value="{{codCorso}}" name="idCorso" class="form-control" placeholder="codice corso">
+                                </div>
+                                <button type="submit" class="btn btn-default col-md-4">Vedi Appelli</button>
+                            </div>
+                        </form>
                         <% } %>
         </div>
         <div class="row">
             <% if (appelliCorso.length > 0) { %>
-                <h4 class="text-center">Date disponibili
-                    <%= user.annoCorso %>
-                </h4>
+                <h4 class="text-center">Date disponibili </h4>
                 <div class="row">
-                    <h5 class="col-md-3">Nome:</h5>
-                    <h5 class="col-md-3">Codice:</h5>
-                    <h5 class="col-md-3">Matricola Docente:</h5>
-                    <h5 class="col-md-2">CFU:</h5>
-                    <h5 class="col-md-1">Anno:</h5>
+                    <h5 class="col-md-2"></h5>
+                    <h5 class="col-md-2">Corso:</h5>
+                    <h5 class="col-md-2">Data:</h5>
+                    <h5 class="col-md-2">Ora:</h5>
+                    <h5 class="col-md-2">Matricola Docente:</h5>
+                    <h5 class="col-md-2">Aula:</h5>
                 </div>
-                <% for(var i=0; i <appelliCorso.length; i++) { %>
-                    <div class="col-md-3">
+                <% for(var i = 0; i < appelliCorso.length; i++) { %>
+                    <div class="col-md-2">
+                        <form action="/paginaStudente/prenotati" method="POST" onsubmit="confermaPrenotazione()">
+                            <button ng-disabled="<%= bool %>" type="submit" class="btn btn-link" title="Prenotati">
+                                        <i class="fa fa-plus-circle fa-lg" aria-hidden="true" style="color: red"></i>
+                            </button>
+                            <input hidden name="idAppello" value="<%= appelliCorso[i]._id %>">
+                        </form>
+                    </div>
+                    <div class="col-md-2">
                         <p>
                             <%= appelliCorso[i].idCorso %>
                         </p>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <p>
                             <%= appelliCorso[i].data %>
                         </p>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
+                        <p>
+                            <%= appelliCorso[i].ora %>
+                        </p>
+                    </div>
+                    <div class="col-md-2">
                         <p>
                             <%= appelliCorso[i].matricolaP %>
                         </p>
@@ -176,12 +189,10 @@
                             <%= appelliCorso[i].aula %>
                         </p>
                     </div>
-                    <div class="col-md-1 text-center">
-                        <p>
-                            <%= appelliCorso[i].ora %>
-                        </p>
-                    </div>
                     <% } %>
+                        <form action="/paginaStudente/pulisci" method="POST">
+                            <button type="submit" class="btn btn-default"> << Indietro </button>
+                        </form>
                         <% } %>
         </div>
     </div>

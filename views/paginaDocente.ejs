@@ -112,17 +112,17 @@
                 <h4 class="text-center">Modifica appello</h4>
                 <form action="/paginaDocente/aggiornaAppello" method="POST">
                     <input readonly value="{{idAppello}}" type="text " name="_id" required="required" class="form-control" />
-                    <input value=" " type="date" name="data" required="required" class="form-control" />
-                    <input value=" " type="time" name="ora" required="required" class="form-control" />
-                    <input value=" " type="text" name="aula" required="required" class="form-control" />
+                    <input type="date" name="data" required="required" class="form-control" />
+                    <input type="time" name="ora" required="required" class="form-control" />
+                    <input type="text" name="aula" required="required" class="form-control" />
                     <button type="submit" class="btn btn-lg btn-success btn-block ">OK</button>
                 </form>
             </div>
             <div class="col-md-4">
                 <h4 class="text-center">Elimina appello </h4>
                 <form action="/paginaDocente/eliminaAppello" method="POST">
-                <input readonly value="{{idAppelloE}}" type="text " name="_id" required="required" class="form-control" />
-                <button type="submit" class="btn btn-lg btn-success btn-block ">OK</button>
+                    <input readonly value="{{idAppelloE}}" type="text " name="_id" required="required" class="form-control" />
+                    <button type="submit" class="btn btn-lg btn-success btn-block ">OK</button>
                 </form>
             </div>
         </div>
