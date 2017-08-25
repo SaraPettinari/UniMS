@@ -8,7 +8,7 @@ var esameSchema = new Schema({
     data: { type: String, required: true },  //cambiata in string per facilitarne la gestione
     ora: { type: String, required: true },
     aula: { type: String, required: true },
-    esito: { type: Number }
+    esito: [{ type: Number }]
 }, {
         versionKey: false
     });

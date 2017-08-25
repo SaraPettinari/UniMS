@@ -75,6 +75,15 @@ AppelliController.prenotazione = function (matricolaStudente, id) {
     console.log('Prenotazione avvenuta con successo');
 }
 
+AppelliController.addESito = function (id, esito) {
+    Appelli.findOne({ '_id': id }, function (err, appello) {
+        if (err) throw err;
+        appello.esito.push(esito);
+        appello.save();
+    });
+   
+}
+
 AppelliController.checkStudente = function (matricolaStudente, id, callback) {
     Appelli.findOne({ '_id': id }, function (err, appello) {
         if (err) return callback(err, null);

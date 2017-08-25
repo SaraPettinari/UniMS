@@ -62,5 +62,10 @@ router.post('/eliminaAppello', isAuthenticated, function (req, res) {
     res.redirect('/paginaDocente');
 })
 
+router.post('/aggiungiEsito', isAuthenticated, function (req, res) {
+    AppelliController.addESito(req.body._id, req.body.esito);
+        res.redirect('/paginaDocente');
+    });
+
 
 module.exports = router;
