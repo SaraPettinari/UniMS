@@ -24,7 +24,6 @@
 </head>
 
 <body ng-app="appAdmin" ng-controller="controllerAdmin">
-<<<<<<< HEAD
 
     <header>
         <div class="container">
@@ -72,41 +71,6 @@
     <div class="row" ng-show="IsVisible1">
         <div class="row">
             <div class="col-md-12 col-sm-75" align="center">
-=======
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6 col-md-4 col-md-offset-4">
-                <div>
-                    <h3 class="text-center">Benvenuto
-                        <%= user.nome %>.</h3>
-                    <div>
-                        <ul class="list-unstyled">
-                            <li>Username:
-                                <%= user.username %>
-                            </li>
-                            <li>Email:
-                                <%= user.email %>
-                            </li>
-                            <li>Nome:
-                                <%= user.nome %>
-                            </li>
-                            <li>Cognome:
-                                <%= user.cognome %>
-                            </li>
-                            <li>Matricola:
-                                <%= user.matricola %>
-                            </li>
-                        </ul>
-                    </div>
-                    <a href="/logout" class="btn btn-lg btn-danger btn-block">Log Out</a>
-                    <button type="button" ng-click="ShowHide1()" class="btn btn-lg btn-info btn-block"> {{activityC}} Corsi </button>
-                    <button type="button" ng-click="ShowHide2()" class="btn btn-lg btn-success btn-block"> {{activityD}} Docenti </button>
-                </div>
-            </div>
-        </div>
-        <div class="row" ng-show="IsVisible1">
-            <div class="row">
->>>>>>> c1a1ec339de3e4719f12048d40c02e85cd1a4d9c
                 <% if (tuoiCorsi.length > 0) { %>
                     <h3 class="text-center">Piano studi
                         <strong><%= user.codFacoltà %></strong>
@@ -262,7 +226,6 @@
                             <% } %>
                                 <% } %>
                 </div>
-<<<<<<< HEAD
         
         </div>
         <br>
@@ -321,8 +284,6 @@
                                 </div>
                             </form>
                 </div>
-=======
->>>>>>> c1a1ec339de3e4719f12048d40c02e85cd1a4d9c
             </div>
         </div>
     </div>
