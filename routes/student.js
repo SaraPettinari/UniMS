@@ -13,22 +13,54 @@ var isAuthenticated = function (req, res, next) {
     res.redirect('/');
 }
 
+<<<<<<< HEAD
+=======
+var esami = new Array(); //conterrà gli esami di un dato corso
+var booleano = new Boolean();
+
+>>>>>>> c1a1ec339de3e4719f12048d40c02e85cd1a4d9c
 /** GET student page. */
 router.get('/', isAuthenticated, function (req, res) {
     CorsiController.listaTuoiCorsi(req.user.codFacoltà, function (err, tuoiCorsi) {
         CorsiController.corsiAnnuali(req.user.annoCorso, req.user.codFacoltà, function (err, corsiAnnuali) {
-            AppelliController.listaAppelliPerCorso(req.body.idCorso, function(err, appelliCorso){
             res.render('paginaStudente', {
                 title: 'PaginaStudente',
                 user: req.user,
                 tuoiCorsi: tuoiCorsi,
                 corsiAnnuali: corsiAnnuali,
-                appelliCorso: appelliCorso
+                appelliCorso: esami,
+                bool: booleano
             });
-        });
         });
     });
 });
 
+<<<<<<< HEAD
+=======
+/** POST mostra la lista degli appelli disponibili del corso scelto dall'utente */
+router.post('/vediAppelli', isAuthenticated, function (req, res) {
+    AppelliController.listaAppelliPerCorso(req.body.idCorso, function (err, appelliCorso) {
+        appelliCorso.forEach(function (element) {
+            esami.push(element);
+        });
+        res.redirect('/paginaStudente');
+    })
+});
+
+/** POST pulisce l'array contenente gli esami di un dato corso */
+router.post('/pulisci', isAuthenticated, function (req, res) {
+    esami.splice(0, esami.length);
+    res.redirect('/paginaStudente');
+});
+
+router.post('/prenotati', isAuthenticated, function (req, res) {
+    AppelliController.prenotazione(req.user.matricola, req.body.idAppello);
+    AppelliController.checkStudente(req.user.matricola, req.body.idAppello, function (err, bool) {
+        booleano = bool;
+        console.log(bool);
+        res.redirect('/paginaStudente');
+    });
+});
+>>>>>>> c1a1ec339de3e4719f12048d40c02e85cd1a4d9c
 
 module.exports = router;

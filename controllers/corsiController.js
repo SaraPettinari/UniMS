@@ -81,21 +81,21 @@ CorsiController.populateFacoltà = function (codFacoltà) {
     });
 }
 
-CorsiController.cercaCorsiDocente=function(matricolaP, callback){
-    Corsi.find({'matricolaP':matricolaP }, function(err, corsi){
-        if (err) 
-        return callback(err, null);
+CorsiController.cercaCorsiDocente = function (matricolaP, callback) {
+    Corsi.find({ 'matricolaP': matricolaP }, function (err, corsi) {
+        if (err)
+            return callback(err, null);
         else
-            return callback (null, corsi);
+            return callback(null, corsi);
     });
 }
 
-CorsiController.corsiAnnuali = function(anno, codFacoltà, callback){
-    Corsi.find({'anno': anno, 'codFacoltà': codFacoltà}, function(err, corsiAnnuali){
-        if (err) 
+CorsiController.corsiAnnuali = function (anno, codFacoltà, callback) {
+    Corsi.find({ 'anno': anno, 'codFacoltà': codFacoltà }, function (err, corsiAnnuali) {
+        if (err)
             return callback(err, null);
-            else
-                return callback (null, corsiAnnuali);
+        else
+            return callback(null, corsiAnnuali);
     });
 }
 module.exports = CorsiController;

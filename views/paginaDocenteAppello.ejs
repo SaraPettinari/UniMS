@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <meta charset="UTF-8">
+    <!-- to be responsive to mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-png" href="/img/logo.png" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Icons -->
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- CSS personalizzato -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- bootstap scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="/js/angular.js"></script>
+</head>
+
+<body ng-app="appDocente" ng-controller="controllerDocente">
+    <div class="container">
+        <div class="row">
+            <% if (studentiIscritti.length > 0) { %>
+                <h4 class="text-center">Studenti iscritti
+                </h4>
+                <div class="row">
+                    <h5 class="col-md-6">Matricola:</h5>
+                    <h5 class="col-md-6">Esito: (Seleziona 31 come 30 e Lode)</h5>
+                </div>
+                <div class="row">
+                    <% for(var i=0; i < studentiIscritti.length; i++) { %>
+                        <div class="col-md-7">
+                            <p>
+                                <%= studentiIscritti[i] %>
+                            </p>
+                        </div>
+                        <div class="col-md-5">
+                            <select ng-model="selected">
+                                    <option ng-value="voto.value" ng-repeat="voto in voti">
+                                        {{voto}}
+                                    </option>
+                                    <input name="esito" value="{{voto}}" type="number">
+                                    </select>
+                        </div>
+                        <% } %>
+                </div>
+                <button type="submit">Invia Risultati</button>
+                <% } %>
+        </div>
+    </div>
+</body>
+
+</html>

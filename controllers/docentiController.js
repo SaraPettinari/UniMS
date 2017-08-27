@@ -6,7 +6,7 @@ DocentiController.listaDocenti = function (callback) {
     Docenti.find({}, function (err, docenti) {
         if (err) {
             console.log('Errore nella ricerca dei docenti ');
-            return callback(err, null);   
+            return callback(err, null);
         }
         else
             return callback(null, docenti);
@@ -14,10 +14,10 @@ DocentiController.listaDocenti = function (callback) {
 }
 
 DocentiController.listaDocentiFacoltà = function (profCodFacoltà, callback) {
-    Docenti.find({'codFacoltà' : profCodFacoltà}, function (err, docentiF) {
+    Docenti.find({ 'codFacoltà': profCodFacoltà }, function (err, docentiF) {
         if (err) {
             console.log('Errore nella ricerca dei docenti ');
-            return callback(err, null);   
+            return callback(err, null);
         }
         else
             return callback(null, docentiF);
