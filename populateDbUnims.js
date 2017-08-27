@@ -82,18 +82,7 @@ var admin3 = new admin({
 admin3.save(function (err) {
     if (err) throw err;
 });
-var adminProva = new admin({
-    nome: 'Prova',
-    cognome: 'Prova',
-    matricola: 'A004',
-    codFacoltà: informatica.codice,
-    email: 'prova.prova@admin.it',
-    username: 'prova.prva/admin',
-    password: createHash('prova')
-});
-admin1.save(function (err) {
-    if (err) throw err;
-});
+
 
 //AGGIUNTI PROF
 var prof1 = new prof({

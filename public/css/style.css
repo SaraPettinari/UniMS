@@ -6,6 +6,9 @@
 body {
   overflow-x: hidden;
   font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #B3E5FC;; 
+  
+  padding:50px;
 }
 .text-muted {
   color: #777777;
@@ -29,6 +32,7 @@ a.active {
 }
 a {
   color:  white;
+
 }
 a:hover,
 a:focus,
@@ -42,12 +46,20 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
-  font-weight: 700;
+  
+  font-family:"Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style:initial;
+  font-weight: 0;
 }
 .img-centered {
   margin: 0 auto;
+}
+.image-circle{
+  border-radius: 50%;
+  width: 175px;
+  height: 175px;
+  border: 4px solid #FFF;
+  margin: 10px;
 }
 .bg-light-gray {
   background-color: #eeeeee;
@@ -59,7 +71,7 @@ h6 {
   color: white;
   background-color: #01aaff;
   border-color: #01aaff;
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-weight: 700;
 }
@@ -103,7 +115,7 @@ fieldset[disabled] .btn-primary.active {
   color: white;
   background-color: #01aaff;
   border-color: #01aaff;
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Roboto Slab"f, "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-weight: 700;
   border-radius: 3px;
@@ -228,7 +240,8 @@ fieldset[disabled] .btn-xl.active {
 }
 header {
    background-image: url("/img/rocca.jpg"); 
- /* background-color: #222222;*/
+  background-color: aliceblue;
+ border-radius:10px 10px 10px 10px;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
@@ -237,8 +250,9 @@ header {
   background-size: cover;
   -o-background-size: cover;
   text-align: center;
-  color: white;
+  color:#222222;
 }
+
 header .intro-text {
   padding-top: 100px;
   padding-bottom: 50px;
@@ -610,3 +624,63 @@ body {
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
     box-shadow: inset 0 1px 1px rgba(0,0,0, .05);
 }
+.fullscreen_bg {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-color: cornflowerblue;
+}
+.list-group-item{
+  background: #eeeeee;
+  
+}
+.form-container div, .form-container  span strong{
+  font-family:  "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.form-container ::-webkit-input-placeholder {
+  color:    #01aaff
+}
+
+
+
+.form-container :-moz-placeholder { 
+ color:    #01aaff;
+ opacity:  1;
+}
+
+.form-container :-ms-input-placeholder {
+ color:    #01aaff;
+}
+
+.form-container :placeholder-shown { 
+color:#01aaff;
+}
+
+
+.row {
+text-align:center;
+}
+
+
+.form-container {
+margin:20px;
+padding:20px;
+border-radius:10px 10px 10px 10px;
+background:#B3E5FC;
+color:#00838F;
+-webkit-transition: all .3s ease-in-out;
+-moz-transition: all .3s ease-in-out;
+-o-transition: all .3s ease-in-out;
+transition: all .3s ease-in-out;
+}
+
+
+
+
+
+
