@@ -13,12 +13,9 @@ var isAuthenticated = function (req, res, next) {
     res.redirect('/');
 }
 
-<<<<<<< HEAD
-=======
 var esami = new Array(); //conterrà gli esami di un dato corso
 var booleano = new Boolean();
 
->>>>>>> c1a1ec339de3e4719f12048d40c02e85cd1a4d9c
 /** GET student page. */
 router.get('/', isAuthenticated, function (req, res) {
     CorsiController.listaTuoiCorsi(req.user.codFacoltà, function (err, tuoiCorsi) {
@@ -35,8 +32,6 @@ router.get('/', isAuthenticated, function (req, res) {
     });
 });
 
-<<<<<<< HEAD
-=======
 /** POST mostra la lista degli appelli disponibili del corso scelto dall'utente */
 router.post('/vediAppelli', isAuthenticated, function (req, res) {
     AppelliController.listaAppelliPerCorso(req.body.idCorso, function (err, appelliCorso) {
@@ -61,6 +56,5 @@ router.post('/prenotati', isAuthenticated, function (req, res) {
         res.redirect('/paginaStudente');
     });
 });
->>>>>>> c1a1ec339de3e4719f12048d40c02e85cd1a4d9c
 
 module.exports = router;

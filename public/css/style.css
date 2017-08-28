@@ -6,9 +6,6 @@
 body {
   overflow-x: hidden;
   font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #B3E5FC;; 
-  
-  padding:50px;
 }
 .text-muted {
   color: #777777;
@@ -240,8 +237,7 @@ fieldset[disabled] .btn-xl.active {
 }
 header {
    background-image: url("/img/rocca.jpg"); 
-  background-color: aliceblue;
- border-radius:10px 10px 10px 10px;
+ /* background-color: #222222;*/
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
@@ -250,9 +246,8 @@ header {
   background-size: cover;
   -o-background-size: cover;
   text-align: center;
-  color:#222222;
+  color: white;
 }
-
 header .intro-text {
   padding-top: 100px;
   padding-bottom: 50px;
@@ -679,8 +674,38 @@ color:#00838F;
 transition: all .3s ease-in-out;
 }
 
+/*aggiunti*/
 
+.contact-section{
+  background-image: url("/img/rocca.jpg");
+  /*background-color: #222222;*/
 
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+ 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  text-align: center;
+  color: white;
+  padding-bottom:80px;
+  
+}
+.wrap_center{
+  
+  margin:20px;
+  padding:20px;
+  border: #f1f1f1;
+  border-radius:10px 10px 10px 10px;
+  background-color:#B3E5FC;
+  color:black;
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
 
 
 
