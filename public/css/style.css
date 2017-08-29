@@ -633,7 +633,7 @@ body {
   background: #eeeeee;
   
 }
-.form-container div, .form-container  span strong{
+.container div, .form-container  span strong{
   font-family:  "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -692,19 +692,8 @@ background-repeat: no-repeat;
   
   
 }
-.wrap_center{
-  
-  margin:20px;
-  padding:20px;
-  border: #f1f1f1;
-  border-radius:10px 10px 10px 10px;
-  background-color:#B3E5FC;
-  color:black;
-  -webkit-transition: all .3s ease-in-out;
-  -moz-transition: all .3s ease-in-out;
-  -o-transition: all .3s ease-in-out;
-  transition: all .3s ease-in-out;
-}
+
+
 
 
 

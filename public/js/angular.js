@@ -36,25 +36,15 @@ appA.controller('controllerAdmin', function ($scope) {
 });
 var appD1 = angular.module("appDocente", []);
 appD1.controller('controllerDocente', function ($scope) {
-    $scope.IsVisible1 = false;
+    $scope.IsVisible3 = false;
     $scope.activityA = 'Gestisci';
     $scope.ShowHide3 = function () {
         //If DIV is visible it will be hidden and vice versa.
-        $scope.IsVisible1 = $scope.IsVisible1 ? false : true;
-        if ($scope.IsVisible1 == false)
+        $scope.IsVisible3 = $scope.IsVisible3 ? false : true;
+        if ($scope.IsVisible3 == false)
             $scope.activityA = 'Gestisci';
         else
             $scope.activityA = 'Nascondi';
-    }
-    $scope.IsVisible2 = false;
-    $scope.activityB = 'Gestisci';
-    $scope.ShowHide4 = function () {
-        //If DIV is visible it will be hidden and vice versa.
-        $scope.IsVisible2 = $scope.IsVisible2 ? false : true;
-        if ($scope.IsVisible2 == false)
-            $scope.activityB = 'Gestisci';
-        else
-            $scope.activityB = 'Nascondi';
     }
 });
 
