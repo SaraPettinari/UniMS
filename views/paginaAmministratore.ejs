@@ -178,8 +178,9 @@
                         </div>
                         <div class="col-md-4">
                             <h3 class="text-center"><strong>Rimuovi corso </strong></h3>
-                         <div>
-                                <label><span>Corso da rimuovere:</span></label>   <hr />
+                            <div>
+                                <label><span>Corso da rimuovere:</span></label>
+                                <hr />
                                 <form action="/paginaAmministratore/remove" method="POST">
                                     <select ng-model="corsoR" class="form-control">
                                             <option value="" disabled selected hidden>Corso</option>
@@ -187,7 +188,7 @@
                                         <option value=<%=tuoiCorsi.codice%>> <%= tuoiCorsi.nome %></option>
                                     <% })%>
                             </select>
-                                  
+
                                     <input type="hidden" name="codice" placeholder="codice" value="{{corsoR}}" /><br>
                                     <button type="submit" class="btn btn-md  btn-info" name="removeB">OK</button>
                                 </form>
@@ -316,8 +317,7 @@
                 </div>
             </form>
         </div>
-
-
+    </div>
 </body>
 
 </html>

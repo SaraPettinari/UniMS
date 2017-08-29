@@ -3,7 +3,7 @@
 
 <head>
     <title>
-        <%= title %>
+        Appelli Disponibili
     </title>
     <meta charset="UTF-8">
     <!-- to be responsive to mobile devices -->
@@ -24,39 +24,41 @@
 </head>
 
 <body ng-app="appDocente" ng-controller="controllerDocente">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 col-md-4 col-md-offset-4">
-                <% if (studentiIscritti.length > 0) { %>
-                    <h3 class="text-center"><strong>Studenti iscritti
+    <form action="/registrazione">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-4 col-md-offset-4">
+                    <% if (studentiIscritti.length > 0) { %>
+                        <h3 class="text-center"><strong>Studenti iscritti
                 </strong></h3>
-                    <div class="row">
-                        <h4 class="col-md-6"><strong>Matricola:</strong></h4>
-                        <h4 class="col-md-6"><strong>Esito: (Seleziona 31 come 30 e Lode)</strong></h4>
-                    </div>
-                    <div class="row">
-                        <% for(var i=0; i < studentiIscritti.length; i++) { %>
-                            <div class="col-md-7">
-                                <p>
-                                    <%= studentiIscritti[i] %>
-                                </p>
-                            </div>
-                            <div class="col-md-5">
-                                <select ng-model="selected">
+                        <div class="row">
+                            <h4 class="col-md-6"><strong>Matricola:</strong></h4>
+                            <h4 class="col-md-6"><strong>Esito: (Seleziona 31 come 30 e Lode)</strong></h4>
+                        </div>
+                        <div class="row">
+                            <% for(var i=0; i < studentiIscritti.length; i++) { %>
+                                <div class="col-md-7">
+                                    <p>
+                                        <%= studentiIscritti[i] %>
+                                    </p>
+                                </div>
+                                <div class="col-md-5">
+                                    <select ng-model="selected">
                                     <option ng-value="voto.value" ng-repeat="voto in voti">
                                         {{voto}}
                                     </option>
                                     <input name="esito" value="{{voto}}" type="number" placeholder="esito">
                                     </select>
-                            </div>
-                            <% } %>
-                    </div>
-                    <button type="submit" class="btn btn-md  btn-info">Invia Risultati</button>
+                                </div>
+                                <% } %>
+                        </div>
+                        <button type="submit" class="btn btn-md  btn-info"><strong>Invia Risultati</strong></button>
 
-                    <% } %>
+                        <% } %>
+                </div>
             </div>
         </div>
-    </div>
+    </form>
 </body>
 
 </html>

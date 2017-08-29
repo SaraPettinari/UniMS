@@ -34,19 +34,7 @@ appA.controller('controllerAdmin', function ($scope) {
             $scope.activityD = 'Nascondi';
     }
 });
-var appD1 = angular.module("appDocente", []);
-appD1.controller('controllerDocente', function ($scope) {
-    $scope.IsVisible3 = false;
-    $scope.activityA = 'Gestisci';
-    $scope.ShowHide3 = function () {
-        //If DIV is visible it will be hidden and vice versa.
-        $scope.IsVisible3 = $scope.IsVisible3 ? false : true;
-        if ($scope.IsVisible3 == false)
-            $scope.activityA = 'Gestisci';
-        else
-            $scope.activityA = 'Nascondi';
-    }
-});
+
 
 var appD = angular.module("appDocente", []);
 appD.controller('controllerDocente', function ($scope) {
@@ -63,6 +51,29 @@ appD.controller('controllerDocente', function ($scope) {
         arrayVoti.push(i);
     }
     $scope.voti = arrayVoti;
+    $scope.IsVisible3 = false;
+    $scope.activityA = 'Gestisci';
+    $scope.ShowHide3 = function () {
+        //If DIV is visible it will be hidden and vice versa.
+        $scope.IsVisible3 = $scope.IsVisible3 ? false : true;
+        if ($scope.IsVisible3 == false)
+            $scope.activityA = 'Gestisci';
+        else
+            $scope.activityA = 'Nascondi';
+    }
+    $scope.IsVisible4 = false;
+    $scope.activityA = 'Vedi';
+    $scope.ShowHide4 = function () {
+        //If DIV is visible it will be hidden and vice versa.
+        $scope.IsVisible4 = $scope.IsVisible4 ? false : true;
+        if ($scope.IsVisible4 == false)
+            $scope.activityA = 'Vedi';
+        else
+            $scope.activityA = 'Nascondi';
+       
+       
+    }
+
 });
 
 var appS = angular.module("appStudente", []);
@@ -70,5 +81,17 @@ appS.controller('controllerStudente', function ($scope) {
     $scope.codCorso = '';
     $scope.Cliccami = function (id) {
         $scope.codCorso = id;
+    }
+    $scope.IsVisible1 = false;
+    $scope.activityA = 'Gestisci';
+    $scope.ShowHide1 = function () {
+        //If DIV is visible it will be hidden and vice versa.
+        $scope.IsVisible1= $scope.IsVisible1 ? false : true;
+        if ($scope.IsVisible1 == false)
+            $scope.activityA = 'Gestisci';
+        else
+            $scope.activityA = 'Nascondi';
+       
+       
     }
 });
