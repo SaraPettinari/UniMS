@@ -97,7 +97,8 @@ router.post('/vediPrenotazioni/confermaVoto', isAuthenticated, function (req, re
         data: req.body.dataAppello,
         esito: req.body.myEsito
     }
-    AppelliController.verbalizzaAppello(data, function (err) {
+    AppelliController.verbalizzaAppello(data, req.user.matricola, function (err) {
+        console.log(req.user.matricola);
         if (err) throw err;
     })
     res.redirect('/paginaStudente');

@@ -1,6 +1,7 @@
 var Docenti = require('../models/personale').model('Prof');
 var Appelli = require('../models/esame');
 var Carriera = require('../models/appelliVerbalizzati');
+var Studente = require('../models/user');
 
 var AppelliController = function () { };
 
@@ -38,7 +39,7 @@ AppelliController.removeAppelli = function (id, callback) {
     });
 }
 
-AppelliController.verbalizzaAppello = function (data, callback) {
+AppelliController.verbalizzaAppello = function (data, matricolaS, callback) {
     var newCarriera = new Carriera();
 
     newCarriera.codCorso = data.codCorso;
@@ -49,6 +50,11 @@ AppelliController.verbalizzaAppello = function (data, callback) {
         if (err) throw err;
         console.log('Verbalizzazione avvenuta con successo!');
     });
+
+    Studente.findOne({'matricola': matricolaS}, function(err, studente){
+        studente.carriera.push(newCarriera);
+        studente.save();
+    })
 }
 
 AppelliController.listaAppelli = function (docente, callback) {
