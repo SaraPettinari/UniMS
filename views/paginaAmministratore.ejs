@@ -35,7 +35,7 @@
                             <strong><%= user.nome %>!</strong></span></h2>
                                 <hr />
                                 <div class="image" align="center">
-                                    <img class="image-circle img-rounded img-responsive" src="img/amministratore.png" alt="avatar admin">
+                                    <img class="image-circle img-rounded img-responsive" src="img/avatar.png" alt="avatar admin">
                                 </div>
                                 <div class="col-xs-12" align="center">
                                     <ul class="list-group">
@@ -178,17 +178,17 @@
                         </div>
                         <div class="col-md-4">
                             <h3 class="text-center"><strong>Rimuovi corso </strong></h3>
-                            <hr />
-                            <div>
-                                <label><span>Corso da rimuovere:</span></label>
+                         <div>
+                                <label><span>Corso da rimuovere:</span></label>   <hr />
                                 <form action="/paginaAmministratore/remove" method="POST">
                                     <select ng-model="corsoR" class="form-control">
+                                            <option value="" disabled selected hidden>Corso</option>
                                     <% tuoiCorsi.forEach(function(tuoiCorsi){%>
                                         <option value=<%=tuoiCorsi.codice%>> <%= tuoiCorsi.nome %></option>
                                     <% })%>
                             </select>
-                                    <br>
-                                    <input type="hidden" name="codice" placeholder="codice" value="{{corsoR}}" />
+                                  
+                                    <input type="hidden" name="codice" placeholder="codice" value="{{corsoR}}" /><br>
                                     <button type="submit" class="btn btn-md  btn-info" name="removeB">OK</button>
                                 </form>
                             </div>
