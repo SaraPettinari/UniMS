@@ -91,4 +91,15 @@ router.post('/vediPrenotazioni/controllaEsiti', isAuthenticated, function (req, 
     res.redirect('/paginaStudente/vediPrenotazioni')
 })
 
+router.post('/vediPrenotazioni/confermaVoto', isAuthenticated, function (req, res) {
+    var data = {
+        codCorso: req.body.idCorsoAppello,
+        data: req.body.dataAppello,
+        esito: req.body.myEsito
+    }
+    AppelliController.verbalizzaAppello(data, function (err) {
+        if (err) throw err;
+    })
+    res.redirect('/paginaStudente');
+})
 module.exports = router;

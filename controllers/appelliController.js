@@ -1,5 +1,6 @@
 var Docenti = require('../models/personale').model('Prof');
 var Appelli = require('../models/esame');
+var Carriera = require('../models/appelliVerbalizzati');
 
 var AppelliController = function () { };
 
@@ -36,19 +37,19 @@ AppelliController.removeAppelli = function (id, callback) {
         console.log('Appello rimosso con successo!');
     });
 }
-/*
-AppelliController.verbalizzaAppello = function (data, callback) {
-    var newAppello = new Appello();
 
-    newAppello.codCorso = data.codCorso;
-    newAppello.data = data.data;
-    newAppello.esito = data.esito;
+AppelliController.verbalizzaAppello = function (data, callback) {
+    var newCarriera = new Carriera();
+
+    newCarriera.codCorso = data.codCorso;
+    newCarriera.data = data.data;
+    newCarriera.esito = data.esito;
    
-    newAppello.save(function (err) {
+    newCarriera.save(function (err) {
         if (err) throw err;
         console.log('Verbalizzazione avvenuta con successo!');
     });
-}*/
+}
 
 AppelliController.listaAppelli = function (docente, callback) {
     Appelli.find({ 'matricolaP': docente }, function (err, listaAppelli) {

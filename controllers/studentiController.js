@@ -60,4 +60,14 @@ StudentiController.listaStudenti = function (callback) {
     }).sort('matricola');
 }
 
+StudentiController.esitoConseguito = function (esiti, id) {
+    Studenti.findOne({ '_id': id }, function (err, appello) {
+        if (err) throw err;
+        listEsiti.forEach(function (thisEsito) {
+            appello.esito.push(thisEsito);
+        });
+        appello.save(); 
+    });
+}
+
 module.exports = StudentiController;

@@ -2,10 +2,10 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var Esame = require('./esame');
 
-/*var appelliVerbalizzati = new Schema({
-    codCorso: { type: String, required: true, ref: 'Esame' },
-    data: { typ: Date, required: true, ref: 'Esame' },
-    esito: { type: Number, required: true, ref: 'Esame', min: 18, max: 30 }
+var appelliVerbalizzati = new Schema({
+    codCorso: { type: String},
+    data: { type: Date },
+    esito: { type: Number, min: 18, max: 31 }
 },
     {
         versionKey: false
@@ -13,4 +13,4 @@ var Esame = require('./esame');
 
 //-----ESAMI SUPERATI E VERBALIZZATI-----
 var MyExam = mongoose.model('MyExam', appelliVerbalizzati);
-module.exports = MyExam; */
+module.exports = MyExam; 
