@@ -25,14 +25,14 @@
 
 <body ng-app="appDocente" ng-controller="controllerDocente">
     <div class="contact-section">
-        <div="container">
+        <div class="container">
             <div class="row-fluid">
                 <div class="col-sm-12 col-md-4 col-md-offset-4">
                     <form>
-                        <div id="contact-form" class="form-container" align="center">
+                        <div id="contact-form" class="form-container" align="center" data-form-container>
                             <div class="row">
                                 <h2 class="text-center"><span>Benvenuto
-                        <strong><%= user.nome %>!</strong></span></h2>
+                                    <strong><%= user.nome %>!</strong></span></h2>
                                 <hr />
                                 <div class="image" align="center">
                                     <img class="image-circle img-rounded img-responsive" src="img/docente.png" alt="avatar docente">
@@ -55,94 +55,115 @@
                                             <%= user.matricola %>
                                         </li>
                                     </ul>
+
                                 </div>
-                                <button type="button" ng-click="ShowHide1()" class="btn btn-sm  btn-info"><strong> {{activityC}}Appelli </strong> </button>
-                                <button type="button" ng-click="ShowHide2()" class="btn btn-sm  btn-info"><strong> {{activityD}} Docenti </strong></button>
-                                <br><br>
-                                <a href="/logout" class="btn btn-sm  btn-block">Log Out</a>
+                                <a href="/logout" class="btn btn-sm  btn-info" role="button"><strong>Log Out</strong></a>
                             </div>
                     </form>
                     </div>
                 </div>
             </div>
-            <div class="row" ng-show="IsVisible1">
-                <% if (listaAppelli.length > 0) { %>
-                    <h4 class="text-center"><span><strong>Appelli inseriti</strong></span>
-                    </h4>
-                    <div class="row">
-                        <h5 class="col-md-3">Corso:</h5>
-                        <h5 class="col-md-3">Aula:</h5>
-                        <h5 class="col-md-6">Data e ora:</h5>
+        </div>
+        <form>
+                <div id="contact-form" class="form-container" align="center" data-form-container>
+            <div class="row">
+                <div class="row-fluid">
+                    <div class="col-md-12 col-sm-75 col-md-offset-1">
+                        <% if (listaAppelli.length > 0) { %>
+                            <h3 class="text-center"><span><strong>Appelli inseriti</strong></span>
+                            </h3>
+                            <div class="row">
+                                <h5 class="col-md-3"><strong>Corso:</strong></h5>
+                                <h5 class="col-md-3 text-center"><strong>Aula:</strong></h5>
+                                <h5 class="col-md-6 text center"><strong>Data e ora:</strong></h5>
+                            </div>
+                            <% for(var i=0; i < listaAppelli.length; i++) { %>
+                                <div class="col-md-3">
+                                    <p>
+                                        <%= listaAppelli[i].idCorso %>
+                                    </p>
+                                </div>
+                                <div class=" col-md-3">
+                                    <p>
+                                        <%= listaAppelli[i].aula %>
+                                    </p>
+                                </div>
+                                <div class="col-md-2">
+                                    <p>
+                                        <%= listaAppelli[i].data %>
+                                    </p>
+                                </div>
+                                <div class="col-md-2">
+                                    <p>
+                                        <%= listaAppelli[i].ora %>
+                                    </p>
+                                </div>
+                                <div class="col-md-2">
+                                    <button ng-model="idAppello" ng-click="cliccami('<%= listaAppelli[i]._id %>')"><strong>Modifica</strong></button>
+                                    <button ng-model="idAppelloE" ng-click="cliccamiE('<%= listaAppelli[i]._id %>')"><strong>Elimina</strong></button>
+                                    <form action="/paginaDocente/appello" method="POST">
+                                        <input hidden value="<%= listaAppelli[i]._id %>" name="gestisciAppelli">
+                                        <button type="submit"><strong>Vedi iscritti</strong></button>
+                                    </form>
+                                </div>
+                                <% } %>
+                                    <% } %>
                     </div>
-                    <% for(var i=0; i < listaAppelli.length; i++) { %>
-                        <div class="col-md-3">
-                            <p>
-                                <%= listaAppelli[i].idCorso %>
-                            </p>
-                        </div>
-                        <div class=" col-md-3">
-                            <p>
-                                <%= listaAppelli[i].aula %>
-                            </p>
-                        </div>
-                        <div class="col-md-2">
-                            <p>
-                                <%= listaAppelli[i].data %>
-                            </p>
-                        </div>
-                        <div class="col-md-2">
-                            <p>
-                                <%= listaAppelli[i].ora %>
-                            </p>
-                        </div>
-                        <div class="col-md-2">
-                            <button ng-model="idAppello" ng-click="cliccami('<%= listaAppelli[i]._id %>')">Modifica</button>
-                            <button ng-model="idAppelloE" ng-click="cliccamiE('<%= listaAppelli[i]._id %>')">Elimina</button>
-                            <form action="/paginaDocente/appello" method="POST">
-                                <input hidden value="<%= listaAppelli[i]._id %>" name="gestisciAppelli">
-                                <button type="submit">Vedi iscritti</button>
-                            </form>
-                        </div>
-                        <% } %>
-                            <% } %>
+                </div>
             </div>
-            <div class="row" ng-show="IsVisible2">
-                <div class="col-md-4">
-                    <h4 class="text-center">Aggiungi appello</h4>
-                    <form action="/paginaDocente/nuovoAppello" method="POST">
-                        <select ng-model="idCorso" class="form-control ">  
+        </form>
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="col-md-6">
+                        <h3 class="text-center"><strong>Aggiungi appello</strong></h3>
+                        <hr/>
+                        <form action="/paginaDocente/nuovoAppello" method="POST">
+                            <select ng-model="idCorso" class="form-control ">  
                                 <option value=" " disabled selected hidden>Corso</option>
                                 <% corsi.forEach(function(corso){%>
                                     <option value=<%=corso.codice%>> <%= corso.nome %> </option>
                                 <% })%>
-                        </select>
-                        <input readonly value="{{idCorso}}" type="text " name="idCorso" placeholder="Corso" required="required" class="form-control"
-                        />
-                        <input type="date" name="data" placeholder="data" required="required" class="form-control" />
-                        <input type="time" name="ora" placeholder="ora" required="required" class="form-control" />
-                        <input type="text" name="aula" placeholder="aula esame" required="required" class="form-control" />
-                        <button type="submit" class="btn btn-lg btn-success btn-block ">OK</button>
-                    </form>
-                </div>
-                <div class="col-md-4">
-                    <h4 class="text-center">Modifica appello</h4>
-                    <form action="/paginaDocente/aggiornaAppello" method="POST">
-                        <input readonly value="{{idAppello}}" type="text " name="_id" required="required" class="form-control" />
-                        <input type="date" name="data" required="required" class="form-control" />
-                        <input type="time" name="ora" required="required" class="form-control" />
-                        <input type="text" name="aula" required="required" class="form-control" />
-                        <button type="submit" class="btn btn-lg btn-success btn-block ">OK</button>
-                    </form>
-                </div>
-                <div class="col-md-4">
-                    <h4 class="text-center">Elimina appello </h4>
-                    <form action="/paginaDocente/eliminaAppello" method="POST">
-                        <input readonly value="{{idAppelloE}}" type="text " name="_id" required="required" class="form-control" />
-                        <button type="submit" class="btn btn-lg btn-success btn-block ">OK</button>
-                    </form>
+                        </select><br>
+                            <input readonly value="{{idCorso}}" type="text " name="idCorso" placeholder="idCorso" required="required" class="form-control"
+                            /><br>
+                            <input type="date" name="data" placeholder="data" required="required" class="form-control" /><br>
+                            <input type="time" name="ora" placeholder="ora" required="required" class="form-control" /><br>
+                            <input type="text" name="aula" placeholder="aula esame" required="required" class="form-control" /><br>
+                            <button align: "center" type="submit" class="btn btn-md btn-info ">OK</button>
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 class="text-center"><strong>Modifica appello</strong></h3>
+                        <hr/>
+                        <form action="/paginaDocente/aggiornaAppello" method="POST">
+                            <input readonly value="{{idAppello}}" type="text " name="_id" placeholder="idAppello" required="required" class="form-control"
+                            /><br>
+                            <input type="date" name="data" placeholder="data" required="required" class="form-control" /><br>
+                            <input type="time" name="ora" placeholder="ora" required="required" class="form-control" /><br>
+                            <input type="text" name="aula" placeholder="aula" required="required" class="form-control" /><br>
+                            <button align: "center" type="submit" class="btn btn-md btn-info ">OK</button>
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 class="text-center"><strong>Elimina appello</strong> </h3>
+                        <hr />
+                        <form action="/paginaDocente/eliminaAppello" method="POST">
+                            <input readonly value="{{idAppelloE}}" type="text " name="_id" placeholder="idAppello" required="required" class="form-control"
+                            /><br>
+                            <button align: "center" type="submit" class="btn btn-md btn-info ">OK</button>
+                        </form>
+                    </div>
                 </div>
             </div>
+        </div>
     </div>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <span><i class="fa fa-university"></i> UniMS - 62032, Camerino (MC) - IT</span>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>
