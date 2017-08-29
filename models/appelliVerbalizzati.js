@@ -4,7 +4,7 @@ var Esame = require('./esame');
 
 var appelliVerbalizzati = new Schema({
     codCorso: { type: String},
-    data: { type: Date },
+    data: { type: String },
     esito: { type: Number, min: 18, max: 31 }
 },
     {

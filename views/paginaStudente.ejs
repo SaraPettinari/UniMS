@@ -22,6 +22,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <script src="js/angular.js"></script>
     <script src="js/script.js"></script>
+    <script type="text/javascript" src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+    <script type="text/javascript" src="https://www.amcharts.com/lib/3/serial.js"></script>
+    <script type="text/javascript" src="https://www.amcharts.com/lib/3/themes/light.js"></script>
 </head>
 
 <body ng-app="appStudente" ng-controller="controllerStudente">
@@ -164,11 +167,40 @@
     <section>
         <div class="container">
             <div class="row">
-                
+                <%if (user.carriera.length > 0){%>
+                    <h4 class="text-center"> Carriera </h4>
+                    <table class="table">
+                        <tr>
+                            <th> Corso </th>
+                            <th> Data Esame</th>
+                            <th> Valutazione </th>
+                        </tr>
+                        <% for(var i=0; i<user.carriera.length; i++){%>
+                            <tr>
+                                <td>
+                                    <%=user.carriera[i].codCorso%>
+                                </td>
+                                <td>
+                                    <%=user.carriera[i].data%>
+                                    <input value="<%=user.carriera[i].data%>" id="data<%=i%>">
+                                </td>
+                                <td>
+                                    <%=user.carriera[i].esito%>
+                                    <input value="<%=user.carriera[i].esito%>" id="esito<%=i%>">
+                                </td>
+                            </tr>
+                            <%}%>
+                    </table>
+                    <button type="button" onclick="generaGrafico()">GENERA GRAFICO</button>
+                    <%}%>
+
             </div>
         </div>
     </section>
 
+
+    
+			<div id="chartdiv" style="width: 100%; height: 400px; background-color: #FFFFFF;" ></div>
 </body>
 
 </html>
