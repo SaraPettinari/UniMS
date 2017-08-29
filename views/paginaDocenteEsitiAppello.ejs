@@ -30,10 +30,10 @@
             <div class="panel-body">
                 <div class="form-group">
                     <label class="col-sm-12">
-                                    <h2>Dettagli appello</h2>
+                                    <h2>Andamento esiti appello</h2>
                                 </label>
                 </div>
-                <% if (studentiIscritti.length > 0) { %>
+                <% if (matrice.length > 0){ %>
                     <div>
                         <div class="col-sm-3"></div>
                         <div class="col-sm-6">
@@ -42,34 +42,21 @@
                                     <th class="col-sm-6">Studenti Iscritti</th>
                                     <th class="col-sm-6">Esiti</th>
                                 </tr>
-                                <% for(var i=0; i < studentiIscritti.length; i++) { %>
+                                <% for(var i=0; i < matrice.length; i++) { %>
                                     <tr>
                                         <td>
-                                            <%= studentiIscritti[i] %>
+                                            <%= matrice[i][0] %>
                                         </td>
                                         <td>
-                                            <div class="form-group controls">
-                                                <select class="form-control" ng-model="selected<%=i%>" ng-init="selected<%=i%> = 0">
-                                                            <option ng-value="voto.value" ng-repeat="voto in voti">
-                                                                    {{voto.nome}}
-                                                                 </option>
-                                                        </select>
-                                                <input hidden name="voto" id="voto<%=i%>" value="{{selected<%=i%>}}" type="number">
-                                            </div>
+                                            <%= matrice[i][1] %>
                                         </td>
                                     </tr>
                                     <% } %>
                             </table>
-                            <form action="/paginaDocente/appello/aggiungiEsito" method="POST">
-                                <input hidden type="text" name="voti" id="arrayVoti">
-                                <button class="btn btn-success" onclick="creaArrayVoti()">Invia Risultati</button>
-                            </form>
                         </div>
                         <div class="col-sm-3"></div>
                     </div>
-                    <% } else { %>
-                        <h5>Nessuno studente iscritto</h5>
-                        <% } %>
+                    <% } %>
             </div>
             <form action="/paginaDocente" method="GET">
                 <button class="btn"><< Indietro </button>

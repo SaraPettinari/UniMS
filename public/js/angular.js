@@ -47,8 +47,9 @@ appD.controller('controllerDocente', function ($scope) {
     }
     var arrayVoti = [];
     for (var i = 0; i < 32; i++) {
-        arrayVoti.push(i);
+        arrayVoti.push({nome: i, value: i});
     }
+    arrayVoti[31].nome = '30 L';
     $scope.voti = arrayVoti;
 });
 

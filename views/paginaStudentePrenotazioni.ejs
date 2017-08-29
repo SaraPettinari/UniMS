@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <meta charset="UTF-8">
+    <!-- to be responsive to mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-png" href="/img/logo.png" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Icons -->
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- CSS personalizzato -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- bootstap scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="/js/angular.js"></script>
+    <script src="/js/script.js"></script>
+</head>
+
+<body ng-app="appStudente" ng-controller="controllerStudente">
+    <div class="panel">
+        <div class="panel-collapse collapse in">
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-sm-12">
+                        <h2>Appelli prenotati</h2>
+                    </label>
+                </div>
+                <% if (prenotazioni.length > 0) { %>
+                    <div>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Corso: </th>
+                                <th>Data: </th>
+                                <th>Ora: </th>
+                                <th>Matricola Docente: </th>
+                                <th>Aula: </th>
+                                <th>N. Iscritti: </th>
+                                <th>Controlla Esito: </th>
+                            </tr>
+                            <% for(var i=0; i < prenotazioni.length; i++) { %>
+                                <tr>
+                                    <!-- TODO CANCELLA PRENOTAZIONE -->
+                                    <td class="col-md-1">
+                                        <%= prenotazioni[i].idCorso %>
+                                    </td>
+                                    <td class="col-md-1">
+                                        <%= prenotazioni[i].data %>
+                                    </td>
+                                    <td class="col-md-1">
+                                        <%= prenotazioni[i].ora %>
+                                    </td>
+                                    <td class="col-md-1">
+                                        <%= prenotazioni[i].matricolaP %>
+                                    </td>
+                                    <td class="col-md-1">
+                                        <%= prenotazioni[i].aula %>
+                                    </td>
+                                    <td class="col-md-1">
+                                        <%= prenotazioni[i].matricolaS.length %>
+                                    </td>
+                                    <td class="col-md-1">
+                                        <form method="POST" action="/paginaStudente/vediPrenotazioni/controllaEsiti">
+                                            <input hidden type="text" name="idAppello" value="<%= prenotazioni[i]._id %>" readonly>
+                                            <button type="submit" title="Controlla Esiti" class="btn btn-link"><i class="fa fa-spinner fa-lg" aria-hidden="true"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <% } %>
+                        </table>
+                    </div>
+                    <div>
+                        <form method="POST" action="/confermaVoto">
+                            <label> Corso </label>
+                            <input name="idCorsoAppello" value="<%= idCorsoAppello %>" readonly>
+                            <label> Data Esame </label>
+                            <input name="dataAppello" value="<%= dataAppello %>" readonly>
+                            <label> Esito </label>
+                            <input name="myEsito" value="<%= myEsito %>" readonly type="number">
+                            <button type="submit" title="Conferma e Verbalizza Online il voto!" class="btn btn-success btn-sm"> Conferma </button>
+                            <button formaction="/rifiutaVoto" type="submit" title="Rifiuta il voto!" class="btn btn-danger btn-sm"> Rifiuta </button>                            
+                        </form>
+                    </div>
+                    <% } else { %>
+                        <h5>Nessun appello prenotato</h5>
+                        <% } %>
+            </div>
+            <form action="/paginaStudente" method="GET">
+                <button type="submit" class="btn btn-default"> << Indietro </button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

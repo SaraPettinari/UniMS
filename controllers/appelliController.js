@@ -75,13 +75,37 @@ AppelliController.prenotazione = function (matricolaStudente, id) {
     console.log('Prenotazione avvenuta con successo');
 }
 
-AppelliController.addESito = function (id, esito) {
+AppelliController.addEsito = function (listEsiti, id) {
     Appelli.findOne({ '_id': id }, function (err, appello) {
         if (err) throw err;
-        appello.esito.push(esito);
-        appello.save();
+        listEsiti.forEach(function (thisEsito) {
+            appello.esito.push(thisEsito);
+        });
+        appello.save(); //! save() è asincrono. Per salvare i dati nell'ordine esatto in cui vengono inseriti, prima vengono pushati in un array
     });
-   
+}
+
+AppelliController.arrayEsiti = function (array, esito, callback) {
+    Appelli.find(function (err) {
+        if (err) return callback(err, null);
+        else {
+            array.push(esito);
+            return callback(null, array);
+        }
+    });
+}
+
+AppelliController.seeEsiti = function (id, callback) {
+    Appelli.findOne({ '_id': id }, function (err, appello) {
+        if (err) return callback(err, null);
+        var matriceVoti = [];
+        var votoPersonale = [];
+        for (var i = 0; i < appello.esito.length; i++) {
+            votoPersonale = [appello.matricolaS[i], appello.esito[i]];
+            matriceVoti.push(votoPersonale);
+        }
+        return callback(null, matriceVoti);
+    });
 }
 
 AppelliController.checkStudente = function (matricolaStudente, id, callback) {
@@ -95,12 +119,36 @@ AppelliController.checkStudente = function (matricolaStudente, id, callback) {
 }
 
 AppelliController.findAppello = function (idCorso, callback) {
-    Appelli.findOne({'_id': idCorso}, function(err, appello){
-        if(err)
+    Appelli.findOne({ '_id': idCorso }, function (err, appello) {
+        if (err)
             return callback(err, null);
         else
             return callback(null, appello);
     })
+}
+
+AppelliController.listaPerStudente = function (matricolaS, callback) {
+    Appelli.find({ 'matricolaS': matricolaS }, function (err, appelliPrenotati) {
+        if (err) return callback(err, null);
+        else
+            return callback(null, appelliPrenotati);
+    });
+}
+
+AppelliController.sendEsitoStudente = function (matricolaS, idAppello, callback) {
+    Appelli.findOne({ '_id': idAppello }, function (err, appello) {
+        if (err) return callback(err, null, null, null);
+        else {
+            var i = 0;
+            appello.matricolaS.forEach(function (element) {
+                if (element === matricolaS){
+                    var myEsito = appello.esito[i];
+                    return callback(null, myEsito, appello.data, appello.idCorso);
+                }
+                i++;
+            });
+        }
+    });
 }
 
 module.exports = AppelliController;
