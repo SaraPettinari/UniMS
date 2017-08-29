@@ -679,18 +679,17 @@ transition: all .3s ease-in-out;
 .contact-section{
   background-image: url("/img/rocca.jpg");
   /*background-color: #222222;*/
-
-  background-repeat: no-repeat;
-  background-attachment: scroll;
+background-repeat: no-repeat;
+  background-attachment:scroll;;
   background-position: center center;
- 
-  -webkit-background-size: cover;
+ -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
   text-align: center;
   color: white;
   padding-bottom:80px;
+  
   
 }
 .wrap_center{

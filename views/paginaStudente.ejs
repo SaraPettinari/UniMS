@@ -36,7 +36,7 @@
                                     <strong><%= user.nome %>!</strong></span></h2>
                                 <hr />
                                 <div class="image" align="center">
-                                    <img class="image-circle img-rounded img-responsive" src="img/amministratore.png" alt="avatar admin">
+                                    <img class="image-circle img-rounded img-responsive" src="img/studente.png" alt="avatar admin">
                                 </div>
                                 <div class="col-xs-12" align="center">
                                     <ul class="list-group">
@@ -66,157 +66,155 @@
                     </div>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-md-12 col-sm-75" align="center">
-                    <% if (tuoiCorsi.length > 0) { %>
-                        <h3 class="text-center"><span>Piano studi
-                            <strong><%= user.codFacoltà %></strong></span>
-                        </h3>
-                        <div class="row">
-                            <h5 class="col-md-3">Nome:</h5>
-                            <h5 class="col-md-3 text-center"><strong>Codice:</strong></h5>
-                            <h5 class="col-md-2 text-center"><strong>Matricola Docente:</strong></h5>
-                            <h5 class="col-md-2 text-center"><strong>CFU:</strong></h5>
-                            <h5 class="col-md-2 text-center"><strong>Anno:</strong></h5>
-                        </div>
-                        <% for(var i=0; i < tuoiCorsi.length; i++) { %>
-                            <div class="col-md-3">
-                                <p>
-                                    <%= tuoiCorsi[i].nome %>
-                                </p>
-                            </div>
-                            <div class="col-md-3">
-                                <p>
-                                    <%= tuoiCorsi[i].codice %>
-                                </p>
-                            </div>
-                            <div class="col-md-3">
-                                <p>
-                                    <%= tuoiCorsi[i].matricolaP %>
-                                </p>
-                            </div>
-                            <div class="col-md-2">
-                                <p>
-                                    <%= tuoiCorsi[i].cfu %>
-                                </p>
-                            </div>
-                            <div class="col-md-1 text-center">
-                                <p>
-                                    <%= tuoiCorsi[i].anno %>
-                                </p>
-                            </div>
-                            <% } %>
-                                <% } %>
-                </div>
-            </div>
-
-            <div class="row">
+        </div>
+        <form>
+            <div id="contact-form" class="form-container" align="center" data-form-container>
+                <div class="row">
                     <div class="col-md-12 col-sm-75" align="center">
-                <% if (corsiAnnuali.length > 0) { %>
-                    <h3 class="text-center">Piano studi
-                        <%= user.annoCorso %> anno </h3>
-                    <div class="row">
-                        <h5 class="col-md-3"><strong>Nome:</strong></h5>
-                        <h5 class="col-md-3 text-center"><strong>Codice:</strong></h5>
-                        <h5 class="col-md-3 text-center"><strong>Matricola Docente:</strong></h5>
-                        <h5 class="col-md-3 text-center"><strong>CFU:</strong></h5>
-                    </div>
-                    <% for(var i=0; i < corsiAnnuali.length; i++) { %>
-                        <div class="col-md-3">
-                            <p>
-                                <a style="color:black; cursor: pointer" name="idCorso" ng-click="Cliccami('<%= corsiAnnuali[i].codice %>')" ng-model="codCorso">
-                                    <%= corsiAnnuali[i].nome %>
-                                </a>
-                            </p>
-                        </div>
-                        <div class="col-md-3">
-                            <p>
-                                <%= corsiAnnuali[i].codice %>
-                            </p>
-                        </div>
-                        <div class="col-md-3">
-                            <p>
-                                <%= corsiAnnuali[i].matricolaP %>
-                            </p>
-                        </div>
-                        <div class="col-md-3">
-                            <p>
-                                <%= corsiAnnuali[i].cfu %>
-                            </p>
-                        </div>
-                        <% } %>
-                    </div>
-                            <form action="/paginaStudente/vediAppelli" method="POST">
-                                <div class="row">
-                                    <h6 class="col-md-4">Clicca su un corso per vedere gli appelli disponibili</h6>
-                                    <div class="col-md-4">
-                                        <input required="required" readonly value="{{codCorso}}" name="idCorso" class="form-control" placeholder="idCorso">
-                                    </div>
-                                    <button type="submit" class="btn btn-default col-md-4">Vedi Appelli</button>
+                        <% if (tuoiCorsi.length > 0) { %>
+                            <h3 class="text-center"><span>Piano studi
+                            <strong><%= user.codFacoltà %></strong></span>
+                            </h3>
+                            <div class="row">
+                                <h5 class="col-md-3">Nome:</h5>
+                                <h5 class="col-md-3 text-center"><strong>Codice:</strong></h5>
+                                <h5 class="col-md-2 text-center"><strong>Matricola Docente:</strong></h5>
+                                <h5 class="col-md-2 text-center"><strong>CFU:</strong></h5>
+                                <h5 class="col-md-2 text-center"><strong>Anno:</strong></h5>
+                            </div>
+                            <% for(var i=0; i < tuoiCorsi.length; i++) { %>
+                                <div class="col-md-3">
+                                    <p>
+                                        <%= tuoiCorsi[i].nome %>
+                                    </p>
                                 </div>
-                            </form>
-                            <% } %>
-            </div>
-            <div class="row">
-                <% if (appelliCorso.length > 0) { %>
-                    <h4 class="text-center"><strong>Date disponibili</strong> </h4>
-                    <div class="row">
-                        <h5 class="col-md-2"><strong>Corso:</strong></h5>
-                        <h5 class="col-md-2"><strong>Data:</strong></h5>
-                        <h5 class="col-md-2"><strong>Ora:</strong></h5>
-                        <h5 class="col-md-2"><strong>Matricola Docente:</strong></h5>
-                        <h5 class="col-md-2"><strong>Aula:</strong></h5>
+                                <div class="col-md-3">
+                                    <p>
+                                        <%= tuoiCorsi[i].codice %>
+                                    </p>
+                                </div>
+                                <div class="col-md-3">
+                                    <p>
+                                        <%= tuoiCorsi[i].matricolaP %>
+                                    </p>
+                                </div>
+                                <div class="col-md-2">
+                                    <p>
+                                        <%= tuoiCorsi[i].cfu %>
+                                    </p>
+                                </div>
+                                <div class="col-md-1 text-center">
+                                    <p>
+                                        <%= tuoiCorsi[i].anno %>
+                                    </p>
+                                </div>
+                                <% } %>
+                                    <% } %>
                     </div>
-                    <% for(var i = 0; i < appelliCorso.length; i++) { %>
-                        <div class="col-md-2">
-                            <form action="/paginaStudente/prenotati" method="POST" onsubmit="confermaPrenotazione()">
-                                <button type="submit" class="btn btn-link" title="Prenotati">
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-75" align="center">
+                        <% if (corsiAnnuali.length > 0) { %>
+                            <h3 class="text-center"><span>Piano studi
+                               <strong> <%= user.annoCorso %> anno </strong></span></h3>
+                            <div class="row">
+                                <h5 class="col-md-3"><strong>Nome:</strong></h5>
+                                <h5 class="col-md-3 text-center"><strong>Codice:</strong></h5>
+                                <h5 class="col-md-3 text-center"><strong>Matricola Docente:</strong></h5>
+                                <h5 class="col-md-3 text-center"><strong>CFU:</strong></h5>
+                            </div>
+                            <% for(var i=0; i < corsiAnnuali.length; i++) { %>
+                                <div class="col-md-3">
+                                    <p>
+                                        <a style="color:black; cursor: pointer" name="idCorso" ng-click="Cliccami('<%= corsiAnnuali[i].codice %>')" ng-model="codCorso">
+                                            <%= corsiAnnuali[i].nome %>
+                                        </a>
+                                    </p>
+                                </div>
+                                <div class="col-md-3">
+                                    <p>
+                                        <%= corsiAnnuali[i].codice %>
+                                    </p>
+                                </div>
+                                <div class="col-md-3">
+                                    <p>
+                                        <%= corsiAnnuali[i].matricolaP %>
+                                    </p>
+                                </div>
+                                <div class="col-md-3">
+                                    <p>
+                                        <%= corsiAnnuali[i].cfu %>
+                                    </p>
+                                </div>
+                                <% } %>
+                    </div>
+                    <form action="/paginaStudente/vediAppelli" method="POST">
+                        <div class="row">
+                            <h6 class="col-md-4"><strong>Clicca su un corso per vedere gli appelli disponibili</strong></h6>
+                            <div class="col-md-4">
+                                <input required="required" readonly value="{{codCorso}}" name="idCorso" class="form-control" placeholder="idCorso">
+                            </div>
+                            <button type="submit" class="btn btn-md btn-info">Vedi Appelli</button>
+                        </div>
+                    </form>
+                    <% } %>
+        </form>
+        </div>
+
+        <div class="row">
+            <% if (appelliCorso.length > 0) { %>
+                <h4 class="text-center"><strong>Date disponibili</strong> </h4>
+                <div class="row">
+                    <h5 class="col-md-2"><strong>Corso:</strong></h5>
+                    <h5 class="col-md-2"><strong>Data:</strong></h5>
+                    <h5 class="col-md-2"><strong>Ora:</strong></h5>
+                    <h5 class="col-md-2"><strong>Matricola Docente:</strong></h5>
+                    <h5 class="col-md-2"><strong>Aula:</strong></h5>
+                </div>
+                <% for(var i = 0; i < appelliCorso.length; i++) { %>
+                    <div class="col-md-2">
+                        <form action="/paginaStudente/prenotati" method="POST" onsubmit="confermaPrenotazione()">
+                            <button type="submit" class="btn btn-link" title="Prenotati">
                                         <i class="fa fa-plus-circle fa-lg" aria-hidden="true" style="color: red"></i>
                             </button>
-                                <input hidden name="idAppello" value="<%= appelliCorso[i]._id %>">
-                            </form>
-                        </div>
-                        <div class="col-md-2">
-                            <p>
-                                <%= appelliCorso[i].idCorso %>
-                            </p>
-                        </div>
-                        <div class="col-md-2">
-                            <p>
-                                <%= appelliCorso[i].data %>
-                            </p>
-                        </div>
-                        <div class="col-md-2">
-                            <p>
-                                <%= appelliCorso[i].ora %>
-                            </p>
-                        </div>
-                        <div class="col-md-2">
-                            <p>
-                                <%= appelliCorso[i].matricolaP %>
-                            </p>
-                        </div>
-                        <div class="col-md-2">
-                            <p>
-                                <%= appelliCorso[i].aula %>
-                            </p>
-                        </div>
-                        <% } %>
-                            <form action="/paginaStudente/pulisci" method="POST">
-                                <button type="submit" class="btn btn-md btn-info">  Indietro </button>
-                               
-                            </form>
-                            <% } %>
-            </div>
-        </div>
-        <footer>
-                <div class="container">
-                    <div class="row">
-                        <span><i class="fa fa-university"></i> UniMS - 62032, Camerino (MC) - IT</span>
+                            <input hidden name="idAppello" value="<%= appelliCorso[i]._id %>">
+                        </form>
                     </div>
-                </div>
-            </footer>
+                    <div class="col-md-2">
+                        <p>
+                            <%= appelliCorso[i].idCorso %>
+                        </p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>
+                            <%= appelliCorso[i].data %>
+                        </p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>
+                            <%= appelliCorso[i].ora %>
+                        </p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>
+                            <%= appelliCorso[i].matricolaP %>
+                        </p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>
+                            <%= appelliCorso[i].aula %>
+                        </p>
+                    </div>
+                    <% } %>
+                        <form action="/paginaStudente/pulisci" method="POST">
+                            <button type="submit" class="btn btn-md btn-info">  Indietro </button>
+
+                        </form>
+                        <% } %>
+        </div>
+        </div>
+
 </body>
 
 </html>
