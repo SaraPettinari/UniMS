@@ -66,246 +66,258 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="row" ng-show="IsVisible1">
-                <div class="col-lg-12">
-                    <div class="row-fluid">
-                        <form>
-                            <div id="contact-form" class="form-container" align="center" data-form-container>
 
-                                <div class="col-md-12 col-sm-75" align="center">
-                                    <% if (tuoiCorsi.length > 0) { %>
-                                        <h3 class="text-center"><span>Piano studi
+        <div class="row " ng-show="IsVisible1">
+            <form>
+                <div id="contact-form" class="form-container" align="center" data-form-container>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-75" align="center">
+
+                            <% if (tuoiCorsi.length > 0) { %>
+                                <h3 class="text-center"><span>Piano studi
                                         <strong><%= user.codFacoltà %></strong></span>
-                                        </h3>
-                                        <div class="row">
-                                            <h5 class="col-md-3"><strong>Nome:</strong></h5>
-                                            <h5 class="col-md-3 text-center"><strong>Codice:</strong></h5>
-                                            <h5 class="col-md-2 text-center"><strong>Matricola Docente:</strong></h5>
-                                            <h5 class="col-md-2 text-center"><strong>CFU:</strong></h5>
-                                            <h5 class="col-md-2 text-center"><strong>Anno:</strong></h5>
-                                        </div>
-                                        <% for(var i=0; i < tuoiCorsi.length; i++) { %>
-                                            <div class="col-md-3">
-                                                <p>
-                                                    <%= tuoiCorsi[i].nome %>
-                                                </p>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <p>
-                                                    <%= tuoiCorsi[i].codice %>
-                                                </p>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <p>
-                                                    <%= tuoiCorsi[i].matricolaP %>
-                                                </p>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <p>
-                                                    <%= tuoiCorsi[i].cfu %>
-                                                </p>
-                                            </div>
-                                            <div class="col-md-1 text-center">
-                                                <p>
-                                                    <%= tuoiCorsi[i].anno %>
-                                                </p>
-                                            </div>
-                                            <% } %>
-                                                <% } %>
+                                </h3>
+                                <hr />
+                                <div class="row">
+                                    <h5 class="col-md-3"><strong>Nome:</strong></h5>
+                                    <h5 class="col-md-3 text-center"><strong>Codice:</strong></h5>
+                                    <h5 class="col-md-2 text-center"><strong>Matricola Docente:</strong></h5>
+                                    <h5 class="col-md-2 text-center"><strong>CFU:</strong></h5>
+                                    <h5 class="col-md-2 text-center"><strong>Anno:</strong></h5>
                                 </div>
+                                <% for(var i=0; i < tuoiCorsi.length; i++) { %>
+                                    <div class="col-md-3">
+                                        <p>
+                                            <%= tuoiCorsi[i].nome %>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <p>
+                                            <%= tuoiCorsi[i].codice %>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <p>
+                                            <%= tuoiCorsi[i].matricolaP %>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <p>
+                                            <%= tuoiCorsi[i].cfu %>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-1 text-center">
+                                        <p>
+                                            <%= tuoiCorsi[i].anno %>
+                                        </p>
+                                    </div>
+                                    <% } %>
+                                        <% } %>
+                        </div>
+                    </div>
+                </div>
+            </form>
 
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <h4 class="text-center"><strong>Crea corso</strong></h4>
-                                    <div>
-                                        <form action="/paginaAmministratore" method="POST">
-                                            <input type="text" name="nome" placeholder="nome corso" required="required" class="form-control" /><br>
-                                            <input type="text" name="codice" placeholder="codice corso" required="required" class="form-control" /><br>
-                                            <select ng-model="prof" class="form-control">  
+            <form>
+                <div id="contact-form" class="form-container" align="center" data-form-container>
+                    <div class="row">
+
+                        <div class="col-md-4">
+                            <h3 class="text-center"><strong>Crea corso</strong></h3>
+                            <hr/>
+                            <div>
+                                <form action="/paginaAmministratore" method="POST">
+                                    <input type="text" name="nome" placeholder="nome corso" required="required" class="form-control" /><br>
+                                    <input type="text" name="codice" placeholder="codice corso" required="required" class="form-control" /><br>
+                                    <select ng-model="prof" class="form-control">  
                                         <option value="" disabled selected hidden>Docente</option>
                                         <% docentiFacoltà.forEach(function(prof){%>
                                             <option value=<%=prof.matricola%>> <%= prof.nome %>  <%= prof.cognome %></option>
                                         <% })%>
                                 </select><br>
-                                            <input readonly value="{{prof}}" type="text" name="matricolaP" placeholder="matricola professore" required="required" class="form-control"
-                                            /><br>
-                                            <input type="number" name="cfu" placeholder="cfu" required="required" class="form-control" min="3" max="12" /><br>
-                                            <input type="number" name="anno" placeholder="anno" required="required" class="form-control" min="1" max="3" /><br>
-                                            <button type="submit" class="btn btn-md  btn-info" ng-show="IsVisible1"><strong>OK </strong></button>
+                                    <input readonly value="{{prof}}" type="text" name="matricolaP" placeholder="matricola professore" required="required" class="form-control"
+                                    /><br>
+                                    <input type="number" name="cfu" placeholder="cfu" required="required" class="form-control" min="3" max="12" /><br>
+                                    <input type="number" name="anno" placeholder="anno" required="required" class="form-control" min="1" max="3" /><br>
+                                    <button type="submit" class="btn btn-md  btn-info" ng-show="IsVisible1"><strong>OK </strong></button>
 
-                                        </form>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <h4 class="text-center"><strong>Modifica corso</strong> </h4>
-                                    <div>
-                                        <div>
-                                            <label><span>Corso da modificare:</span></label><br>
-                                            <select ng-model="corso" class="form-control">
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <h3 class="text-center"><strong>Modifica corso</strong> </h3>
+                            <div>
+                                <div>
+                                    <label><span>Corso da modificare:</span></label><br>
+                                    <hr />
+                                    <select ng-model="corso" class="form-control">
                                         <option value="" disabled selected hidden>Corso</option>
                                 <% tuoiCorsi.forEach(function(tuoiCorsi){%>
                                     <option value=<%=tuoiCorsi.codice%>> <%= tuoiCorsi.nome %></option>
                                 <% })%>
                                     </select><br>
-                                            <form action="/paginaAmministratore/update" method="POST">
-                                                <input readonly type="text" name="codice" placeholder="codice" required="required" class="form-control" value="{{corso}}"
-                                                /><br>
-                                                <select ng-model="profM" class="form-control">  
+                                    <form action="/paginaAmministratore/update" method="POST">
+                                        <input readonly type="text" name="codice" placeholder="codice" required="required" class="form-control" value="{{corso}}"
+                                        /><br>
+                                        <select ng-model="profM" class="form-control">  
                                         <option value="" disabled selected hidden>Docente</option>
                                         <% docentiFacoltà.forEach(function(prof){%>
                                             <option value=<%=prof.matricola%>> <%= prof.nome %>  <%= prof.cognome %></option>
                                         <% })%>
                                 </select><br>
-                                                <input readonly value="{{profM}}" type="text" name="matricolaP" placeholder="matricola professore" required="required" class="form-control"
-                                                /><br>
-                                                <input type="number" name="cfu" placeholder="cfu" required="required" class="form-control" min="3" max="12" /><br>
-                                                <input type="number" name="anno" placeholder="anno" required="required" class="form-control" min="1" max="3" /><br>
-                                                <button type="submit" class="btn btn-md btn-info " name="updateB" ng-show="IsVisible1">OK</button>
-                                            </form>
-                                        </div>
-                                    </div>
+                                        <input readonly value="{{profM}}" type="text" name="matricolaP" placeholder="matricola professore" required="required" class="form-control"
+                                        /><br>
+                                        <input type="number" name="cfu" placeholder="cfu" required="required" class="form-control" min="3" max="12" /><br>
+                                        <input type="number" name="anno" placeholder="anno" required="required" class="form-control" min="1" max="3" /><br>
+                                        <button type="submit" class="btn btn-md btn-info " name="updateB" ng-show="IsVisible1">OK</button>
+                                    </form>
                                 </div>
-                                <div class="col-md-4">
-                                    <h4 class="text-center"><strong>Rimuovi corso </strong></h4>
-                                    <div>
-                                        <label><span>Corso da rimuovere:</span></label>
-                                        <form action="/paginaAmministratore/remove" method="POST">
-                                            <select ng-model="corsoR" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <h3 class="text-center"><strong>Rimuovi corso </strong></h3>
+                            <hr />
+                            <div>
+                                <label><span>Corso da rimuovere:</span></label>
+                                <form action="/paginaAmministratore/remove" method="POST">
+                                    <select ng-model="corsoR" class="form-control">
                                     <% tuoiCorsi.forEach(function(tuoiCorsi){%>
                                         <option value=<%=tuoiCorsi.codice%>> <%= tuoiCorsi.nome %></option>
                                     <% })%>
                             </select>
-                                            <br>
-                                            <input type="hidden" name="codice" placeholder="codice" value="{{corsoR}}" />
-                                            <button type="submit" class="btn btn-md  btn-info" name="removeB">OK</button>
-                                        </form>
-                                    </div>
-                                </div>
+                                    <br>
+                                    <input type="hidden" name="codice" placeholder="codice" value="{{corsoR}}" />
+                                    <button type="submit" class="btn btn-md  btn-info" name="removeB">OK</button>
+                                </form>
                             </div>
-                        </form>
+                        </div>
+
                     </div>
                 </div>
+            </form>
 
-            </div>
         </div>
-
         <br>
         <div class="row" ng-show="IsVisible2">
-
-            <div class="row">
-                <div class="col-md-12 col-sm-75" align="center">
-                    <% if (docentiFacoltà.length > 0) { %>
-                        <h4 class="text-center"><span>Docenti:
+            <form>
+                <div id="contact-form" class="form-container" align="center" data-form-container>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-75" align="center">
+                            <% if (docentiFacoltà.length > 0) { %>
+                                <h3>
+                                    <class="text-center"><span>Docenti:
                                         <strong><%= user.codFacoltà %></strong></span>
-                        </h4>
-                        <div class="row">
-                            <h5 class="col-md-3 text-center"><strong>Nome:</strong></h5>
-                            <h5 class="col-md-3 text-center"><strong>Cognome:</strong></h5>
-                            <h5 class="col-md-2 text-center"><strong>Matricola Docente:</strong></h5>
-                            <h5 class="col-md-2 text-center"><strong>Email:</strong></h5>
-                            <h5 class="col-md-2 text-center"><strong>Username:</strong></h5>
-                        </div>
-                        <% for(var i=0; i < docentiFacoltà.length; i++) { %>
-                            <div class="col-md-3">
-                                <p>
-                                    <%= docentiFacoltà[i].nome %>
-                                </p>
-                            </div>
-                            <div class="col-md-3">
-                                <p>
-                                    <%= docentiFacoltà[i].cognome %>
-                                </p>
-                            </div>
-                            <div class="col-md-2">
-                                <p>
-                                    <%= docentiFacoltà[i].matricola %>
-                                </p>
-                            </div>
-                            <div class="col-md-2">
-                                <p>
-                                    <%= docentiFacoltà[i].email %>
-                                </p>
-                            </div>
-                            <div class="col-md-2 ">
-                                <p>
-                                    <%= docentiFacoltà[i].username %>
-                                </p>
-                            </div>
-                            <% } %>
-                                <% } %>
-                </div>
-
-            </div>
-            <br>
-            <div class="row" align="center">
-                <div class="col-md-12  " align="center">
-                    <h4 class="text-center"><span><strong>Registra Nuovo Docente</strong></span></h4>
-                    <div>
-                        <% if (message) { %>
-                            <div>
-                                <h5 class="text-center text-danger">
-                                    <%= message %>
-                                </h5>
-                            </div>
-                            <% } %>
-                                <form action="/paginaAmministratore/registrazioneDocente" method="POST">
-                                    <div class="col-md-12 col-sm-75">
-                                        <div class="row" align="center">
-
-                                            <div class="col-sm-6 form-group ">
-
-                                                <label>Nome</label>
-                                                <input name="nome" type="text" class="form-control" required="required">                                                </div>
-                                            <div class="col-sm-6 form-group ">
-                                                <label>Cognome</label>
-                                                <input name="cognome" type="text" class="form-control" required="required">
-
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-6 form-group">
-                                                <label>Username</label>
-                                                <input placeholder="nome.cognome" name="username" type="text" class="form-control" required="required">
-                                            </div>
-                                            <div class="col-sm-6 form-group">
-                                                <label>Password (temporanea)</label>
-                                                <input name="password" type="password" class="form-control" required="required">
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-6 form-group">
-                                                <label>Data Nascita</label>
-                                                <input name="dataDiNascita" type="date" class="form-control" required="required">
-                                            </div>
-                                            <div class="col-sm-6 form-group">
-                                                <label>Cellulare</label>
-                                                <input name="telefono" type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Corso di Laurea</label>
-                                            <input name="codFacoltà" type="text" class="form-control" required="required" align="center" readonly value="<%= user.codFacoltà %>">
-                                        </div>
-
-                                        <br>
-                                        <button align: "center" type="submit" class="btn btn-lg btn-info">Invia</button>
+                                </h3>
+                                <hr/>
+                                <div class="row">
+                                    <h5 class="col-md-3 text-center"><strong>Nome:</strong></h5>
+                                    <h5 class="col-md-3 text-center"><strong>Cognome:</strong></h5>
+                                    <h5 class="col-md-2 text-center"><strong>Matricola Docente:</strong></h5>
+                                    <h5 class="col-md-2 text-center"><strong>Email:</strong></h5>
+                                    <h5 class="col-md-2 text-center"><strong>Username:</strong></h5>
+                                </div>
+                                <% for(var i=0; i < docentiFacoltà.length; i++) { %>
+                                    <div class="col-md-3">
+                                        <p>
+                                            <%= docentiFacoltà[i].nome %>
+                                        </p>
                                     </div>
-                                </form>
+                                    <div class="col-md-3">
+                                        <p>
+                                            <%= docentiFacoltà[i].cognome %>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <p>
+                                            <%= docentiFacoltà[i].matricola %>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <p>
+                                            <%= docentiFacoltà[i].email %>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-2 ">
+                                        <p>
+                                            <%= docentiFacoltà[i].username %>
+                                        </p>
+                                    </div>
+                                    <% } %>
+                                        <% } %>
+                        </div>
+
                     </div>
                 </div>
-            </div>
+            </form>
+            <br>
+            <form>
+                <div id="contact-form" class="form-container" align="center" data-form-container>
+                    <div class="row" align="center">
+                        <div class="col-md-12  " align="center">
+                            <h3 class="text-center"><span><strong>Registra Nuovo Docente</strong></span></h3>
+                            <hr />
+                            <div>
+                                <% if (message) { %>
+                                    <div>
+                                        <h5 class="text-center text-danger">
+                                            <%= message %>
+                                        </h5>
+                                    </div>
+                                    <% } %>
+                                        <form action="/paginaAmministratore/registrazioneDocente" method="POST">
+                                            <div class="col-md-12 col-sm-75">
+                                                <div class="row" align="center">
+
+                                                    <div class="col-sm-6 form-group ">
+
+                                                        <label>Nome</label>
+                                                        <input name="nome" type="text" class="form-control" required="required" placeholder="nome">                                                        </div>
+                                                    <div class="col-sm-6 form-group ">
+                                                        <label>Cognome</label>
+                                                        <input name="cognome" type="text" class="form-control" required="required" placeholder="cognome">
+
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-6 form-group">
+                                                        <label>Username</label>
+                                                        <input placeholder="nome.cognome" name="username" type="text" class="form-control" required="required">
+                                                    </div>
+                                                    <div class="col-sm-6 form-group">
+                                                        <label>Password (temporanea)</label>
+                                                        <input name="password" type="password" class="form-control" required="required" placeholder="password">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-6 form-group">
+                                                        <label>Data Nascita</label>
+                                                        <input name="dataDiNascita" type="date" class="form-control" required="required" placeholder="data di nascita">
+                                                    </div>
+                                                    <div class="col-sm-6 form-group">
+                                                        <label>Cellulare</label>
+                                                        <input name="telefono" type="text" class="form-control" placeholder="cellulare">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Corso di Laurea</label>
+                                                    <input name="codFacoltà" type="text" class="form-control" required="required" align="center" readonly value="<%= user.codFacoltà %>"
+                                                        placeholder="codice Facoltà">
+                                                </div>
+
+                                                <br>
+                                                <button align: "center" type="submit" class="btn btn-lg btn-info">Invia</button>
+                                            </div>
+                                        </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
-    </div>
-    </div>
-    <footer>
-        <div class="container">
-            <div class="row">
-                <span><i class="fa fa-university"></i> UniMS - 62032, Camerino (MC) - IT</span>
-            </div>
-        </div>
-    </footer>
+
+
 </body>
 
 </html>
