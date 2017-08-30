@@ -37,6 +37,7 @@
                     <div>
                         <table class="table table-bordered">
                             <tr>
+                                <th> </th>
                                 <th>Corso: </th>
                                 <th>Data: </th>
                                 <th>Ora: </th>
@@ -47,6 +48,14 @@
                             </tr>
                             <% for(var i=0; i < prenotazioni.length; i++) { %>
                                 <tr>
+                                    <td class="col-md-1 text-center">
+                                        <form action="/paginaStudente/vediPrenotazioni/cancellaPrenotazione" method="POST" onsubmit="cancellaPrenotazione()">
+                                            <button type="submit" class="btn btn-link" title="Cancella Prenotazione">
+                                                <i class="fa fa-times fa-lg" aria-hidden="true" style="color: red"></i>
+                                            </button>
+                                            <input hidden name="idAppello" value="<%= prenotazioni[i]._id %>">
+                                        </form>
+                                    </td>
                                     <td class="col-md-1">
                                         <%= prenotazioni[i].idCorso %>
                                     </td>
@@ -84,7 +93,7 @@
                             <label> Esito </label>
                             <input name="myEsito" value="<%= myEsito %>" readonly type="number">
                             <button type="submit" title="Conferma e Verbalizza Online il voto!" class="btn btn-success btn-sm"> Conferma </button>
-                            <!--<button formaction="/rifiutaVoto" type="submit" title="Rifiuta il voto!" class="btn btn-danger btn-sm"> Rifiuta </button> -->                           
+                            <!--<button formaction="/rifiutaVoto" type="submit" title="Rifiuta il voto!" class="btn btn-danger btn-sm"> Rifiuta </button> -->
                         </form>
                     </div>
                     <% } else { %>
@@ -92,7 +101,7 @@
                         <% } %>
             </div>
 
-            
+
 
 
             <form action="/paginaStudente" method="GET">

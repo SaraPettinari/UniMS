@@ -40,7 +40,7 @@ AppelliController.removeAppelli = function (id, callback) {
     });
 }
 
-AppelliController.verbalizzaAppello = function (data, matricolaS, callback) {
+AppelliController.verbalizzaAppello = function (data, matricolaS, idAppello, callback) {
     var newCarriera = new Carriera();
 
     newCarriera.codCorso = data.codCorso;
@@ -57,6 +57,16 @@ AppelliController.verbalizzaAppello = function (data, matricolaS, callback) {
         Studente.findOne({ 'matricola': matricolaS }, function (err, studente) {
             studente.carriera.push(newCarriera);
             studente.save();
+
+            Appelli.findOne({ '_id': idAppello }, function (err, appello) {
+                if (err) throw err;
+                var i = appello.matricolaS.indexOf(matricolaS);
+                if (i > -1) {
+                    appello.matricolaS.splice(i, 1);
+                    appello.esito.splice(i, 1);
+                }
+                appello.save();
+            });
         });
     });
 }
@@ -97,6 +107,18 @@ AppelliController.prenotazione = function (matricolaStudente, id) {
         appello.save();
     });
     console.log('Prenotazione avvenuta con successo');
+}
+
+AppelliController.cancellaPrenotazione = function (matricolaStudente, id) {
+    Appelli.findOne({ '_id': id }, function (err, appello) {
+        if (err) throw err;
+        var arr = [];
+        var i = appello.matricolaS.indexOf(matricolaStudente);
+        if (i > -1)
+            appello.matricolaS.splice(i, 1);
+        appello.save();
+    });
+    console.log('Prenotazione cancellata con successo');
 }
 
 AppelliController.addEsito = function (listEsiti, id) {

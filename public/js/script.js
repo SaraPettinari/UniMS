@@ -1,6 +1,9 @@
 function confermaPrenotazione() {
     confirm('Vuoi confermare la prenotazione?');
 }
+function cancellaPrenotazione(){
+    confirm('Vuoi cancellare la prenotazione?');
+}
 
 function creaArrayVoti() {
     var array = [];
@@ -77,4 +80,13 @@ function generaGrafico() {
         }
     );
 
+}
+
+function generaPdf(){
+    var doc = new jsPDF();
+    doc.fromHTML($('#tabellaEsiti').html(), 15, 15, {
+        'width': 170,
+            'elementHandlers': {}
+    });
+    doc.save('esitiAppello.pdf');
 }
