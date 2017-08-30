@@ -19,7 +19,7 @@ router.get('/', isAuthenticated, function (req, res) {
             DocentiController.listaDocentiFacoltà(req.user.codFacoltà, function (err3, docentiFacoltà) {
                 if (!err && !err2 && !err3) {
                     res.render('paginaAmministratore', {
-                        title: 'Corsi',
+                        title: 'Pagina Amministratore',
                         corsi: corsi,
                         tuoiCorsi: tuoiCorsi,
                         user: req.user,

@@ -658,5 +658,15 @@ body {
 .tabs-left > .nav-tabs .active > a:focus {
   border-color: #ddd transparent #ddd #ddd;
   *border-right-color: #ffffff;
-  color: red;
+  color: #01aaff;
+}
+
+#backgroundBenvenuto{
+  background-color: rgb(156, 202, 230); 
+  border-radius: 5px;
+  margin-top: 30px;
+}
+
+.marginTop {
+  margin-top: 30px;
 }

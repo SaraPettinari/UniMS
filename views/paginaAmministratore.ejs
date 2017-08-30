@@ -24,80 +24,82 @@
 </head>
 
 <body ng-app="appAdmin" ng-controller="controllerAdmin">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6 col-md-4 col-md-offset-4">
+    <div class="tabbable tabs-left col-md-2">
+        <ul class="nav nav-tabs">
+            <li> <a href="/"><img src="img/logo.png"></a></li>
+            <li class="active"><a href="#1" data-toggle="tab">Home</a></li>
+            <li><a href="#2" data-toggle="tab">Corsi</a></li>
+            <li><a href="#3" data-toggle="tab">Gestione Corsi</a></li>
+            <li><a href="#4" data-toggle="tab">Docenti</a></li>
+            <li><a href="#5" data-toggle="tab">Gestione Docenti</a></li>
+            <li><a href="/logout" class="btn btn-primary btn-md" style="background-color: rgb(156, 202, 230)">Log Out</a></li>
+        </ul>
+    </div>
+    <div class="tab-content col-md-10">
+        <div id="1" class="tab-pane active">
+            <div class="col-sm-6 col-md-4 col-md-offset-4" id="backgroundBenvenuto">
                 <div>
-                    <h3 class="text-center">Benvenuto
-                        <%= user.nome %>.</h3>
+                    <h2 class="text-center text-capitalize">Benvenuto
+                        <%= user.nome %>!</h2>
                     <div>
-                        <ul class="list-unstyled">
-                            <li>Username:
-                                <%= user.username %>
-                            </li>
-                            <li>Email:
-                                <%= user.email %>
-                            </li>
-                            <li>Nome:
+                        <ul class="list-group text-center">
+                            <li class="list-group-item"><strong> Nome: </strong>
                                 <%= user.nome %>
                             </li>
-                            <li>Cognome:
+                            <li class="list-group-item"><strong> Cognome:</strong>
                                 <%= user.cognome %>
                             </li>
-                            <li>Matricola:
+                            <li class="list-group-item"><strong>Matricola:</strong>
                                 <%= user.matricola %>
+                            </li>
+                            <li class="list-group-item"><strong>Username:</strong>
+                                <%= user.username %>
+                            </li>
+                            <li class="list-group-item"><strong>Email:</strong>
+                                <%= user.email %>
                             </li>
                         </ul>
                     </div>
-                    <a href="/logout" class="btn btn-lg btn-danger btn-block">Log Out</a>
-                    <button type="button" ng-click="ShowHide1()" class="btn btn-lg btn-info btn-block"> {{activityC}} Corsi </button>
-                    <button type="button" ng-click="ShowHide2()" class="btn btn-lg btn-success btn-block"> {{activityD}} Docenti </button>
                 </div>
             </div>
         </div>
-        <div class="row" ng-show="IsVisible1">
-            <div class="row">
-                <% if (tuoiCorsi.length > 0) { %>
-                    <h4 class="text-center">Piano studi
-                        <%= user.codFacoltà %>
-                    </h4>
-                    <div class="row">
-                        <h5 class="col-md-3">Nome:</h5>
-                        <h5 class="col-md-3">Codice:</h5>
-                        <h5 class="col-md-3">Matricola Docente:</h5>
-                        <h5 class="col-md-2">CFU:</h5>
-                        <h5 class="col-md-1">Anno:</h5>
-                    </div>
+        <div id="2" class="tab-pane">
+            <% if (tuoiCorsi.length > 0) { %>
+                <h3 class="text-center">Piano studi
+                    <%= user.codFacoltà %>
+                </h3>
+                <table class="table marginTop">
+                    <tr>
+                        <th class="col-md-3">Nome:</th>
+                        <th class="col-md-2">Codice:</th>
+                        <th class="col-md-2">Matricola Docente:</th>
+                        <th class="col-md-2">CFU:</th>
+                        <th class="col-md-2">Anno:</th>
+                    </tr>
                     <% for(var i=0; i < tuoiCorsi.length; i++) { %>
-                        <div class="col-md-3">
-                            <p>
+                        <tr>
+                            <td>
                                 <%= tuoiCorsi[i].nome %>
-                            </p>
-                        </div>
-                        <div class="col-md-3">
-                            <p>
+                            </td>
+                            <td>
                                 <%= tuoiCorsi[i].codice %>
-                            </p>
-                        </div>
-                        <div class="col-md-3">
-                            <p>
+                            </td>
+                            <td>
                                 <%= tuoiCorsi[i].matricolaP %>
-                            </p>
-                        </div>
-                        <div class="col-md-2">
-                            <p>
+                            </td>
+                            <td>
                                 <%= tuoiCorsi[i].cfu %>
-                            </p>
-                        </div>
-                        <div class="col-md-1 text-center">
-                            <p>
+                            </td>
+                            <td>
                                 <%= tuoiCorsi[i].anno %>
-                            </p>
-                        </div>
+                            </td>
+                        </tr>
                         <% } %>
                             <% } %>
-            </div>
-            <div class="row">
+                </table>
+        </div>
+        <div id="3" class="tab-pane">
+            <div class="row marginTop">
                 <div class="col-md-4">
                     <h4 class="text-center">Crea corso</h4>
                     <div>
@@ -105,16 +107,16 @@
                             <input type="text" name="nome" placeholder="nome" required="required" class="form-control" />
                             <input type="text" name="codice" placeholder="codice corso" required="required" class="form-control" />
                             <select ng-model="prof" class="form-control">  
-                                        <option value="" disabled selected hidden>Docente</option>
-                                        <% docentiFacoltà.forEach(function(prof){%>
-                                            <option value=<%=prof.matricola%>> <%= prof.nome %>  <%= prof.cognome %></option>
-                                        <% })%>
-                                </select>
+                                                <option value="" disabled selected hidden>Docente</option>
+                                                <% docentiFacoltà.forEach(function(prof){%>
+                                                    <option value=<%=prof.matricola%>> <%= prof.nome %>  <%= prof.cognome %></option>
+                                                <% })%>
+                                        </select>
                             <input readonly value="{{prof}}" type="text" name="matricolaP" placeholder="matricola professore" required="required" class="form-control"
                             />
                             <input type="number" name="cfu" placeholder="cfu" required="required" class="form-control" min="3" max="12" />
                             <input type="number" name="anno" placeholder="anno" required="required" class="form-control" min="1" max="3" />
-                            <button type="submit" class="btn btn-lg btn-success btn-block" ng-show="IsVisible1">OK</button>
+                            <button type="submit" class="btn btn-lg btn-info btn-block">OK</button>
                         </form>
                     </div>
                 </div>
@@ -123,26 +125,25 @@
                     </h4>
                     <div>
                         <div>
-                            <label>Corso da modificare:</label>
                             <select ng-model="corso" class="form-control">
-                                <% tuoiCorsi.forEach(function(tuoiCorsi){%>
-                                    <option value=<%=tuoiCorsi.codice%>> <%= tuoiCorsi.nome %></option>
-                                <% })%>
-                                    </select>
+                                        <% tuoiCorsi.forEach(function(tuoiCorsi){%>
+                                            <option value=<%=tuoiCorsi.codice%>> <%= tuoiCorsi.nome %></option>
+                                        <% })%>
+                                            </select>
                             <form action="/paginaAmministratore/update" method="POST">
                                 <input readonly type="text" name="codice" placeholder="codice" required="required" class="form-control" value="{{corso}}"
                                 />
                                 <select ng-model="profM" class="form-control">  
-                                        <option value="" disabled selected hidden>Docente</option>
-                                        <% docentiFacoltà.forEach(function(prof){%>
-                                            <option value=<%=prof.matricola%>> <%= prof.nome %>  <%= prof.cognome %></option>
-                                        <% })%>
-                                </select>
+                                                <option value="" disabled selected hidden>Docente</option>
+                                                <% docentiFacoltà.forEach(function(prof){%>
+                                                    <option value=<%=prof.matricola%>> <%= prof.nome %>  <%= prof.cognome %></option>
+                                                <% })%>
+                                        </select>
                                 <input readonly value="{{profM}}" type="text" name="matricolaP" placeholder="matricola professore" required="required" class="form-control"
                                 />
                                 <input type="number" name="cfu" placeholder="cfu" required="required" class="form-control" min="3" max="12" />
                                 <input type="number" name="anno" placeholder="anno" required="required" class="form-control" min="1" max="3" />
-                                <button type="submit" class="btn btn-lg btn-success btn-block" name="updateB" ng-show="IsVisible1">OK</button>
+                                <button type="submit" class="btn btn-lg btn-info btn-block" name="updateB">OK</button>
                             </form>
                         </div>
                     </div>
@@ -150,66 +151,58 @@
                 <div class="col-md-4">
                     <h4 class="text-center">Rimuovi corso </h4>
                     <div>
-                        <label>Corso da rimuovere:</label>
                         <form action="/paginaAmministratore/remove" method="POST">
                             <select ng-model="corsoR" class="form-control">
-                                    <% tuoiCorsi.forEach(function(tuoiCorsi){%>
-                                        <option value=<%=tuoiCorsi.codice%>> <%= tuoiCorsi.nome %></option>
-                                    <% })%>
-                            </select>
+                                            <% tuoiCorsi.forEach(function(tuoiCorsi){%>
+                                                <option value=<%=tuoiCorsi.codice%>> <%= tuoiCorsi.nome %></option>
+                                            <% })%>
+                                    </select>
                             <input type="hidden" name="codice" placeholder="codice" value="{{corsoR}}" />
-                            <button type="submit" class="btn btn-lg btn-success btn-block" name="removeB">OK</button>
+                            <button type="submit" class="btn btn-lg btn-info btn-block" name="removeB">OK</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="row" ng-show="IsVisible2">
-            <div class="row">
-                <% if (docentiFacoltà.length > 0) { %>
-                    <h4 class="text-center">Docenti:
-                        <%= user.codFacoltà %>
-                    </h4>
-                    <div class="row">
-                        <h5 class="col-md-3">Nome:</h5>
-                        <h5 class="col-md-3">Cognome:</h5>
-                        <h5 class="col-md-3">Matricola Docente:</h5>
-                        <h5 class="col-md-2">Email:</h5>
-                        <h5 class="col-md-1">Username:</h5>
-                    </div>
+        <div id="4" class="tab-pane">
+            <% if (docentiFacoltà.length > 0) { %>
+                <h3 class="text-center">Docenti:
+                    <%= user.codFacoltà %>
+                </h3>
+                <table class="table marginTop">
+                    <tr>
+                        <th class="col-md-2">Nome:</th>
+                        <th class="col-md-2">Cognome:</th>
+                        <th class="col-md-3">Matricola Docente:</th>
+                        <th class="col-md-3">Email:</th>
+                        <th class="col-md-2">Username:</th>
+                    </tr>
                     <% for(var i=0; i < docentiFacoltà.length; i++) { %>
-                        <div class="col-md-3">
-                            <p>
+                        <tr>
+                            <td>
                                 <%= docentiFacoltà[i].nome %>
-                            </p>
-                        </div>
-                        <div class="col-md-3">
-                            <p>
+                            </td>
+                            <td>
                                 <%= docentiFacoltà[i].cognome %>
-                            </p>
-                        </div>
-                        <div class="col-md-3">
-                            <p>
+                            </td>
+                            <td>
                                 <%= docentiFacoltà[i].matricola %>
-                            </p>
-                        </div>
-                        <div class="col-md-2">
-                            <p>
+                            </td>
+                            <td>
                                 <%= docentiFacoltà[i].email %>
-                            </p>
-                        </div>
-                        <div class="col-md-1 text-center">
-                            <p>
+                            </td>
+                            <td>
                                 <%= docentiFacoltà[i].username %>
-                            </p>
-                        </div>
+                            </td>
+                        </tr>
                         <% } %>
-                            <% } %>
-            </div>
-            <div class="row">
-                <div>
-                    <h4 class="text-center">Registra Nuovo Docente</h4>
+                </table>
+                <% } %>
+        </div>
+        <div id="5" class="tab-pane">
+            <div class="row marginTop">
+                <div class="col-md-8 col-md-offset-2">
+                    <h3 class="text-center">Registra Nuovo Docente</h3>
                     <div>
                         <% if (message) { %>
                             <div>
