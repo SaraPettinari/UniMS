@@ -25,9 +25,10 @@ function generaGrafico() {
     });
 
     var dataP = [];
+    var i = 0;
     array.forEach(function (element) {
-        var i = 0;
         dataP.push({ "date": element, "column-1": arrayEsito[i] });
+        i++;
     });
 
     // <!-- amCharts javascript code -->
@@ -39,7 +40,7 @@ function generaGrafico() {
             "dataDateFormat": "YYYY-MM-DD",
             "theme": "light",
             "categoryAxis": {
-                "parseDates": true
+               // "parseDates": true
             },
             "chartCursor": {
                 "enabled": true
@@ -54,32 +55,22 @@ function generaGrafico() {
                     "id": "AmGraph-1",
                     "title": "graph 1",
                     "valueField": "column-1"
-                },
-                {
-                    "bullet": "square",
-                    "id": "AmGraph-2",
-                    "title": "graph 2",
-                    "valueField": "column-2"
                 }
             ],
             "guides": [],
             "valueAxes": [
                 {
                     "id": "ValueAxis-1",
-                    "title": "Axis title"
+                    "title": "Voti",
                 }
             ],
             "allLabels": [],
             "balloon": {},
-            "legend": {
-                "enabled": true,
-                "useGraphSettings": true
-            },
             "titles": [
                 {
                     "id": "Title-1",
                     "size": 15,
-                    "text": "Chart Title"
+                    "text": "Andamento Carriera"
                 }
             ],
             "dataProvider": dataP

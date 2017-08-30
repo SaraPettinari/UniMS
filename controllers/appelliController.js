@@ -2,6 +2,7 @@ var Docenti = require('../models/personale').model('Prof');
 var Appelli = require('../models/esame');
 var Carriera = require('../models/appelliVerbalizzati');
 var Studente = require('../models/user');
+var Corsi = require('../models/corsi');
 
 var AppelliController = function () { };
 
@@ -45,16 +46,32 @@ AppelliController.verbalizzaAppello = function (data, matricolaS, callback) {
     newCarriera.codCorso = data.codCorso;
     newCarriera.data = data.data;
     newCarriera.esito = data.esito;
-   
-    newCarriera.save(function (err) {
-        if (err) throw err;
-        console.log('Verbalizzazione avvenuta con successo!');
-    });
+    Corsi.findOne({ 'codice': data.codCorso }, function (err, corso) {
+        newCarriera.cfu = corso.cfu;
 
-    Studente.findOne({'matricola': matricolaS}, function(err, studente){
-        studente.carriera.push(newCarriera);
-        studente.save();
-    })
+        newCarriera.save(function (err) {
+            if (err) throw err;
+            console.log('Verbalizzazione avvenuta con successo!');
+        });
+
+        Studente.findOne({ 'matricola': matricolaS }, function (err, studente) {
+            studente.carriera.push(newCarriera);
+            studente.save();
+        });
+    });
+}
+
+AppelliController.calcolaProgressione = function (matricolaS, callback) {
+    Studente.findOne({ 'matricola': matricolaS }, function (err, studente) {
+        if (err) return callback(err, null);
+        else {
+            var progressioneCfu = 0;
+            studente.carriera.forEach(function (element) {
+                progressioneCfu += element.cfu;
+            });
+            return callback(null, progressioneCfu);
+        }
+    });
 }
 
 AppelliController.listaAppelli = function (docente, callback) {
@@ -148,7 +165,7 @@ AppelliController.sendEsitoStudente = function (matricolaS, idAppello, callback)
         else {
             var i = 0;
             appello.matricolaS.forEach(function (element) {
-                if (element === matricolaS){
+                if (element === matricolaS) {
                     var myEsito = appello.esito[i];
                     return callback(null, myEsito, appello.data, appello.idCorso);
                 }

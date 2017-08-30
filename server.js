@@ -10,7 +10,7 @@ var student = require('./routes/student');
 var urlDb = require('./config');
 var mongoose = require('mongoose');
 
-mongoose.connect(urlDb.databaseLocale);
+mongoose.connect(urlDb.databaseLocale || urlDb.databaseRemoto);
 var con = mongoose.connection;
 con.on('error', console.error.bind(console, 'connection error: '));
 con.once('open', function () {

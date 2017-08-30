@@ -3,9 +3,10 @@ var Schema = mongoose.Schema;
 var Esame = require('./esame');
 
 var appelliVerbalizzati = new Schema({
-    codCorso: { type: String},
+    codCorso: { type: String },
     data: { type: String },
-    esito: { type: Number, min: 18, max: 31 }
+    esito: { type: Number, min: 18, max: 31 },
+    cfu: { type: Number }
 },
     {
         versionKey: false

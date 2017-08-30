@@ -387,7 +387,7 @@ analisimath2.save(function (err) {
 });
 
 var fisicatermo = new corsi({
-    nome: 'Laboatorio di Fisica Termodinamica',
+    nome: 'Laboratorio di Fisica Termodinamica',
     codice: 'M-44',
     codFacoltà: prof2.codFacoltà,
     matricolaP: prof2.matricola,
@@ -399,7 +399,7 @@ fisicatermo.save(function (err) {
 });
 
 var analisilab = new corsi({
-    nome: 'Laboatorio di Analisi Matematica III',
+    nome: 'Laboratorio di Analisi Matematica III',
     codice: 'M-37',
     codFacoltà: prof2.codFacoltà,
     matricolaP: prof2.matricola,
