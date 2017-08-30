@@ -8,7 +8,7 @@ var studenti = require('./models/user');
 var urlDb = require('./config');
 
 var mongoose = require('mongoose');
-mongoose.connect(urlDb.databaseLocale);
+mongoose.connect(urlDb.databaseLocale || urlDb.databaseRemoto);
 var db = mongoose.connection;
 mongoose.connection.on('error', console.error.bind(console, 'errore nella connessione al db'));
 
