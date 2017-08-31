@@ -20,13 +20,16 @@ var thisAppello = new String(); //memorizza l'id dell'appello selezionato
 router.get('/', isAuthenticated, function (req, res) {
     CorsiController.listaTuoiCorsi(req.user.codFacoltà, function (err, tuoiCorsi) {
         CorsiController.corsiAnnuali(req.user.annoCorso, req.user.codFacoltà, function (err, corsiAnnuali) {
-            AppelliController.calcolaProgressione(req.user.matricola, function (err, progressioneCfu) {
-                res.render('paginaStudente', {
-                    title: 'PaginaStudente',
-                    user: req.user,
-                    tuoiCorsi: tuoiCorsi,
-                    corsiAnnuali: corsiAnnuali,
-                    progressioneCfu: progressioneCfu
+            CorsiController.appelliPrenotabili(req.user, req.user.codFacoltà, function (err, appelliPrenotabili) {
+                AppelliController.calcolaProgressione(req.user.matricola, function (err, progressioneCfu) {
+                    res.render('paginaStudente', {
+                        title: 'PaginaStudente',
+                        user: req.user,
+                        tuoiCorsi: tuoiCorsi,
+                        corsiAnnuali: corsiAnnuali,
+                        progressioneCfu: progressioneCfu,
+                        appelliPrenotabili: appelliPrenotabili
+                    });
                 });
             });
         });
@@ -101,7 +104,7 @@ router.post('/vediPrenotazioni/confermaVoto', isAuthenticated, function (req, re
         data: req.body.dataAppello,
         esito: req.body.myEsito,
     }
-    AppelliController.verbalizzaAppello(data, req.user.matricola/*, thisAppello*/);
+    AppelliController.verbalizzaAppello(data, req.user.matricola);
     res.redirect('/paginaStudente');
 })
 

@@ -102,4 +102,22 @@ CorsiController.corsiAnnuali = function (anno, codFacoltà, callback) {
     });
 }
 
+CorsiController.appelliPrenotabili = function (utente, codFacoltà, callback) {
+    Corsi.find({ 'codFacoltà': codFacoltà }, function (err, corsi) {
+        var arrayAppelli = [];
+        corsi.forEach(function (corso) {
+            var confronto = true;
+            if (corso.anno <= utente.annoCorso) {
+                utente.carriera.forEach(function (c) {
+                    if (c.codCorso === corso.codice)
+                        confronto = false;
+                });
+                if (confronto)
+                    arrayAppelli.push(corso);
+            }
+        });
+        return callback(null, arrayAppelli);
+    });
+}
+
 module.exports = CorsiController;

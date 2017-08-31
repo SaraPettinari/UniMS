@@ -33,8 +33,9 @@
             <li> <a href="/"><img src="img/logo.png"></a></li>
             <li class="active"><a href="#1" data-toggle="tab">Home</a></li>
             <li><a href="#2" data-toggle="tab">Piano Studi</a></li>
-            <li><a href="#3" data-toggle="tab">Gestione Appelli</a></li>
-            <li><a href="#4" data-toggle="tab">Carriera</a></li>
+            <li><a href="#3" data-toggle="tab">Piano Annuale</a></li>
+            <li><a href="#4" data-toggle="tab">Gestione Appelli</a></li>
+            <li><a href="#5" data-toggle="tab">Carriera</a></li>
             <li><a href="/logout" class="btn btn-primary btn-md" style="background-color: rgb(156, 202, 230)">Log Out</a></li>
         </ul>
     </div>
@@ -123,9 +124,7 @@
                     <% for(var i=0; i < corsiAnnuali.length; i++) { %>
                         <tr>
                             <td>
-                                <a style="color:black; cursor: pointer" name="idCorso" ng-click="Cliccami('<%= corsiAnnuali[i].codice %>')" ng-model="codCorso">
-                                    <%= corsiAnnuali[i].nome %>
-                                </a>
+                                <%= corsiAnnuali[i].nome %>
                             </td>
                             <td>
                                 <%= corsiAnnuali[i].codice %>
@@ -135,6 +134,38 @@
                             </td>
                             <td>
                                 <%= corsiAnnuali[i].cfu %>
+                            </td>
+                            <% } %>
+                        </tr>
+                </table>
+                <% } %>
+        </div>
+
+        <div id="4" class="tab-pane">
+            <% if (appelliPrenotabili.length > 0) { %>
+                <h3 class="text-center">Appelli Disponibili </h3>
+                <table class="table table-bordered">
+                    <tr>
+                        <th class="col-md-3">Nome:</th>
+                        <th class="col-md-3">Codice:</th>
+                        <th class="col-md-3">Matricola Docente:</th>
+                        <th class="col-md-3">CFU:</th>
+                    </tr>
+                    <% for(var i=0; i < appelliPrenotabili.length; i++) { %>
+                        <tr>
+                            <td>
+                                <a style="color:black; cursor: pointer" name="idCorso" ng-click="Cliccami('<%= appelliPrenotabili[i].codice %>')" ng-model="codCorso">
+                                    <%= appelliPrenotabili[i].nome %>
+                                </a>
+                            </td>
+                            <td>
+                                <%= appelliPrenotabili[i].codice %>
+                            </td>
+                            <td>
+                                <%= appelliPrenotabili[i].matricolaP %>
+                            </td>
+                            <td>
+                                <%= appelliPrenotabili[i].cfu %>
                             </td>
                             <% } %>
                         </tr>
@@ -158,11 +189,9 @@
                         </div>
                     </div>
                 </form>
-                <% } %>
-
+                <%}%>
         </div>
-
-        <div id="4" class="tab-pane">
+        <div id="5" class="tab-pane">
             <%if (user.carriera.length > 0){%>
                 <h3 class="text-center"> Carriera </h3>
                 <table class="table table-bordered">
