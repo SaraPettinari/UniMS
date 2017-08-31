@@ -50,12 +50,14 @@
                                             </td>
                                             <td>
                                                 <%= matrice[i][1] %>
+                                                    <input hidden value="<%= matrice[i][1] %>" id="esiti<%=i%>">
                                             </td>
                                         </tr>
                                         <% } %>
                                 </table>
                             </div>
                         </div>
+                        <button class="btn" onclick="generaGraficoDoc()">Genera Grafico </button>
                 </div>
                 <button class="btn" onclick="generaPdf()">Scarica Pdf Voti </button>
                 <% } %>

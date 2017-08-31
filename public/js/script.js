@@ -96,3 +96,29 @@ function conferma() {
         document.getElementById("conf").disabled = true;
     }
 }
+
+function generaGraficoDoc() {
+    var array = [];
+    var a = document.querySelectorAll("[id^='esiti']");
+    a.forEach(function (element) {
+        array.push(element.value);
+    });
+
+    // map is an associative array mapping the elements to their frequency:
+    var map = array.reduce(function (prev, cur) {
+        prev[cur] = (prev[cur] || 0) + 1;
+        return prev;
+    }, {});
+
+    var data = JSON.stringify(map);
+    var str = data.split(':');
+    alert(str);
+    var arrVoti = [];
+    var arrOccorrenze = [];
+    for(var i = 0; i < str.length; i++){
+       arrVoti.push(str[i]);
+       i++;
+       arrOccorrenze.push(str[i]);
+    }
+    alert(arrVoti + '!!!!' + arrOccorrenze);
+}

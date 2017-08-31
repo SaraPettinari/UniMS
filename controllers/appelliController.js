@@ -58,7 +58,7 @@ AppelliController.verbalizzaAppello = function (data, matricolaS, idAppello, cal
             studente.carriera.push(newCarriera);
             studente.save();
 
-            Appelli.findOne({ '_id': idAppello }, function (err, appello) {
+      /*      Appelli.findOne({ '_id': idAppello }, function (err, appello) {
                 if (err) throw err;
                 var i = appello.matricolaS.indexOf(matricolaS);
                 if (i > -1) {
@@ -66,7 +66,7 @@ AppelliController.verbalizzaAppello = function (data, matricolaS, idAppello, cal
                     appello.esito.splice(i, 1);
                 }
                 appello.save();
-            });
+            });*/
         });
     });
 }
