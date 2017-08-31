@@ -51,7 +51,7 @@ router.get('/registrazione', function (req, res) {
 
 /** POST handles registration. */
 router.post('/registrazione', passport.authenticate('registrazione', {
-	successRedirect: '/',
+	successRedirect: '/registrazione',
 	failureRedirect: '/registrazione',
 	failureFlash: true
 }));

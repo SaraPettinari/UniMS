@@ -84,10 +84,7 @@ function generaGrafico() {
 
 function generaPdf() {
     var doc = new jsPDF();
-    doc.fromHTML($('#tabellaEsiti').html(), 15, 15, {
-        'width': 170,
-        'elementHandlers': {}
-    });
+    doc.fromHTML($('#tableId').html(), 20, 20);
     doc.save('esitiAppello.pdf');
 }
 
@@ -111,14 +108,65 @@ function generaGraficoDoc() {
     }, {});
 
     var data = JSON.stringify(map);
-    var str = data.split(':');
-    alert(str);
-    var arrVoti = [];
-    var arrOccorrenze = [];
-    for(var i = 0; i < str.length; i++){
-       arrVoti.push(str[i]);
-       i++;
-       arrOccorrenze.push(str[i]);
+    data = data.replace(/,/gi, ' ');
+    data = data.replace(/"/gi, '');
+    data = data.replace(/:/gi, ' ');
+    data = data.replace(/{/gi, '');
+    data = data.replace(/}/gi, '');
+    var arr = data.split(" ");
+    var occorrenze = [];
+    var voti = [];
+    var dataP = [];
+    for(var i = 0; i < arr.length; i ++){
+        voti.push(arr[i]);
+        i++;
+        occorrenze.push(arr[i]);
+
     }
-    alert(arrVoti + '!!!!' + arrOccorrenze);
+    for(var i = 0; i < voti.length; i++){
+        dataP.push({"category": voti[i], "column-1": occorrenze[i]})
+    }
+
+    AmCharts.makeChart("chartdiv",
+        {
+            "type": "serial",
+            "categoryField": "category",
+            "startDuration": 1,
+            "theme": "light",
+            "categoryAxis": {
+                "gridPosition": "start"
+            },
+            "trendLines": [],
+            "graphs": [
+                {
+                    "balloonText": "[[category]]:[[column-1]]",
+                    "fillAlphas": 1,
+                    "id": "AmGraph-1",
+                    "type": "column",
+                    "valueField": "column-1"
+                }
+            ],
+            "guides": [],
+            "valueAxes": [
+                {
+                    "id": "ValueAxis-1",
+                    "title": "Frequenza Voto"
+                }
+            ],
+            "allLabels": [],
+            "balloon": {},
+            "legend": {
+                "enabled": false,
+                "useGraphSettings": true
+            },
+            "titles": [
+                {
+                    "id": "Title-1",
+                    "size": 15,
+                    "text": "Andamento Esame"
+                }
+            ],
+            "dataProvider": dataP
+        }
+    );
 }

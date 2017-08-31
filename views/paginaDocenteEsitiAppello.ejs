@@ -21,6 +21,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script type="text/javascript" src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+    <script type="text/javascript" src="https://www.amcharts.com/lib/3/serial.js"></script>
+    <script type="text/javascript" src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+    <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
+    <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/jszip.min.js"></script>
     <script src="/js/angular.js"></script>
     <script src="/js/script.js"></script>
 </head>
@@ -29,20 +34,26 @@
     <div class="panel">
         <div class="panel-collapse collapse in">
             <div>
-                <div class="panel-body" id="tabellaEsiti">
+                <div class="panel-body">
                     <div class="form-group">
                         <label class="col-sm-12">
                                     <h2>Esiti appello</h2>
                                 </label>
                     </div>
+                    <form action="/paginaDocente" method="GET">
+                        <button class="btn"><< Indietro </button>
+                    </form>
                     <% if (matrice.length > 0){ %>
-                        <div>
+                        <div id="tabellaEsiti">
                             <div class="col-md-6 col-md-offset-3">
                                 <table class="table table-bordered">
+                                    <thead>
                                     <tr>
-                                        <th class="col-sm-6">Studenti Iscritti</th>
+                                        <th class="col-sm-6">Studenti</th>
                                         <th class="col-sm-6">Esiti</th>
                                     </tr>
+                                    </thead>
+                                    <tbody id="tableId">
                                     <% for(var i=0; i < matrice.length; i++) { %>
                                         <tr>
                                             <td>
@@ -54,17 +65,16 @@
                                             </td>
                                         </tr>
                                         <% } %>
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
-                        <button class="btn" onclick="generaGraficoDoc()">Genera Grafico </button>
                 </div>
                 <button class="btn" onclick="generaPdf()">Scarica Pdf Voti </button>
+                <button class="btn" onclick="generaGraficoDoc()">Genera Grafico </button>
+                <div id="chartdiv" style="width: 100%; height: 400px; background-color: #FFFFFF;"></div>
                 <% } %>
             </div>
-            <form action="/paginaDocente" method="GET">
-                <button class="btn"><< Indietro </button>
-            </form>
         </div>
     </div>
 </body>
