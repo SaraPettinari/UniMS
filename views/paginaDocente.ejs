@@ -21,6 +21,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <script src="js/angular.js"></script>
+    <script src="js/script.js"></script>
 </head>
 
 <body ng-app="appDocente" ng-controller="controllerDocente">
@@ -124,7 +125,7 @@
                                 </select>
                         <input readonly value="{{idCorso}}" type="text " name="idCorso" placeholder="Corso" required="required" class="form-control"
                         />
-                        <input type="date" name="data" placeholder="data" required="required" class="form-control" />
+                        <input type="date" name="data" placeholder="data" required="required" class="form-control" id="myDate" onclick="controllaData()"/>
                         <input type="time" name="ora" placeholder="ora" required="required" class="form-control" />
                         <input type="text" name="aula" placeholder="aula esame" required="required" class="form-control" />
                         <button type="submit" class="btn btn-lg btn-info btn-block ">OK</button>
