@@ -71,6 +71,7 @@ router.post('/vediAppelli', isAuthenticated, function (req, res) {
             esami.push(element);
             AppelliController.checkStudente(req.user.matricola, element._id, function (err, bool) {
                 iscrizioni.push(bool);
+                console.log(bool);
             });
         });
         res.redirect('/paginaStudente/appelli');
@@ -100,9 +101,7 @@ router.post('/vediPrenotazioni/confermaVoto', isAuthenticated, function (req, re
         data: req.body.dataAppello,
         esito: req.body.myEsito,
     }
-    AppelliController.verbalizzaAppello(data, req.user.matricola,/*thisAppello*/ function (err) {
-        if (err) throw err;
-    })
+    AppelliController.verbalizzaAppello(data, req.user.matricola/*, thisAppello*/);
     res.redirect('/paginaStudente');
 })
 
@@ -110,5 +109,6 @@ router.post('/vediPrenotazioni/cancellaPrenotazione', isAuthenticated, function 
     AppelliController.cancellaPrenotazione(req.user.matricola, req.body.idAppello);
     res.redirect('/paginaStudente');
 });
+
 
 module.exports = router;
