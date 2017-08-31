@@ -1,7 +1,7 @@
 function confermaPrenotazione() {
     confirm('Vuoi confermare la prenotazione?');
 }
-function cancellaPrenotazione(){
+function cancellaPrenotazione() {
     confirm('Vuoi cancellare la prenotazione?');
 }
 
@@ -43,7 +43,7 @@ function generaGrafico() {
             "dataDateFormat": "YYYY-MM-DD",
             "theme": "light",
             "categoryAxis": {
-               // "parseDates": true
+                // "parseDates": true
             },
             "chartCursor": {
                 "enabled": true
@@ -82,11 +82,17 @@ function generaGrafico() {
 
 }
 
-function generaPdf(){
+function generaPdf() {
     var doc = new jsPDF();
     doc.fromHTML($('#tabellaEsiti').html(), 15, 15, {
         'width': 170,
-            'elementHandlers': {}
+        'elementHandlers': {}
     });
     doc.save('esitiAppello.pdf');
+}
+
+function conferma() {
+    if (document.getElementById("esito").value < 18) {
+        document.getElementById("conf").disabled = true;
+    }
 }

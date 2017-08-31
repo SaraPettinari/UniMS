@@ -91,8 +91,9 @@
                             <label> Data Esame </label>
                             <input name="dataAppello" value="<%= dataAppello %>" readonly>
                             <label> Esito </label>
-                            <input name="myEsito" value="<%= myEsito %>" readonly type="number">
-                            <button type="submit" title="Conferma e Verbalizza Online il voto!" class="btn btn-success btn-sm"> Conferma </button>
+                            <input name="myEsito" value="<%= myEsito %>" readonly="readonly" type="number" id="esito">
+                            <button type="submit" title="Conferma e Verbalizza Online il voto!" class="btn btn-success btn-sm" onmouseover="conferma()"
+                                id="conf"> Conferma </button>
                             <!--<button formaction="/rifiutaVoto" type="submit" title="Rifiuta il voto!" class="btn btn-danger btn-sm"> Rifiuta </button> -->
                         </form>
                     </div>
@@ -100,9 +101,6 @@
                         <h5>Nessun appello prenotato</h5>
                         <% } %>
             </div>
-
-
-
 
             <form action="/paginaStudente" method="GET">
                 <button type="submit" class="btn btn-default"> << Indietro </button>
