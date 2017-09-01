@@ -27,7 +27,7 @@
 <body ng-app="appStudente" ng-controller="controllerStudente">
     <div class="contact-section">
         <div class="container">
-            <div class="row-fluid">
+            <div class="row">
                 <div class="col-sm-12 col-md-4 col-md-offset-4">
                     <form>
                         <div id="contact-form" class="form-container" align="center" data-form-container>
@@ -157,74 +157,76 @@
                             <div class="row">
                                 <h6 class="col-md-4"><strong>Clicca su un corso per vedere gli appelli disponibili</strong></h6>
                                 <div class="col-md-4">
-                                    <input required="required" readonly value="{{codCorso}}" name="idCorso" class="form-control" placeholder="idCorso">
+                                    <input readonly value="{{codCorso}}" name="idCorso" placeholder="idCorso" class="form-control" required="required">
                                 </div>
-                                <button type="submit" class="btn btn-md btn-info">Vedi Appelli</button>
+                                <button type="submit" class="btn btn-md btn-info" href="#div_dateDisponibili"><strong>Vedi Appelli</strong></button>
                             </div>
                         </form>
 
                         <% } %>
             </form>
             </div>
-            <form>
-                <div id="contact-form" class="form-container" align="center" data-form-container>
-                    <div class="row">
-                        <div class="col-md-12 col-sm-75" align="center">
-                            <% if (appelliCorso.length > 0) { %>
-                                <h3 class="text-center"><strong>Date disponibili</strong> </h3>
-                                <hr />
-                                <div class="row">
-                                    <h5 class="col-md-2 text-center"><strong>Corso:</strong></h5>
-                                    <h5 class="col-md-2 text-center"><strong>Data:</strong></h5>
-                                    <h5 class="col-md-2 text-center"><strong>Ora:</strong></h5>
-                                    <h5 class="col-md-2 text-center"><strong>Matricola Docente:</strong></h5>
-                                    <h5 class="col-md-2 text-center "><strong>Aula:</strong></h5>
-                                   
-                                </div>
-                                <% for(var i = 0; i < appelliCorso.length; i++) { %>
-                                    <div class="col-md-2">
-                                        <form action="/paginaStudente/prenotati" method="POST" submit="confermaPrenotazione()">
-                                            <button type="submit" class="btn btn-link" title="Prenotati">
+            <div id="dateDisponibili"> 
+                <form>
+                    <div id="contact-form" class="form-container" align="center" data-form-container>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-75" align="center">
+                                <% if (appelliCorso.length > 0) { %>
+                                    <h3 class="text-center"><strong>Date disponibili:</strong> </h3>
+                                    <hr />
+                                    <div class="row">
+                                        <h5 class="col-md-2 text-center"><strong>Corso:</strong></h5>
+                                        <h5 class="col-md-2 text-center"><strong>Data:</strong></h5>
+                                        <h5 class="col-md-2 text-center"><strong>Ora:</strong></h5>
+                                        <h5 class="col-md-2 text-center"><strong>Matricola Docente:</strong></h5>
+                                        <h5 class="col-md-2 text-center "><strong>Aula:</strong></h5>
+
+                                    </div>
+                                    <% for(var i = 0; i < appelliCorso.length; i++) { %>
+                                        <div class="col-md-2">
+                                            <form action="/paginaStudente/prenotati" method="POST" submit="confermaPrenotazione()">
+                                                <button type="submit" class="btn btn-link" title="Prenotati">
                                         <i class="fa fa-plus-circle fa-lg" aria-hidden="true" style="color: red"></i>
                             </button>
-                                            <input hidden name="idAppello" value="<%= appelliCorso[i]._id %>">
-                                        </form>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <p>
-                                            <%= appelliCorso[i].idCorso %>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <p>
-                                            <%= appelliCorso[i].data %>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <p>
-                                            <%= appelliCorso[i].ora %>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <p>
-                                            <%= appelliCorso[i].matricolaP %>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <p>
-                                            <%= appelliCorso[i].aula %>
-                                        </p>
-                                    </div>
-                                    <% } %>
-                                        <form action="/paginaStudente/pulisci" method="POST">
-                                            <button type="submit" class="btn btn-md btn-info">  Indietro </button>
-
-                                        </form>
+                                                <input hidden name="idAppello" value="<%= appelliCorso[i]._id %>">
+                                            </form>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <p>
+                                                <%= appelliCorso[i].idCorso %>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <p>
+                                                <%= appelliCorso[i].data %>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <p>
+                                                <%= appelliCorso[i].ora %>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <p>
+                                                <%= appelliCorso[i].matricolaP %>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <p>
+                                                <%= appelliCorso[i].aula %>
+                                            </p>
+                                        </div>
                                         <% } %>
+                                            <form action="/paginaStudente/pulisci" method="POST">
+                                                <button type="submit" class="btn btn-md btn-info">  Indietro </button>
+
+                                            </form>
+                                            <% } %>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
             </div>
         </div>
 </body>
