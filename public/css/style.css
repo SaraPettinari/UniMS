@@ -670,3 +670,8 @@ body {
 .marginTop {
   margin-top: 30px;
 }
+
+input:focus{
+  background-color: #01aaff;
+  opacity: 80%;
+}
