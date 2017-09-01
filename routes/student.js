@@ -13,7 +13,6 @@ var isAuthenticated = function (req, res, next) {
 }
 
 var esami = new Array(); //conterrà gli esami di un dato corso
-var iscrizioni = new Array(); //array di boolean. true: se lo studente è iscritto all'appello, false: altrimenti
 var thisAppello = new String(); //memorizza l'id dell'appello selezionato
 
 /** GET pagina iniziale dello studente */
@@ -34,8 +33,7 @@ router.get('/', isAuthenticated, function (req, res) {
             });
         });
     });
-    //evita che si duplichi la lista degli iscritti e degli appelli ad ogni GET
-    iscrizioni.splice(0, iscrizioni.length);
+    //evita che si duplichi la lista degli appelli ad ogni GET
     esami.splice(0, esami.length);
 });
 
@@ -45,7 +43,6 @@ router.get('/appelli', isAuthenticated, function (req, res) {
         title: 'Appelli',
         user: req.user,
         appelliCorso: esami,
-        iscrizioni: iscrizioni
     });
 });
 
@@ -71,10 +68,9 @@ router.get('/vediPrenotazioni', isAuthenticated, function (req, res) {
 router.post('/vediAppelli', isAuthenticated, function (req, res) {
     AppelliController.listaAppelliPerCorso(req.body.idCorso, function (err, appelliCorso) {
         appelliCorso.forEach(function (element) {
-            esami.push(element);
             AppelliController.checkStudente(req.user.matricola, element._id, function (err, bool) {
-                iscrizioni.push(bool);
-                console.log(bool);
+                if (!bool)
+                    esami.push(element);
             });
         });
         res.redirect('/paginaStudente/appelli');
@@ -105,6 +101,7 @@ router.post('/vediPrenotazioni/confermaVoto', isAuthenticated, function (req, re
         esito: req.body.myEsito,
     }
     AppelliController.verbalizzaAppello(data, req.user.matricola);
+    thisAppello = '';
     res.redirect('/paginaStudente');
 })
 

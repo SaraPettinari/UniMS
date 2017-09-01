@@ -49,7 +49,7 @@
                                 <tr>
                                     <td class="col-md-1 text-center">
                                         <form action="/paginaStudente/appelli/prenotati" method="POST" onsubmit="confermaPrenotazione()">
-                                            <button ng-disabled="<%= iscrizioni[i] %>" type="submit" class="btn btn-link" title="Prenotati">
+                                            <button type="submit" class="btn btn-link" title="Prenotati">
                                                             <i class="fa fa-plus-circle fa-lg" aria-hidden="true" style="color: red"></i>
                                                 </button>
                                             <input hidden name="idAppello" value="<%= appelliCorso[i]._id %>">

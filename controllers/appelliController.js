@@ -57,6 +57,17 @@ AppelliController.verbalizzaAppello = function (data, matricolaS) {
         Studente.findOne({ 'matricola': matricolaS }, function (err, studente) {
             studente.carriera.push(newCarriera);
             studente.save();
+
+            //cancella lo studente da tutte le prenotazioni agli appelli del corso che ha verbalizzato
+            Appelli.find({ 'idCorso': data.codCorso }, function (err, appelli) {
+                if (err) throw err;
+                appelli.forEach(function (appello) {
+                    var i = appello.matricolaS.indexOf(matricolaS);
+                    if (i > -1)
+                        appello.matricolaS.splice(i, 1);
+                    appello.save();
+                });
+            });
         });
     });
 }
