@@ -62,7 +62,8 @@ router.get('/vediPrenotazioni', isAuthenticated, function (req, res) {
     });
 });
 
-/** POST mostra la lista degli appelli disponibili del corso scelto dall'utente 
+/** 
+ * POST mostra la lista degli appelli disponibili del corso scelto dall'utente 
  * e controlla che lo studente non sia già iscritto all'appello
 */
 router.post('/vediAppelli', isAuthenticated, function (req, res) {
@@ -89,11 +90,13 @@ router.post('/appelli/prenotati', isAuthenticated, function (req, res) {
     res.redirect('/paginaStudente');
 });
 
+/** POST setta l'id dell'appello selezionato */
 router.post('/vediPrenotazioni/controllaEsiti', isAuthenticated, function (req, res) {
     thisAppello = req.body.idAppello;
     res.redirect('/paginaStudente/vediPrenotazioni')
 })
 
+/** POST aggiunta dei dati dell'appello nella carriera dello studente */
 router.post('/vediPrenotazioni/confermaVoto', isAuthenticated, function (req, res) {
     var data = {
         codCorso: req.body.idCorsoAppello,
@@ -101,10 +104,11 @@ router.post('/vediPrenotazioni/confermaVoto', isAuthenticated, function (req, re
         esito: req.body.myEsito,
     }
     AppelliController.verbalizzaAppello(data, req.user.matricola);
-    thisAppello = '';
+    thisAppello = ''; //appello verbalizzato, azzero la variabile
     res.redirect('/paginaStudente');
 })
 
+/** POST cancella la prenotazione da un appello */
 router.post('/vediPrenotazioni/cancellaPrenotazione', isAuthenticated, function (req, res) {
     AppelliController.cancellaPrenotazione(req.user.matricola, req.body.idAppello);
     res.redirect('/paginaStudente');

@@ -49,14 +49,12 @@ AppelliController.verbalizzaAppello = function (data, matricolaS) {
     Corsi.findOne({ 'codice': data.codCorso }, function (err, corso) {
         newCarriera.cfu = corso.cfu;
 
-        newCarriera.save(function (err) {
-            if (err) throw err;
-            console.log('Verbalizzazione avvenuta con successo!');
-        });
-
         Studente.findOne({ 'matricola': matricolaS }, function (err, studente) {
             studente.carriera.push(newCarriera);
-            studente.save();
+            studente.save(function (err) {
+                if (err) throw err;
+                console.log('Verbalizzazione avvenuta con successo!');
+            });
 
             //cancella lo studente da tutte le prenotazioni agli appelli del corso che ha verbalizzato
             Appelli.find({ 'idCorso': data.codCorso }, function (err, appelli) {

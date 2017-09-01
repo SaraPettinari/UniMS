@@ -23,8 +23,13 @@ function generaGrafico() {
 
     var arrayEsito = [];
     var e = document.querySelectorAll("[id^='esito']");
+    var j = 0;
     e.forEach(function (element) {
+        // non vengono considerati i cfu liberi, poiché non hanno un esito
+        if (element.value.length === 0)
+            array.splice(j, 1);
         arrayEsito.push(element.value);
+        j++;
     });
 
     var dataP = [];
@@ -117,14 +122,14 @@ function generaGraficoDoc() {
     var occorrenze = [];
     var voti = [];
     var dataP = [];
-    for(var i = 0; i < arr.length; i ++){
+    for (var i = 0; i < arr.length; i++) {
         voti.push(arr[i]);
         i++;
         occorrenze.push(arr[i]);
 
     }
-    for(var i = 0; i < voti.length; i++){
-        dataP.push({"category": voti[i], "column-1": occorrenze[i]})
+    for (var i = 0; i < voti.length; i++) {
+        dataP.push({ "category": voti[i], "column-1": occorrenze[i] })
     }
 
     AmCharts.makeChart("chartdiv",
@@ -171,20 +176,38 @@ function generaGraficoDoc() {
     );
 }
 
-function controllaData(){
+function controllaData() {
     var today = new Date();
     var dd = today.getDate();
-    var mm = today.getMonth()+1; //January is 0!
+    var mm = today.getMonth() + 1; //January is 0!
     var yyyy = today.getFullYear();
-    
-    if(dd<10) {
-        dd = '0'+dd
-    } 
-    
-    if(mm<10) {
-        mm = '0'+mm
-    } 
-    
+
+    if (dd < 10) {
+        dd = '0' + dd
+    }
+
+    if (mm < 10) {
+        mm = '0' + mm
+    }
+
     today = "" + yyyy + "-" + mm + "-" + dd;
     document.getElementById("myDate").min = today;
+}
+
+function controllaDataAdmin() {
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1; //January is 0!
+    var yyyy = today.getFullYear();
+
+    if (dd < 10) {
+        dd = '0' + dd
+    }
+
+    if (mm < 10) {
+        mm = '0' + mm
+    }
+
+    today = "" + yyyy + "-" + mm + "-" + dd;
+    document.getElementById("myDate").max = today;
 }

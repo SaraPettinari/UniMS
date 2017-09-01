@@ -1,5 +1,7 @@
 var Corsi = require('../models/corsi');
 var Facoltà = require('../models/corsiLaurea');
+var Carriera = require('../models/appelliVerbalizzati');
+var Studente = require('../models/user');
 
 var CorsiController = function () { };
 
@@ -117,6 +119,18 @@ CorsiController.appelliPrenotabili = function (utente, codFacoltà, callback) {
             }
         });
         return callback(null, arrayAppelli);
+    });
+}
+
+CorsiController.addCreditiLiberi = function (matricolaStudente, dati) {
+    var newCarriera = new Carriera();
+    newCarriera.codCorso = dati.codCorso;
+    newCarriera.data = dati.data;
+    newCarriera.cfu = dati.cfu;
+
+    Studente.findOne({ 'matricola': matricolaStudente }, function (err, studente) {
+        studente.carriera.push(newCarriera);
+        studente.save();
     });
 }
 
