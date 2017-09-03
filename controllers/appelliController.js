@@ -72,13 +72,26 @@ AppelliController.verbalizzaAppello = function (data, matricolaS) {
 
 AppelliController.calcolaProgressione = function (matricolaS, callback) {
     Studente.findOne({ 'matricola': matricolaS }, function (err, studente) {
-        if (err) return callback(err, null);
+        if (err) return callback(err, null, null, null);
         else {
             var progressioneCfu = 0;
+            var mediaPonderata = 0;
+            var a = 0;
+            var p = 0;
+            var sommaA = 0;
+            var sommaP = 0;
             studente.carriera.forEach(function (element) {
                 progressioneCfu += element.cfu;
+                if (typeof element.esito !== 'undefined') { //ignora i crediti liberi
+                    a++;
+                    p += element.cfu;
+                    sommaA += element.esito;
+                    sommaP += element.esito * element.cfu;
+                }
             });
-            return callback(null, progressioneCfu);
+            var mediaAritmetica = sommaA / a;
+            var mediaPonderata = sommaP / p;
+            return callback(null, progressioneCfu, mediaAritmetica, mediaPonderata);
         }
     });
 }

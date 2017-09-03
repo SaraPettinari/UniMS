@@ -20,14 +20,16 @@ router.get('/', isAuthenticated, function (req, res) {
     CorsiController.listaTuoiCorsi(req.user.codFacoltà, function (err, tuoiCorsi) {
         CorsiController.corsiAnnuali(req.user.annoCorso, req.user.codFacoltà, function (err, corsiAnnuali) {
             CorsiController.appelliPrenotabili(req.user, req.user.codFacoltà, function (err, appelliPrenotabili) {
-                AppelliController.calcolaProgressione(req.user.matricola, function (err, progressioneCfu) {
+                AppelliController.calcolaProgressione(req.user.matricola, function (err, progressioneCfu, mediaAritmetica, mediaPonderata) {
                     res.render('paginaStudente', {
                         title: 'PaginaStudente',
                         user: req.user,
                         tuoiCorsi: tuoiCorsi,
                         corsiAnnuali: corsiAnnuali,
                         progressioneCfu: progressioneCfu,
-                        appelliPrenotabili: appelliPrenotabili
+                        appelliPrenotabili: appelliPrenotabili,
+                        mediaAritmetica: mediaAritmetica,
+                        mediaPonderata: mediaPonderata
                     });
                 });
             });
