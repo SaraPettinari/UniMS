@@ -48,7 +48,7 @@
         <div id="1" class="tab-pane active">
             <div class="col-sm-6 col-md-4 col-md-offset-4" id="backgroundBenvenuto">
                 <div>
-                    <h1 class="text-center  text-info text-capitalize">Benvenuto
+                    <h1 class="text-center   text-capitalize">Benvenuto
                         <%= user.nome %>!</h1>
                     <hr/>
                     <div>
@@ -82,17 +82,17 @@
        
         <div id="2" class="tab-pane">
             <% if (tuoiCorsi.length > 0) { %>
-                <h2 class="text-center text-info text-capitalize">Piano studi:
+                <h2 class="text-center  text-capitalize">Piano studi:
                     <%= user.codFacoltà %>
                 </h2>
                 <hr/>
                 <table class="table table-bordered">
                     <tr>
-                        <th class="col-md-3 text-info text-capitalize">Nome:</th>
-                        <th class="col-md-3 text-info text-capitalize">Codice:</th>
-                        <th class="col-md-3 text-info text-capitalize">Matricola Docente:</th>
-                        <th class="col-md-3 text-info text-capitalize">CFU:</th>
-                        <th class="col-md-3 text-info text-capitalize">Anno:</th>
+                        <th class="col-md-3  text-capitalize">Nome:</th>
+                        <th class="col-md-3  text-capitalize">Codice:</th>
+                        <th class="col-md-3  text-capitalize">Matricola Docente:</th>
+                        <th class="col-md-3  text-capitalize">CFU:</th>
+                        <th class="col-md-3  text-capitalize">Anno:</th>
                     </tr>
                     <% for(var i=0; i < tuoiCorsi.length; i++) { %>
                         <tr>
@@ -121,15 +121,15 @@
 
         <div id="3" class="tab-pane">
             <% if (corsiAnnuali.length > 0) { %>
-                <h2 class="text-center text-info text-capitalize">Piano studi:
+                <h2 class="text-center  text-capitalize">Piano studi:
                     <%= user.annoCorso %> anno </h2>
                 <hr/>
                 <table class="table table-bordered">
                     <tr>
-                        <th class="col-md-3 text-info text-capitalize">Nome:</th>
-                        <th class="col-md-3 text-info text-capitalize">Codice:</th>
-                        <th class="col-md-3 text-info text-capitalize">Matricola Docente:</th>
-                        <th class="col-md-3 text-info text-capitalize">CFU:</th>
+                        <th class="col-md-3  text-capitalize">Nome:</th>
+                        <th class="col-md-3  text-capitalize">Codice:</th>
+                        <th class="col-md-3  text-capitalize">Matricola Docente:</th>
+                        <th class="col-md-3  text-capitalize">CFU:</th>
                     </tr>
                     <% for(var i=0; i < corsiAnnuali.length; i++) { %>
                         <tr>
@@ -152,14 +152,14 @@
         </div>
         <div id="4" class="tab-pane">
             <% if (appelliPrenotabili.length > 0) { %>
-                <h2 class="text-center text-info text-capitalize">Appelli Disponibili </h2>
+                <h2 class="text-center  text-capitalize">Appelli Disponibili </h2>
                 <hr/>
                 <table class="table table-bordered">
                     <tr>
-                        <th class="col-md-3 text-info text-capitalize">Nome:</th>
-                        <th class="col-md-3 text-info text-capitalize">Codice:</th>
-                        <th class="col-md-3 text-info text-capitalize">Matricola Docente:</th>
-                        <th class="col-md-3 text-info text-capitalize">CFU:</th>
+                        <th class="col-md-3  text-capitalize">Nome:</th>
+                        <th class="col-md-3  text-capitalize">Codice:</th>
+                        <th class="col-md-3  text-capitalize">Matricola Docente:</th>
+                        <th class="col-md-3  text-capitalize">CFU:</th>
                     </tr>
                     <% for(var i=0; i < appelliPrenotabili.length; i++) { %>
                         <tr>
@@ -182,7 +182,7 @@
                 </table>
                 <form action="/paginaStudente/vediAppelli" method="POST">
                     <div class="row">
-                        <h5 class="col-md-4 text-info">Clicca su un corso per vedere gli appelli disponibili</h5>
+                        <h5 class="col-md-4 ">Clicca su un corso per vedere gli appelli disponibili</h5>
                         <div class="col-md-4">
                             <input required="required" readonly value="{{codCorso}}" name="idCorso" class="form-control" placeholder="codice corso">
                         </div>
@@ -193,7 +193,7 @@
                 </form>
                 <form action="/paginaStudente/vediPrenotazioni" method="GET">
                     <div class="row">
-                        <h5 class="col-md-8 text-info">Vedi gli appelli a cui sei prenotato</h5>
+                        <h5 class="col-md-8 ">Vedi gli appelli a cui sei prenotato</h5>
                         <div class="col-md-4">
                             <button type="submit" class="btn btn-default col-md-5" style="background-color: rgb(156, 202, 230)"><strong>Vedi Prenotazioni</strong></button>
                         </div>
@@ -204,14 +204,14 @@
 
         <div id="5" class="tab-pane">
             <%if (user.carriera.length > 0){%>
-                <h2 class="text-center text-info text-capitalize"> Carriera </h2>
+                <h2 class="text-center  text-capitalize"> Carriera </h2>
                 <hr/>
                 <table class="table table-bordered">
                     <tr>
-                        <th class="col-md-3 text-info text-capitalize"> Corso </th>
-                        <th class="col-md-3 text-info text-capitalize"> Data Esame</th>
-                        <th class="col-md-3 text-info text-capitalize"> Valutazione </th>
-                        <th class="col-md-3 text-info text-capitalize"> CFU </th>
+                        <th class="col-md-3  text-capitalize"> Corso </th>
+                        <th class="col-md-3  text-capitalize"> Data Esame</th>
+                        <th class="col-md-3  text-capitalize"> Valutazione </th>
+                        <th class="col-md-3  text-capitalize"> CFU </th>
                     </tr>
                     <% for(var i=0; i< user.carriera.length; i++){%>
                         <tr>
@@ -233,18 +233,18 @@
                         <%}%>
                 </table>
                 <div class="col-md-6">
-                    <h5 class=" text-info text-capitalize">Progressione CFU:</h5>
+                    <h5 class="  text-capitalize">Progressione CFU:</h5>
                     <%= progressioneCfu %> / 180
                         <br>
-                        <h5 class=" text-info text-capitalize">Media Aritmetica:</h5>
+                        <h5 class="  text-capitalize">Media Aritmetica:</h5>
                         <%= mediaAritmetica %>
                             <br>
-                            <h5 class=" text-info text-capitalize">Media Ponderata:</h5>
+                            <h5 class="  text-capitalize">Media Ponderata:</h5>
                             <%= mediaPonderata %>
                                 <br>
                 </div>
                 <div class="col-md-6 text-center">
-                    <h5 class="text-center text-info text-capitalize">Grafico Andamento Voti:</h5>
+                    <h5 class="text-center  text-capitalize">Grafico Andamento Voti:</h5>
                     <button type="button" class="btn btn-default " style="background-color: rgb(156, 202, 230)" onclick="generaGrafico()"><strong>Genera Grafico</strong></button>
                 </div>
                 <div id="chartdiv" style="width: 100%; height: 400px;"></div>

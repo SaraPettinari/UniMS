@@ -30,7 +30,8 @@
             <div class="panel-body">
                 <div class="form-group">
                     <label class="col-sm-12">
-                                    <h2  class="text-center text-info text-capitalize">Dettagli appello</h2>
+                                    <h2  class="text-center 
+                                     text-capitalize">Dettagli appello</h2><hr/>
                                 </label>
                 </div>
                 <% if (studentiIscritti.length > 0) { %>
@@ -39,8 +40,10 @@
                         <div class="col-sm-6">
                             <table class="table table-bordered">
                                 <tr>
-                                    <th class="col-sm-6  text-info text-capitalize">Studenti Iscritti</th>
-                                    <th class="col-sm-6  text-info text-capitalize">Esiti</th>
+                                    <th class="col-sm-6  
+                                     text-capitalize">Matricola studente</th>
+                                    <th class="col-sm-6  
+                                     text-capitalize">Esito</th>
                                 </tr>
                                 <% for(var i=0; i < studentiIscritti.length; i++) { %>
                                     <tr>
@@ -69,12 +72,14 @@
                     </div>
                     <% } else { %>
                         <div class="col-md-offset-1">
-                            <h5 class="text-danger">Nessun appello disponibile</h5>
+                            <h4 class="text-danger">Nessuno studente iscritto</h4>
                             <% } %>
                         </div>
             </div>
             <form action="/paginaDocente" method="GET">
-                <button type="submit" class="btn btn-default" style="background-color: rgb(156, 202, 230)"><strong> << Indietro </strong></button>
+                <div class="col-md-offset-1">
+                    <button type="submit" class="btn btn-default" style="background-color: rgb(156, 202, 230)"><strong> << Indietro </strong></button>
+                </div>
             </form>
         </div>
     </div>

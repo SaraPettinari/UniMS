@@ -37,43 +37,51 @@
                 <div class="panel-body">
                     <div class="form-group">
                         <label class="col-sm-12">
-                                    <h2 class="text-center text-info text-capitalize">Esiti appello</h2>
+                                    <h2 class="text-center 
+                                     text-capitalize">Esiti appello</h2><hr/>
                                 </label>
                     </div>
                     <form action="/paginaDocente" method="GET">
-                        <button type="submit" class="btn btn-default" style="background-color: rgb(156, 202, 230)"><strong> << Indietro </strong></button>
+
+                        <div class="col-md-offset-1">
+                            <button type="submit" class="btn btn-default" style="background-color: rgb(156, 202, 230)"><strong> << Indietro </strong></button>
+                        </div>
                     </form>
                     <% if (matrice.length > 0){ %>
                         <div id="tabellaEsiti">
                             <div class="col-md-6 col-md-offset-3">
                                 <table class="table table-bordered">
                                     <thead>
-                                    <tr>
-                                        <th class="col-sm-6  text-info text-capitalize">Studenti</th>
-                                        <th class="col-sm-6  text-info text-capitalize">Esiti</th>
-                                    </tr>
+                                        <tr>
+                                            <th class="col-sm-6  
+                                             text-capitalize">Studente</th>
+                                            <th class="col-sm-6  
+                                             text-capitalize">Esito</th>
+                                        </tr>
                                     </thead>
                                     <tbody id="tableId">
-                                    <% for(var i=0; i < matrice.length; i++) { %>
-                                        <tr>
-                                            <td>
-                                                <%= matrice[i][0] %>
-                                            </td>
-                                            <td>
-                                                <%= matrice[i][1] %>
-                                                    <input hidden value="<%= matrice[i][1] %>" id="esiti<%=i%>">
-                                            </td>
-                                        </tr>
-                                        <% } %>
+                                        <% for(var i=0; i < matrice.length; i++) { %>
+                                            <tr>
+                                                <td>
+                                                    <%= matrice[i][0] %>
+                                                </td>
+                                                <td>
+                                                    <%= matrice[i][1] %>
+                                                        <input hidden value="<%= matrice[i][1] %>" id="esiti<%=i%>">
+                                                </td>
+                                            </tr>
+                                            <% } %>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                 </div>
-                <button  type="submit" class="btn btn-default" style="background-color: rgb(156, 202, 230)"onclick="generaPdf()">Scarica Pdf Voti </button>
-                <button  type="submit" class="btn btn-default" style="background-color: rgb(156, 202, 230)" onclick="generaGraficoDoc()">Genera Grafico </button>
-                <div id="chartdiv" style="width: 100%; height: 400px; background-color: #FFFFFF;"></div>
-                <% } %>
+                <div align="center">
+                    <button type="submit" class="btn btn-default" style="background-color: rgb(156, 202, 230)" onclick="generaPdf()"> <strong>Scarica Pdf Voti</strong> </button>
+                    <button type="submit" class="btn btn-default" style="background-color: rgb(156, 202, 230)" onclick="generaGraficoDoc()"><strong>Genera Grafico</strong> </button>
+                    <div id="chartdiv" style="width: 100%; height: 400px; background-color: #FFFFFF;"></div>
+                    <% } %>
+                </div>
             </div>
         </div>
     </div>

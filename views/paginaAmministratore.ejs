@@ -44,7 +44,7 @@
         <div id="1" class="tab-pane active">
             <div class="col-sm-6 col-md-4 col-md-offset-4" id="backgroundBenvenuto">
                 <div>
-                    <h1 class="text-center text-info text-capitalize">Benvenuto
+                    <h1 class="text-center text-capitalize">Benvenuto
                         <strong><%= user.nome %>!</strong></h1>
                     <hr/>
                     <div>
@@ -71,16 +71,16 @@
         </div>
         <div id="2" class="tab-pane">
             <% if (tuoiCorsi.length > 0) { %>
-                <h3 class="text-center  text-info text-capitalize">Piano studi:
+                <h3 class="text-center  text-capitalize">Piano studi:
                     <%= user.codFacoltà %>
                 </h3><hr/>
                 <table class="table marginTop table-bordered">
                     <tr>
-                        <th class="col-md-3  text-info text-capitalize">Nome:</th>
-                        <th class="col-md-2  text-info text-capitalize">Codice:</th>
-                        <th class="col-md-2  text-info text-capitalize">Matricola Docente:</th>
-                        <th class="col-md-2  text-info text-capitalize">CFU:</th>
-                        <th class="col-md-2  text-info text-capitalize">Anno:</th>
+                        <th class="col-md-3  text-capitalize">Nome:</th>
+                        <th class="col-md-2  text-capitalize">Codice:</th>
+                        <th class="col-md-2  text-capitalize">Matricola Docente:</th>
+                        <th class="col-md-2  text-capitalize">CFU:</th>
+                        <th class="col-md-2  text-capitalize">Anno:</th>
                     </tr>
                     <% for(var i=0; i < tuoiCorsi.length; i++) { %>
                         <tr>
@@ -107,7 +107,7 @@
         <div id="3" class="tab-pane">
             <div class="row marginTop">
                 <div class="col-md-4">
-                    <h3 class="text-center  text-info text-capitalize">Crea corso</h3>
+                    <h3 class="text-center  text-capitalize">Crea corso</h3>
                     <hr />
                     <div>
                         <form action="/paginaAmministratore" method="POST">
@@ -130,7 +130,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <h3 class="text-center text-info text-capitalize">Modifica corso</h3>
+                    <h3 class="text-center  text-capitalize">Modifica corso</h3>
                     <hr />
                     <div>
                         <div>
@@ -161,7 +161,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <h3 class="text-center  text-info text-capitalize">Rimuovi corso </h3>
+                    <h3 class="text-center  text-capitalize">Rimuovi corso </h3>
                     <hr />
                     <div>
                         <form action="/paginaAmministratore/remove" method="POST">
@@ -182,16 +182,16 @@
         </div>
         <div id="4" class="tab-pane">
             <% if (docentiFacoltà.length > 0) { %>
-                <h3 class="text-center  text-info text-capitalize">Docenti:
+                <h3 class="text-center text-capitalize">Docenti:
                     <%= user.codFacoltà %>
                 </h3><hr/>
                 <table class="table marginTop table-bordered">
                     <tr>
-                        <th class="col-md-2  text-info text-capitalize">Nome:</th>
-                        <th class="col-md-2  text-info text-capitalize">Cognome:</th>
-                        <th class="col-md-3  text-info text-capitalize">Matricola Docente:</th>
-                        <th class="col-md-3  text-info text-capitalize">Email:</th>
-                        <th class="col-md-2  text-info text-capitalize">Username:</th>
+                        <th class="col-md-2  text-capitalize">Nome:</th>
+                        <th class="col-md-2  text-capitalize">Cognome:</th>
+                        <th class="col-md-3  text-capitalize">Matricola Docente:</th>
+                        <th class="col-md-3  text-capitalize">Email:</th>
+                        <th class="col-md-2  text-capitalize">Username:</th>
                     </tr>
                     <% for(var i=0; i < docentiFacoltà.length; i++) { %>
                         <tr>
@@ -218,7 +218,7 @@
         <div id="5" class="tab-pane">
             <div class="row marginTop">
                 <div class="col-md-8 col-md-offset-2">
-                    <h3 class="text-center text-info text-capitalize">Registra Nuovo Docente</h3><hr /><br>
+                    <h3 class="text-center  text-capitalize">Registra Nuovo Docente</h3><hr /><br>
                     <div>
                         <% if (message) { %>
                             <div>
@@ -273,13 +273,13 @@
         </div>
         <div id="6" class="tab-pane">
             <div class="row marginTop">
-                <div class="col-md-8 col-md-offset-2">
-                    <h3 class="text-center  text-info text-capitalize">Aggiungi CREDITI LIBERI agli Studenti</h3><hr/><br>
+                <div class="col-md-6 col-md-offset-2">
+                    <h3 class="text-center  text-capitalize">Aggiungi CREDITI LIBERI agli Studenti</h3><hr/><br>
                     <form action="/paginaAmministratore/aggiuntaCFULiberi" method="POST">
                         <label>Attività Svolta</label>
                         <input type="text" name="attività" class="form-control" required="required"><br>
                         <label>Data</label>
-                        <input type="date" name="data" class="form-control" required="required" onclick="controllaDataAdmin()" id="myDate"><br>
+                        <input type="date" name="data" class="form-control" required="required" onclick="controllaDataAdmin()" id="myDate" ><br>
                         <label>CFU</label>
                         <input type="number" name="cfu" class="form-control" required="required" min="1"><br>
                         <label>Matricola Studente</label>
