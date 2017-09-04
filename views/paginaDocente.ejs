@@ -4,7 +4,7 @@
 <head>
      <!-- da vedere -->
     <title> Area riservata
-        <%= user.username %>
+        <%= user.nome %>
     </title>
     <meta charset="UTF-8">
     <!-- to be responsive to mobile devices -->
@@ -172,7 +172,7 @@
                             </div>
 
 
-                                <a data-toggle="tab" href="#3"><button ng-model="idAppelloE" ng-click="cliccamiE('<%= listaAppelli[i]._id %>')" class="btn btn-danger btn-sm">Elimina</button></a>
+                           <a data-toggle="tab" href="#3"><button ng-model="idAppelloE" ng-click="cliccamiE('<%= listaAppelli[i]._id %>')" class="btn btn-danger btn-sm">Elimina</button></a>
                             </td>
                             <td>
                                 <form action="/paginaDocente/appello" method="POST">
@@ -188,7 +188,7 @@
                             </td>
                                 </form>
                             </td>
->>>>>>> 17347df995c8f2fbfa2daaf1c818f58cbab7d71a
+
                         </tr>
                         <% } %>
                             <% } %>
@@ -197,7 +197,7 @@
         <div id="3" class="tab-pane">
             <div class="marginTop row">
                 <div class="col-md-4">
-                    <h4 class="text-center">Aggiungi appello</h4><hr/>
+                    <h3 class="text-center">Aggiungi appello</h3><hr/>
                     <form action="/paginaDocente/nuovoAppello" method="POST">
                         <select ng-model="idCorso" class="form-control ">  
                                         <option value=" " disabled selected hidden>Corso</option>
@@ -205,7 +205,7 @@
                                             <option value=<%=corso.codice%>> <%= corso.nome %> </option>
                                         <% })%>
                                 </select><br>
-                        <input readonly value="{{idCorso}}" type="text " name="idCorso" placeholder="Corso" required="required" class="form-control"
+                        <input readonly value="{{idCorso}}" type="text " name="idCorso" placeholder="codice corso" required="required" class="form-control"
                         /><br>
                         <input type="date" name="data" placeholder="data" required="required" class="form-control" id="myDate" onclick="controllaData()"/><br>
                         <input type="time" name="ora" placeholder="ora" required="required" class="form-control" /><br>
@@ -216,21 +216,21 @@
                     </form>
                 </div>
                 <div class="col-md-4">
-                    <h4 class="text-center">Modifica appello</h4>
+                    <h3 class="text-center">Modifica appello</h3><hr/>
                     <form action="/paginaDocente/aggiornaAppello" method="POST">
-                        <input readonly value="{{idAppello}}" type="text " name="_id" required="required" class="form-control" />
-                        <input type="date" name="data" required="required" class="form-control" />
-                        <input type="time" name="ora" required="required" class="form-control" />
-                        <input type="text" name="aula" required="required" class="form-control" />
+                        <input readonly value="{{idAppello}}" type="text " name="_id" required="required" class="form-control" placeholder="Appello"/><br>
+                        <input type="date" name="data" required="required" class="form-control" /><br>
+                        <input type="time" name="ora" required="required" class="form-control" /><br>
+                        <input type="text" name="aula" required="required" class="form-control" /><br>
                         <div align="center">
                                 <button type="submit" class="btn btn-md btn-info  ">OK</button>
                                 </div>
                     </form>
                 </div>
                 <div class="col-md-4">
-                    <h4 class="text-center">Elimina appello </h4>
+                    <h3 class="text-center">Elimina appello </h3><hr/>
                     <form action="/paginaDocente/eliminaAppello" method="POST">
-                        <input readonly value="{{idAppelloE}}" type="text " name="_id" required="required" class="form-control" />
+                        <input readonly value="{{idAppelloE}}" type="text " name="_id" required="required" class="form-control" placeholder="Appello" /><br>
                         <div align="center">
                                 <button type="submit" class="btn btn-md btn-info  ">OK</button>
                                 </div>
