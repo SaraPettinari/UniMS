@@ -2,7 +2,7 @@
 <html lang="it">
 
 <head>
-     <!-- da vedere -->
+    <!-- da vedere -->
     <title> Area riservata
         <%= user.username %>
     </title>
@@ -30,22 +30,27 @@
 
 <body ng-app="appStudente" ng-controller="controllerStudente">
     <div class="tabbable tabs-left col-md-2 col-xs-6">
-        <ul class="nav nav-tabs">
-            <li> <img class="img-responsive" src="img/logo.png" ></img></li>
+        <ul class="nav nav-tabs" id="menu">
+            <li> <img class="img-responsive" src="img/logo.png"></img>
+            </li>
             <li class="active"><a href="#1" data-toggle="tab">Home</a></li>
             <li><a href="#2" data-toggle="tab">Piano Studi</a></li>
             <li><a href="#3" data-toggle="tab">Piano Annuale</a></li>
             <li><a href="#4" data-toggle="tab">Gestione Appelli</a></li>
             <li><a href="#5" data-toggle="tab">Carriera</a></li>
             <li><a href="/logout" class="btn btn-primary btn-md" style="background-color: rgb(156, 202, 230)">Log Out</a></li>
+
         </ul>
     </div>
+
+
     <div class="tab-content col-md-10 col-xs-12">
         <div id="1" class="tab-pane active">
             <div class="col-sm-6 col-md-4 col-md-offset-4" id="backgroundBenvenuto">
                 <div>
                     <h1 class="text-center  text-info text-capitalize">Benvenuto
-                        <%= user.nome %>!</h1><hr/>
+                        <%= user.nome %>!</h1>
+                    <hr/>
                     <div>
                         <ul class="list-group text-center">
                             <li class="list-group-item"><strong> Nome: </strong>
@@ -78,14 +83,15 @@
             <% if (tuoiCorsi.length > 0) { %>
                 <h2 class="text-center text-info text-capitalize">Piano studi:
                     <%= user.codFacoltà %>
-                </h2><hr/>
+                </h2>
+                <hr/>
                 <table class="table table-bordered">
                     <tr>
-                        <th class="col-md-3">Nome:</th>
-                        <th class="col-md-3">Codice:</th>
-                        <th class="col-md-3">Matricola Docente:</th>
-                        <th class="col-md-3">CFU:</th>
-                        <th class="col-md-3">Anno:</th>
+                        <th class="col-md-3 text-info text-capitalize">Nome:</th>
+                        <th class="col-md-3 text-info text-capitalize">Codice:</th>
+                        <th class="col-md-3 text-info text-capitalize">Matricola Docente:</th>
+                        <th class="col-md-3 text-info text-capitalize">CFU:</th>
+                        <th class="col-md-3 text-info text-capitalize">Anno:</th>
                     </tr>
                     <% for(var i=0; i < tuoiCorsi.length; i++) { %>
                         <tr>
@@ -114,13 +120,14 @@
         <div id="3" class="tab-pane">
             <% if (corsiAnnuali.length > 0) { %>
                 <h2 class="text-center text-info text-capitalize">Piano studi:
-                    <%= user.annoCorso %> anno </h2><hr/>
+                    <%= user.annoCorso %> anno </h2>
+                <hr/>
                 <table class="table table-bordered">
                     <tr>
-                        <th class="col-md-3">Nome:</th>
-                        <th class="col-md-3">Codice:</th>
-                        <th class="col-md-3">Matricola Docente:</th>
-                        <th class="col-md-3">CFU:</th>
+                        <th class="col-md-3 text-info text-capitalize">Nome:</th>
+                        <th class="col-md-3 text-info text-capitalize">Codice:</th>
+                        <th class="col-md-3 text-info text-capitalize">Matricola Docente:</th>
+                        <th class="col-md-3 text-info text-capitalize">CFU:</th>
                     </tr>
                     <% for(var i=0; i < corsiAnnuali.length; i++) { %>
                         <tr>
@@ -141,16 +148,16 @@
                 </table>
                 <% } %>
         </div>
-
         <div id="4" class="tab-pane">
             <% if (appelliPrenotabili.length > 0) { %>
-                <h2 class="text-center text-info text-capitalize">Appelli Disponibili </h2><hr/>
+                <h2 class="text-center text-info text-capitalize">Appelli Disponibili </h2>
+                <hr/>
                 <table class="table table-bordered">
                     <tr>
-                        <th class="col-md-3">Nome:</th>
-                        <th class="col-md-3">Codice:</th>
-                        <th class="col-md-3">Matricola Docente:</th>
-                        <th class="col-md-3">CFU:</th>
+                        <th class="col-md-3 text-info text-capitalize">Nome:</th>
+                        <th class="col-md-3 text-info text-capitalize">Codice:</th>
+                        <th class="col-md-3 text-info text-capitalize">Matricola Docente:</th>
+                        <th class="col-md-3 text-info text-capitalize">CFU:</th>
                     </tr>
                     <% for(var i=0; i < appelliPrenotabili.length; i++) { %>
                         <tr>
@@ -173,34 +180,36 @@
                 </table>
                 <form action="/paginaStudente/vediAppelli" method="POST">
                     <div class="row">
-                        <h5 class="col-md-4">Clicca su un corso per vedere gli appelli disponibili</h5>
+                        <h5 class="col-md-4 text-info">Clicca su un corso per vedere gli appelli disponibili</h5>
                         <div class="col-md-4">
                             <input required="required" readonly value="{{codCorso}}" name="idCorso" class="form-control" placeholder="codice corso">
                         </div>
                         <div class="col-md-4">
-                            <button type="submit" class="btn btn-default col-md-5"style="background-color: rgb(156, 202, 230)"><strong>Vedi Appelli</strong></button>
+                            <button type="submit" class="btn btn-default col-md-5" style="background-color: rgb(156, 202, 230)"><strong>Vedi Appelli</strong></button>
                         </div>
                     </div>
                 </form>
                 <form action="/paginaStudente/vediPrenotazioni" method="GET">
                     <div class="row">
-                        <h5 class="col-md-8">Vedi gli appelli a cui sei prenotato</h5>
+                        <h5 class="col-md-8 text-info">Vedi gli appelli a cui sei prenotato</h5>
                         <div class="col-md-4">
-                            <button type="submit" class="btn btn-default col-md-5"style="background-color: rgb(156, 202, 230)"><strong>Vedi Prenotazioni</strong></button>
+                            <button type="submit" class="btn btn-default col-md-5" style="background-color: rgb(156, 202, 230)"><strong>Vedi Prenotazioni</strong></button>
                         </div>
                     </div>
                 </form>
                 <%}%>
         </div>
+
         <div id="5" class="tab-pane">
             <%if (user.carriera.length > 0){%>
-                <h2 class="text-center text-info text-capitalize"> Carriera </h2><hr/>
+                <h2 class="text-center text-info text-capitalize"> Carriera </h2>
+                <hr/>
                 <table class="table table-bordered">
                     <tr>
-                        <th class="col-md-3"> Corso </th>
-                        <th class="col-md-3"> Data Esame</th>
-                        <th class="col-md-3"> Valutazione </th>
-                        <th class="col-md-3"> CFU </th>
+                        <th class="col-md-3 text-info text-capitalize"> Corso </th>
+                        <th class="col-md-3 text-info text-capitalize"> Data Esame</th>
+                        <th class="col-md-3 text-info text-capitalize"> Valutazione </th>
+                        <th class="col-md-3 text-info text-capitalize"> CFU </th>
                     </tr>
                     <% for(var i=0; i< user.carriera.length; i++){%>
                         <tr>
@@ -222,16 +231,19 @@
                         <%}%>
                 </table>
                 <div class="col-md-6">
-                    <h6>Progressione CFU:</h6>
+                    <h5 class=" text-info text-capitalize">Progressione CFU:</h5>
                     <%= progressioneCfu %> / 180
-                    <h6>Media Aritmetica:</h6>
-                    <%= mediaAritmetica %>
-                    <h6>Media Ponderata:</h6>
-                    <%= mediaPonderata %> 
+                        <br>
+                        <h5 class=" text-info text-capitalize">Media Aritmetica:</h5>
+                        <%= mediaAritmetica %>
+                            <br>
+                            <h5 class=" text-info text-capitalize">Media Ponderata:</h5>
+                            <%= mediaPonderata %>
+                                <br>
                 </div>
                 <div class="col-md-6 text-center">
-                    <h6>Grafico Andamento Voti:</h6>
-                    <button type="button" class="btn btn-default " style="background-color: rgb(156, 202, 230)"onclick="generaGrafico()"><strong>Genera Grafico</strong></button>
+                    <h5 class="text-center text-info text-capitalize">Grafico Andamento Voti:</h5>
+                    <button type="button" class="btn btn-default " style="background-color: rgb(156, 202, 230)" onclick="generaGrafico()"><strong>Genera Grafico</strong></button>
                 </div>
                 <div id="chartdiv" style="width: 100%; height: 400px;"></div>
                 <%}%>

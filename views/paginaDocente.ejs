@@ -27,7 +27,7 @@
 
 <body ng-app="appDocente" ng-controller="controllerDocente">
     <div class="tabbable tabs-left col-md-2 col-xs-6">
-        <ul class="nav nav-tabs">
+            <ul class="nav nav-tabs" id="menu">
             <li> <img class="img-responsive" src="img/logo.png"></img>
             </li>
             <li class="active"><a href="#1" data-toggle="tab">Home</a></li>
@@ -68,16 +68,16 @@
 
         <div id="2" class="tab-pane">
             <% if (listaAppelli.length > 0) { %>
-                <h3 class="text-center">Appelli inseriti
+                <h3 class="text-center text-info text-capitalize">Appelli inseriti
                 </h3>
                 <table class="table table-bordered">
                     <tr>
-                        <th class="col-md-3">Corso:</th>
-                        <th class="col-md-3">Aula:</th>
-                        <th class="col-md-3">Data e ora:</th>
-                        <th class="col-md-1"> </th>
-                        <th class="col-md-1"> </th>
-                        <th class="col-md-1"> </th>
+                        <th class="col-md-3  text-info text-capitalize">Corso:</th>
+                        <th class="col-md-3  text-info text-capitalize">Aula:</th>
+                        <th class="col-md-3  text-info text-capitalize">Data e ora:</th>
+                        <th class="col-md-1  text-info text-capitalize"> </th>
+                        <th class="col-md-1  text-info text-capitalize"> </th>
+                        <th class="col-md-1  text-info text-capitalize"> </th>
                     </tr>
                     <% for(var i=0; i < listaAppelli.length; i++) { %>
                         <tr>
@@ -102,7 +102,7 @@
                                         <div id="contact-form" class="form-container" align="center" data-form-container>
                                             <div class="row">
                                                 <div class="col-md-12 col-sm-75 ">
-                                                    <h3 class="text-center"><span><strong>Appelli inseriti</strong></span>
+                                                    <h3 class="text-center text-info text-capitalize"><span><strong>Appelli inseriti</strong></span>
                                                     </h3>
                                                     <hr />
                                                     <% if (listaAppelli.length > 0) { %>
@@ -152,7 +152,7 @@
                                         <div class="row">
                                             <div class="col-md-10 col-md-offset-1">
                                                 <div class="col-md-6">
-                                                    <h3 class="text-center"><strong>Aggiungi appello</strong></h3>
+                                                    <h3 class="text-center  text-info text-capitalize"><strong>Aggiungi appello</strong></h3>
                                                     <hr/>
                                                     <form action="/paginaDocente/nuovoAppello" method="POST">
 
@@ -197,7 +197,7 @@
                 <div id="3" class="tab-pane">
                     <div class="row marginTop">
                         <div class="col-md-4">
-                            <h3 class="text-center">Aggiungi appello</h3>
+                            <h3 class="text-center  text-info text-capitalize">Aggiungi appello</h3>
                             <hr/>
                             <div>
                                 <form action="/paginaDocente/nuovoAppello" method="POST">
@@ -220,15 +220,16 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <h3 class="text-center">Modifica appello</h3>
+                            <h3 class="text-center  text-info text-capitalize">Modifica appello</h3>
                             <hr/>
                             <div>
                                 <form action="/paginaDocente/aggiornaAppello" method="POST">
+                                    
                                     <input readonly value="{{idAppello}}" type="text " name="_id" required="required" class="form-control" placeholder="Appello"
                                     /><br>
-                                    <input type="date" name="data" required="required" class="form-control" /><br>
-                                    <input type="time" name="ora" required="required" class="form-control" /><br>
-                                    <input type="text" name="aula" required="required" class="form-control" /><br>
+                                    <input type="date" name="data" required="required" class="form-control" placeholder="data"/><br>
+                                    <input type="time" name="ora" required="required" class="form-control" placeholder="ora"/><br>
+                                    <input type="text" name="aula" required="required" class="form-control"placeholder="aula esame" /><br>
                                     <div align="center">
                                         <button type="submit" class="btn btn-md btn-info  ">OK</button>
                                     </div>
@@ -236,7 +237,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <h3 class="text-center">Elimina appello </h3>
+                            <h3 class="text-center  text-info text-capitalize">Elimina appello </h3>
                             <hr/>
                             <div>
                                 <form action="/paginaDocente/eliminaAppello" method="POST">

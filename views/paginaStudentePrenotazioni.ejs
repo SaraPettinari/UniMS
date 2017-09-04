@@ -30,7 +30,7 @@
             <div class="panel-body">
                 <div class="form-group" align="center">
                     <label class="col-sm-12">
-                        <h2>Appelli prenotati</h2>
+                        <h2 class="text-center text-info text-capitalize">Appelli prenotati</h2><hr/>
                     </label>
                 </div>
                 <% if (prenotazioni.length > 0) { %>
@@ -92,18 +92,22 @@
                             <input name="dataAppello" value="<%= dataAppello %>" readonly>
                             <label> Esito </label>
                             <input name="myEsito" value="<%= myEsito %>" readonly="readonly" type="number" id="esito">
-                            <button type="submit" title="Conferma e Verbalizza Online il voto!" class="btn btn-success btn-sm" onmouseover="conferma()"
+                            <button type="submit" title="Conferma e Verbalizza Online il voto!" class="btn btn-info btn-md" onmouseover="conferma()"
                                 id="conf"> Conferma </button>
-                                <p> *nel caso si voglia rifiutare il voto, cancellarsi dalla prenotazione</p>
+                            <p><strong> *nel caso si voglia rifiutare il voto, cancellarsi dalla prenotazione</strong></p>
                         </form>
                     </div>
                     <% } else { %>
-                        <h5>Nessun appello prenotato</h5>
-                        <% } %>
+                        <div class="col-md-offset-1">
+                            <h5 class="text-danger">Nessuna prenotazione</h5>
+                            <% } %>
+                        </div>
             </div>
 
             <form action="/paginaStudente" method="GET">
-                <button type="submit" class="btn btn-default"> << Indietro </button>
+                <div class="col-md-offset-1">
+                    <button type="submit" class="btn btn-default" style="background-color: rgb(156, 202, 230)"><strong> << Indietro </strong></button>
+                </div>
             </form>
         </div>
     </div>

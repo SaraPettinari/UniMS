@@ -6,6 +6,7 @@
  body {
   overflow-x: hidden;
   font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  
 
 }
 .text-muted {
@@ -669,6 +670,11 @@ body {
   border-color: #ddd transparent #ddd #ddd;
   *border-right-color: #ffffff;
   color: #01aaff;
+}
+
+#menu {
+  background-color: rgb(236, 241, 244); 
+ 
 }
 
 #backgroundBenvenuto{
