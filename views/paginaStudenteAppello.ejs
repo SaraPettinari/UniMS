@@ -3,7 +3,7 @@
 
 <head>
     <title>
-        <%= title %>
+        Dettagli Appello
     </title>
     <meta charset="UTF-8">
     <!-- to be responsive to mobile devices -->
@@ -30,7 +30,7 @@
             <div class="panel-body">
                 <div class="form-group">
                     <label class="col-sm-12">
-                        <h2>Dettagli appello</h2>
+                        <h2 class="text-center  text-capitalize">Dettagli appello</h2><hr/>
                     </label>
                 </div>
                 <% if (appelliCorso.length > 0) { %>
@@ -38,12 +38,12 @@
                         <table class="table table-bordered">
                             <tr>
                                 <th> </th>
-                                <th>Corso: </th>
-                                <th>Data: </th>
-                                <th>Ora: </th>
-                                <th>Matricola Docente: </th>
-                                <th>Aula: </th>
-                                <th>N. Iscritti: </th>
+                                <th class="col-md-2   text-capitalize">Corso: </th>
+                                <th class="col-md-2   text-capitalize">Data: </th>
+                                <th class="col-md-2   text-capitalize">Ora: </th>
+                                <th class="col-md-2   text-capitalize">Matricola Docente: </th>
+                                <th class="col-md-2   text-capitalize">Aula: </th>
+                                <th class="col-md-2   text-capitalize">N. Iscritti: </th>
                             </tr>
                             <% for(var i=0; i < appelliCorso.length; i++) { %>
                                 <tr>
@@ -78,11 +78,15 @@
                         </table>
                     </div>
                     <% } else { %>
-                        <h5>Nessun appello disponibile</h5>
-                        <% } %>
+                        <div class="col-md-offset-1">
+                            <h5 class="text-danger">Nessun appello disponibile</h5>
+                            <% } %>
+                        </div>
             </div>
-            <form action="/paginaStudente/appelli/pulisci" method="POST">
-                <button type="submit" class="btn btn-default"> << Indietro </button>
+            <form action="/paginaStudente/appelli/pulisci" method="POST"><br>
+                <div class="col-md-offset-1">
+                    <button type="submit" class="btn btn-default" style="background-color: rgb(156, 202, 230)"><strong> << Indietro </strong></button>
+                </div>
             </form>
         </div>
     </div>

@@ -2,8 +2,9 @@
 <html lang="it">
 
 <head>
-    <title>
-        <%= title %>
+     <!-- da vedere-->
+    <title> Area riservata
+        <%= user.nome %>
     </title>
     <meta charset="UTF-8">
     <!-- to be responsive to mobile devices -->
@@ -26,8 +27,8 @@
 
 <body ng-app="appAdmin" ng-controller="controllerAdmin">
     <div class="tabbable tabs-left col-md-2 col-xs-6">
-        <ul class="nav nav-tabs">
-            <li> <a href="/"><img src="img/logo.png"></a></li>
+            <ul class="nav nav-tabs" id="menu">
+            <li> <a href="/"><img class="img-responsive" src="img/logo.png" ></a></li>
             <li class="active"><a href="#1" data-toggle="tab">Home</a></li>
             <li><a href="#2" data-toggle="tab">Corsi</a></li>
             <li><a href="#3" data-toggle="tab">Gestione Corsi</a></li>
@@ -37,12 +38,15 @@
             <li><a href="/logout" class="btn btn-primary btn-md" style="background-color: rgb(156, 202, 230)">Log Out</a></li>
         </ul>
     </div>
+    <br>
+    <br>
     <div class="tab-content col-md-10 col-xs-12">
         <div id="1" class="tab-pane active">
             <div class="col-sm-6 col-md-4 col-md-offset-4" id="backgroundBenvenuto">
                 <div>
-                    <h2 class="text-center text-capitalize">Benvenuto
-                        <%= user.nome %>!</h2>
+                    <h1 class="text-center text-capitalize">Benvenuto
+                        <strong><%= user.nome %>!</strong></h1>
+                    <hr/>
                     <div>
                         <ul class="list-group text-center">
                             <li class="list-group-item"><strong> Nome: </strong>
@@ -67,16 +71,16 @@
         </div>
         <div id="2" class="tab-pane">
             <% if (tuoiCorsi.length > 0) { %>
-                <h3 class="text-center">Piano studi
+                <h3 class="text-center  text-capitalize">Piano studi:
                     <%= user.codFacoltà %>
-                </h3>
-                <table class="table marginTop">
+                </h3><hr/>
+                <table class="table marginTop table-bordered">
                     <tr>
-                        <th class="col-md-3">Nome:</th>
-                        <th class="col-md-2">Codice:</th>
-                        <th class="col-md-2">Matricola Docente:</th>
-                        <th class="col-md-2">CFU:</th>
-                        <th class="col-md-2">Anno:</th>
+                        <th class="col-md-3  text-capitalize">Nome:</th>
+                        <th class="col-md-2  text-capitalize">Codice:</th>
+                        <th class="col-md-2  text-capitalize">Matricola Docente:</th>
+                        <th class="col-md-2  text-capitalize">CFU:</th>
+                        <th class="col-md-2  text-capitalize">Anno:</th>
                     </tr>
                     <% for(var i=0; i < tuoiCorsi.length; i++) { %>
                         <tr>
@@ -103,64 +107,74 @@
         <div id="3" class="tab-pane">
             <div class="row marginTop">
                 <div class="col-md-4">
-                    <h4 class="text-center">Crea corso</h4>
+                    <h3 class="text-center  text-capitalize">Crea corso</h3>
+                    <hr />
                     <div>
                         <form action="/paginaAmministratore" method="POST">
-                            <input type="text" name="nome" placeholder="nome" required="required" class="form-control" />
-                            <input type="text" name="codice" placeholder="codice corso" required="required" class="form-control" />
+                            <input type="text" name="nome" placeholder="nome" required="required" class="form-control" /><br>
+                            <input type="text" name="codice" placeholder="codice corso" required="required" class="form-control" /><br>
                             <select ng-model="prof" class="form-control">  
                                                 <option value="" disabled selected hidden>Docente</option>
                                                 <% docentiFacoltà.forEach(function(prof){%>
                                                     <option value=<%=prof.matricola%>> <%= prof.nome %>  <%= prof.cognome %></option>
                                                 <% })%>
-                                        </select>
+                                        </select><br>
                             <input readonly value="{{prof}}" type="text" name="matricolaP" placeholder="matricola professore" required="required" class="form-control"
-                            />
-                            <input type="number" name="cfu" placeholder="cfu" required="required" class="form-control" min="3" max="12" />
-                            <input type="number" name="anno" placeholder="anno" required="required" class="form-control" min="1" max="3" />
-                            <button type="submit" class="btn btn-lg btn-info btn-block">OK</button>
+                            /><br>
+                            <input type="number" name="cfu" placeholder="cfu" required="required" class="form-control" min="3" max="12" /><br>
+                            <input type="number" name="anno" placeholder="anno" required="required" class="form-control" min="1" max="3" /><br>
+                            <div align="center"> 
+                            <button type="submit" class="btn btn-md btn-info ">OK</button>
+                            </div>
                         </form>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <h4 class="text-center">Modifica corso
-                    </h4>
+                    <h3 class="text-center  text-capitalize">Modifica corso</h3>
+                    <hr />
                     <div>
                         <div>
                             <select ng-model="corso" class="form-control">
+                                    <option value="" disabled selected hidden>Corso</option>
                                         <% tuoiCorsi.forEach(function(tuoiCorsi){%>
                                             <option value=<%=tuoiCorsi.codice%>> <%= tuoiCorsi.nome %></option>
                                         <% })%>
-                                            </select>
+                                            </select><br>
                             <form action="/paginaAmministratore/update" method="POST">
                                 <input readonly type="text" name="codice" placeholder="codice" required="required" class="form-control" value="{{corso}}"
-                                />
+                                /><br>
                                 <select ng-model="profM" class="form-control">  
                                                 <option value="" disabled selected hidden>Docente</option>
                                                 <% docentiFacoltà.forEach(function(prof){%>
                                                     <option value=<%=prof.matricola%>> <%= prof.nome %>  <%= prof.cognome %></option>
                                                 <% })%>
-                                        </select>
+                                        </select><br>
                                 <input readonly value="{{profM}}" type="text" name="matricolaP" placeholder="matricola professore" required="required" class="form-control"
-                                />
-                                <input type="number" name="cfu" placeholder="cfu" required="required" class="form-control" min="3" max="12" />
-                                <input type="number" name="anno" placeholder="anno" required="required" class="form-control" min="1" max="3" />
-                                <button type="submit" class="btn btn-lg btn-info btn-block" name="updateB">OK</button>
+                                /><br>
+                                <input type="number" name="cfu" placeholder="cfu" required="required" class="form-control" min="3" max="12" /><br>
+                                <input type="number" name="anno" placeholder="anno" required="required" class="form-control" min="1" max="3" /><br>
+                                <div align="center"> 
+                                    <button type="submit" class="btn btn-md btn-info ">OK</button>
+                                    </div>
                             </form>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <h4 class="text-center">Rimuovi corso </h4>
+                    <h3 class="text-center  text-capitalize">Rimuovi corso </h3>
+                    <hr />
                     <div>
                         <form action="/paginaAmministratore/remove" method="POST">
                             <select ng-model="corsoR" class="form-control">
+                                    <option value="" disabled selected hidden>Corso</option>
                                             <% tuoiCorsi.forEach(function(tuoiCorsi){%>
                                                 <option value=<%=tuoiCorsi.codice%>> <%= tuoiCorsi.nome %></option>
                                             <% })%>
                                     </select>
-                            <input type="hidden" name="codice" placeholder="codice" value="{{corsoR}}" />
-                            <button type="submit" class="btn btn-lg btn-info btn-block" name="removeB">OK</button>
+                            <input type="hidden" name="codice" placeholder="codice" value="{{corsoR}}" /><br>
+                            <div align="center"> 
+                                <button type="submit" class="btn btn-md btn-info ">OK</button>
+                                </div>
                         </form>
                     </div>
                 </div>
@@ -168,16 +182,16 @@
         </div>
         <div id="4" class="tab-pane">
             <% if (docentiFacoltà.length > 0) { %>
-                <h3 class="text-center">Docenti:
+                <h3 class="text-center text-capitalize">Docenti:
                     <%= user.codFacoltà %>
-                </h3>
-                <table class="table marginTop">
+                </h3><hr/>
+                <table class="table marginTop table-bordered">
                     <tr>
-                        <th class="col-md-2">Nome:</th>
-                        <th class="col-md-2">Cognome:</th>
-                        <th class="col-md-3">Matricola Docente:</th>
-                        <th class="col-md-3">Email:</th>
-                        <th class="col-md-2">Username:</th>
+                        <th class="col-md-2  text-capitalize">Nome:</th>
+                        <th class="col-md-2  text-capitalize">Cognome:</th>
+                        <th class="col-md-3  text-capitalize">Matricola Docente:</th>
+                        <th class="col-md-3  text-capitalize">Email:</th>
+                        <th class="col-md-2  text-capitalize">Username:</th>
                     </tr>
                     <% for(var i=0; i < docentiFacoltà.length; i++) { %>
                         <tr>
@@ -204,7 +218,7 @@
         <div id="5" class="tab-pane">
             <div class="row marginTop">
                 <div class="col-md-8 col-md-offset-2">
-                    <h3 class="text-center">Registra Nuovo Docente</h3>
+                    <h3 class="text-center  text-capitalize">Registra Nuovo Docente</h3><hr /><br>
                     <div>
                         <% if (message) { %>
                             <div>
@@ -218,10 +232,10 @@
                                         <div class="row">
                                             <div class="col-sm-6 form-group">
                                                 <label>Nome</label>
-                                                <input name="nome" type="text" class="form-control" required="required">                                                </div>
+                                                <input name="nome" type="text" class="form-control" required="required" placeholder="nome">                                                </div>
                                             <div class="col-sm-6 form-group">
                                                 <label>Cognome</label>
-                                                <input name="cognome" type="text" class="form-control" required="required">
+                                                <input name="cognome" type="text" class="form-control" required="required" placeholder="cognome">
                                             </div>
                                         </div>
                                         <div class="row">
@@ -237,18 +251,20 @@
                                         <div class="row">
                                             <div class="col-sm-6 form-group">
                                                 <label>Data Nascita</label>
-                                                <input name="dataDiNascita" type="date" class="form-control" required="required">
+                                                <input name="dataDiNascita" type="date" class="form-control" required="required" placeholder="gg/mm/aaaa">
                                             </div>
                                             <div class="col-sm-6 form-group">
                                                 <label>Cellulare</label>
-                                                <input name="telefono" type="text" class="form-control">
+                                                <input name="telefono" type="text" class="form-control" placeholder="telefono">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label>Corso di Laurea</label>
                                             <input name="codFacoltà" type="text" class="form-control" required="required" readonly value="<%= user.codFacoltà %>">
                                         </div>
-                                        <button type="submit" class="btn btn-lg btn-info">Invia</button>
+                                        <div align="center"> 
+                                                <button type="submit" class="btn btn-lg btn-info ">Invia</button>
+                                                </div>
                                     </div>
                                 </form>
                     </div>
@@ -257,18 +273,20 @@
         </div>
         <div id="6" class="tab-pane">
             <div class="row marginTop">
-                <div class="col-md-8 col-md-offset-2">
-                    <h3 class="text-center">Aggiungi Crediti Liberi agli Studenti</h3>
+                <div class="col-md-6 col-md-offset-2">
+                    <h3 class="text-center  text-capitalize">Aggiungi CREDITI LIBERI agli Studenti</h3><hr/><br>
                     <form action="/paginaAmministratore/aggiuntaCFULiberi" method="POST">
                         <label>Attività Svolta</label>
-                        <input type="text" name="attività" class="form-control" required="required">
+                        <input type="text" name="attività" class="form-control" required="required"><br>
                         <label>Data</label>
-                        <input type="date" name="data" class="form-control" required="required" onclick="controllaDataAdmin()" id="myDate">
+                        <input type="date" name="data" class="form-control" required="required" onclick="controllaDataAdmin()" id="myDate" ><br>
                         <label>CFU</label>
-                        <input type="number" name="cfu" class="form-control" required="required" min="1">
+                        <input type="number" name="cfu" class="form-control" required="required" min="1"><br>
                         <label>Matricola Studente</label>
-                        <input type="text" name="matricolaStudente" class="form-control" required="required">
-                        <button type="submit" class="btn btn-lg btn-info">OK</button>
+                        <input type="text" name="matricolaStudente" class="form-control" required="required"><br>
+                        <div align="center"> 
+                                <button type="submit" class="btn btn-lg btn-info ">OK</button>
+                                </div>
                     </form>
                 </div>
             </div>

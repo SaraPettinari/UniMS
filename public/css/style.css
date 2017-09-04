@@ -6,6 +6,8 @@
  body {
   overflow-x: hidden;
   font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  
+
 }
 .text-muted {
   color: #777777;
@@ -336,6 +338,8 @@ section h3.section-subheading {
   padding: 0 20px 0 100px;
   position: relative;
   text-align: left;
+ 
+
 }
 .timeline > li .timeline-panel:before {
   border-left-width: 0;
@@ -411,6 +415,8 @@ section h3.section-subheading {
     float: left;
     padding: 0 20px 20px 30px;
     text-align: right;
+   
+  
   }
   .timeline > li .timeline-image {
     width: 100px;
@@ -523,6 +529,8 @@ footer {
   min-height: 100%;
   padding: 100px 0;
   text-align: center;
+ 
+
 }
 .area_personale-modal .modal-content h2 {
   margin-bottom: 15px;
@@ -617,6 +625,7 @@ body {
 .tab-content > .tab-pane,
 .pill-content > .pill-pane {
   display: none;
+  
 }
 
 .tab-content > .active,
@@ -638,6 +647,7 @@ body {
   float: left;
   margin-right: 19px;
   border-right: 1px solid #ddd;
+
 }
 
 .tabs-left > .nav-tabs > li > a {
@@ -651,6 +661,7 @@ body {
 .tabs-left > .nav-tabs > li > a:hover,
 .tabs-left > .nav-tabs > li > a:focus {
   border-color: #eeeeee #dddddd #eeeeee #eeeeee;
+  
 }
 
 .tabs-left > .nav-tabs .active > a,
@@ -661,12 +672,19 @@ body {
   color: #01aaff;
 }
 
+#menu {
+  background-color: rgb(236, 241, 244); 
+ 
+}
+
 #backgroundBenvenuto{
   background-color: rgb(156, 202, 230); 
   border-radius: 5px;
   margin-top: 30px;
 }
 
+
 .marginTop {
   margin-top: 30px;
 }
+

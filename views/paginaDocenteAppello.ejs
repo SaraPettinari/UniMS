@@ -3,7 +3,7 @@
 
 <head>
     <title>
-        <%= title %>
+        Dettegli Appello
     </title>
     <meta charset="UTF-8">
     <!-- to be responsive to mobile devices -->
@@ -30,7 +30,8 @@
             <div class="panel-body">
                 <div class="form-group">
                     <label class="col-sm-12">
-                                    <h2>Dettagli appello</h2>
+                                    <h2  class="text-center 
+                                     text-capitalize">Dettagli appello</h2><hr/>
                                 </label>
                 </div>
                 <% if (studentiIscritti.length > 0) { %>
@@ -39,8 +40,10 @@
                         <div class="col-sm-6">
                             <table class="table table-bordered">
                                 <tr>
-                                    <th class="col-sm-6">Studenti Iscritti</th>
-                                    <th class="col-sm-6">Esiti</th>
+                                    <th class="col-sm-6  
+                                     text-capitalize">Matricola studente</th>
+                                    <th class="col-sm-6  
+                                     text-capitalize">Esito</th>
                                 </tr>
                                 <% for(var i=0; i < studentiIscritti.length; i++) { %>
                                     <tr>
@@ -62,17 +65,21 @@
                             </table>
                             <form action="/paginaDocente/appello/aggiungiEsito" method="POST">
                                 <input hidden type="text" name="voti" id="arrayVoti">
-                                <button class="btn btn-success" onclick="creaArrayVoti()">Invia Risultati</button>
+                                <button class="btn btn-info" onclick="creaArrayVoti()">Invia Risultati</button>
                             </form>
                         </div>
                         <div class="col-sm-3"></div>
                     </div>
                     <% } else { %>
-                        <h5>Nessuno studente iscritto</h5>
-                        <% } %>
+                        <div class="col-md-offset-1">
+                            <h4 class="text-danger">Nessuno studente iscritto</h4>
+                            <% } %>
+                        </div>
             </div>
             <form action="/paginaDocente" method="GET">
-                <button class="btn"><< Indietro </button>
+                <div class="col-md-offset-1">
+                    <button type="submit" class="btn btn-default" style="background-color: rgb(156, 202, 230)"><strong> << Indietro </strong></button>
+                </div>
             </form>
         </div>
     </div>
