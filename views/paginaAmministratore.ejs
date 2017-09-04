@@ -71,7 +71,7 @@
         </div>
         <div id="2" class="tab-pane">
             <% if (tuoiCorsi.length > 0) { %>
-                <h3 class="text-center">Piano studi:
+                <h3 class="text-center text-capitalize">Piano studi:
                     <%= user.codFacoltà %>
                 </h3>
                 <table class="table marginTop table-bordered">
@@ -107,7 +107,7 @@
         <div id="3" class="tab-pane">
             <div class="row marginTop">
                 <div class="col-md-4">
-                    <h3 class="text-center">Crea corso</h3>
+                    <h3 class="text-center text-capitalize">Crea corso</h3>
                     <hr />
                     <div>
                         <form action="/paginaAmministratore" method="POST">
@@ -130,8 +130,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <h3 class="text-center">Modifica corso
-                    </h3>
+                    <h3 class="text-center text-capitalize">Modifica corso</h3>
                     <hr />
                     <div>
                         <div>
@@ -162,7 +161,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <h3 class="text-center">Rimuovi corso </h3>
+                    <h3 class="text-center text-capitalize">Rimuovi corso </h3>
                     <hr />
                     <div>
                         <form action="/paginaAmministratore/remove" method="POST">
@@ -183,7 +182,7 @@
         </div>
         <div id="4" class="tab-pane">
             <% if (docentiFacoltà.length > 0) { %>
-                <h3 class="text-center">Docenti:
+                <h3 class="text-center text-capitalize">Docenti:
                     <%= user.codFacoltà %>
                 </h3>
                 <table class="table marginTop table-bordered">
@@ -219,7 +218,7 @@
         <div id="5" class="tab-pane">
             <div class="row marginTop">
                 <div class="col-md-8 col-md-offset-2">
-                    <h3 class="text-center">Registra Nuovo Docente</h3><br>
+                    <h3 class="text-center text-capitalize">Registra Nuovo Docente</h3><hr /><br>
                     <div>
                         <% if (message) { %>
                             <div>
@@ -275,7 +274,7 @@
         <div id="6" class="tab-pane">
             <div class="row marginTop">
                 <div class="col-md-8 col-md-offset-2">
-                    <h3 class="text-center">Aggiungi Crediti Liberi agli Studenti</h3><br>
+                    <h3 class="text-center text-capitalize">Aggiungi CREDITI LIBERI agli Studenti</h3><br>
                     <form action="/paginaAmministratore/aggiuntaCFULiberi" method="POST">
                         <label>Attività Svolta</label>
                         <input type="text" name="attività" class="form-control" required="required"><br>

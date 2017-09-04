@@ -6,6 +6,7 @@
  body {
   overflow-x: hidden;
   font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
 }
 .text-muted {
   color: #777777;
@@ -336,6 +337,8 @@ section h3.section-subheading {
   padding: 0 20px 0 100px;
   position: relative;
   text-align: left;
+ 
+
 }
 .timeline > li .timeline-panel:before {
   border-left-width: 0;
@@ -411,6 +414,8 @@ section h3.section-subheading {
     float: left;
     padding: 0 20px 20px 30px;
     text-align: right;
+   
+  
   }
   .timeline > li .timeline-image {
     width: 100px;
@@ -619,6 +624,7 @@ body {
 .tab-content > .tab-pane,
 .pill-content > .pill-pane {
   display: none;
+  
 }
 
 .tab-content > .active,
@@ -640,6 +646,7 @@ body {
   float: left;
   margin-right: 19px;
   border-right: 1px solid #ddd;
+
 }
 
 .tabs-left > .nav-tabs > li > a {
@@ -653,6 +660,7 @@ body {
 .tabs-left > .nav-tabs > li > a:hover,
 .tabs-left > .nav-tabs > li > a:focus {
   border-color: #eeeeee #dddddd #eeeeee #eeeeee;
+  
 }
 
 .tabs-left > .nav-tabs .active > a,
@@ -668,6 +676,7 @@ body {
   border-radius: 5px;
   margin-top: 30px;
 }
+
 
 .marginTop {
   margin-top: 30px;
