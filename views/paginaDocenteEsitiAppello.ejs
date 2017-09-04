@@ -3,7 +3,7 @@
 
 <head>
     <title>
-        <%= title %>
+        Esiti Appello
     </title>
     <meta charset="UTF-8">
     <!-- to be responsive to mobile devices -->
@@ -37,11 +37,11 @@
                 <div class="panel-body">
                     <div class="form-group">
                         <label class="col-sm-12">
-                                    <h2>Esiti appello</h2>
+                                    <h2 class="text-center text-info text-capitalize">Esiti appello</h2>
                                 </label>
                     </div>
                     <form action="/paginaDocente" method="GET">
-                        <button class="btn"><< Indietro </button>
+                        <button type="submit" class="btn btn-default" style="background-color: rgb(156, 202, 230)"><strong> << Indietro </strong></button>
                     </form>
                     <% if (matrice.length > 0){ %>
                         <div id="tabellaEsiti">
@@ -49,8 +49,8 @@
                                 <table class="table table-bordered">
                                     <thead>
                                     <tr>
-                                        <th class="col-sm-6">Studenti</th>
-                                        <th class="col-sm-6">Esiti</th>
+                                        <th class="col-sm-6  text-info text-capitalize">Studenti</th>
+                                        <th class="col-sm-6  text-info text-capitalize">Esiti</th>
                                     </tr>
                                     </thead>
                                     <tbody id="tableId">
@@ -70,8 +70,8 @@
                             </div>
                         </div>
                 </div>
-                <button class="btn" onclick="generaPdf()">Scarica Pdf Voti </button>
-                <button class="btn" onclick="generaGraficoDoc()">Genera Grafico </button>
+                <button  type="submit" class="btn btn-default" style="background-color: rgb(156, 202, 230)"onclick="generaPdf()">Scarica Pdf Voti </button>
+                <button  type="submit" class="btn btn-default" style="background-color: rgb(156, 202, 230)" onclick="generaGraficoDoc()">Genera Grafico </button>
                 <div id="chartdiv" style="width: 100%; height: 400px; background-color: #FFFFFF;"></div>
                 <% } %>
             </div>
