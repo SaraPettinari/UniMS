@@ -71,10 +71,10 @@
                 <div id="contact-form" class="form-container" align="center" data-form-container>
                     <div class="row">
                         <div class="col-md-12 col-sm-75 ">
+                            <h3 class="text-center"><span><strong>Appelli inseriti</strong></span>
+                        </h3>
+                        <hr />
                             <% if (listaAppelli.length > 0) { %>
-                                <h3 class="text-center"><span><strong>Appelli inseriti</strong></span>
-                                </h3>
-                                <hr />
                                 <div class="row">
                                     <h5 class="col-md-3"><strong>Corso:</strong></h5>
                                     <h5 class="col-md-3 text-center"><strong>Aula:</strong></h5>
@@ -138,7 +138,7 @@
                                     <input type="date" name="data" placeholder="data" required="required" class="form-control" /><br>
                                     <input type="time" name="ora" placeholder="ora" required="required" class="form-control" /><br>
                                     <input type="text" name="aula" placeholder="aula esame" required="required" class="form-control" /><br>
-                                    <button type="submit" class="btn btn-md btn-info " ng-show="IsVisible3">OK</button>
+                                    <button type="submit" class="btn btn-md btn-info " >OK</button>
                                 </form>
                             </div>
 
@@ -151,7 +151,7 @@
                                     <input type="date" name="data" placeholder="data" required="required" class="form-control" /><br>
                                     <input type="time" name="ora" placeholder="ora" required="required" class="form-control" /><br>
                                     <input type="text" name="aula" placeholder="aula" required="required" class="form-control" /><br>
-                                    <button align: "center" type="submit" class="btn btn-md btn-info " name="updateB" ng-show="IsVisible3">OK</button>
+                                    <button align: "center" type="submit" class="btn btn-md btn-info ">OK</button>
                                 </form>
                             </div>
                             <div class="col-md-6">
@@ -160,7 +160,7 @@
                                 <form action="/paginaDocente/eliminaAppello" method="POST">
                                     <input readonly value="{{idAppelloE}}" type="text " name="_id" placeholder="idAppello" required="required" class="form-control"
                                     /><br>
-                                    <button align: "center" type="submit" class="btn btn-md btn-info " name="removeB" ng-show="IsVisible3">OK</button>
+                                    <button align: "center" type="submit" class="btn btn-md btn-info ">OK</button>
                                 </form>
                             </div>
                         </div>
