@@ -2,9 +2,8 @@
 <html lang="it">
 
 <head>
-     <!-- da vedere-->
-    <title> Area riservata
-        <%= user.nome %>
+    <title>
+        <%= title %>
     </title>
     <meta charset="UTF-8">
     <!-- to be responsive to mobile devices -->
@@ -27,7 +26,7 @@
 
 <body ng-app="appAdmin" ng-controller="controllerAdmin">
     <div class="tabbable tabs-left col-md-2 col-xs-6">
-            <ul class="nav nav-tabs" id="menu">
+        <ul class="nav nav-tabs" id="menu">
             <li> <a href="/"><img class="img-responsive" src="img/logo.png" ></a></li>
             <li class="active"><a href="#1" data-toggle="tab">Home</a></li>
             <li><a href="#2" data-toggle="tab">Corsi</a></li>
@@ -73,7 +72,8 @@
             <% if (tuoiCorsi.length > 0) { %>
                 <h3 class="text-center  text-capitalize">Piano studi:
                     <%= user.codFacoltà %>
-                </h3><hr/>
+                </h3>
+                <hr/>
                 <table class="table marginTop table-bordered">
                     <tr>
                         <th class="col-md-3  text-capitalize">Nome:</th>
@@ -123,8 +123,8 @@
                             /><br>
                             <input type="number" name="cfu" placeholder="cfu" required="required" class="form-control" min="3" max="12" /><br>
                             <input type="number" name="anno" placeholder="anno" required="required" class="form-control" min="1" max="3" /><br>
-                            <div align="center"> 
-                            <button type="submit" class="btn btn-md btn-info ">OK</button>
+                            <div align="center">
+                                <button type="submit" class="btn btn-md btn-info ">OK</button>
                             </div>
                         </form>
                     </div>
@@ -153,9 +153,9 @@
                                 /><br>
                                 <input type="number" name="cfu" placeholder="cfu" required="required" class="form-control" min="3" max="12" /><br>
                                 <input type="number" name="anno" placeholder="anno" required="required" class="form-control" min="1" max="3" /><br>
-                                <div align="center"> 
+                                <div align="center">
                                     <button type="submit" class="btn btn-md btn-info ">OK</button>
-                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -172,9 +172,9 @@
                                             <% })%>
                                     </select>
                             <input type="hidden" name="codice" placeholder="codice" value="{{corsoR}}" /><br>
-                            <div align="center"> 
+                            <div align="center">
                                 <button type="submit" class="btn btn-md btn-info ">OK</button>
-                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -184,7 +184,8 @@
             <% if (docentiFacoltà.length > 0) { %>
                 <h3 class="text-center text-capitalize">Docenti:
                     <%= user.codFacoltà %>
-                </h3><hr/>
+                </h3>
+                <hr/>
                 <table class="table marginTop table-bordered">
                     <tr>
                         <th class="col-md-2  text-capitalize">Nome:</th>
@@ -218,7 +219,8 @@
         <div id="5" class="tab-pane">
             <div class="row marginTop">
                 <div class="col-md-8 col-md-offset-2">
-                    <h3 class="text-center  text-capitalize">Registra Nuovo Docente</h3><hr /><br>
+                    <h3 class="text-center  text-capitalize">Registra Nuovo Docente</h3>
+                    <hr /><br>
                     <div>
                         <% if (message) { %>
                             <div>
@@ -262,9 +264,9 @@
                                             <label>Corso di Laurea</label>
                                             <input name="codFacoltà" type="text" class="form-control" required="required" readonly value="<%= user.codFacoltà %>">
                                         </div>
-                                        <div align="center"> 
-                                                <button type="submit" class="btn btn-lg btn-info ">Invia</button>
-                                                </div>
+                                        <div align="center">
+                                            <button type="submit" class="btn btn-lg btn-info ">Invia</button>
+                                        </div>
                                     </div>
                                 </form>
                     </div>
@@ -274,19 +276,20 @@
         <div id="6" class="tab-pane">
             <div class="row marginTop">
                 <div class="col-md-6 col-md-offset-2">
-                    <h3 class="text-center  text-capitalize">Aggiungi CREDITI LIBERI agli Studenti</h3><hr/><br>
+                    <h3 class="text-center  text-capitalize">Aggiungi CREDITI LIBERI agli Studenti</h3>
+                    <hr/><br>
                     <form action="/paginaAmministratore/aggiuntaCFULiberi" method="POST">
                         <label>Attività Svolta</label>
                         <input type="text" name="attività" class="form-control" required="required"><br>
                         <label>Data</label>
-                        <input type="date" name="data" class="form-control" required="required" onclick="controllaDataAdmin()" id="myDate" ><br>
+                        <input type="date" name="data" class="form-control" required="required" onclick="controllaDataAdmin()" id="myDate"><br>
                         <label>CFU</label>
                         <input type="number" name="cfu" class="form-control" required="required" min="1"><br>
                         <label>Matricola Studente</label>
                         <input type="text" name="matricolaStudente" class="form-control" required="required"><br>
-                        <div align="center"> 
-                                <button type="submit" class="btn btn-lg btn-info ">OK</button>
-                                </div>
+                        <div align="center">
+                            <button type="submit" class="btn btn-lg btn-info ">OK</button>
+                        </div>
                     </form>
                 </div>
             </div>

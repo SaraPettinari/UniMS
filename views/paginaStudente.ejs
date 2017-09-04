@@ -2,9 +2,8 @@
 <html lang="it">
 
 <head>
-    <!-- da vedere -->
-    <title> Area riservata
-        <%= user.username %>
+    <title>
+        <%= title %>
     </title>
     <meta charset="UTF-8">
     <!-- to be responsive to mobile devices -->
@@ -79,7 +78,7 @@
                 </div>
             </div>
         </div>
-       
+
         <div id="2" class="tab-pane">
             <% if (tuoiCorsi.length > 0) { %>
                 <h2 class="text-center  text-capitalize">Piano studi:
@@ -117,7 +116,7 @@
                             <% } %>
                 </table>
         </div>
-        
+
 
         <div id="3" class="tab-pane">
             <% if (corsiAnnuali.length > 0) { %>
