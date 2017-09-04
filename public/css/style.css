@@ -3,7 +3,7 @@
  * Copyright 2013-2016 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
-body {
+ body {
   overflow-x: hidden;
   font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -29,7 +29,6 @@ a.active {
 }
 a {
   color:  white;
-
 }
 a:hover,
 a:focus,
@@ -43,20 +42,12 @@ h3,
 h4,
 h5,
 h6 {
-  
-  font-family:"Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-style:initial;
-  font-weight: 0;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 .img-centered {
   margin: 0 auto;
-}
-.image-circle{
-  border-radius: 50%;
-  width: 175px;
-  height: 175px;
-  border: 4px solid #FFF;
-  margin: 10px;
 }
 .bg-light-gray {
   background-color: #eeeeee;
@@ -68,7 +59,7 @@ h6 {
   color: white;
   background-color: #01aaff;
   border-color: #01aaff;
-  font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-weight: 700;
 }
@@ -112,7 +103,7 @@ fieldset[disabled] .btn-primary.active {
   color: white;
   background-color: #01aaff;
   border-color: #01aaff;
-  font-family: "Roboto Slab"f, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-weight: 700;
   border-radius: 3px;
@@ -619,81 +610,63 @@ body {
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
     box-shadow: inset 0 1px 1px rgba(0,0,0, .05);
 }
-.fullscreen_bg {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-size: cover;
-  background-position: 50% 50%;
-  background-color: cornflowerblue;
-}
-.list-group-item{
-  background: #eeeeee;
-  
-}
-.container div, .form-container  span strong{
-  font-family:  "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+.tabs-left > .nav-tabs {
+  border-bottom: 0;
 }
 
-.form-container ::-webkit-input-placeholder {
-  color:    #01aaff
+.tab-content > .tab-pane,
+.pill-content > .pill-pane {
+  display: none;
 }
 
-
-
-.form-container :-moz-placeholder { 
- color:    #01aaff;
- opacity:  1;
+.tab-content > .active,
+.pill-content > .active {
+  display: block;
 }
 
-.form-container :-ms-input-placeholder {
- color:    #01aaff;
+.tabs-left > .nav-tabs > li {
+  float: none;
 }
 
-.form-container :placeholder-shown { 
-color:#01aaff;
+.tabs-left > .nav-tabs > li > a {
+  min-width: 74px;
+  margin-right: 0;
+  margin-bottom: 3px;
 }
 
-
-.row {
-text-align:center;
+.tabs-left > .nav-tabs {
+  float: left;
+  margin-right: 19px;
+  border-right: 1px solid #ddd;
 }
 
-
-.form-container {
-margin:20px;
-padding:20px;
-border-radius:10px 10px 10px 10px;
-background:#B3E5FC;
-color:#00838F;
--webkit-transition: all .3s ease-in-out;
--moz-transition: all .3s ease-in-out;
--o-transition: all .3s ease-in-out;
-transition: all .3s ease-in-out;
+.tabs-left > .nav-tabs > li > a {
+  margin-right: -1px;
+  -webkit-border-radius: 4px 0 0 4px;
+     -moz-border-radius: 4px 0 0 4px;
+          border-radius: 4px 0 0 4px;
+  color: black;
 }
 
-/*aggiunti*/
-
-.contact-section{
-  background-image: url("/img/rocca.jpg");
-  /*background-color: #222222;*/
-background-repeat: no-repeat;
-  background-attachment:scroll;
-  background-position: center center;
- -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-  -o-background-size: cover;
-  text-align: center;
-  color: white;
-  padding-bottom:105px;
-  
-  
+.tabs-left > .nav-tabs > li > a:hover,
+.tabs-left > .nav-tabs > li > a:focus {
+  border-color: #eeeeee #dddddd #eeeeee #eeeeee;
 }
 
+.tabs-left > .nav-tabs .active > a,
+.tabs-left > .nav-tabs .active > a:hover,
+.tabs-left > .nav-tabs .active > a:focus {
+  border-color: #ddd transparent #ddd #ddd;
+  *border-right-color: #ffffff;
+  color: #01aaff;
+}
 
+#backgroundBenvenuto{
+  background-color: rgb(156, 202, 230); 
+  border-radius: 5px;
+  margin-top: 30px;
+}
 
-
-
+.marginTop {
+  margin-top: 30px;
+}
