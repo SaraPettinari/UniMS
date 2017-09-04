@@ -1,8 +1,8 @@
 function confermaPrenotazione() {
-    confirm('Vuoi confermare la prenotazione?');
+    alert('Prenotazione confermata!');
 }
 function cancellaPrenotazione() {
-    confirm('Vuoi cancellare la prenotazione?');
+    alert('Prenotazione cancellata!');
 }
 
 function creaArrayVoti() {
@@ -14,25 +14,28 @@ function creaArrayVoti() {
     document.getElementById('arrayVoti').value = array;
 }
 
+//genera grafico carriera studente
 function generaGrafico() {
-    var array = [];
+    var array = []; //date in cui si sono svolti gli esami
     var a = document.querySelectorAll("[id^='data']");
     a.forEach(function (element) {
         array.push(element.value);
     });
 
-    var arrayEsito = [];
+    var arrayEsito = []; //esiti degli esami
     var e = document.querySelectorAll("[id^='esito']");
     var j = 0;
     e.forEach(function (element) {
         // non vengono considerati i cfu liberi, poiché non hanno un esito
         if (element.value.length === 0)
-            array.splice(j, 1);
-        arrayEsito.push(element.value);
-        j++;
+            array.splice(j, 1); //rimossa la data corrispondente all'attività libera
+        else {
+            arrayEsito.push(element.value);
+            j++;
+        }
     });
 
-    var dataP = [];
+    var dataP = []; //dati da passare al grafico
     var i = 0;
     array.forEach(function (element) {
         dataP.push({ "date": element, "column-1": arrayEsito[i] });
@@ -93,12 +96,14 @@ function generaPdf() {
     doc.save('esitiAppello.pdf');
 }
 
+//controllo che il bottone di verbalizzazione sia attivo solo con un esito > 17
 function conferma() {
     if (document.getElementById("esito").value < 18) {
         document.getElementById("conf").disabled = true;
     }
 }
 
+//genera grafico andamento esame
 function generaGraficoDoc() {
     var array = [];
     var a = document.querySelectorAll("[id^='esiti']");
@@ -176,10 +181,11 @@ function generaGraficoDoc() {
     );
 }
 
+//impostato il valore minimo per l'inserimento di una data
 function controllaData() {
     var today = new Date();
     var dd = today.getDate();
-    var mm = today.getMonth() + 1; //January is 0!
+    var mm = today.getMonth() + 1; //Gennaio  = 0
     var yyyy = today.getFullYear();
 
     if (dd < 10) {
@@ -194,10 +200,11 @@ function controllaData() {
     document.getElementById("myDate").min = today;
 }
 
+//impostato il valore massimo per l'inserimento di una data
 function controllaDataAdmin() {
     var today = new Date();
     var dd = today.getDate();
-    var mm = today.getMonth() + 1; //January is 0!
+    var mm = today.getMonth() + 1;
     var yyyy = today.getFullYear();
 
     if (dd < 10) {

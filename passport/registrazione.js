@@ -5,6 +5,7 @@ var Admin = require('../models/personale').model('Admin');
 var Prof = require('../models/personale').model('Prof');
 
 module.exports = function (passport) {
+    //registrazione studente
     passport.use('registrazione', new LocalStrategy({
         passReqToCallback: true
     },
@@ -76,6 +77,7 @@ module.exports = function (passport) {
             process.nextTick(findOrCreateUser);
         })
     ),
+        //ricerca tra gli utenti già presenti nel database
         passport.use(new LocalStrategy({
             passReqToCallback: true
         },
@@ -100,6 +102,7 @@ module.exports = function (passport) {
                 })
             })
         ),
+        //registrazione docente
         passport.use('registrazioneDocente', new LocalStrategy({
             passReqToCallback: true
         },
@@ -110,7 +113,7 @@ module.exports = function (passport) {
                     Prof.find({ 'username': reg }).count(function (err, count) {
                         if (count > 0)
                             username = username.concat(count);
-                        //creo un nuovo studente
+                        //creo un nuovo docente
                         var newProf = new Prof();
                         // le credenziali verranno settate in base a ciò che verrà inserito nel form di registrazione
                         newProf.username = username.concat('/prof');

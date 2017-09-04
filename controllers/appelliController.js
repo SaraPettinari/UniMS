@@ -6,6 +6,7 @@ var Corsi = require('../models/corsi');
 
 var AppelliController = function () { };
 
+//Aggiunta appello
 AppelliController.addAppello = function (data, callback) {
     var newAppello = new Appelli();
 
@@ -21,6 +22,7 @@ AppelliController.addAppello = function (data, callback) {
     });
 }
 
+//Modifica appello
 AppelliController.updateAppelli = function (id, data, callback) {
     Appelli.findOneAndUpdate({ '_id': id },
         {
@@ -33,6 +35,7 @@ AppelliController.updateAppelli = function (id, data, callback) {
         });
 }
 
+//Eliminazione appello
 AppelliController.removeAppelli = function (id, callback) {
     Appelli.findOneAndRemove({ '_id': id }, function (err) {
         if (err) throw err;
@@ -40,6 +43,7 @@ AppelliController.removeAppelli = function (id, callback) {
     });
 }
 
+//Verbalizzazione appello
 AppelliController.verbalizzaAppello = function (data, matricolaS) {
     var newCarriera = new Carriera();
 
@@ -49,6 +53,7 @@ AppelliController.verbalizzaAppello = function (data, matricolaS) {
     Corsi.findOne({ 'codice': data.codCorso }, function (err, corso) {
         newCarriera.cfu = corso.cfu;
 
+        //salva l'esame nella carriera dello studente
         Studente.findOne({ 'matricola': matricolaS }, function (err, studente) {
             studente.carriera.push(newCarriera);
             studente.save(function (err) {
@@ -70,6 +75,7 @@ AppelliController.verbalizzaAppello = function (data, matricolaS) {
     });
 }
 
+//Calcolo dei cfu conseguiti, della media aritmetica e ponderata
 AppelliController.calcolaProgressione = function (matricolaS, callback) {
     Studente.findOne({ 'matricola': matricolaS }, function (err, studente) {
         if (err) return callback(err, null, null, null);
@@ -96,6 +102,7 @@ AppelliController.calcolaProgressione = function (matricolaS, callback) {
     });
 }
 
+//Ritorna la lista degli appelli tenuti da un docente, ordinati per codice e data
 AppelliController.listaAppelli = function (docente, callback) {
     Appelli.find({ 'matricolaP': docente }, function (err, listaAppelli) {
         if (err) return callback(err, null);
@@ -104,6 +111,7 @@ AppelliController.listaAppelli = function (docente, callback) {
     }).sort('idCorso').sort('data');
 }
 
+//Ritorna la lista degli appelli attivi per un corso, ordinati per data
 AppelliController.listaAppelliPerCorso = function (idCorso, callback) {
     Appelli.find({ 'idCorso': idCorso }, function (err, listaAppelliPerCorso) {
         if (err) return callback(err, null);
@@ -112,6 +120,7 @@ AppelliController.listaAppelliPerCorso = function (idCorso, callback) {
     }).sort('data');
 }
 
+//Salvataggio della matricola dello studente nella lista dei prenotati ad un determinato appello
 AppelliController.prenotazione = function (matricolaStudente, id) {
     Appelli.findOne({ '_id': id }, function (err, appello) {
         if (err) throw err;
@@ -121,6 +130,7 @@ AppelliController.prenotazione = function (matricolaStudente, id) {
     console.log('Prenotazione avvenuta con successo');
 }
 
+//Rimozione della matricola dello studente dalla lista dei prenotati ad un determinato appello
 AppelliController.cancellaPrenotazione = function (matricolaStudente, id) {
     Appelli.findOne({ '_id': id }, function (err, appello) {
         if (err) throw err;
@@ -132,6 +142,7 @@ AppelliController.cancellaPrenotazione = function (matricolaStudente, id) {
     console.log('Prenotazione cancellata con successo');
 }
 
+//Aggiunti gli esiti di un appello nel db
 AppelliController.addEsito = function (listEsiti, id) {
     Appelli.findOne({ '_id': id }, function (err, appello) {
         if (err) throw err;
@@ -142,6 +153,7 @@ AppelliController.addEsito = function (listEsiti, id) {
     });
 }
 
+//Creazione di un array contenente gli esiti, nell'ordine in cui sono stati inseriti dal docente
 AppelliController.arrayEsiti = function (array, esito, callback) {
     Appelli.find(function (err) {
         if (err) return callback(err, null);
@@ -152,6 +164,7 @@ AppelliController.arrayEsiti = function (array, esito, callback) {
     });
 }
 
+//Ritorna la matrice degli studenti e dei rispettivi esiti
 AppelliController.seeEsiti = function (id, callback) {
     Appelli.findOne({ '_id': id }, function (err, appello) {
         if (err) return callback(err, null);
@@ -165,6 +178,7 @@ AppelliController.seeEsiti = function (id, callback) {
     });
 }
 
+//Controllo se lo studente è prenotato ad un determinato appello
 AppelliController.checkStudente = function (matricolaStudente, id, callback) {
     Appelli.findOne({ '_id': id }, function (err, appello) {
         if (err) return callback(err, null);
@@ -175,6 +189,7 @@ AppelliController.checkStudente = function (matricolaStudente, id, callback) {
     });
 }
 
+//Ricerca di un determinato appello
 AppelliController.findAppello = function (idCorso, callback) {
     Appelli.findOne({ '_id': idCorso }, function (err, appello) {
         if (err)
@@ -184,6 +199,7 @@ AppelliController.findAppello = function (idCorso, callback) {
     })
 }
 
+//Lista degli appelli a cui uno studente è prenotato
 AppelliController.listaPerStudente = function (matricolaS, callback) {
     Appelli.find({ 'matricolaS': matricolaS }, function (err, appelliPrenotati) {
         if (err) return callback(err, null);
@@ -192,6 +208,7 @@ AppelliController.listaPerStudente = function (matricolaS, callback) {
     });
 }
 
+//Invio degli esiti agli studenti
 AppelliController.sendEsitoStudente = function (matricolaS, idAppello, callback) {
     Appelli.findOne({ '_id': idAppello }, function (err, appello) {
         if (err) return callback(err, null, null, null);

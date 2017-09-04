@@ -35,7 +35,7 @@ passport.deserializeUser(function (id, done) {
 });
 
 /**
- * These two functions trigger /passport/login.js and /passport/signup.js.
+ * Attivate /passport/login.js e /passport/signup.js.
  */
 login(passport);
 registrazione(passport);

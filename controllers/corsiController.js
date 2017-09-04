@@ -104,13 +104,16 @@ CorsiController.corsiAnnuali = function (anno, codFacoltà, callback) {
     });
 }
 
+/** Lista degli appelli disponibili per tutti i corsi che ancora non sono stati verbalizzati */
 CorsiController.appelliPrenotabili = function (utente, codFacoltà, callback) {
     Corsi.find({ 'codFacoltà': codFacoltà }, function (err, corsi) {
         var arrayAppelli = [];
         corsi.forEach(function (corso) {
             var confronto = true;
+            //controllo su tutti i corsi a partire dal primo anno a quello frequentato
             if (corso.anno <= utente.annoCorso) {
                 utente.carriera.forEach(function (c) {
+                    //se il corso è stato verbalizzato
                     if (c.codCorso === corso.codice)
                         confronto = false;
                 });
@@ -122,6 +125,7 @@ CorsiController.appelliPrenotabili = function (utente, codFacoltà, callback) {
     });
 }
 
+/** Possibilità di aggiungere crediti liberi alla carriera di uno studente */
 CorsiController.addCreditiLiberi = function (matricolaStudente, dati) {
     var newCarriera = new Carriera();
     newCarriera.codCorso = dati.codCorso;

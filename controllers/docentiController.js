@@ -2,6 +2,7 @@ var Docenti = require('../models/personale').model('Prof');
 
 var DocentiController = function () { };
 
+//Lista complessiva dei docenti, ordinati per matricola
 DocentiController.listaDocenti = function (callback) {
     Docenti.find({}, function (err, docenti) {
         if (err) {
@@ -13,6 +14,7 @@ DocentiController.listaDocenti = function (callback) {
     }).sort('matricola');
 }
 
+//Lista dei docenti di un determinato corso di laurea, ordinati per matricola
 DocentiController.listaDocentiFacoltà = function (profCodFacoltà, callback) {
     Docenti.find({ 'codFacoltà': profCodFacoltà }, function (err, docentiF) {
         if (err) {
