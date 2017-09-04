@@ -141,9 +141,7 @@
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
                         <i class="fa fa-unlock-alt fa-stack-1x fa-inverse"></i>
                     </span>
-                            <a data-toggle="modal" data-target="#passwordDimenticata">
-                                <h4 class="service-heading">Recupero password</h4>
-                            </a>
+                            <h4 class="service-heading">Recupero password</h4>
                         </div>
             </div>
             <!-- Modal -->
@@ -163,7 +161,6 @@
                         </div>
                         <div class="modal-footer">
                             <p>Vuoi un account? <a href="/registrazione" style="color: black">Registrati</a></p>
-                            <p>Password dimenticata? <a data-toggle="modal" data-target="#passwordDimenticata" style="color: black">Recuperala</a></p>
                             <button type="submit" data-toggle="modal" data-target="#accediCome" data-dismiss="modal" class="btn btn-default">Prosegui</button>
                         </div>
                     </div>
@@ -182,12 +179,11 @@
                         <form method="POST" action="{{'/login' + ruolo}}">
                             <div class="modal-body">
                                 <label>Username</label>
-                                <input type="text" name="username" required>
+                                <input type="text" name="username" required autofocus>
                                 <br>
                                 <label> Password </label>
                                 <input type="password" name="password" required>
                                 <br>
-                                <input type="checkbox" checked>Ricordami
                             </div>
                             <div class="modal-footer">
                                 <p>Vuoi un account? <a href="/registrazione" style="color: black">Registrati</a></p>

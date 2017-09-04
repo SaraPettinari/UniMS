@@ -4,11 +4,11 @@ var corsiLaurea = require('./models/corsiLaurea');
 var admin = require('./models/personale').model('Admin');
 var prof = require('./models/personale').model('Prof');
 var corsi = require('./models/corsi');
-var studenti = require ('./models/user');
+var studenti = require('./models/user');
 var urlDb = require('./config');
 
 var mongoose = require('mongoose');
-mongoose.connect(urlDb.databaseLocale);
+mongoose.connect(urlDb.databaseLocale || urlDb.databaseRemoto);
 var db = mongoose.connection;
 mongoose.connection.on('error', console.error.bind(console, 'errore nella connessione al db'));
 
@@ -417,7 +417,7 @@ var stud1 = new studenti({
     stato: 'Italia',
     città: 'Frosinone',
     cap: 03033,
-    dataDiNascita: 12/12/1992,
+    dataDiNascita: 12 / 12 / 1992,
     matricola: 'S001',
     codFacoltà: informatica.codice,
     email: 'serena.ferrari@hotmail.it',
@@ -427,8 +427,8 @@ var stud1 = new studenti({
     //carriera: [AppelliVerbalizzati], //'array of subdocument' contenente la carriera degli studenti
     annoCorso: 2
 });
-stud1.save(function(err){
-    if(err) throw err;
+stud1.save(function (err) {
+    if (err) throw err;
 });
 
 var stud2 = new studenti({
@@ -437,7 +437,7 @@ var stud2 = new studenti({
     stato: 'Italia',
     città: 'Ancona',
     cap: 60121,
-    dataDiNascita: 10/04/1994,
+    dataDiNascita: 10 / 04 / 1994,
     matricola: 'S002',
     codFacoltà: chimica.codice,
     email: 'fabio.costa@hotmail.it',
@@ -447,8 +447,8 @@ var stud2 = new studenti({
     //carriera: [AppelliVerbalizzati], //'array of subdocument' contenente la carriera degli studenti
     annoCorso: 2
 });
-stud2.save(function(err){
-    if(err) throw err;
+stud2.save(function (err) {
+    if (err) throw err;
 });
 
 var stud3 = new studenti({
@@ -457,7 +457,7 @@ var stud3 = new studenti({
     stato: 'Italia',
     città: 'Bologna',
     cap: 40121,
-    dataDiNascita: 11/07/1995,
+    dataDiNascita: 11 / 07 / 1995,
     matricola: 'S003',
     codFacoltà: matematica.codice,
     email: 'matilde.ricci@hotmail.it',
@@ -467,8 +467,8 @@ var stud3 = new studenti({
     //carriera: [AppelliVerbalizzati], //'array of subdocument' contenente la carriera degli studenti
     annoCorso: 2
 });
-stud3.save(function(err){
-    if(err) throw err;
+stud3.save(function (err) {
+    if (err) throw err;
 });
 
 var stud4 = new studenti({
@@ -477,7 +477,7 @@ var stud4 = new studenti({
     stato: 'Italia',
     città: 'Napoli',
     cap: 80121,
-    dataDiNascita: 23/01/1991,
+    dataDiNascita: 23 / 01 / 1991,
     matricola: 'S004',
     codFacoltà: matematica.codice,
     email: 'marco.greco@hotmail.it',
@@ -487,8 +487,8 @@ var stud4 = new studenti({
     //carriera: [AppelliVerbalizzati], //'array of subdocument' contenente la carriera degli studenti
     annoCorso: 3
 });
-stud4.save(function(err){
-    if(err) throw err;
+stud4.save(function (err) {
+    if (err) throw err;
 });
 
 var stud5 = new studenti({
@@ -497,7 +497,7 @@ var stud5 = new studenti({
     stato: 'Italia',
     città: 'Spoleto',
     cap: 16049,
-    dataDiNascita: 12/03/1993,
+    dataDiNascita: 12 / 03 / 1993,
     matricola: 'S005',
     codFacoltà: chimica.codice,
     email: 'nicole.colombo@hotmail.it',
@@ -507,8 +507,8 @@ var stud5 = new studenti({
     //carriera: [AppelliVerbalizzati], //'array of subdocument' contenente la carriera degli studenti
     annoCorso: 3
 });
-stud5.save(function(err){
-    if(err) throw err;
+stud5.save(function (err) {
+    if (err) throw err;
 });
 
 var stud6 = new studenti({
@@ -517,7 +517,7 @@ var stud6 = new studenti({
     stato: 'Italia',
     città: 'Camerino',
     cap: 62032,
-    dataDiNascita: 07/09/1991,
+    dataDiNascita: 07 / 09 / 1991,
     matricola: 'S006',
     codFacoltà: informatica.codice,
     email: 'silvio.leone@hotmail.it',
@@ -527,12 +527,9 @@ var stud6 = new studenti({
     //carriera: [AppelliVerbalizzati], //'array of subdocument' contenente la carriera degli studenti
     annoCorso: 3
 });
-stud6.save(function(err){
-    if(err) throw err;
+stud6.save(function (err) {
+    if (err) throw err;
 });
-
-
-
 
 //Mi disconnetto dal database
 mongoose.connection.close();

@@ -3,7 +3,7 @@
 
 <head>
     <title>
-        Appelli Disponibili
+        <%= title %>
     </title>
     <meta charset="UTF-8">
     <!-- to be responsive to mobile devices -->
@@ -21,46 +21,61 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <script src="/js/angular.js"></script>
+    <script src="/js/script.js"></script>
 </head>
 
-<form>
 <body ng-app="appDocente" ng-controller="controllerDocente">
-
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 col-md-4 col-md-offset-4">
-                    <% if (studentiIscritti.length > 0) { %>
-                        <h3 class="text-center"><strong>Studenti iscritti:
-                </strong></h3>
-                        <div class="row">
-                            <h4 class="col-md-6"><strong>Matricola:</strong></h4>
-                            <h4 class="col-md-6"><strong>Esito: (Seleziona 31 come 30 e Lode)</strong></h4>
-                        </div>
-                        <div class="row">
-                            <% for(var i=0; i < studentiIscritti.length; i++) { %>
-                                <div class="col-md-7">
-                                    <p>
-                                        <%= studentiIscritti[i] %>
-                                    </p>
-                                </div>
-                                <div class="col-md-5">
-                                    <select ng-model="selected">
-                                    <option ng-value="voto.value" ng-repeat="voto in voti">
-                                        {{voto}}
-                                    </option>
-                                    <input name="esito" value="{{voto}}" type="number" placeholder="esito">
-                                    </select>
-                                </div>
-                                <% } %>
-                        </div>
-                        <button type="submit" class="btn btn-md  btn-info"><strong>Invia Risultati</strong></button>
-
-                        <% } %>
+    <div class="panel">
+        <div class="panel-collapse collapse in">
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-sm-12">
+                                    <h2>Dettagli appello</h2>
+                                </label>
                 </div>
+                <% if (studentiIscritti.length > 0) { %>
+                    <div>
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-6">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th class="col-sm-6">Studenti Iscritti</th>
+                                    <th class="col-sm-6">Esiti</th>
+                                </tr>
+                                <% for(var i=0; i < studentiIscritti.length; i++) { %>
+                                    <tr>
+                                        <td>
+                                            <%= studentiIscritti[i] %>
+                                        </td>
+                                        <td>
+                                            <div class="form-group controls">
+                                                <select class="form-control" ng-model="selected<%=i%>" ng-init="selected<%=i%> = 0">
+                                                            <option ng-value="voto.value" ng-repeat="voto in voti">
+                                                                    {{voto.nome}}
+                                                                 </option>
+                                                        </select>
+                                                <input hidden name="voto" id="voto<%=i%>" value="{{selected<%=i%>}}" type="number">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                            </table>
+                            <form action="/paginaDocente/appello/aggiungiEsito" method="POST">
+                                <input hidden type="text" name="voti" id="arrayVoti">
+                                <button class="btn btn-success" onclick="creaArrayVoti()">Invia Risultati</button>
+                            </form>
+                        </div>
+                        <div class="col-sm-3"></div>
+                    </div>
+                    <% } else { %>
+                        <h5>Nessuno studente iscritto</h5>
+                        <% } %>
             </div>
+            <form action="/paginaDocente" method="GET">
+                <button class="btn"><< Indietro </button>
+            </form>
         </div>
-
-    </body>
-</form>
+    </div>
+</body>
 
 </html>
