@@ -3,12 +3,8 @@
 
 <head>
      <!-- da vedere -->
-    <title>
-<<<<<<< HEAD
+    <title> Area riservata
         <%= user.username %>
-=======
-        <%= title %>
->>>>>>> 17347df995c8f2fbfa2daaf1c818f58cbab7d71a
     </title>
     <meta charset="UTF-8">
     <!-- to be responsive to mobile devices -->
@@ -32,11 +28,7 @@
 <body ng-app="appDocente" ng-controller="controllerDocente">
     <div class="tabbable tabs-left col-md-2 col-xs-6">
         <ul class="nav nav-tabs">
-<<<<<<< HEAD
             <li> <img class="img-responsive" src="img/logo.png" ></img></li>
-=======
-            <li> <a href="/"><img src="img/logo.png"></a></li>
->>>>>>> 17347df995c8f2fbfa2daaf1c818f58cbab7d71a
             <li class="active"><a href="#1" data-toggle="tab">Home</a></li>
             <li><a href="#2" data-toggle="tab">Appelli Inseriti</a></li>
             <li><a href="#3" data-toggle="tab">Gestione Appelli</a></li>
@@ -47,13 +39,8 @@
         <div id="1" class="tab-pane active">
             <div class="col-sm-6 col-md-4 col-md-offset-4" id="backgroundBenvenuto">
                 <div>
-<<<<<<< HEAD
                     <h1 class="text-center text-capitalize">Benvenuto
                         <%= user.nome %>!</h1> <hr />
-=======
-                    <h2 class="text-center text-capitalize">Benvenuto
-                        <%= user.nome %>!</h2>
->>>>>>> 17347df995c8f2fbfa2daaf1c818f58cbab7d71a
                     <div>
                         <ul class="list-group text-center">
                             <li class="list-group-item"><strong> Nome: </strong>
@@ -76,7 +63,7 @@
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
+
         <div id="2" class="tab-pane">
             <% if (listaAppelli.length > 0) { %>
                 <h3 class="text-center">Appelli inseriti
@@ -107,8 +94,7 @@
                                 <a data-toggle="tab" href="#3"><button ng-model="idAppello" ng-click="cliccami('<%= listaAppelli[i]._id %>')" class="btn btn-warning btn-sm">Modifica</button></a>
                             </td>
                             <td>
-=======
-<<<<<<< HEAD
+
         <div class="row" ng-show="IsVisible3">
             <form>
                 <div id="contact-form" class="form-container" align="center" data-form-container>
@@ -184,63 +170,7 @@
                                     <button type="submit" class="btn btn-md btn-info " >OK</button>
                                 </form>
                             </div>
->>>>>>> 17347df995c8f2fbfa2daaf1c818f58cbab7d71a
 
-                                <a data-toggle="tab" href="#3"><button ng-model="idAppelloE" ng-click="cliccamiE('<%= listaAppelli[i]._id %>')" class="btn btn-danger btn-sm">Elimina</button></a>
-                            </td>
-                            <td>
-                                <form action="/paginaDocente/appello" method="POST">
-                                    <input hidden value="<%= listaAppelli[i]._id %>" name="scegliAppello">
-                                    <button type="submit" class="btn btn-info btn-sm">Studenti</button>
-                                </form>
-<<<<<<< HEAD
-                            </td>
-                            <td>
-                                <form action="/paginaDocente/andamentoEsiti" method="POST">
-                                    <input hidden value="<%= listaAppelli[i]._id %>" name="scegliAppello">
-                                    <button type="submit" class="btn btn-success btn-sm">Valutazioni</button>
-                                </form>
-                            </td>
-=======
-                            </div>
-                            <div class="col-md-6">
-                                <h3 class="text-center"><strong>Elimina appello</strong> </h3>
-                                <hr />
-                                <form action="/paginaDocente/eliminaAppello" method="POST">
-                                    <input readonly value="{{idAppelloE}}" type="text " name="_id" placeholder="idAppello" required="required" class="form-control"
-                                    /><br>
-                                    <button align: "center" type="submit" class="btn btn-md btn-info ">OK</button>
-=======
-        <div id="2" class="tab-pane">
-            <% if (listaAppelli.length > 0) { %>
-                <h3 class="text-center">Appelli inseriti
-                </h3>
-                <table class="table">
-                    <tr>
-                        <th class="col-md-3">Corso:</th>
-                        <th class="col-md-3">Aula:</th>
-                        <th class="col-md-3">Data e ora:</th>
-                        <th class="col-md-1"> </th>
-                        <th class="col-md-1"> </th>
-                        <th class="col-md-1"> </th>
-                    </tr>
-                    <% for(var i=0; i < listaAppelli.length; i++) { %>
-                        <tr>
-                            <td>
-                                <%= listaAppelli[i].idCorso %>
-                            </td>
-                            <td>
-                                <%= listaAppelli[i].aula %>
-                            </td>
-                            <td>
-                                <%= listaAppelli[i].data %>
-                                    &nbsp;&nbsp;
-                                    <%= listaAppelli[i].ora %>
-                            </td>
-                            <td>
-                                <a data-toggle="tab" href="#3"><button ng-model="idAppello" ng-click="cliccami('<%= listaAppelli[i]._id %>')" class="btn btn-warning btn-sm">Modifica</button></a>
-                            </td>
-                            <td>
 
                                 <a data-toggle="tab" href="#3"><button ng-model="idAppelloE" ng-click="cliccamiE('<%= listaAppelli[i]._id %>')" class="btn btn-danger btn-sm">Elimina</button></a>
                             </td>
@@ -254,7 +184,8 @@
                                 <form action="/paginaDocente/andamentoEsiti" method="POST">
                                     <input hidden value="<%= listaAppelli[i]._id %>" name="scegliAppello">
                                     <button type="submit" class="btn btn-success btn-sm">Valutazioni</button>
->>>>>>> 23516e14341b6ab7b83816bacd37cbc968af8395
+                                </form>
+                            </td>
                                 </form>
                             </td>
 >>>>>>> 17347df995c8f2fbfa2daaf1c818f58cbab7d71a
@@ -266,18 +197,13 @@
         <div id="3" class="tab-pane">
             <div class="marginTop row">
                 <div class="col-md-4">
-<<<<<<< HEAD
                     <h4 class="text-center">Aggiungi appello</h4><hr/>
-=======
-                    <h4 class="text-center">Aggiungi appello</h4>
->>>>>>> 17347df995c8f2fbfa2daaf1c818f58cbab7d71a
                     <form action="/paginaDocente/nuovoAppello" method="POST">
                         <select ng-model="idCorso" class="form-control ">  
                                         <option value=" " disabled selected hidden>Corso</option>
                                         <% corsi.forEach(function(corso){%>
                                             <option value=<%=corso.codice%>> <%= corso.nome %> </option>
                                         <% })%>
-<<<<<<< HEAD
                                 </select><br>
                         <input readonly value="{{idCorso}}" type="text " name="idCorso" placeholder="Corso" required="required" class="form-control"
                         /><br>
@@ -287,15 +213,6 @@
                         <div align="center">
                         <button type="submit" class="btn btn-md btn-info  ">OK</button>
                         </div>
-=======
-                                </select>
-                        <input readonly value="{{idCorso}}" type="text " name="idCorso" placeholder="Corso" required="required" class="form-control"
-                        />
-                        <input type="date" name="data" placeholder="data" required="required" class="form-control" id="myDate" onclick="controllaData()"/>
-                        <input type="time" name="ora" placeholder="ora" required="required" class="form-control" />
-                        <input type="text" name="aula" placeholder="aula esame" required="required" class="form-control" />
-                        <button type="submit" class="btn btn-lg btn-info btn-block ">OK</button>
->>>>>>> 17347df995c8f2fbfa2daaf1c818f58cbab7d71a
                     </form>
                 </div>
                 <div class="col-md-4">
@@ -305,26 +222,18 @@
                         <input type="date" name="data" required="required" class="form-control" />
                         <input type="time" name="ora" required="required" class="form-control" />
                         <input type="text" name="aula" required="required" class="form-control" />
-<<<<<<< HEAD
                         <div align="center">
                                 <button type="submit" class="btn btn-md btn-info  ">OK</button>
                                 </div>
-=======
-                        <button type="submit" class="btn btn-lg btn-info btn-block ">OK</button>
->>>>>>> 17347df995c8f2fbfa2daaf1c818f58cbab7d71a
                     </form>
                 </div>
                 <div class="col-md-4">
                     <h4 class="text-center">Elimina appello </h4>
                     <form action="/paginaDocente/eliminaAppello" method="POST">
                         <input readonly value="{{idAppelloE}}" type="text " name="_id" required="required" class="form-control" />
-<<<<<<< HEAD
                         <div align="center">
                                 <button type="submit" class="btn btn-md btn-info  ">OK</button>
                                 </div>
-=======
-                        <button type="submit" class="btn btn-lg btn-info btn-block ">OK</button>
->>>>>>> 17347df995c8f2fbfa2daaf1c818f58cbab7d71a
                     </form>
                 </div>
             </div>
