@@ -144,7 +144,8 @@
                     <form action="/paginaDocente/aggiornaAppello" method="POST">
                         <input readonly value="{{idAppello}}" type="text " name="_id" required="required" class="form-control" placeholder="idAppello"
                         /><br>
-                        <input type="date" name="data" required="required" class="form-control" placeholder="data " /><br>
+                        <input type="date" name="data" required="required" class="form-control" placeholder="data" id="myDateM" onclick="controllaData()"
+                        /><br>
                         <input type="time" name="ora" required="required" class="form-control" placeholder="ora" /><br>
                         <input type="text" name="aula" required="required" class="form-control" placeholder="aula esame" /><br>
                         <div align="center">

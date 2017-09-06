@@ -14,6 +14,31 @@ function creaArrayVoti() {
     document.getElementById('arrayVoti').value = array;
 }
 
+//validazione del campo password e della conferma al trattamento dei dati personali
+function check() {
+    var errors = [];
+    var p = document.getElementById('password');
+    var pControllo = document.getElementById('verificoPassword');
+    if (p.value !== pControllo.value) {
+        //avvisa che non è stato generato lo username
+        if (document.getElementById('username').value.length == 0)
+            document.getElementById("checkU").innerHTML = 'Non hai generato lo username!';
+        else
+            document.getElementById("checkU").innerHTML = '';
+        document.getElementById("checkP").innerHTML = 'Le password non coincidono';
+        document.getElementById("inviaR").disabled = true;
+    }
+    else {
+        document.getElementById("checkP").innerHTML = '';
+        //le password coincidono, controllo che sia confermato il trattamento dei dati personali
+        if (document.getElementById("trattamentoDati").checked == false) {
+            document.getElementById("inviaR").disabled = true;
+        }
+        else
+            document.getElementById("inviaR").disabled = false;
+    }
+}
+
 //genera grafico carriera studente
 function generaGrafico() {
     var array = []; //date in cui si sono svolti gli esami
@@ -181,9 +206,10 @@ function generaGraficoDoc() {
     );
 }
 
-//impostato il valore minimo per l'inserimento di una data
+//impostato il valore minimo/massimo per l'inserimento di una data
 function controllaData() {
     var today = new Date();
+    var maggioreEtà = new Date();
     var dd = today.getDate();
     var mm = today.getMonth() + 1; //Gennaio  = 0
     var yyyy = today.getFullYear();
@@ -197,24 +223,14 @@ function controllaData() {
     }
 
     today = "" + yyyy + "-" + mm + "-" + dd;
-    document.getElementById("myDate").min = today;
-}
+    if (document.getElementById("myDate"))
+        document.getElementById("myDate").min = today; //data appello
+    if (document.getElementById("myDateM"))
+        document.getElementById("myDateM").min = today; //data appello da modificare
+    if (document.getElementById("myDateAdmin"))
+        document.getElementById("myDateAdmin").max = today; //data cfu liberi
 
-//impostato il valore massimo per l'inserimento di una data
-function controllaDataAdmin() {
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth() + 1;
-    var yyyy = today.getFullYear();
-
-    if (dd < 10) {
-        dd = '0' + dd
-    }
-
-    if (mm < 10) {
-        mm = '0' + mm
-    }
-
-    today = "" + yyyy + "-" + mm + "-" + dd;
-    document.getElementById("myDate").max = today;
+    maggioreEtà = "" + (yyyy - 18) + "-" + mm + "-" + dd;
+    if (document.getElementById("dataDiNascita"))
+        document.getElementById("dataDiNascita").max = maggioreEtà; //si possono iscrivere solo i maggiorenni
 }

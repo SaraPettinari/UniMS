@@ -57,7 +57,7 @@ module.exports = function (passport) {
                                     throw err;
                                 }
                                 console.log('Registrazione avvenuta con successo.');
-                                return done(null, newStudent, req.flash('message', 'username:' + username + 'email istituazionale:' + newStudent.emailUniversitaria));
+                                return done(null, newStudent, req.flash('message', 'Registrazione avvenuta con successo! ' + ' username: ' + username + ' -  email istituzionale: ' + newStudent.emailUniversitaria + '  (per effettuare il login tornare alla home)'));
                             });
                         });
                     });

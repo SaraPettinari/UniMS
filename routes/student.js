@@ -80,12 +80,6 @@ router.post('/vediAppelli', isAuthenticated, function (req, res) {
     })
 });
 
-/** POST pulisce l'array contenente gli esami di un dato corso */
-router.post('/appelli/pulisci', isAuthenticated, function (req, res) {
-    esami.splice(0, esami.length);
-    res.redirect('/paginaStudente');
-});
-
 /** POST aggiunge la matricola dello studente nella lista degli iscritti all'appello */
 router.post('/appelli/prenotati', isAuthenticated, function (req, res) {
     AppelliController.prenotazione(req.user.matricola, req.body.idAppello);
