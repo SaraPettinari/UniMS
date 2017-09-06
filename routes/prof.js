@@ -106,10 +106,7 @@ router.post('/appello/aggiungiEsito', isAuthenticated, function (req, res) {
     var arrayVoti = varInput.split(",");
     var lEsiti = new Array();
     arrayVoti.forEach(function (element) {
-        AppelliController.arrayEsiti(lEsiti, element, function (err, listaEsiti) {
-            if (err) throw err;
-            lEsiti = listaEsiti;
-        })
+        lEsiti.push(element);
     });
     AppelliController.addEsito(lEsiti, thisAppello);
     res.redirect('/paginaDocente');

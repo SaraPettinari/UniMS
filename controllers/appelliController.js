@@ -153,17 +153,6 @@ AppelliController.addEsito = function (listEsiti, id) {
     });
 }
 
-//Creazione di un array contenente gli esiti, nell'ordine in cui sono stati inseriti dal docente
-AppelliController.arrayEsiti = function (array, esito, callback) {
-    Appelli.find(function (err) {
-        if (err) return callback(err, null);
-        else {
-            array.push(esito);
-            return callback(null, array);
-        }
-    });
-}
-
 //Ritorna la matrice degli studenti e dei rispettivi esiti
 AppelliController.seeEsiti = function (id, callback) {
     Appelli.findOne({ '_id': id }, function (err, appello) {
