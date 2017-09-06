@@ -16,15 +16,16 @@ function creaArrayVoti() {
 
 //validazione del campo password e della conferma al trattamento dei dati personali
 function check() {
-    var errors = [];
     var p = document.getElementById('password');
     var pControllo = document.getElementById('verificoPassword');
     if (p.value !== pControllo.value) {
-        //avvisa che non è stato generato lo username
-        if (document.getElementById('username').value.length == 0)
-            document.getElementById("checkU").innerHTML = 'Non hai generato lo username!';
-        else
-            document.getElementById("checkU").innerHTML = '';
+        //avvisa che non è stato generato lo username (per la registrazione studente)
+        if (document.getElementById('username')) {
+            if (document.getElementById('username').value.length == 0)
+                document.getElementById("checkU").innerHTML = 'Non hai generato lo username!';
+            else
+                document.getElementById("checkU").innerHTML = '';
+        }
         document.getElementById("checkP").innerHTML = 'Le password non coincidono';
         document.getElementById("inviaR").disabled = true;
     }
