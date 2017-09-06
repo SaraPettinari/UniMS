@@ -26,13 +26,11 @@ module.exports = function (passport) {
                     Student.find({ 'username': reg }).count(function (err, count) {
                         if (count > 0)
                             username = username.concat(count);
-
                         //creo un nuovo studente
                         var newStudent = new Student();
-
                         // le credenziali verranno settate in base a ciò che verrà inserito nel form di registrazione
                         newStudent.username = username;
-                        if (password.length < 4)
+                        if(password.length < 4)
                             return done(null, false, req.flash('message', 'La password deve contenere almeno 4 caratteri'));
                         newStudent.password = createHash(password);
                         newStudent.email = req.body.email;

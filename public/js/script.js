@@ -13,7 +13,6 @@ function creaArrayVoti() {
     });
     document.getElementById('arrayVoti').value = array;
 }
-
 //genera grafico carriera studente
 function generaGrafico() {
     var array = []; //date in cui si sono svolti gli esami
