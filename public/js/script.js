@@ -13,6 +13,26 @@ function creaArrayVoti() {
     });
     document.getElementById('arrayVoti').value = array;
 }
+//validazione del campo password e della conferma al trattamento dei dati personali
+function check() {
+    var p = document.getElementById('password');
+    var pControllo = document.getElementById('verificoPassword');
+    if (p.value !== pControllo.value) {
+        document.getElementById("checkP").innerHTML = 'Le password non coincidono';
+        document.getElementById("inviaR").disabled = true;
+    }
+    else {
+        document.getElementById("checkP").innerHTML = '';
+        //le password coincidono, controllo che sia confermato il trattamento dei dati personali
+        if (document.getElementById("trattamentoDati").checked == false) {
+            document.getElementById("inviaR").disabled = true;
+        }
+        else
+            document.getElementById("inviaR").disabled = false;
+    }
+}
+
+
 //genera grafico carriera studente
 function generaGrafico() {
     var array = []; //date in cui si sono svolti gli esami
