@@ -502,6 +502,10 @@ section#area_personale .modal{
   color: black;
   text-align: center;
 }
+.modal-dialog{
+  max-width: 600px; 
+  width: 80%;
+}
 footer {
   padding: 10px 0;
   text-align: center;
