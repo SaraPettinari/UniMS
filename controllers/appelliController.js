@@ -43,6 +43,15 @@ AppelliController.removeAppelli = function (id, callback) {
     });
 }
 
+//Chiusura appello
+AppelliController.chiudiAppello = function (id) {
+    Appelli.findOneAndUpdate({ '_id': id },
+        { 'chiuso': true }, function (err) {
+            if (err) throw err;
+            console.log('Appello chiuso con successo!');
+        });
+}
+
 //Verbalizzazione appello
 AppelliController.verbalizzaAppello = function (data, matricolaS) {
     var newCarriera = new Carriera();
