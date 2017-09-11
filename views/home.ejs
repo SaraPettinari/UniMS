@@ -110,39 +110,34 @@
                     <h3 class="section-subheading text-muted">Accedi alla tua area riservata per scoprire i vantaggi offerti!</h3>
                 </div>
             </div>
+
             <div class="row text-center">
-                <% if (message) { %>
-                    <div>
-                        <h5 class="text-center text-danger">
-                            <%= message %>
-                        </h5>
-                    </div>
-                    <% } %>
-                        <div class="col-md-4">
-                            <span class="fa-stack fa-4x">
+                    <% if (message) { %>
+                        <div>
+                            <h5 class="text-center text-danger">
+                                <%= message %>
+                            </h5>
+                        </div>
+                        <% } %>
+                            <div class="col-md-6">
+                                <span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
                         <i class="fa fa-user-plus fa-stack-1x fa-inverse"></i>
                     </span>
-                            <a href="/registrazione">
-                                <h4 class="service-heading">Registrazione</h4>
-                            </a>
-                        </div>
-                        <div class="col-md-4">
-                            <span class="fa-stack fa-4x">
+                                <a href="/registrazione">
+                                    <h4 class="service-heading">Registrazione</h4>
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
                         <i class="fa fa-sign-in fa-stack-1x fa-inverse"></i>
                     </span>
-                            <a data-toggle="modal" data-target="#accedi">
-                                <h4 class="service-heading">Login</h4>
-                            </a>
-                        </div>
-                        <div class="col-md-4">
-                            <span class="fa-stack fa-4x">
-                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-unlock-alt fa-stack-1x fa-inverse"></i>
-                    </span>
-                            <h4 class="service-heading">Recupero password</h4>
-                        </div>
+                                <a data-toggle="modal" data-target="#accedi">
+                                    <h4 class="service-heading">Login</h4>
+                                </a>
+                            </div>
+              
             </div>
             <!-- Modal -->
             <div id="accedi" class="modal fade" role="dialog">
@@ -193,7 +188,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </section>
 
