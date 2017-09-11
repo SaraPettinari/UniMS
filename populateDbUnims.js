@@ -8,7 +8,7 @@ var studenti = require('./models/user');
 var urlDb = require('./config');
 
 var mongoose = require('mongoose');
-mongoose.connect(urlDb.databaseLocale || urlDb.databaseRemoto);
+mongoose.connect(urlDb.databaseRemoto);
 var db = mongoose.connection;
 mongoose.connection.on('error', console.error.bind(console, 'errore nella connessione al db'));
 
@@ -242,7 +242,7 @@ var prof12 = new prof({
 prof12.save(function (err) {
     if (err) throw err;
 
-    
+
 });
 
 //AGGIUNTI CORSI
@@ -989,7 +989,7 @@ var stud1 = new studenti({
     stato: 'Italia',
     città: 'Frosinone',
     cap: 03033,
-    dataDiNascita: 12 / 12 / 1992,
+    dataDiNascita: new Date(1992, 12, 12),
     matricola: 'S001',
     codFacoltà: informatica.codice,
     email: 'serena.ferrari@hotmail.it',
@@ -1032,7 +1032,7 @@ var stud2 = new studenti({
     stato: 'Italia',
     città: 'Macerata',
     cap: 62100,
-    dataDiNascita: 24 / 06 / 1995,
+    dataDiNascita: new Date(1995, 06, 24),
     matricola: 'S002',
     codFacoltà: informatica.codice,
     email: 'marco.coppola@hotmail.it',
@@ -1087,7 +1087,7 @@ var stud3 = new studenti({
     stato: 'Italia',
     città: 'Camerino',
     cap: 62032,
-    dataDiNascita: 07 / 09 / 1991,
+    dataDiNascita: new Date(1991, 09, 07),
     matricola: 'S003',
     codFacoltà: informatica.codice,
     email: 'silvio.leone@hotmail.it',
@@ -1155,7 +1155,7 @@ var stud4 = new studenti({
     stato: 'Italia',
     città: 'Ancona',
     cap: 60121,
-    dataDiNascita: 10 / 04 / 1994,
+    dataDiNascita: new Date(1994, 04, 10),
     matricola: 'S004',
     codFacoltà: chimica.codice,
     email: 'fabio.costa@hotmail.it',
@@ -1205,7 +1205,7 @@ var stud5 = new studenti({
     stato: 'Italia',
     città: 'Spoleto',
     cap: 16049,
-    dataDiNascita: 12 / 03 / 1993,
+    dataDiNascita: new Date(1993, 03, 12),
     matricola: 'S005',
     codFacoltà: chimica.codice,
     email: 'nicole.colombo@hotmail.it',
@@ -1272,7 +1272,7 @@ var stud6 = new studenti({
     stato: 'Italia',
     città: 'Torino',
     cap: 10121,
-    dataDiNascita: 18 / 10 / 1996,
+    dataDiNascita: new Date(1996, 10, 18),
     matricola: 'S006',
     codFacoltà: chimica.codice,
     email: 'giulia.fabbri@hotmail.it',
@@ -1323,7 +1323,7 @@ var stud7 = new studenti({
     stato: 'Italia',
     città: 'Bologna',
     cap: 40121,
-    dataDiNascita: 11 / 07 / 1995,
+    dataDiNascita: new Date(1995, 07, 11),
     matricola: 'S007',
     codFacoltà: matematica.codice,
     email: 'matilde.ricci@hotmail.it',
@@ -1366,7 +1366,7 @@ var stud8 = new studenti({
     stato: 'Italia',
     città: 'Napoli',
     cap: 80121,
-    dataDiNascita: 23 / 01 / 1991,
+    dataDiNascita: new Date(1991, 01, 23),
     matricola: 'S008',
     codFacoltà: matematica.codice,
     email: 'marco.greco@hotmail.it',
@@ -1428,7 +1428,7 @@ var stud9 = new studenti({
     stato: 'Italia',
     città: 'Lecce',
     cap: 73100,
-    dataDiNascita: 04 / 11 / 1994,
+    dataDiNascita: new Date(1994, 11, 04),
     matricola: 'S009',
     codFacoltà: matematica.codice,
     email: 'carlotta.pepe@hotmail.it',
@@ -1479,7 +1479,7 @@ stud9.save(function (err) {
     if (err) throw err;
 });
 
- 
+
 //Mi disconnetto dal database
 mongoose.connection.close();
 

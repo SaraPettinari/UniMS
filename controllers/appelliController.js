@@ -43,6 +43,7 @@ AppelliController.removeAppelli = function (id, callback) {
     });
 }
 
+
 //Verbalizzazione appello
 AppelliController.verbalizzaAppello = function (data, matricolaS) {
     var newCarriera = new Carriera();
