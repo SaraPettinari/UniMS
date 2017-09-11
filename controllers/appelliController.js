@@ -43,8 +43,6 @@ AppelliController.removeAppelli = function (id, callback) {
     });
 }
 
-<<<<<<< HEAD
-=======
 //Chiusura appello
 AppelliController.chiudiAppello = function (id) {
     Appelli.findOneAndUpdate({ '_id': id },
@@ -53,7 +51,6 @@ AppelliController.chiudiAppello = function (id) {
             console.log('Appello chiuso con successo!');
         });
 }
->>>>>>> 8faeb0193f38cd31cb0a1a0fd625bdd45b2a26e6
 
 //Verbalizzazione appello
 AppelliController.verbalizzaAppello = function (data, matricolaS) {
