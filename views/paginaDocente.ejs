@@ -174,54 +174,16 @@
         </div>
         <div id="3" class="tab-pane">
             <div class="marginTop row">
-<<<<<<< HEAD
-                <div class="col-md-12">
-                    <div class="col-md-4 col-md-offset-1">
-                        <h3 class="text-center text-capitalize">Aggiungi appello</h3>
-                        <hr/>
-                        <form action="/paginaDocente/nuovoAppello" method="POST">
-                            <select ng-model="idCorso" class="form-control ">  
-=======
                 <div class="col-md-4 col-md-offset-1">
                     <h3 class="text-center text-capitalize">Aggiungi appello</h3>
                     <hr/>
                     <form action="/paginaDocente/nuovoAppello" method="POST">
                         <select ng-model="idCorso" class="form-control ">  
->>>>>>> 3c50d3c2b0ca0132b91b18c9b33a116ba9c067ec
                                         <option value=" " disabled selected hidden>Corso</option>
                                         <% corsi.forEach(function(corso){%>
                                             <option value=<%=corso.codice%>> <%= corso.nome %> </option>
                                         <% })%>
                                 </select><br>
-<<<<<<< HEAD
-                            <input readonly value="{{idCorso}}" type="text " name="idCorso" placeholder="Corso" required="required" class="form-control"
-                            /><br>
-                            <input type="date" name="data" placeholder="data" required="required" class="form-control" id="myDate" onclick="controllaData()"
-                            /><br>
-                            <input type="time" name="ora" placeholder="ora" required="required" class="form-control" /><br>
-                            <input type="text" name="aula" placeholder="aula esame" required="required" class="form-control" /><br>
-                            <div align="center">
-                                <button type="submit" class="btn btn-md btn-info ">OK</button>
-                            </div>
-                        </form>
-                    </div>
-
-
-                    <div class="col-md-4 col-md-offset-1">
-                        <h3 class="text-center text-capitalize">Modifica appello</h3>
-                        <hr/>
-                        <form action="/paginaDocente/aggiornaAppello" method="POST">
-                            <input readonly value="{{idAppello}}" type="text " name="_id" required="required" class="form-control" placeholder="idAppello"
-                            /><br>
-                            <input type="date" name="data" required="required" class="form-control" placeholder="data" id="myDateM" onclick="controllaData()"
-                            /><br>
-                            <input type="time" name="ora" required="required" class="form-control" placeholder="ora" /><br>
-                            <input type="text" name="aula" required="required" class="form-control" placeholder="aula esame" /><br>
-                            <div align="center">
-                                <button type="submit" class="btn btn-md btn-info ">OK</button>
-                            </div>
-                    </div>
-=======
                         <input readonly value="{{idCorso}}" type="text " name="idCorso" placeholder="Corso" required="required" class="form-control"
                         /><br>
                         <input type="date" name="data" placeholder="data" required="required" class="form-control" id="myDate" onclick="controllaData()"
@@ -247,15 +209,10 @@
                             <button type="submit" class="btn btn-md btn-info ">OK</button>
                         </div>
                     </form>
->>>>>>> 3c50d3c2b0ca0132b91b18c9b33a116ba9c067ec
                 </div>
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-    </div>
-=======
->>>>>>> 3c50d3c2b0ca0132b91b18c9b33a116ba9c067ec
 </body>
 
 </html>
