@@ -284,7 +284,7 @@ logica.save(function (err) {
 });
 
 var inglese = new corsi({
-    nome: 'Lingua inglese(B1 o B2 level)',
+    nome: 'Lingua Inglese (B1 or B2 level)',
     codice: 'I-04',
     codFacoltà: prof4.codFacoltà,
     matricolaP: prof4.matricola,
@@ -320,7 +320,7 @@ architettura.save(function (err) {
 });
 
 var diritto = new corsi({
-    nome: 'Diritto delle Nuove Tecnolgie',
+    nome: 'Diritto delle Nuove Tecnologie',
     codice: 'I-07',
     codFacoltà: prof3.codFacoltà,
     matricolaP: prof3.matricola,
@@ -416,7 +416,7 @@ prob.save(function (err) {
 });
 
 var business = new corsi({
-    nome: 'Business and Menagment',
+    nome: 'Business and Management',
     codice: 'I-15',
     codFacoltà: prof1.codFacoltà,
     matricolaP: prof1.matricola,
@@ -428,7 +428,7 @@ business.save(function (err) {
 });
 
 var web = new corsi({
-    nome: 'Pogrammazione web',
+    nome: 'Pogrammazione Web',
     codice: 'I-16',
     codFacoltà: prof2.codFacoltà,
     matricolaP: prof2.matricola,
@@ -561,7 +561,7 @@ info.save(function (err) {
 });
 
 var ingl = new corsi({
-    nome: 'Lingua inglese(B1 o B2 level)',
+    nome: 'Lingua Inglese (B1 or B2 level)',
     codice: 'C-35',
     codFacoltà: prof10.codFacoltà,
     matricolaP: prof10.matricola,
@@ -778,7 +778,7 @@ fis.save(function (err) {
 });
 
 var inglM = new corsi({
-    nome: 'Lingua inglese(B1 o B2 level)',
+    nome: 'Lingua Inglese (B1 or B2 level)',
     codice: 'M-54',
     codFacoltà: prof5.codFacoltà,
     matricolaP: prof5.matricola,
@@ -910,7 +910,7 @@ analisilab.save(function (err) {
 });
 
 var mathFin = new corsi({
-    nome: 'Matematica Fininziaria',
+    nome: 'Matematica Finanziaria',
     codice: 'M-65',
     codFacoltà: prof8.codFacoltà,
     matricolaP: prof8.matricola,
