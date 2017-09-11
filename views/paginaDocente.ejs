@@ -108,7 +108,13 @@
                                             <div class="modal-body">
                                                 <div class="row">
                                                     <div class="col-md-12">
+<<<<<<< HEAD
                                                         <p> Vuoi eliminare l'appello? </p>
+=======
+                                                        <p> 
+                                                           Vuoi eliminare l'appello?
+                                                        </p>
+>>>>>>> ae8584427ff4d638d7f1c10539038d2ad0d9a2e4
                                                     </div>
                                                 </div>
                                                 <div class="btn-ground">
@@ -124,6 +130,7 @@
                                 </div>
                             </td>
                             <td>
+<<<<<<< HEAD
                                 <% if (!listaAppelli[i].chiuso) { %>
                                     <a data-toggle="modal" data-target="#confermaChiusura"><button ng-model="idAppelloC" ng-click="cliccamiC('<%= listaAppelli[i]._id %>')" class="btn btn-warning btn-sm">Chiudi</button></a>
                                     <div class="modal fade" id="confermaChiusura" role="dialog">
@@ -132,6 +139,22 @@
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                     <h2 class="text-center text-capitalize">Chiusura appello</h2>
+=======
+                                <a data-toggle="modal" data-target="#confermaChiusura">  <button ng-model="idAppello" ng-click="cliccami('<%= listaAppelli[i]._id %>')" class="btn btn-warning btn-sm">Chiudi</button></a>
+                                <div class="modal fade" id="confermaChiusura" role="dialog">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h2 class="text-center  text-capitalize">Chiusura appello</h2>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <p> Vuoi chiudere l'appello?
+                                                        </p>
+                                                    </div>
+>>>>>>> ae8584427ff4d638d7f1c10539038d2ad0d9a2e4
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="row">
