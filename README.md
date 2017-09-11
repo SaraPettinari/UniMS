@@ -28,3 +28,4 @@ http://jorgeramon.me/2014/using-mongodb-and-mongoose-for-user-registration-login
 
 https://github.com/claudiopastorini/Libretto-Delphi.git       5* grafici
 http://sahatyalkabov.com/how-to-implement-password-reset-in-nodejs/
+

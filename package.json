@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
-    "body-parser": "^1.17.2",
+    "body-parser": "^1.18.0",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
     "ejs": "~2.5.6",
@@ -19,6 +19,7 @@
     "mongoose": "^4.11.10",
     "morgan": "^1.8.2",
     "passport": "^0.3.2",
+    "passport-http": "^0.3.0",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
     "postmark": "^1.4.1",
@@ -30,7 +31,7 @@
     "url": "git+https://github.com/SaraPettinari/UniMS.git"
   },
   "author": "UniMs",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/SaraPettinari/UniMS/issues"
   },

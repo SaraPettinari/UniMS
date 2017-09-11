@@ -38,12 +38,13 @@
                         <table class="table table-bordered">
                             <tr>
                                 <th> </th>
-                                <th class="col-md-2   text-capitalize">Corso: </th>
+                                <th class="col-md-1   text-capitalize">Corso: </th>
                                 <th class="col-md-2   text-capitalize">Data: </th>
                                 <th class="col-md-2   text-capitalize">Ora: </th>
+                                <th class="col-md-2   text-capitalize">Chiusura Appello: </th>
                                 <th class="col-md-2   text-capitalize">Matricola Docente: </th>
-                                <th class="col-md-2   text-capitalize">Aula: </th>
-                                <th class="col-md-2   text-capitalize">N. Iscritti: </th>
+                                <th class="col-md-1   text-capitalize">Aula: </th>
+                                <th class="col-md-1   text-capitalize">N. Iscritti: </th>
                             </tr>
                             <% for(var i=0; i < appelliCorso.length; i++) { %>
                                 <tr>
@@ -55,7 +56,7 @@
                                             <input hidden name="idAppello" value="<%= appelliCorso[i]._id %>">
                                         </form>
                                     </td>
-                                    <td class="col-md-2">
+                                    <td class="col-md-1">
                                         <%= appelliCorso[i].idCorso %>
                                     </td>
                                     <td class="col-md-2">
@@ -65,9 +66,12 @@
                                         <%= appelliCorso[i].ora %>
                                     </td>
                                     <td class="col-md-2">
+                                         
+                                        </td>
+                                    <td class="col-md-2">
                                         <%= appelliCorso[i].matricolaP %>
                                     </td>
-                                    <td class="col-md-2">
+                                    <td class="col-md-1">
                                         <%= appelliCorso[i].aula %>
                                     </td>
                                     <td class="col-md-1">
