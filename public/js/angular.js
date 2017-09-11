@@ -26,6 +26,10 @@ appD.controller('controllerDocente', function ($scope) {
     $scope.cliccamiE = function (id) {
         $scope.idAppelloE = id;
     }
+    $scope.idAppelloC = '';
+    $scope.cliccamiC = function (id) {
+        $scope.idAppelloC = id;
+    }
     var arrayVoti = [];
     for (var i = 0; i < 32; i++) {
         arrayVoti.push({nome: i, value: i});

@@ -118,4 +118,9 @@ router.post('/andamentoEsiti', isAuthenticated, function (req, res) {
     res.redirect('/paginaDocente/andamentoEsiti');
 })
 
+router.post('/chiudiAppello', isAuthenticated, function (req, res) {
+    AppelliController.chiudiAppello(req.body.scegliAppello);
+    res.redirect('/paginaDocente');
+});
+
 module.exports = router;

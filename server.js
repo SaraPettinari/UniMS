@@ -20,7 +20,7 @@ con.once('open', function () {
 
 var app = express();
 
-// Import of passport for user authentication and express-session for user sessions.
+// importato passport per l'autenticazione dell'utente ed express-session per la sessione dell'utente.
 var passport = require('passport');
 var expressSession = require('express-session');
 app.use(expressSession({secret: 'secretKey',
@@ -30,31 +30,28 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 /**
- * We use connect-flash middleware for sending messages
- *    for error debugging between requests.
+ * Usato connect-flash per inviare messaggi dopo una richiesta.
  */
 var flash = require('connect-flash');
 app.use(flash());
 
-// Initialize passport through init.js inside passport folder.
+// inizializzato passport.
 var initPassport = require('./passport/init');
 
-// make express look in the views/public directory for assets (css/js/img)
+// velocizzato il percorso views/public (css/js/img)
 app.use(express.static(__dirname + '/public'));
 
-// view engine setup
+// impostate le views.
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//ROUTES
+//settate le routes
 app.use('/', routes);
 app.use('/paginaAmministratore', admin);
 app.use('/paginaDocente', prof);

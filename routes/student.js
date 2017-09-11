@@ -72,7 +72,9 @@ router.post('/vediAppelli', isAuthenticated, function (req, res) {
     AppelliController.listaAppelliPerCorso(req.body.idCorso, function (err, appelliCorso) {
         appelliCorso.forEach(function (element) {
             AppelliController.checkStudente(req.user.matricola, element._id, function (err, bool) {
-                if (!bool)
+                var chiusuraAppello = element.chiuso;
+                console.log(element.chiuso);
+                if (!bool && !chiusuraAppello)
                     esami.push(element);
             });
         });
