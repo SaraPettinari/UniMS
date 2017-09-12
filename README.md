@@ -168,7 +168,9 @@ POST /paginaStudente/vediPrenotazioni/confermaVoto
 
 POST /paginaStudente/vediPrenotazioni/cancellaPrenotazione
 
-## Credenziali di Accesso per la facoltà di informatica
+## Credenziali di Accesso per la facoltà di Informatica
+*per testare le altre facoltà (Matematica e Chimica) consultare il file populateDbUnims.js*
+
 ### Amministratore
 
 Username: sara.pettinari/admin
@@ -188,4 +190,3 @@ Username: serena.ferrari
 Password: serena
 
 
-per testare le altre facoltà consultare il file populateDbUnims.js
