@@ -222,9 +222,9 @@ var prof11 = new prof({
     cognome: 'Rizzo',
     matricola: 'P011',
     codFacoltà: chimica.codice,
-    email: 'gebriele.rizzo@unims.it',
-    username: 'gebriele.rizzo/prof',
-    password: createHash('gebriele')
+    email: 'gabriele.rizzo@unims.it',
+    username: 'gabriele.rizzo/prof',
+    password: createHash('gabriele')
 });
 prof11.save(function (err) {
     if (err) throw err;
@@ -998,25 +998,25 @@ var stud1 = new studenti({
     password: createHash('serena'),
     carriera: [{
         codCorso: programmazione.codice,
-        data: '12 / 12 / 2016',
+        data: '2016-12-16',
         esito: 28,
         cfu: programmazione.cfu
     },
     {
         codCorso: fondamenti.codice,
-        data: '24 / 02 / 2017',
+        data: '2017-02-11',
         esito: 23,
         cfu: fondamenti.cfu
     },
     {
         codCorso: algebra.codice,
-        data: '02 / 05 / 2017',
+        data: '2017-05-21',
         esito: 27,
         cfu: algebra.cfu
     },
     {
         codCorso: analisi.codice,
-        data: '02 / 09 / 2017',
+        data: '2017-09-04',
         esito: 25,
         cfu: analisi.cfu
     }], //'array of subdocument' contenente la carriera degli studenti
@@ -1041,37 +1041,37 @@ var stud2 = new studenti({
     password: createHash('marco'),
     carriera: [{
         codCorso: programmazione.codice,
-        data: '30 / 02 / 2017',
+        data: '2017-02-20',
         esito: 27,
         cfu: programmazione.cfu
     },
     {
         codCorso: fondamenti.codice,
-        data: '10 / 02 / 2017',
+        data: '2017-02-18',
         esito: 29,
         cfu: fondamenti.cfu
     },
     {
         codCorso: logica.codice,
-        data: '02 / 09 / 2017',
+        data: '2017-09-13',
         esito: 26,
         cfu: logica.cfu
     },
     {
         codCorso: architettura.codice,
-        data: '04 / 07 / 2017',
+        data: '2017-07-19',
         esito: 30,
         cfu: architettura.cfu
     },
     {
         codCorso: algebra.codice,
-        data: '14 / 06 / 2017',
+        data: '2017-06-27',
         esito: 30,
         cfu: algebra.cfu
     },
     {
         codCorso: diritto.codice,
-        data: '02 / 12 / 2016',
+        data: '2016-12-16',
         esito: 27,
         cfu: diritto.cfu
     }], //'array of subdocument' contenente la carriera degli studenti
@@ -1096,49 +1096,49 @@ var stud3 = new studenti({
     password: createHash('silvio'),
     carriera: [{
         codCorso: programmazione.codice,
-        data: '12 / 12 / 2015',
+        data: '2015-12-01',
         esito: 22,
         cfu: programmazione.cfu
     },
     {
         codCorso: fondamenti.codice,
-        data: '24 / 02 / 2017',
+        data: '2017-02-07',
         esito: 26,
         cfu: fondamenti.cfu
     },
     {
         codCorso: algebra.codice,
-        data: '02 / 11 / 2015',
+        data: '2015-11-25',
         esito: 29,
         cfu: algebra.cfu
     },
     {
         codCorso: analisi.codice,
-        data: '01 / 12 / 2015',
+        data: '2015-12-15',
         esito: 21,
         cfu: analisi.cfu
     },
     {
         codCorso: basi.codice,
-        data: '12 / 06 / 2017',
+        data: '2017-06-29',
         esito: 30,
         cfu: basi.cfu
     },
     {
         codCorso: sistemi.codice,
-        data: '13 / 01 / 2016',
+        data: '2016-01-06',
         esito: 29,
         cfu: sistemi.cfu
     },
     {
         codCorso: business.codice,
-        data: '16 / 04 / 2017',
+        data: '2017-04-11',
         esito: 25,
         cfu: business.cfu
     },
     {
         codCorso: reti.codice,
-        data: '29 / 07 / 2016',
+        data: '2016-07-23',
         esito: 19,
         cfu: reti.cfu
     },], //'array of subdocument' contenente la carriera degli studenti
@@ -1164,31 +1164,31 @@ var stud4 = new studenti({
     password: createHash('fabio'),
     carriera: [{
         codCorso: analisiC.codice,
-        data: '18 / 12 / 2016',
+        data: '2016-12-16',
         esito: 21,
         cfu: analisiC.cfu
     },
     {
         codCorso: fisica.codice,
-        data: '22 / 01 / 2017',
+        data: '2017-01-24',
         esito: 25,
         cfu: fisica.cfu
     },
     {
         codCorso: ingl.codice,
-        data: '17 / 02 / 2017',
+        data: '2017-02-21',
         esito: 27,
         cfu: ingl.cfu
     },
     {
         codCorso: info.codice,
-        data: '01 / 03 / 2016',
+        data: '2016-03-06',
         esito: 28,
         cfu: info.cfu
     },
     {
         codCorso: chimicaInorganica.codice,
-        data: '17 / 02 / 2017',
+        data: '2017-02-19',
         esito: 23,
         cfu: chimicaInorganica.cfu
     },
@@ -1282,31 +1282,31 @@ var stud6 = new studenti({
     carriera: [
         {
             codCorso: fisica.codice,
-            data: '27 / 02 / 2016',
+            data: '2016-02-26',
             esito: 30,
             cfu: fisica.cfu
         },
         {
             codCorso: info.codice,
-            data: '05 / 05 / 2016',
+            data: '2016-05-02',
             esito: 28,
             cfu: info.cfu
         },
         {
             codCorso: chimicaInorganica.codice,
-            data: '27 / 06 / 2016',
+            data: '2016-06-26',
             esito: 27,
             cfu: chimicaInorganica.cfu
         },
         {
             codCorso: eco.codice,
-            data: '06 / 02 / 2017',
+            data: '2017-02-14',
             esito: 29,
             cfu: eco.cfu
         },
         {
             codCorso: bio.codice,
-            data: '01 / 04 / 2017',
+            data: '2017-04-19',
             esito: 30,
             cfu: bio.cfu
         }], //'array of subdocument' contenente la carriera degli studenti
@@ -1332,25 +1332,25 @@ var stud7 = new studenti({
     password: createHash('matilde'),
     carriera: [{
         codCorso: geometria.codice,
-        data: '01 / 02 / 2017',
+        data: '2017-02-30',
         esito: 24,
         cfu: geometria.cfu
     },
     {
         codCorso: alg.codice,
-        data: '15 / 02 / 2017',
+        data: '2015-02-22',
         esito: 25,
         cfu: alg.cfu
     },
     {
         codCorso: fis.codice,
-        data: '06 / 04 / 2017',
+        data: '2017-04-06',
         esito: 28,
         cfu: fis.cfu
     },
     {
         codCorso: prgM.codice,
-        data: '19 / 06 / 2017',
+        data: '2017-06-15',
         esito: 22,
         cfu: prgM.cfu
     },], //'array of subdocument' contenente la carriera degli studenti
@@ -1376,43 +1376,43 @@ var stud8 = new studenti({
     carriera: [
         {
             codCorso: alg.codice,
-            data: '15 / 02 / 2016',
+            data: '2016-02-16',
             esito: 23,
             cfu: alg.cfu
         },
         {
             codCorso: fis.codice,
-            data: '06 / 04 / 2016',
+            data: '2016-04-22',
             esito: 27,
             cfu: fis.cfu
         },
         {
             codCorso: prgM.codice,
-            data: '19 / 06 / 2016',
+            data: '2016-06-19',
             esito: 30,
             cfu: prgM.cfu
         },
         {
             codCorso: eleMath.codice,
-            data: '05 / 02 / 2017',
+            data: '2017-02-05',
             esito: 23,
             cfu: eleMath.cfu
         },
         {
             codCorso: ricOp.codice,
-            data: '26 / 02 / 2017',
+            data: '2017-02-17',
             esito: 28,
             cfu: ricOp.cfu
         },
         {
             codCorso: probM.codice,
-            data: '19 / 06 / 2017',
+            data: '2017-06-19',
             esito: 27,
             cfu: probM.cfu
         },
         {
             codCorso: fisicaGenII.codice,
-            data: '08 / 09 / 2017',
+            data: '2017-09-08',
             esito: 25,
             cfu: fisicaGenII.cfu
         },], //'array of subdocument' contenente la carriera degli studenti
@@ -1438,37 +1438,37 @@ var stud9 = new studenti({
     carriera: [
         {
             codCorso: alg.codice,
-            data: '15 / 09 / 2015',
+            data: '2015-09-15',
             esito: 27,
             cfu: alg.cfu
         },
         {
             codCorso: fis.codice,
-            data: '06 / 04 / 2016',
+            data: '2016-04-16',
             esito: 28,
             cfu: fis.cfu
         },
         {
             codCorso: geometria.codice,
-            data: '08 / 07 / 2016',
+            data: '2016-07-08',
             esito: 25,
             cfu: geometria.cfu
         },
         {
             codCorso: prgM.codice,
-            data: '29 / 07 / 2016',
+            data: '2016-07-19',
             esito: 29,
             cfu: prgM.cfu
         },
         {
             codCorso: eleMath.codice,
-            data: '01 / 02 / 2017',
+            data: '2017-01-22',
             esito: 24,
             cfu: eleMath.cfu
         },
         {
             codCorso: probM.codice,
-            data: '14 / 06 / 2017',
+            data: '2017-06-14',
             esito: 27,
             cfu: probM.cfu
         },
