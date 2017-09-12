@@ -1,9 +1,9 @@
 # UniMS
 
 ## PROGETTO REALIZZATO DA:
-* SARA PETTINARI        095397
-* MARA ALBANESI         095193
-* MARGHERITA RENIERI    095100
+* SARA PETTINARI        095397    sara.pettinari@studenti.unicam.it
+* MARA ALBANESI         095193    mara.albanesi@studenti.unicam.it
+* MARGHERITA RENIERI    095100    margherita.renieri@studenti.unicam.it
 
 ## PROGETTO PROGRAMMAZIONE WEB
 1.  come utente voglio poter accedere ad un’area privata tramite username e password
