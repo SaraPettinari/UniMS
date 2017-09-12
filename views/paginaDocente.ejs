@@ -126,14 +126,20 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="text-center text-capitalize">Vuoi eliminare questo appello?</h4>
+                                <h4 class="text-center">Vuoi eliminare questo appello?</h4>
                             </div>
                             <div class="modal-footer">
-                                <form action="/paginaDocente/eliminaAppello" method="POST">
-                                    <input hidden value="{{idAppelloE}}" name="_id">
-                                    <button type="submit" class="btn btn-danger">Elimina</button>
-                                </form><br>
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Annulla</button>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <form action="/paginaDocente/eliminaAppello" method="POST">
+                                            <input hidden value="{{idAppelloE}}" name="_id">
+                                            <button type="submit" class="btn btn-danger">Elimina</button>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Annulla</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -143,15 +149,20 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="text-center text-capitalize">Vuoi chiudere questo appello?</h4>
+                                <h4 class="text-center">Vuoi chiudere questo appello?</h4>
                             </div>
                             <div class="modal-footer">
-                                <form action="/paginaDocente/chiudiAppello" method="POST">
-                                    <input hidden value="{{idAppelloC}}" name="scegliAppello">
-                                    <button type="submit" class="btn btn-warning ">Chiudi</button>
-                                </form>
-                                <br>
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Annulla</button>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <form action="/paginaDocente/chiudiAppello" method="POST">
+                                            <input hidden value="{{idAppelloC}}" name="scegliAppello">
+                                            <button type="submit" class="btn btn-warning ">Chiudi</button>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Annulla</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
