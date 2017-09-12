@@ -98,30 +98,6 @@
                             </td>
                             <td>
                                 <a data-toggle="modal" data-target="#confermaEliminazione"><button ng-model="idAppelloE" ng-click="cliccamiE('<%= listaAppelli[i]._id %>')" class="btn btn-danger btn-sm">Elimina</button></a>
-                                <div class="modal fade" id="confermaEliminazione" role="dialog">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                <h2 class="text-center text-capitalize">Eliminazione appello</h2>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <p> Vuoi eliminare l'appello? </p>
-                                                    </div>
-                                                </div>
-                                                <div class="btn-ground">
-                                                    <form action="/paginaDocente/eliminaAppello" method="POST">
-                                                        <input hidden value="{{idAppelloE}}" name="_id">
-                                                        <button type="submit" class="btn btn-danger">Elimina</button>
-                                                    </form><br>
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Annulla</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </td>
                             <td>
                                 <% if (!listaAppelli[i].chiuso) { %>
