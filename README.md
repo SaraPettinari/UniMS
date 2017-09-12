@@ -1,11 +1,11 @@
 # UniMS
 
-##PROGETTO REALIZZATO DA:
+## PROGETTO REALIZZATO DA:
 * SARA PETTINARI        095397
 * MARA ALBANESI         095193
 * MARGHERITA RENIERI    095100
 
-##PROGETTO PROGRAMMAZIONE WEB
+## PROGETTO PROGRAMMAZIONE WEB
 1.  come utente voglio poter accedere ad un’area privata tramite username e password
 2.  come admin voglio poter modificare il piano di studio
 3.  come studente voglio potermi iscrivere ad un esame
@@ -17,22 +17,22 @@
 9.  come professore posso vedere graficamente l’andamento di un esame e posso scaricare il pdf dei voti
 10. come admin posso aggiungere crediti liberi alla carriera dello studente
  
-##Prerequisiti
+## Prerequisiti
 * Avere installato node.js
 * Avere installato mongoDB
 * Avere un account su heroku
 
-##Installazione
+## Installazione
 * Scaricare le dependencies tramite il comando `npm install`
 
-##Utilizzo
-###In locale
+## Utilizzo
+### In locale
 * Da terminale avviare il database tramite il comando `mongod`
 * Nel file server.js impostare come parametro alla riga 14  ```urlDb.databaseLocale```
 * Importare i dati tramite il comando `node populateDbUnims`
 * Avviare il server tramite il comando `node server.js`
 
-##Heroku 
+## Heroku 
 * Da terminale spostarsi nella cartella locale del progetto
 * Da terminale eseguire ```heroku login```
 * Da terminale eseguire ```heroku create```
@@ -41,10 +41,10 @@
 
 L'app viene deployata automaticamente al link:  https://unims.herokuapp.com/
 
-##Trello
+## Trello
 Link alla bacheca di trello https://trello.com/b/TlMNEIiB
 
-##Struttura File
+## Struttura File
 ```
 --+ controllers                         //controller
   |--- appelliController.js             //gestore delle funzioni relative agli appelli
@@ -93,8 +93,7 @@ Link alla bacheca di trello https://trello.com/b/TlMNEIiB
 --- README.md
 ```
    
-##API
-
+## API
 /
 GET / 
 GET /registrazione
@@ -134,16 +133,16 @@ POST /paginaStudente/vediPrenotazioni/controllaEsiti
 POST /paginaStudente/vediPrenotazioni/confermaVoto
 POST /paginaStudente/vediPrenotazioni/cancellaPrenotazione
 
-##Credenziali di Accesso
-###Amministratore
+## Credenziali di Accesso
+### Amministratore
 Username: sara.pettinari/admin
 Password: sara
 
-###Docente
+### Docente
 Username: mario.rossi/prof
 Password: mario
 
-###Studente
+### Studente
 Username: serena.ferrari    
 Password: serena
 
