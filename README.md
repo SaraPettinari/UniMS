@@ -95,7 +95,8 @@ Link alla bacheca di trello https://trello.com/b/TlMNEIiB
    
 ## API
 
-/
+**/**
+
 GET / 
 
 GET /registrazione
@@ -110,7 +111,8 @@ POST /loginDocente
 
 POST /registrazione
 
-/paginaAmministratore
+
+**/paginaAmministratore**
 
 GET /paginaAmministratore
 
@@ -125,7 +127,7 @@ POST /paginaAmministratore/registrazioneDocente
 POST /paginaAmministratore/aggiuntaCFULiberi
 
 
-/paginaDocente
+**/paginaDocente**
 
 GET /paginaDocente
 
@@ -148,7 +150,7 @@ POST /paginaDocente/andamentoEsiti
 POST /paginaDocente/chiudiAppello
 
 
-/paginaStudente
+**/paginaStudente**
 
 GET /paginaStudente
 
@@ -166,7 +168,7 @@ POST /paginaStudente/vediPrenotazioni/confermaVoto
 
 POST /paginaStudente/vediPrenotazioni/cancellaPrenotazione
 
-## Credenziali di Accesso
+## Credenziali di Accesso per la facoltà di informatica
 ### Amministratore
 
 Username: sara.pettinari/admin
@@ -184,4 +186,4 @@ Password: mario
 Username: serena.ferrari    
 Password: serena
 
-credenziali di accesso per quanto riguarda la facoltà di informatica, se si vogliono testare le altre facoltà consultare il file populateDbUnims.js
+per testare le altre facoltà consultare il file populateDbUnims.js
