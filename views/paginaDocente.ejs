@@ -102,31 +102,6 @@
                             <td>
                                 <% if (!listaAppelli[i].chiuso) { %>
                                     <a data-toggle="modal" data-target="#confermaChiusura"><button ng-model="idAppelloC" ng-click="cliccamiC('<%= listaAppelli[i]._id %>')" class="btn btn-warning btn-sm">Chiudi</button></a>
-                                    <div class="modal fade" id="confermaChiusura" role="dialog">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                    <h2 class="text-center text-capitalize">Chiusura appello</h2>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <p> Vuoi chiudere l'appello? </p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="btn-ground">
-                                                        <form action="/paginaDocente/chiudiAppello" method="POST">
-                                                            <input hidden value="{{idAppelloC}}" name="scegliAppello">
-                                                            <button type="submit" class="btn btn-warning ">Chiudi</button>
-                                                        </form>
-                                                        <br>
-                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Annulla</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <% } else { %>
                                         <button disabled class="btn btn-warning btn-sm">Chiuso</button>
                                         <% } %>
@@ -134,7 +109,7 @@
                             <td>
                                 <form action="/paginaDocente/appello" method="POST">
                                     <input hidden value="<%= listaAppelli[i]._id %>" name="scegliAppello">
-                                    <button type="submit" class="btn btn-info  btn-sm"style="background-color: #6900FF">Studenti</button>
+                                    <button type="submit" class="btn btn-info  btn-sm" style="background-color: #6900FF">Studenti</button>
                                 </form>
                             </td>
                             <td>
@@ -145,9 +120,54 @@
                             </td>
                         </tr>
                         <% } %>
-                    </table>
-                            <% } %>
-                
+                </table>
+                <div class="modal fade" id="confermaEliminazione" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h2 class="text-center text-capitalize">Eliminazione appello</h2>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <p> Vuoi eliminare l'appello? </p>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <form action="/paginaDocente/eliminaAppello" method="POST">
+                                    <input hidden value="{{idAppelloE}}" name="_id">
+                                    <button type="submit" class="btn btn-danger">Elimina</button>
+                                </form><br>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Annulla</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="confermaChiusura" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h2 class="text-center text-capitalize">Chiusura appello</h2>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <p> Vuoi chiudere l'appello? </p>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <form action="/paginaDocente/chiudiAppello" method="POST">
+                                    <input hidden value="{{idAppelloC}}" name="scegliAppello">
+                                    <button type="submit" class="btn btn-warning ">Chiudi</button>
+                                </form>
+                                <br>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Annulla</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+
         </div>
         <div id="3" class="tab-pane">
             <div class="marginTop row">
@@ -191,4 +211,5 @@
         </div>
     </div>
 </body>
+
 </html>
