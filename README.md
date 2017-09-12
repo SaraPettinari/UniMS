@@ -94,6 +94,7 @@ Link alla bacheca di trello https://trello.com/b/TlMNEIiB
 ```
    
 ## API
+
 /
 GET / 
 GET /registrazione
@@ -135,14 +136,17 @@ POST /paginaStudente/vediPrenotazioni/cancellaPrenotazione
 
 ## Credenziali di Accesso
 ### Amministratore
+
 Username: sara.pettinari/admin
 Password: sara
 
 ### Docente
+
 Username: mario.rossi/prof
 Password: mario
 
 ### Studente
+
 Username: serena.ferrari    
 Password: serena
 
