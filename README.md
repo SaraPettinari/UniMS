@@ -97,41 +97,73 @@ Link alla bacheca di trello https://trello.com/b/TlMNEIiB
 
 /
 GET / 
+
 GET /registrazione
+
 GET /logout
+
 POST /loginStudente
+
 POST /loginAmministratore
+
 POST /loginDocente
+
 POST /registrazione
 
 /paginaAmministratore
+
 GET /paginaAmministratore
+
 POST /paginaAmministratore
+
 POST /paginaAmministratore/update
+
 POST /paginaAmministratore/remove
+
 POST /paginaAmministratore/registrazioneDocente
+
 POST /paginaAmministratore/aggiuntaCFULiberi
 
+
 /paginaDocente
+
 GET /paginaDocente
+
 GET /paginaDocente/appello
+
 GET /paginaDocente/andamentoEsiti
+
 POST /paginaDocente/nuovoAppello
+
 POST /paginaDocente/aggiornaAppello
+
 POST /paginaDocente/eliminaAppello
+
 POST /paginaDocente/appello
+
 POST /paginaDocente/appello/aggiungiEsito
+
 POST /paginaDocente/andamentoEsiti
+
 POST /paginaDocente/chiudiAppello
 
+
 /paginaStudente
+
 GET /paginaStudente
+
 GET /paginaStudente/appelli
+
 GET /paginaStudente/vediPrenotazioni
+
 POST /paginaStudente/vediAppelli
+
 POST /paginaStudente/appelli/prenotati
+
 POST /paginaStudente/vediPrenotazioni/controllaEsiti
+
 POST /paginaStudente/vediPrenotazioni/confermaVoto
+
 POST /paginaStudente/vediPrenotazioni/cancellaPrenotazione
 
 ## Credenziali di Accesso
