@@ -183,7 +183,9 @@ Password: mario
 
 ### Studente
 
-Username: serena.ferrari    
+Username: serena.ferrari   
+
 Password: serena
+
 
 per testare le altre facoltà consultare il file populateDbUnims.js
