@@ -138,11 +138,13 @@ POST /paginaStudente/vediPrenotazioni/cancellaPrenotazione
 ### Amministratore
 
 Username: sara.pettinari/admin
+
 Password: sara
 
 ### Docente
 
 Username: mario.rossi/prof
+
 Password: mario
 
 ### Studente
