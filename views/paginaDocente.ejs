@@ -140,10 +140,14 @@
                                         <% } %>
                             </td>
                             <td>
-                                <form action="/paginaDocente/appello" method="POST">
-                                    <input hidden value="<%= listaAppelli[i]._id %>" name="scegliAppello">
-                                    <button type="submit" class="btn btn-info  btn-sm" style="background-color: #6900FF">Studenti</button>
-                                </form>
+                                <% if (listaAppelli[i].esito.length == 0) { %>
+                                    <form action="/paginaDocente/appello" method="POST">
+                                        <input hidden value="<%= listaAppelli[i]._id %>" name="scegliAppello">
+                                        <button type="submit" class="btn btn-info  btn-sm" style="background-color: #6900FF; border:none">Studenti</button>
+                                    </form>
+                                    <% } else { %>
+                                        <button disabled class="btn btn-info btn-sm" style="background-color:#9932cc; border:none">Completo</button>
+                                        <% } %>
                             </td>
                             <td>
                                 <form action="/paginaDocente/andamentoEsiti" method="POST">

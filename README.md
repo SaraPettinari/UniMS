@@ -29,7 +29,7 @@
 ### In locale
 * Da terminale avviare il database tramite il comando `mongod`
 * Nel file server.js impostare come parametro alla riga 14  ```urlDb.databaseLocale```
-* Importare i dati tramite il comando `node populateDbUnims`
+* Importare i dati tramite il comando `node populateDbUnims.js`
 * Avviare il server tramite il comando `node server.js`
 
 ## Heroku 
