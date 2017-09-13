@@ -101,62 +101,6 @@ module.exports = function (passport) {
                     })
                 })
             })
-        ),
-        //registrazione docente
-        passport.use('registrazioneDocente', new LocalStrategy({
-            passReqToCallback: true
-        },
-            function (req, username, password, done) {
-                findOrCreateProf = function () {
-                    // in caso di omonimia allo username verrà aggiunto progressivamente un numero
-                    var reg = new RegExp('^' + username); //cerco gli elementi che hanno lo stesso prefisso
-                    Prof.find({ 'username': reg }).count(function (err, count) {
-                        if (count > 0)
-                            username = username.concat(count);
-                        //creo un nuovo docente
-                        var newProf = new Prof();
-                        // le credenziali verranno settate in base a ciò che verrà inserito nel form di registrazione
-                        newProf.username = username.concat('/prof');
-                        if (password.length < 4)
-                            return done(null, false, req.flash('message', 'La password deve contenere almeno 4 caratteri'));
-                        newProf.password = createHash(password);
-                        newProf.email = req.body.email;
-                        newProf.nome = req.body.nome;
-                        newProf.cognome = req.body.cognome;
-                        newProf.dataDiNascita = req.body.dataDiNascita;
-                        newProf.telefono = req.body.telefono;
-                        newProf.email = username.concat('@unims.it');
-                        newProf.codFacoltà = req.body.codFacoltà;
-                        Prof.count({}, function (err, count) {
-                            if (err) throw err;
-                            var n_prof = count + 1;
-                            newProf.matricola = new String('P00' + n_prof);
-
-                            // salvo l'utente
-                            newProf.save(function (err) {
-                                if (err) {
-                                    console.log('Errore nel salvataggio: ' + err);
-                                    throw err;
-                                }
-                                console.log('Registrazione avvenuta con successo.');
-                                return done(null, newProf);
-                            });
-                        });
-                    });
-                };
-
-                /**
-                 * Generates hash using bCrypt.
-                 */
-                var createHash = function (password) {
-                    return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
-                }
-                /**
-                 * Delay the execution of findOrCreateUser and execute the method
-                 *      in the next tick of the event loop.
-                 */
-                process.nextTick(findOrCreateProf);
-            })
         )
 }
 

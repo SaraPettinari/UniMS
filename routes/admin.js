@@ -79,11 +79,10 @@ router.post('/remove', isAuthenticated, function (req, res) {
 /**
  * POST aggiunta di un nuovo docente.
  */
-router.post('/registrazioneDocente', passport.authenticate('registrazioneDocente', {
-    successRedirect: '/paginaAmministratore',
-    failureRedirect: '/paginaAmministratore',
-    failureFlash: true
-}));
+router.post('/registrazioneDocente', isAuthenticated, function(req, res){
+    DocentiController.addDocente(req.body);
+    res.redirect('/paginaAmministratore');
+});
 
 /**
  * POST aggiunta di cfu liberi per uno studente.
