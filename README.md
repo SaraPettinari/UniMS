@@ -39,10 +39,12 @@
 * Da terminale deployare l'app con il comando ```git push heroku master```
 * Da terminale aprire l'app tramite il comando ```heroku open```
 
-L'app viene deployata automaticamente al link:  https://unims.herokuapp.com/
+L'app viene deployata automaticamente al link: https://unims.herokuapp.com/
 
-## Trello
-Link alla bacheca di trello https://trello.com/b/TlMNEIiB
+## Link
+* Link alla bacheca di trello: https://trello.com/b/TlMNEIiB
+* Link al testo del progetto: https://drive.google.com/drive/folders/0B7GoKL689kj7MjBBaGR0Z1NKUms 
+* Link al video di presentazione: https://youtu.be/poN0I4Vbm1M
 
 ## Struttura File
 ```
